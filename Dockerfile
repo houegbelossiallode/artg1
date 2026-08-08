@@ -33,8 +33,11 @@ WORKDIR /var/www/html
 # Copier l'ensemble du projet dans le WORKDIR
 COPY . .
 
-# Installer les dépendances PHP sans les packages de dev
-RUN composer install --no-dev --optimize-autoloader
+# Créer le fichier database.sqlite vide si nécessaire pour éviter l'erreur package:discover
+RUN touch /var/www/html/database/database.sqlite
+
+# Installer les dépendances PHP sans les packages de dev et sans scripts
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
 # Installer Node.js & npm, puis compiler les assets (Tailwind / Vite)
 RUN apt-get update && apt-get install -y nodejs npm \
