@@ -32,8 +32,20 @@ WORKDIR /var/www
 # Copier le projet
 COPY . .
 
+# Créer un fichier .env temporaire pour éviter les erreurs SQLite pendant le build
+RUN cp .env.example .env && \
+    sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=mysql/' .env && \
+    sed -i 's/# DB_HOST=127.0.0.1/DB_HOST=127.0.0.1/' .env && \
+    sed -i 's/# DB_PORT=3306/DB_PORT=3306/' .env && \
+    sed -i 's/# DB_DATABASE=laravel/DB_DATABASE=laravel/' .env && \
+    sed -i 's/# DB_USERNAME=root/DB_USERNAME=root/' .env && \
+    sed -i 's/# DB_PASSWORD=/DB_PASSWORD=/' .env
+
+# Créer le fichier database.sqlite vide pour éviter les erreurs pendant le build
+RUN touch database/database.sqlite
+
 # Installer dépendances PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
 # Installer Node.js & npm (pour compiler Tailwind avec Vite)
 RUN apt-get update && apt-get install -y nodejs npm
@@ -49,4 +61,4 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 EXPOSE 80
 
 # Exécuter les migrations automatiques puis démarrer Apache proprement
-CMD php artisan migrate --force && apache2-foreground
+CMD php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan storage:link && php artisan migrate --force && apache2-foreground
