@@ -1,0 +1,1 @@
+const jsdom = require('jsdom'); const { JSDOM } = jsdom; JSDOM.fromURL('https://cho-culture-association-cultural-artistique.ai.studio/', { runScripts: 'dangerously', resources: 'usable' }).then(dom => { setTimeout(() => { require('fs').writeFileSync('dom.html', dom.serialize()); console.log('Done'); }, 10000); });
