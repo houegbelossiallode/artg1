@@ -54,8 +54,9 @@ RUN apt-get update && apt-get install -y nodejs npm
 RUN npm install && npm run build
 
 # Permissions correctes pour le serveur Apache (www-data)
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache && \
+    chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
+    chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Port standard pour les conteneurs web
 EXPOSE 80
