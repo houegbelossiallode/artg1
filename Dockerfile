@@ -1,4 +1,4 @@
-# Image Apache officielle avec PHP 8.2
+# 1. Utiliser impérativement l'image avec Apache au lieu de -cli
 FROM php:8.2-apache
 
 # Dépendances système nécessaires à GD et MySQL
@@ -13,44 +13,40 @@ RUN apt-get update && apt-get install -y \
     libsodium-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Configuration de GD + Installation de pdo_mysql
+# Configuration de GD + Installation de pdo_mysql pour Aiven
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo pdo_mysql gd sodium \
     && docker-php-ext-enable pdo_mysql
 
-# Configuration Apache : pointer sur /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf \
-    && sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf \
-    && echo '<Directory /var/www/html/public>\n\tOptions Indexes FollowSymLinks\n\tAllowOverride All\n\tRequire all granted\n</Directory>' >> /etc/apache2/apache2.conf \
+# Activer le module de réécriture d'Apache (indispensable pour les routes Laravel)
+RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf \
     && a2enmod rewrite
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Définir le dossier racine d'Apache
-WORKDIR /var/www/html
+# Définir le dossier de travail standard pour Apache
+WORKDIR /var/www
 
-# Copier l'ensemble du projet dans le WORKDIR
+# Copier le projet
 COPY . .
 
-# Créer le fichier database.sqlite vide si nécessaire pour éviter l'erreur package:discover
-RUN touch /var/www/html/database/database.sqlite
+# Installer dépendances PHP
+RUN composer install --no-dev --optimize-autoloader
 
-# Installer les dépendances PHP sans les packages de dev et sans scripts
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+# Installer Node.js & npm (pour compiler Tailwind avec Vite)
+RUN apt-get update && apt-get install -y nodejs npm
 
-# Installer Node.js & npm, puis compiler les assets (Tailwind / Vite)
-RUN apt-get update && apt-get install -y nodejs npm \
-    && npm install \
-    && npm run build \
-    && rm -rf /var/lib/apt/lists/*
+# Installer les packages frontend et compiler les assets
+RUN npm install && npm run build
 
-# Donner la propriété des fichiers à l'utilisateur d'Apache (www-data)
-RUN chown -R www-data:www-data /var/www/html \
+# Permissions correctes pour le serveur Apache (www-data)
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Port standard exposé
+# Port standard pour les conteneurs web
 EXPOSE 80
 
-# Forcer le vidage du cache, exécuter les migrations, puis lancer Apache
-CMD php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan storage:link && php artisan migrate --force && apache2-foreground
+# Exécuter les migrations automatiques puis démarrer Apache proprement
+CMD php artisan migrate --force && apache2-foreground
