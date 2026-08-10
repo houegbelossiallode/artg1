@@ -172,7 +172,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql gd sodium
 
-# 2. SOLUTION : Réécrire proprement le VirtualHost par défaut d'Apache pour pointer sur /public
+# Réécrire proprement le VirtualHost par défaut d'Apache pour pointer sur /public
 RUN echo '<VirtualHost *:80>\n\
     ServerAdmin webmaster@localhost\n\
     DocumentRoot /var/www/html/public\n\
@@ -183,7 +183,7 @@ RUN echo '<VirtualHost *:80>\n\
     </Directory>\n\
     ErrorLog ${APACHE_LOG_DIR}/error.log\n\
     CustomLog ${APACHE_LOG_DIR}/access.log combined\n\
-</VirtualHost>' > /etc/apache2/sites-available/0000-default.conf
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
