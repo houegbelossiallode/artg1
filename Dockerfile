@@ -95,3 +95,6 @@ RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 10000
 
 CMD php -S 0.0.0.0:10000 -t public
+
+# Forcer le vidage du cache, exécuter les migrations, puis lancer Apache
+CMD php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan storage:link && php artisan migrate --force && apache2-foreground
