@@ -102,6 +102,12 @@ WORKDIR /var/www/html
 # Copier l'ensemble du projet dans le WORKDIR
 COPY . .
 
+# Variables d'environnement de build pour "tromper" Laravel pendant le composer install
+ENV APP_ENV=production
+ENV APP_KEY=base64:cO1b6jYgqE8uPlXvR2h7K9zNxLmQ4wTpvBaSsDdFfGg=
+ENV DB_CONNECTION=sqlite
+ENV DB_DATABASE=:memory:
+
 # Installer les dépendances PHP sans les packages de dev
 RUN composer install --no-dev --optimize-autoloader
 
