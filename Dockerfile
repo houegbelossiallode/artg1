@@ -138,12 +138,5 @@ RUN chown -R www-data:www-data /var/www/html \
 # Port standard exposé
 EXPOSE 80
 
-# Créer un script de démarrage pour Render
-RUN echo '#!/bin/bash' > /usr/local/bin/start-apache.sh && \
-    echo 'PORT=${PORT:-80}' >> /usr/local/bin/start-apache.sh && \
-    echo 'sed -i "s/Listen 80/Listen $PORT/g" /etc/apache2/ports.conf' >> /usr/local/bin/start-apache.sh && \
-    echo 'sed -i "s/<VirtualHost \*:80>/<VirtualHost *:$PORT>/g" /etc/apache2/sites-available/000-default.conf' >> /usr/local/bin/start-apache.sh && \
-    echo 'apache2-foreground' >> /usr/local/bin/start-apache.sh && \
-    chmod +x /usr/local/bin/start-apache.sh
-
-CMD ["/usr/local/bin/start-apache.sh"]
+# Lancer Apache avec le port Render via shell
+CMD sh -c 'sed -i "s/Listen 80/Listen ${PORT:-80}/g" /etc/apache2/ports.conf && sed -i "s/<VirtualHost \*:80>/<VirtualHost *:${PORT:-80}>/g" /etc/apache2/sites-available/000-default.conf && apache2-foreground'

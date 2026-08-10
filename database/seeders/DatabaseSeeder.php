@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1. Profils
-        $adminProfil = Profil::create(['id' => 1, 'nom' => 'administrateur', 'actif' => 'oui']);
-        $profProfil = Profil::create(['id' => 2, 'nom' => 'professeur', 'actif' => 'oui']);
-        $apprenantProfil = Profil::create(['id' => 3, 'nom' => 'apprenant', 'actif' => 'oui']);
+        $adminProfil = Profil::create(['id' => 1, 'nom' => 'administrateur', 'actif' => 'OUI']);
+        $profProfil = Profil::create(['id' => 2, 'nom' => 'professeur', 'actif' => 'OUI']);
+        $apprenantProfil = Profil::create(['id' => 3, 'nom' => 'apprenant', 'actif' => 'OUI']);
 
         // 2. Users
         User::create([
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'biographie' => 'Administrateur général de la plateforme.',
             'telephone' => '+22900000001',
             'adresse' => 'Cotonou, Bénin',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         $teacher = User::create([
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
             'biographie' => 'Professeur de guitare et percussions traditionnelles avec plus de 15 ans d\'expérience.',
             'telephone' => '+22900000002',
             'adresse' => 'Porto-Novo, Bénin',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         $student = User::create([
@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
             'biographie' => 'Étudiante passionnée de tissage de raphia et d\'arts musicaux traditionnels.',
             'telephone' => '+22900000003',
             'adresse' => 'Ouidah, Bénin',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 3. Associations
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
             'youtube' => 'https://youtube.com/assoculture',
             'instagram' => 'https://instagram.com/assoculture',
             'site_web' => 'https://assoculture.org',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 4. Equipes
@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
             'fonction' => 'Directeur Artistique',
             'photo' => 'team-1.jpg',
             'biographie' => 'Pianiste de formation et défenseur de la musique traditionnelle béninoise.',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         Equipe::create([
@@ -105,18 +105,18 @@ class DatabaseSeeder extends Seeder
             'fonction' => 'Responsable Artisanat & Raphia',
             'photo' => 'team-2.jpg',
             'biographie' => 'Artisane experte dans le tissage traditionnel et la teinture naturelle.',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 5. Modes
-        $presentielMode = Mode::create(['id' => 1, 'libelle' => 'Présentiel', 'actif' => 'oui']);
-        $distancielMode = Mode::create(['id' => 2, 'libelle' => 'Distanciel', 'actif' => 'oui']);
-        $hybrideMode = Mode::create(['id' => 3, 'libelle' => 'Hybride', 'actif' => 'oui']);
+        $presentielMode = Mode::create(['id' => 1, 'libelle' => 'Présentiel', 'actif' => 'OUI']);
+        $distancielMode = Mode::create(['id' => 2, 'libelle' => 'Distanciel', 'actif' => 'OUI']);
+        $hybrideMode = Mode::create(['id' => 3, 'libelle' => 'Hybride', 'actif' => 'OUI']);
 
         // 6. CategorieCours
-        $catMusicTrad = CategorieCours::create(['id' => 1, 'nom' => 'Musique Traditionnelle', 'description' => 'Apprenez les instruments locaux (percussions, gong, etc.)', 'actif' => 'oui']);
-        $catMusicMod = CategorieCours::create(['id' => 2, 'nom' => 'Musique Moderne', 'description' => 'Guitare acoustique, piano et chant moderne', 'actif' => 'oui']);
-        $catRaphia = CategorieCours::create(['id' => 3, 'nom' => 'Artisanat & Raphia', 'description' => 'Techniques de tissage et création d\'accessoires décoratifs', 'actif' => 'oui']);
+        $catMusicTrad = CategorieCours::create(['id' => 1, 'nom' => 'Musique Traditionnelle', 'description' => 'Apprenez les instruments locaux (percussions, gong, etc.)', 'actif' => 'OUI']);
+        $catMusicMod = CategorieCours::create(['id' => 2, 'nom' => 'Musique Moderne', 'description' => 'Guitare acoustique, piano et chant moderne', 'actif' => 'OUI']);
+        $catRaphia = CategorieCours::create(['id' => 3, 'nom' => 'Artisanat & Raphia', 'description' => 'Techniques de tissage et création d\'accessoires décoratifs', 'actif' => 'OUI']);
 
         // 7. Cours
         Cours::create([
@@ -130,7 +130,7 @@ class DatabaseSeeder extends Seeder
             'duree' => 120,
             'tarif' => 15000,
             'mode_id' => 1,
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         Cours::create([
@@ -144,7 +144,7 @@ class DatabaseSeeder extends Seeder
             'duree' => 150,
             'tarif' => 20000,
             'mode_id' => 1,
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 8. Actualites
@@ -153,7 +153,7 @@ class DatabaseSeeder extends Seeder
             'contenu' => 'Les inscriptions aux ateliers d\'artisanat du raphia et de musique traditionnelle sont ouvertes à tous dès aujourd\'hui.',
             'photo' => 'news-1.jpg',
             'date_publication' => '2026-07-28',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         Actualite::create([
@@ -161,18 +161,18 @@ class DatabaseSeeder extends Seeder
             'contenu' => 'AssoCulture présentera une sélection unique d\'œuvres faites à base de raphia naturel par les élèves de notre programme.',
             'photo' => 'news-2.jpg',
             'date_publication' => '2026-07-29',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 9. CategorieEvenement
-        CategorieEvenement::create(['id' => 1, 'libelle' => 'Concert', 'actif' => 'oui']);
-        CategorieEvenement::create(['id' => 2, 'libelle' => 'Exposition', 'actif' => 'oui']);
-        CategorieEvenement::create(['id' => 3, 'libelle' => 'Atelier', 'actif' => 'oui']);
+        CategorieEvenement::create(['id' => 1, 'libelle' => 'Concert', 'actif' => 'OUI']);
+        CategorieEvenement::create(['id' => 2, 'libelle' => 'Exposition', 'actif' => 'OUI']);
+        CategorieEvenement::create(['id' => 3, 'libelle' => 'Atelier', 'actif' => 'OUI']);
 
         // 10. CategorieTalent
-        CategorieTalent::create(['id' => 1, 'libelle' => 'Musique', 'actif' => 'oui']);
-        CategorieTalent::create(['id' => 2, 'libelle' => 'Artisanat', 'actif' => 'oui']);
-        CategorieTalent::create(['id' => 3, 'libelle' => 'Danse Traditionnelle', 'actif' => 'oui']);
+        CategorieTalent::create(['id' => 1, 'libelle' => 'Musique', 'actif' => 'OUI']);
+        CategorieTalent::create(['id' => 2, 'libelle' => 'Artisanat', 'actif' => 'OUI']);
+        CategorieTalent::create(['id' => 3, 'libelle' => 'Danse Traditionnelle', 'actif' => 'OUI']);
 
         // 11. Talents
         $talentMusic = Talent::create([
@@ -187,7 +187,7 @@ class DatabaseSeeder extends Seeder
             'instagram' => 'https://instagram.com/karel.agossou',
             'telephone' => '+229 97 10 10 10',
             'email' => 'karel@example.com',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         $talentCraft = Talent::create([
@@ -202,7 +202,7 @@ class DatabaseSeeder extends Seeder
             'instagram' => 'https://instagram.com/florence.zinsou',
             'telephone' => '+229 97 20 20 20',
             'email' => 'florence@example.com',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 12. Oeuvres
@@ -214,7 +214,7 @@ class DatabaseSeeder extends Seeder
             'fichier' => 'rythmes_sauvages.mp4',
             'image' => 'oeuvre-1.jpg',
             'date_publication' => '2026-07-20',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         Oeuvre::create([
@@ -225,7 +225,7 @@ class DatabaseSeeder extends Seeder
             'fichier' => 'panier_chic.jpg',
             'image' => 'panier_chic.jpg',
             'date_publication' => '2026-07-22',
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 13. Evenements
@@ -241,7 +241,7 @@ class DatabaseSeeder extends Seeder
             'capacite' => 300,
             'photo' => 'event-1.jpg',
             'prix' => 5000,
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         Evenement::create([
@@ -256,7 +256,7 @@ class DatabaseSeeder extends Seeder
             'capacite' => 150,
             'photo' => 'event-2.jpg',
             'prix' => 0,
-            'actif' => 'oui'
+            'actif' => 'OUI'
         ]);
 
         // 14. Constantes
