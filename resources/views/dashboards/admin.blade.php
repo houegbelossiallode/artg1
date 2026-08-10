@@ -193,12 +193,7 @@
             @forelse ($recentUsers as $userItem)
               <tr class="hover:bg-slate-50 transition-colors">
                 <td class="px-6 py-3.5">
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-slate-800 text-white font-bold flex items-center justify-center text-[10px] shrink-0">
-                      {{ strtoupper(substr($userItem->prenom, 0, 1) . substr($userItem->nom, 0, 1)) }}
-                    </div>
-                    <span class="font-bold text-slate-900 text-xs">{{ $userItem->prenom }} {{ $userItem->nom }}</span>
-                  </div>
+                  <span class="text-slate-900 text-xs font-medium">{{ $userItem->prenom }} {{ $userItem->nom }}</span>
                 </td>
                 <td class="px-4 py-3.5 text-xs text-slate-500">{{ $userItem->email }}</td>
                 <td class="px-4 py-3.5 text-xs">
@@ -223,7 +218,7 @@
                 <td class="px-4 py-3.5 text-right">
                   <div class="relative inline-block text-left" x-data="{ open: false }" @click.away="open = false">
                     <button @click="open = !open" type="button"
-                      class="w-7 h-7 border border-slate-300 bg-white hover:bg-slate-100 text-slate-500 inline-flex items-center justify-center focus:outline-none transition-colors">
+                      class="w-7 h-7 border border-slate-300 bg-white hover:bg-slate-100 text-slate-500 inline-flex items-center justify-center focus:outline-none transition-colors mr-2">
                       <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
                       </svg>
@@ -235,7 +230,7 @@
                          x-transition:leave="transition ease-in duration-75"
                          x-transition:leave-start="opacity-100 scale-100"
                          x-transition:leave-end="opacity-0 scale-95"
-                         class="absolute right-0 mt-1 w-40 bg-white shadow-lg border border-slate-200 z-50 divide-y divide-slate-100"
+                         class="absolute right-0 mt-2 w-40 bg-white shadow-lg border border-slate-200 z-50 divide-y divide-slate-100"
                          style="display:none;">
                       <a href="#" @click.prevent="open = false"
                         class="flex items-center gap-2 px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 font-semibold">

@@ -117,31 +117,31 @@
       <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
         <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wide">ACTIONS RAPIDES</h2>
       </div>
-      
+
       <div class="divide-y divide-slate-100 p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
         <a href="{{ route('dashboard.professeur.cours.index') }}" class="block bg-white border border-slate-200 rounded-sm shadow-sm hover:shadow-md transition p-6 text-center group">
           <div class="w-12 h-12 bg-indigo-50 border border-indigo-200 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-indigo-600 transition-colors">
             <svg class="w-5 h-5 text-indigo-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
           </div>
-          <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Mes Cours</h3>
+          <h3 class="text-sm font-medium text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Mes Cours</h3>
         </a>
         <a href="{{ route('dashboard.professeur.eleves') }}" class="block bg-white border border-slate-200 rounded-sm shadow-sm hover:shadow-md transition p-6 text-center group">
           <div class="w-12 h-12 bg-[#C85A32]/10 border border-[#C85A32]/30 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#C85A32] transition-colors">
             <svg class="w-5 h-5 text-[#C85A32] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
           </div>
-          <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Liste des Élèves</h3>
+          <h3 class="text-sm font-medium text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Liste des Élèves</h3>
         </a>
         <a href="{{ route('dashboard.professeur.supports.index') }}" class="block bg-white border border-slate-200 rounded-sm shadow-sm hover:shadow-md transition p-6 text-center group">
           <div class="w-12 h-12 bg-blue-50 border border-blue-200 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-500 transition-colors">
             <svg class="w-5 h-5 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
           </div>
-          <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Supports de Cours</h3>
+          <h3 class="text-sm font-medium text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Supports de Cours</h3>
         </a>
         <a href="{{ route('dashboard.professeur.reservations') }}" class="block bg-white border border-slate-200 rounded-sm shadow-sm hover:shadow-md transition p-6 text-center group">
           <div class="w-12 h-12 bg-amber-50 border border-amber-200 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-amber-500 transition-colors">
             <svg class="w-5 h-5 text-amber-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
           </div>
-          <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Réservations</h3>
+          <h3 class="text-sm font-medium text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Réservations</h3>
         </a>
       </div>
     </div>
@@ -155,27 +155,27 @@
         <div class="px-5 py-3.5 border-b border-slate-200">
           <h2 class="text-xs font-bold text-slate-900 uppercase tracking-widest">Aujourd'hui</h2>
         </div>
-        
+
         <div class="p-5">
           <div class="relative border-l border-slate-200 ml-2 space-y-6">
-            
+
             <div class="relative pl-5 group cursor-default">
               <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white shadow-[0_0_6px_rgba(16,185,129,0.6)] group-hover:bg-emerald-400 transition-colors"></div>
               <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 block mb-0.5">10:00 - 12:00</span>
-              <h4 class="font-bold text-sm text-slate-900">Harmonie</h4>
+              <h4 class="font-medium text-sm text-slate-900">Harmonie</h4>
               <p class="text-[10px] text-slate-500 mt-0.5">Salle Ravel</p>
             </div>
-            
+
             <div class="relative pl-5 group cursor-default">
               <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 border-2 border-white"></div>
               <span class="text-[9px] font-bold uppercase tracking-widest text-slate-400 block mb-0.5">14:00 - 15:00</span>
-              <h4 class="font-bold text-sm text-slate-400">Pause Déjeuner</h4>
+              <h4 class="font-medium text-sm text-slate-400">Pause Déjeuner</h4>
             </div>
 
             <div class="relative pl-5 group cursor-default">
               <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white"></div>
               <span class="text-[9px] font-bold uppercase tracking-widest text-emerald-500 block mb-0.5">16:00 - 18:00</span>
-              <h4 class="font-bold text-sm text-slate-900">Piano Avancé</h4>
+              <h4 class="font-medium text-sm text-slate-900">Piano Avancé</h4>
               <p class="text-[10px] text-slate-500 mt-0.5">Masterclass (12p)</p>
             </div>
 

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="space-y-6">
-    
+
   <!-- En-tête -->
   <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
     <div>
@@ -73,14 +73,14 @@
                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
                   </button>
 
-                  <div x-show="open" 
-                       x-transition:enter="transition ease-out duration-100" 
-                       x-transition:enter-start="transform opacity-0 scale-95" 
-                       x-transition:enter-end="transform opacity-100 scale-100" 
-                       x-transition:leave="transition ease-in duration-75" 
-                       x-transition:leave-start="transform opacity-100 scale-100" 
-                       x-transition:leave-end="transform opacity-0 scale-95" 
-                       class="origin-top-right absolute right-0 mt-1 w-40 rounded-none bg-white shadow-xl border border-slate-200 z-50 divide-y divide-slate-100" 
+                  <div x-show="open"
+                       x-transition:enter="transition ease-out duration-100"
+                       x-transition:enter-start="transform opacity-0 scale-95"
+                       x-transition:enter-end="transform opacity-100 scale-100"
+                       x-transition:leave="transition ease-in duration-75"
+                       x-transition:leave-start="transform opacity-100 scale-100"
+                       x-transition:leave-end="transform opacity-0 scale-95"
+                       class="origin-top-right absolute right-0 mt-1 w-40 rounded-none bg-white shadow-xl border border-slate-200 z-50 divide-y divide-slate-100"
                        x-cloak>
                     <div class="py-1">
                       <a href="{{ route('dashboard.admin.talents.edit', $talent->id) }}" class="w-full text-left group flex items-center px-4 py-2 text-xs text-slate-700 hover:bg-slate-900 hover:text-white font-bold uppercase tracking-wider">

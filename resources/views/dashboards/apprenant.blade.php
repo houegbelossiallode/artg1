@@ -282,7 +282,7 @@
               <tbody class="divide-y divide-slate-100">
                 @foreach($reservations as $res)
                   <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="p-3 font-bold text-slate-900">
+                    <td class="p-3 font-medium text-slate-900">
                       {{ $res->course ? $res->course->titre : 'Cours' }}
                     </td>
                     <td class="p-3 text-slate-600">
@@ -403,7 +403,7 @@
               <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
                 <div>
                   <h4
-                    class="text-sm font-serif-title font-bold text-slate-900 group-hover:text-[#C85A32] transition-colors">
+                    class="text-sm font-serif-title font-medium text-slate-900 group-hover:text-[#C85A32] transition-colors">
                     {{ $item->titre }}
                   </h4>
                   <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">
@@ -422,13 +422,13 @@
                         class="text-[10px] text-slate-500 font-normal">/ séance</span>
                     </span>
                   </div>
-                  
+
                       <button type="button"
                         @click="openBookingModal({{ $item->id }}, '{{ addslashes($item->titre) }}', '{{ addslashes($profName) }}', '{{ addslashes($modeName) }}', '{{ number_format($item->tarif, 0, ',', ' ') }}')"
                         class="px-3 py-1.5 bg-[#C85A32] hover:bg-[#A84223] text-white text-[11px] font-bold uppercase tracking-wider transition shadow cursor-pointer">
                         Réserver
                       </button>
-                  
+
                 </div>
               </div>
             </div>
