@@ -58,7 +58,7 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libsodium-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install zip pdo pdo_pgsql gd sodium
+    && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql gd sodium
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
