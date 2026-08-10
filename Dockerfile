@@ -21,19 +21,8 @@ RUN apt-get update && apt-get install -y \
 # 1. Activer le module de réécriture d'Apache (indispensable pour les routes Laravel)
 RUN a2enmod rewrite
 
-# 2. Configurer Apache pour écouter sur le port 10000 et définir ServerName
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
-    sed -i 's/Listen 80/Listen 10000/g' /etc/apache2/ports.conf
-
-# 3. Réécrire le VirtualHost par défaut pour écouter sur le port 10000
-RUN echo '<VirtualHost *:10000>' > /etc/apache2/sites-available/000-default.conf && \
-    echo '    DocumentRoot /var/www/html/public' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '    <Directory /var/www/html/public>' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '        Options Indexes FollowSymLinks MultiViews' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '        AllowOverride All' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '        Require all granted' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '    </Directory>' >> /etc/apache2/sites-available/000-default.conf && \
-    echo '</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf
+# 2. Configurer Apache pour écouter sur le port 80 par défaut et définir ServerName
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -66,8 +55,16 @@ RUN apt-get remove -y nodejs npm && apt-get autoremove -y && rm -rf node_modules
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Port Render (exposer le port 10000 par défaut)
-EXPOSE 10000
+# Port standard exposé
+EXPOSE 80
 
-# Lancer Apache directement
-CMD apache2-foreground
+# Créer un script de démarrage pour configurer Apache avec le bon port Render
+RUN echo '#!/bin/bash' > /usr/local/bin/start.sh && \
+    echo 'PORT=${PORT:-80}' >> /usr/local/bin/start.sh && \
+    echo 'sed -i "s/Listen 80/Listen $PORT/g" /etc/apache2/ports.conf' >> /usr/local/bin/start.sh && \
+    echo 'sed -i "s/<VirtualHost \*:80>/<VirtualHost *:$PORT>/g" /etc/apache2/sites-available/000-default.conf' >> /usr/local/bin/start.sh && \
+    echo 'apache2-foreground' >> /usr/local/bin/start.sh && \
+    chmod +x /usr/local/bin/start.sh
+
+# Lancer le script de démarrage
+CMD ["/usr/local/bin/start.sh"]
