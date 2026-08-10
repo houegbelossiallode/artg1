@@ -90,6 +90,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # CONFIGURATION APACHE : pointer sur /var/www/html/public ET forcer les autorisations
 RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf \
     && sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf \
+    && echo "ServerName localhost" >> /etc/apache2/apache2.conf \
     && echo '<Directory /var/www/html/public>\n\tOptions Indexes FollowSymLinks\n\tAllowOverride All\n\tRequire all granted\n</Directory>' >> /etc/apache2/apache2.conf \
     && a2enmod rewrite
 
@@ -109,13 +110,17 @@ ENV DB_CONNECTION=sqlite
 ENV DB_DATABASE=:memory:
 
 # Installer les dépendances PHP sans les packages de dev
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction \
+    && composer clear-cache
 
 # Installer Node.js & npm, puis compiler les assets (Tailwind / Vite)
 RUN apt-get update && apt-get install -y nodejs npm \
-    && npm install \
+    && npm install --production=false \
     && npm run build \
-    && rm -rf /var/lib/apt/lists/*
+    && npm cache clean --force \
+    && rm -rf node_modules \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/*
 
 # Donner la propriété des fichiers à l'utilisateur d'Apache (www-data)
 RUN chown -R www-data:www-data /var/www/html \
@@ -124,5 +129,13 @@ RUN chown -R www-data:www-data /var/www/html \
 # Port standard exposé
 EXPOSE 80
 
-# Forcer le vidage du cache, exécuter les migrations, puis lancer Apache
-CMD  apache2-foreground
+# Créer un script de démarrage pour configurer Apache avec le bon port Render
+RUN echo '#!/bin/bash' > /usr/local/bin/start.sh && \
+    echo 'PORT=${PORT:-80}' >> /usr/local/bin/start.sh && \
+    echo 'sed -i "s/Listen 80/Listen $PORT/g" /etc/apache2/ports.conf' >> /usr/local/bin/start.sh && \
+    echo 'sed -i "s/<VirtualHost \*:80>/<VirtualHost *:$PORT>/g" /etc/apache2/sites-available/*.conf' >> /usr/local/bin/start.sh && \
+    echo 'apache2-foreground' >> /usr/local/bin/start.sh && \
+    chmod +x /usr/local/bin/start.sh
+
+# Lancer le script de démarrage
+CMD ["/usr/local/bin/start.sh"]
