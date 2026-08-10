@@ -100,7 +100,7 @@
 # CMD php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan storage:link && php artisan migrate --force
 
 
-FROM php:8.2-cli
+FROM php:8.2-apache
 
 # Dépendances système nécessaires à GD et PostgreSQL
 RUN apt-get update && apt-get install -y \
