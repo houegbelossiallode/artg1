@@ -89,7 +89,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 
 # CONFIGURATION APACHE : Créer une configuration propre pour Laravel
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
-    && a2dismod mpm_event mpm_worker \
+    && rm -f /etc/apache2/mods-available/mpm_event.load /etc/apache2/mods-available/mpm_event.conf \
+    && rm -f /etc/apache2/mods-available/mpm_worker.load /etc/apache2/mods-available/mpm_worker.conf \
+    && rm -f /etc/apache2/mods-enabled/mpm_event.load /etc/apache2/mods-enabled/mpm_event.conf \
+    && rm -f /etc/apache2/mods-enabled/mpm_worker.load /etc/apache2/mods-enabled/mpm_worker.conf \
     && a2enmod mpm_prefork rewrite \
     && rm -f /etc/apache2/sites-available/000-default.conf \
     && echo '<VirtualHost *:80>' > /etc/apache2/sites-available/000-default.conf \
