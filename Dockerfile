@@ -155,8 +155,7 @@
 
 FROM php:8.2-apache
 
-# 1. Activer le module de réécriture d'Apache (Crucial pour les routes Laravel)
-RUN a2enmod rewrite
+
 
 # Dépendances système nécessaires à GD et PostgreSQL
 RUN apt-get update && apt-get install -y \
@@ -172,18 +171,18 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql gd sodium
 
-# Réécrire proprement le VirtualHost par défaut d'Apache pour pointer sur /public
-RUN echo '<VirtualHost *:80>\n\
-    ServerAdmin webmaster@localhost\n\
-    DocumentRoot /var/www/html/public\n\
-    <Directory /var/www/html/public>\n\
-        Options Indexes FollowSymLinks MultiViews\n\
-        AllowOverride All\n\
-        Require all granted\n\
-    </Directory>\n\
-    ErrorLog ${APACHE_LOG_DIR}/error.log\n\
-    CustomLog ${APACHE_LOG_DIR}/access.log combined\n\
-</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+# 1. Activer le module de réécriture d'Apache (indispensable pour les routes Laravel)
+RUN a2enmod rewrite
+
+# 2. SOLUTION INFAILLIBLE : Réécrire le VirtualHost par défaut ligne par ligne
+RUN echo '<VirtualHost *:80>' > /etc/apache2/sites-available/000-default.conf && \
+    echo '    DocumentRoot /var/www/html/public' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    <Directory /var/www/html/public>' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        Options Indexes FollowSymLinks MultiViews' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        AllowOverride All' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '        Require all granted' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    </Directory>' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
