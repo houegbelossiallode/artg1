@@ -3,7 +3,7 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "apache2-foreground"
+startCommand = "/entrypoint.sh"
 healthcheckPath = "/"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
@@ -56,3 +56,4 @@ value = "${{MYSQL_USER}}"
 [[services.env_vars]]
 key = "DB_PASSWORD"
 value = "${{MYSQL_PASSWORD}}"
+
