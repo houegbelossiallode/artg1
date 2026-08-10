@@ -145,14 +145,8 @@ RUN apt-get remove -y nodejs npm && apt-get autoremove -y && rm -rf node_modules
 # Permissions Laravel
 RUN chmod -R 775 storage bootstrap/cache
 
-# Port Render
-EXPOSE 10000
+# Port standard exposé
+EXPOSE 80
 
-# UNE SEULE COMMANDE CMD : On nettoie, on lie le storage, on migre et ENFIN on lance le serveur
-CMD php artisan config:clear && \
-    php artisan cache:clear && \
-    php artisan route:clear && \
-    php artisan view:clear && \
-    php artisan storage:link && \
-    php artisan migrate --force && \
-    php artisan serve --host=0.0.0.0 --port=10000
+# Forcer le vidage du cache, exécuter les migrations, puis lancer Apache
+CMD php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan storage:link && php artisan migrate --force && apache2-foreground
