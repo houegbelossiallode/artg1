@@ -135,8 +135,8 @@ RUN apt-get update && apt-get install -y nodejs npm \
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Port standard exposé
+# Port standard exposé (Railway gère automatiquement le port)
 EXPOSE 80
 
-# Lancer Apache avec le port Render via shell
-CMD sh -c 'sed -i "s/Listen 80/Listen ${PORT:-80}/g" /etc/apache2/ports.conf && sed -i "s/<VirtualHost \*:80>/<VirtualHost *:${PORT:-80}>/g" /etc/apache2/sites-available/000-default.conf && apache2-foreground'
+# Lancer Apache directement (Railway gère le port automatiquement)
+CMD ["apache2-foreground"]

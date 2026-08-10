@@ -1,0 +1,58 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "apache2-foreground"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+
+[[services]]
+name = "web"
+service_type = "web"
+
+[[services.ports]]
+port = 80
+handlers = ["http"]
+force_public = true
+
+[[services.env_vars]]
+key = "PORT"
+value = "80"
+
+[[services.env_vars]]
+key = "APP_ENV"
+value = "production"
+
+[[services.env_vars]]
+key = "APP_DEBUG"
+value = "false"
+
+[[services.env_vars]]
+key = "APP_KEY"
+value = "base64:cO1b6jYgqE8uPlXvR2h7K9zNxLmQ4wTpvBaSsDdFfGg="
+
+[[services.env_vars]]
+key = "DB_CONNECTION"
+value = "mysql"
+
+[[services.env_vars]]
+key = "DB_HOST"
+value = "${{MYSQL_HOST}}"
+
+[[services.env_vars]]
+key = "DB_PORT"
+value = "${{MYSQL_PORT}}"
+
+[[services.env_vars]]
+key = "DB_DATABASE"
+value = "${{MYSQL_DATABASE}}"
+
+[[services.env_vars]]
+key = "DB_USERNAME"
+value = "${{MYSQL_USER}}"
+
+[[services.env_vars]]
+key = "DB_PASSWORD"
+value = "${{MYSQL_PASSWORD}}"
