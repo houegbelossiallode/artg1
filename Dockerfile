@@ -1,7 +1,9 @@
-# 1. Image Apache officielle
-FROM php:8.2-apache
+# Stage 1: Builder - Construire les assets et dépendances
+FROM php:8.2-fpm as builder
 
-# Dépendances système nécessaires à GD et MySQL
+WORKDIR /build
+
+# Installer les dépendances système
 RUN apt-get update && apt-get install -y \
     git \
     zip \
@@ -11,69 +13,82 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libsodium-dev \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
-# Configuration de GD + Installation de pdo_mysql
+# Configurer et installer les extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo pdo_mysql gd sodium \
     && docker-php-ext-enable pdo_mysql
 
-# CONFIGURATION APACHE : Nettoyer complètement tous les MPM
-RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
-    && a2enmod mpm_prefork rewrite \
-    && echo "ServerName localhost" >> /etc/apache2/apache2.conf
-
-# Créer une config vhost propre
-RUN rm -f /etc/apache2/sites-available/000-default.conf \
-    && cat > /etc/apache2/sites-available/000-default.conf << 'EOF'
-<VirtualHost *:80>
-    DocumentRoot /var/www/html/public
-    <Directory /var/www/html/public>
-        Options Indexes FollowSymLinks MultiViews
-        AllowOverride All
-        Require all granted
-        DirectoryIndex index.php index.html
-    </Directory>
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-EOF
-
-# Installer Composer
+# Copier Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Définir le dossier racine d'Apache
-WORKDIR /var/www/html
-
-# Copier l'ensemble du projet dans le WORKDIR
+# Copier le code
 COPY . .
 
-# Variables d'environnement de build pour "tromper" Laravel pendant le composer install
+# Variables d'environnement de build
 ENV APP_ENV=production
 ENV APP_KEY=base64:cO1b6jYgqE8uPlXvR2h7K9zNxLmQ4wTpvBaSsDdFfGg=
 ENV DB_CONNECTION=sqlite
 ENV DB_DATABASE=:memory:
 
-# Installer les dépendances PHP sans les packages de dev
+# Installer les dépendances PHP
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
     && composer clear-cache
 
-# Installer Node.js & npm, puis compiler les assets (Tailwind / Vite)
-RUN apt-get update && apt-get install -y nodejs npm \
-    && npm install --production=false \
+# Compiler les assets (Tailwind / Vite)
+RUN npm install --production=false \
     && npm run build \
     && npm cache clean --force \
-    && rm -rf node_modules \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/*
+    && rm -rf node_modules
 
-# Donner la propriété des fichiers à l'utilisateur d'Apache (www-data)
+# Stage 2: Runtime - Image finale avec Nginx + PHP-FPM
+FROM php:8.2-fpm
+
+# Installer Nginx
+RUN apt-get update && apt-get install -y \
+    nginx \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libsodium-dev \
+    libzip-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Installer les extensions PHP
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install zip pdo pdo_mysql gd sodium \
+    && docker-php-ext-enable pdo_mysql
+
+# Copier la config PHP-FPM
+COPY docker/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
+COPY docker/php.ini /usr/local/etc/php/conf.d/app.ini
+
+# Copier la config Nginx
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY docker/site.conf /etc/nginx/sites-available/default
+
+# Définir le WORKDIR
+WORKDIR /var/www/html
+
+# Copier les fichiers compilés depuis le builder
+COPY --from=builder /build .
+
+# Donner les droits à www-data
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Port standard exposé
+# Créer les répertoires Nginx s'ils n'existent pas
+RUN mkdir -p /var/log/nginx /var/run/nginx
+
+# Exposer le port
 EXPOSE 80
 
-# Lancer Apache directement
-CMD ["apache2-foreground"]
+# Script d'entrée pour démarrer PHP-FPM et Nginx
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
 
