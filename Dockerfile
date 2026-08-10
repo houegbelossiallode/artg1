@@ -18,14 +18,19 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install zip pdo pdo_mysql gd sodium \
     && docker-php-ext-enable pdo_mysql
 
-# CONFIGURATION APACHE : Nettoyer complètement tous les MPM
-RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
-    && a2enmod mpm_prefork rewrite \
-    && echo "ServerName localhost" >> /etc/apache2/apache2.conf
+# CONFIGURATION APACHE : Supprimer TOUS les MPM sauf mpm_prefork
+# On désactive d'abord, puis on supprime les fichiers de tous les autres MPM
+RUN a2dismod mpm_event mpm_worker 2>/dev/null || true && \
+    rm -f /etc/apache2/mods-enabled/mpm_event.* && \
+    rm -f /etc/apache2/mods-enabled/mpm_worker.* && \
+    rm -f /etc/apache2/mods-available/mpm_event.* && \
+    rm -f /etc/apache2/mods-available/mpm_worker.* && \
+    a2enmod mpm_prefork rewrite && \
+    echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Créer une config vhost propre
-RUN rm -f /etc/apache2/sites-available/000-default.conf \
-    && cat > /etc/apache2/sites-available/000-default.conf << 'EOF'
+RUN rm -f /etc/apache2/sites-available/000-default.conf && \
+    cat > /etc/apache2/sites-available/000-default.conf << 'EOF'
 <VirtualHost *:80>
     DocumentRoot /var/www/html/public
     <Directory /var/www/html/public>
@@ -34,6 +39,9 @@ RUN rm -f /etc/apache2/sites-available/000-default.conf \
         Require all granted
         DirectoryIndex index.php index.html
     </Directory>
+    <FilesMatch \.php$>
+        SetHandler "proxy:unix:/run/php-fpm.sock|fcgi://localhost"
+    </FilesMatch>
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
