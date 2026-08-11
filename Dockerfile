@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y \
 
 # Configurer et installer les extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install zip pdo pdo_mysql gd sodium \
-    && docker-php-ext-enable pdo_mysql
+    && docker-php-ext-install zip pdo pdo_mysql pdo_sqlite gd sodium \
+    && docker-php-ext-enable pdo_mysql pdo_sqlite
 
 # Copier Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -59,8 +59,8 @@ RUN apt-get update && apt-get install -y \
 
 # Installer les extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install zip pdo pdo_mysql gd sodium \
-    && docker-php-ext-enable pdo_mysql
+    && docker-php-ext-install zip pdo pdo_mysql pdo_sqlite gd sodium \
+    && docker-php-ext-enable pdo_mysql pdo_sqlite
 
 # Copier la config PHP-FPM
 COPY docker/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
@@ -76,9 +76,11 @@ WORKDIR /var/www/html
 # Copier les fichiers compilés depuis le builder
 COPY --from=builder /build .
 
-# Donner les droits à www-data
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+# Créer le répertoire de la base de données et donner les droits à www-data
+RUN mkdir -p /var/www/html/database \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/database
 
 # Créer les répertoires Nginx s'ils n'existent pas
 RUN mkdir -p /var/log/nginx /var/run/nginx
