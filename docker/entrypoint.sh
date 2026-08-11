@@ -13,6 +13,12 @@ php /var/www/html/artisan config:cache || true
 php /var/www/html/artisan route:cache || true
 php /var/www/html/artisan view:cache || true
 
+echo "=== Running database migrations ==="
+php /var/www/html/artisan migrate --force
+
+echo "=== Seeding database ==="
+php /var/www/html/artisan db:seed --force || true
+
 echo "=== Starting PHP-FPM ==="
 php-fpm -D
 

@@ -72,9 +72,12 @@ WORKDIR /var/www/html
 # Copier les fichiers compilés depuis le builder
 COPY --from=builder /build .
 
+# Créer le répertoire database avec les bonnes permissions
+RUN mkdir -p /var/www/html/database
+
 # Donner les droits à www-data
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database
 
 # Créer les répertoires Nginx s'ils n'existent pas
 RUN mkdir -p /var/log/nginx /var/run/nginx
