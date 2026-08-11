@@ -39,21 +39,21 @@ value = "mysql"
 
 [[services.env_vars]]
 key = "DB_HOST"
-value = "${{MYSQL_HOST}}"
+value = "${{MySQL.MYSQLHOST}}"
 
 [[services.env_vars]]
 key = "DB_PORT"
-value = "${{MYSQL_PORT}}"
+value = "${{MySQL.MYSQLPORT}}"
 
 [[services.env_vars]]
 key = "DB_DATABASE"
-value = "${{MYSQL_DATABASE}}"
+value = "${{MySQL.MYSQLDATABASE}}"
 
 [[services.env_vars]]
 key = "DB_USERNAME"
-value = "${{MYSQL_USER}}"
+value = "${{MySQL.MYSQLUSER}}"
 
 [[services.env_vars]]
 key = "DB_PASSWORD"
-value = "${{MYSQL_PASSWORD}}"
+value = "${{MySQL.MYSQLPASSWORD}}"
 
