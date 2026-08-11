@@ -1,17 +1,24 @@
 #!/bin/bash
 set -e
 
-# Créer les répertoires de logs
-mkdir -p /var/log/php-fpm
-touch /var/log/php-fpm/error.log
-chown www-data:www-data /var/log/php-fpm /var/log/php-fpm/error.log
+echo "=== Starting application ==="
 
-# Démarrer PHP-FPM en arrière-plan
+# Créer les répertoires de logs
+mkdir -p /var/log/php-fpm /var/log/nginx
+touch /var/log/php-fpm/error.log /var/log/nginx/error.log /var/log/nginx/access.log
+chown www-data:www-data /var/log/php-fpm /var/log/php-fpm/error.log /var/log/nginx/error.log /var/log/nginx/access.log
+
+echo "=== Running Laravel setup ==="
+php /var/www/html/artisan config:cache || true
+php /var/www/html/artisan route:cache || true
+php /var/www/html/artisan view:cache || true
+
+echo "=== Starting PHP-FPM ==="
 php-fpm -D
 
-# Attendre que PHP-FPM soit prêt
+echo "=== Waiting for PHP-FPM ==="
 sleep 2
 
-# Démarrer Nginx en avant-plan
-nginx -g "daemon off;"
+echo "=== Starting Nginx ==="
+nginx -g "daemon off;" -c /etc/nginx/nginx.conf
 
