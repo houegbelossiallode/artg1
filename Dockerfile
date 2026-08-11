@@ -28,7 +28,11 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copier le code
 COPY . .
 
-
+# Variables d'environnement de build
+ENV APP_ENV=production
+ENV APP_KEY=base64:cO1b6jYgqE8uPlXvR2h7K9zNxLmQ4wTpvBaSsDdFfGg=
+ENV DB_CONNECTION=sqlite
+ENV DB_DATABASE=:memory:
 
 # Installer les dépendances PHP
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
