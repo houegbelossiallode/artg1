@@ -1,17 +1,25 @@
 #!/bin/bash
 
-# Configuration en cache pour optimiser les performances
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-
-# Exécution des migrations de base de données
-# (Nécessaire si vous utilisez une base de données managée sur Render)
+# 1. On lance les migrations
 php artisan migrate --force
-# Configuration dynamique du port d'Apache pour Render
-# (Render fournit la variable d'environnement $PORT, par défaut 10000)
-sed -i "s/Listen 80/Listen 0.0.0.0:${PORT:-80}/g" /etc/apache2/ports.conf
-sed -i "s/:80/:${PORT:-80}/g" /etc/apache2/sites-available/000-default.conf
 
-# Démarrage d'Apache en premier plan
+# 2. Configuration INFAILLIBLE d'Apache pour Render
+# On récupère le port de Render (ou 10000 par défaut)
+PORT=${PORT:-10000}
+
+# On écrase totalement la configuration des ports pour être sûr à 100% qu'il écoute sur 0.0.0.0 et sur le bon port
+echo "Listen 0.0.0.0:$PORT" > /etc/apache2/ports.conf
+
+# On écrase totalement le VirtualHost pour qu'il pointe vers le bon dossier public avec le bon port
+echo "<VirtualHost *:$PORT>
+    DocumentRoot /var/www/html/public
+    <Directory /var/www/html/public>
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>" > /etc/apache2/sites-available/000-default.conf
+
+# 3. Lancement d'Apache
 apache2-foreground
