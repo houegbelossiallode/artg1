@@ -6,22 +6,21 @@
 <div class="w-full flex flex-col gap-5">
 
   {{-- ═══════════════════════ PAGE HEADER ═══════════════════════ --}}
-  <x-dashboard.page-header title="Bienvenue, {{ Auth::user()->name }}" description="Vue d'ensemble de votre activité pédagogique et suivi de vos élèves." />
-  <div class="flex items-center gap-2">
-    <a href="{{ route('dashboard.professeur.disponibilites.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-[10px] uppercase tracking-widest transition shadow-sm">
+  <x-dashboard.page-header title="Bienvenue, {{ Auth::user()->name ?? Auth::user()->prenom }}" description="Vue d'ensemble de votre activité pédagogique et suivi de vos élèves.">
+    <a href="{{ route('dashboard.professeur.disponibilites.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-widest transition shadow-sm">
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
       Disponibilités
     </a>
-  </div> {{-- ═══════════════════════ CARTES MÉTRIQUES ═══════════════════════ --}}
+  </x-dashboard.page-header> {{-- ═══════════════════════ CARTES MÉTRIQUES ═══════════════════════ --}}
   <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
 
     {{-- Carte 1 : Élèves --}}
-    <div class="bg-white border border-slate-200 shadow-sm p-3.5 border-l-4 border-l-[#C85A32] flex flex-col gap-2.5">
+    <div class="bg-white border border-slate-200 shadow-sm p-3.5 border-l-4 border-l-[#0BA20B] flex flex-col gap-2.5">
       <div class="flex items-center justify-between">
-        <div class="w-7 h-7 bg-[#C85A32]/10 flex items-center justify-center">
-          <svg class="w-3.5 h-3.5 text-[#C85A32]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        <div class="w-7 h-7 bg-[#0BA20B]/10 flex items-center justify-center">
+          <svg class="w-3.5 h-3.5 text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
         </div>
-        <span class="text-[8px] font-bold text-[#C85A32] border border-[#C85A32]/40 px-1.5 py-0.5 uppercase tracking-widest">GLOBAL</span>
+        <span class="text-[8px] font-bold text-[#0BA20B] border border-[#0BA20B]/40 px-1.5 py-0.5 uppercase tracking-widest">GLOBAL</span>
       </div>
       <div class="flex items-end justify-between">
         <div>
@@ -126,8 +125,8 @@
           <h3 class="text-sm font-medium text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Mes Cours</h3>
         </a>
         <a href="{{ route('dashboard.professeur.eleves') }}" class="block bg-white border border-slate-200 rounded-sm shadow-sm hover:shadow-md transition p-6 text-center group">
-          <div class="w-12 h-12 bg-[#C85A32]/10 border border-[#C85A32]/30 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#C85A32] transition-colors">
-            <svg class="w-5 h-5 text-[#C85A32] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <div class="w-12 h-12 bg-[#0BA20B]/10 border border-[#0BA20B]/30 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#0BA20B] transition-colors">
+            <svg class="w-5 h-5 text-[#0BA20B] group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
           </div>
           <h3 class="text-sm font-medium text-slate-800 uppercase tracking-widest group-hover:text-slate-900">Liste des Élèves</h3>
         </a>

@@ -4,7 +4,7 @@
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-display: "Cinzel", Georgia, serif;
-  --color-brand-lime: #C85A32;
+  --color-brand-lime: #0BA20B;
 }
 
 @layer base {
@@ -26,21 +26,21 @@
 @layer utilities {
   .glass-panel {
     background: #fffdf9d1;
-    border: 1px solid #d4a37340;
+    border: 1px solid #0BA20B40;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
 
   .glass-dark {
     background: #1e1613d9;
-    border: 1px solid #d4a37333;
+    border: 1px solid #0BA20B33;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }
 
   .bg-pattern-raphia {
     background-color: #FAF7F2;
-    background-image: radial-gradient(#D4A373 0.65px, transparent 0.65px), radial-gradient(#D4A373 0.65px, #FAF7F2 0.65px);
+    background-image: radial-gradient(#0BA20B 0.65px, transparent 0.65px), radial-gradient(#0BA20B 0.65px, #FAF7F2 0.65px);
     background-position: 0 0, 13px 13px;
     background-size: 26px 26px;
   }
@@ -53,37 +53,37 @@
 
   /* Lien simple (ex: Vue Globale) */
   .sidebar-link {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200;
+    @apply flex items-center gap-3 px-3 py-0.5 rounded-none text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200;
   }
   .sidebar-link--active {
-    @apply text-slate-900 bg-slate-100;
+    @apply text-white bg-[#0BA20B] hover:bg-[#0BA20B];
   }
 
   /* Conteneur d'icône */
   .sidebar-icon {
-    @apply w-8 h-8 flex items-center justify-center rounded-md shrink-0 transition-colors duration-200;
+    @apply w-8 h-8 flex items-center justify-center rounded-none shrink-0 transition-colors duration-200;
   }
   .sidebar-icon--lime {
-    @apply bg-slate-100 text-slate-500;
+    @apply text-slate-400 bg-transparent;
   }
   .sidebar-icon--active {
-    @apply bg-slate-900 text-white;
+    @apply text-white bg-transparent;
   }
 
   /* Bouton accordéon (menus principaux) */
   .sidebar-accordion-btn {
-    @apply w-full flex items-center justify-between px-3 py-2.5 rounded-md text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all duration-200;
+    @apply w-full flex items-center justify-between px-3 py-0.5 rounded-none text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200;
   }
   .sidebar-accordion-btn--active {
-    @apply text-slate-900 bg-slate-100;
+    @apply text-white bg-[#0BA20B] hover:bg-[#087A08];
   }
 
   /* Sous-liens (submenus) */
   .sidebar-sublink {
-    @apply flex items-center gap-2 px-3 py-2 rounded-md text-xs font-medium text-slate-500 hover:text-slate-900 transition-all duration-200;
+    @apply flex items-center gap-2 px-3 py-2 rounded-none text-xs font-medium text-slate-500 hover:text-white hover:bg-white/5 transition-all duration-200;
   }
   .sidebar-sublink--active {
-    @apply text-slate-900 font-bold;
+    @apply text-white font-bold bg-white/10;
   }
 
   /* ───────────────────────────────────────────────────────────
@@ -94,10 +94,20 @@
   }
 
   /* ───────────────────────────────────────────────────────────
+     TITRES ADMINISTRATION
+     ─────────────────────────────────────────────────────────── */
+  .admin-title {
+    @apply text-2xl font-bold text-slate-900 tracking-tight font-sans;
+  }
+  .admin-subtitle {
+    @apply text-sm text-slate-500 mt-1 font-medium;
+  }
+
+  /* ───────────────────────────────────────────────────────────
      BOUTONS – Classe utilitaire bouton principal
      ─────────────────────────────────────────────────────────── */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-[#C85A32] text-white font-bold text-xs uppercase tracking-widest px-5 py-2.5 rounded-md hover:bg-[#A84223] transition-all duration-200 shadow-sm;
+    @apply inline-flex items-center justify-center gap-2 bg-[#0BA20B] text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-none hover:bg-[#087A08] transition-all duration-200 shadow-sm cursor-pointer;
   }
 }
 
@@ -108,9 +118,9 @@
   background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4A373;
+  background: #0BA20B;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C85A32;
+  background: #0BA20B;
 }

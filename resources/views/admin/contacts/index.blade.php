@@ -14,10 +14,10 @@
   @endif
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">MESSAGES DE CONTACT</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Consultez et gérez les messages reçus via le formulaire de contact.</p>
+      <h1 class="admin-title">Messages de Contact</h1>
+      <p class="admin-subtitle">Consultez et gérez les messages reçus via le formulaire de contact.</p>
     </div>
   </div>
 
@@ -40,17 +40,17 @@
             <tr class="hover:bg-slate-50 transition-colors {{ !$contact->lu ? 'bg-blue-50' : '' }}">
               <td class="p-4">
                 @if($contact->lu)
-                  <span class="bg-slate-100 text-slate-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                  <span class="bg-slate-100 text-slate-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                     Lu
                   </span>
                 @else
-                  <span class="bg-blue-100 text-blue-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                  <span class="bg-blue-100 text-blue-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                     Nouveau
                   </span>
                 @endif
               </td>
               <td class="p-4">
-                <div class="font-serif font-bold text-slate-900 text-sm">{{ $contact->nom }}</div>
+                <div class="font-sans font-bold text-slate-900 text-sm">{{ $contact->nom }}</div>
               </td>
               <td class="p-4 text-xs text-slate-600">
                 {{ $contact->email }}

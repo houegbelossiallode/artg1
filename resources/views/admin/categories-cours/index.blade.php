@@ -14,15 +14,15 @@
   @endif
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">CATÉGORIES DE COURS</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez les catégories de cours (Musique, Danse, Théâtre, etc.).</p>
+      <h1 class="admin-title">Catégories de Cours</h1>
+      <p class="admin-subtitle">Gérez les catégories de cours (Musique, Danse, Théâtre, etc.).</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
-      <button @click="showModal = true; editMode = false; form = { nom: '', description: '' }" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-lime text-slate-900 font-bold text-[10px] uppercase tracking-widest hover:brightness-105 transition shadow-sm cursor-pointer">
+      <button @click="showModal = true; editMode = false; form = { nom: '', description: '' }" class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + CATÉGORIE
+        CATÉGORIE
       </button>
     </div>
   </div>
@@ -42,7 +42,7 @@
           @forelse ($categories as $category)
             <tr class="hover:bg-slate-50 transition-colors">
               <td class="p-4">
-                <div class="font-serif font-bold text-slate-900 text-sm">{{ $category->nom }}</div>
+                <div class="font-sans font-bold text-slate-900 text-sm">{{ $category->nom }}</div>
               </td>
               <td class="p-4 text-xs text-slate-500">
                 {{ $category->description ? Str::limit($category->description, 50) : '-' }}
@@ -65,7 +65,7 @@
                        x-cloak>
                     <div class="py-1">
                       <button @click="editMode = true; category = { id: {{ $category->id }}, nom: '{{ addslashes($category->nom) }}', description: '{{ addslashes($category->description ?? '') }}' }; form = { nom: '{{ addslashes($category->nom) }}', description: '{{ addslashes($category->description ?? '') }}' }; showModal = true; open = false" class="w-full text-left group flex items-center px-4 py-2 text-xs text-slate-700 hover:bg-slate-900 hover:text-white font-bold uppercase tracking-wider">
-                        <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                         Modifier
                       </button>
                     </div>
@@ -129,7 +129,7 @@
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <div class="sm:flex sm:items-start">
             <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
-              <h3 class="text-lg leading-6 font-medium text-slate-900" x-text="editMode ? 'Modifier la catégorie' : 'Nouvelle catégorie'"></h3>
+              <h3 class="text-lg leading-6 font-medium text-slate-900 font-sans" x-text="editMode ? 'Modifier la catégorie' : 'Nouvelle catégorie'"></h3>
               
               <form :action="editMode ? '{{ route('dashboard.admin.categories-cours.update', '__ID__') }}'.replace('__ID__', category.id) : '{{ route('dashboard.admin.categories-cours.store') }}'" method="POST" class="mt-4 space-y-4">
                 @csrf
@@ -147,7 +147,7 @@
 
                 <div class="flex justify-end gap-3 pt-4">
                   <button type="button" @click="showModal = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-                  <button type="submit" class="px-4 py-2 text-xs uppercase font-bold tracking-wider bg-brand-lime hover:bg-brand-lime-light text-slate-900 transition-colors rounded-none" x-text="editMode ? 'Mettre à jour' : 'Enregistrer'"></button>
+                  <button type="submit" class="px-4 py-2 text-xs uppercase font-bold tracking-wider bg-[#0BA20B] hover:bg-[#0BA20B]-light text-white transition-colors rounded-none" x-text="editMode ? 'Mettre à jour' : 'Enregistrer'"></button>
                 </div>
               </form>
             </div>

@@ -14,15 +14,15 @@
   @endif
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">CATÉGORIES GALERIES</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez les catégories de la médiathèque (Photos, Vidéos, Artisanat, etc.).</p>
+      <h1 class="admin-title">Catégories Galeries</h1>
+      <p class="admin-subtitle">Gérez les catégories de la médiathèque (Photos, Vidéos, Artisanat, etc.).</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
-      <button @click="showModal = true; editMode = false; form = { libelle: '', description: '' }" class="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-[10px] uppercase tracking-widest transition shadow-sm cursor-pointer">
+      <button @click="showModal = true; editMode = false; form = { libelle: '', description: '' }" class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + CATÉGORIE
+        CATÉGORIE
       </button>
     </div>
   </div>
@@ -44,7 +44,7 @@
           @forelse ($categories as $category)
             <tr class="hover:bg-slate-50 transition-colors">
               <td class="p-4">
-                <div class="font-serif font-bold text-slate-900 text-sm">{{ $category->libelle }}</div>
+                <div class="font-sans font-bold text-slate-900 text-sm">{{ $category->libelle }}</div>
               </td>
               <td class="p-4 text-xs font-mono text-slate-500">
                 {{ $category->slug }}
@@ -135,7 +135,7 @@
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <div class="sm:flex sm:items-start">
             <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
-              <h3 class="text-lg leading-6 font-medium text-slate-900" x-text="editMode ? 'Modifier la catégorie' : 'Nouvelle catégorie'"></h3>
+              <h3 class="text-lg leading-6 font-medium text-slate-900 font-sans" x-text="editMode ? 'Modifier la catégorie' : 'Nouvelle catégorie'"></h3>
               
               <form :action="editMode ? '{{ route('dashboard.admin.categories-galeries.update', '__ID__') }}'.replace('__ID__', category.id) : '{{ route('dashboard.admin.categories-galeries.store') }}'" method="POST" class="mt-4 space-y-4">
                 @csrf
@@ -153,7 +153,7 @@
 
                 <div class="flex justify-end gap-3 pt-4">
                   <button type="button" @click="showModal = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-                  <button type="submit" class="px-4 py-2 text-xs uppercase font-bold tracking-wider bg-slate-900 hover:bg-slate-800 text-amber-500 transition-colors rounded-none" x-text="editMode ? 'Mettre à jour' : 'Enregistrer'"></button>
+                  <button type="submit" class="btn-primary" x-text="editMode ? 'Mettre à jour' : 'Enregistrer'"></button>
                 </div>
               </form>
             </div>

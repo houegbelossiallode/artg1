@@ -71,7 +71,7 @@
                   @endif
 
                   <button @click="activeReservationId = {{ $res->id }}; replayUrl = '{{ $res->lien_replay ?? '' }}'; replayDesc = '{{ $res->description_replay ?? '' }}'; showReplayModal = true"
-                          class="inline-flex items-center gap-1 px-3 py-1.5 bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-[10px] uppercase tracking-wider shadow cursor-pointer">
+                          class="inline-flex items-center gap-1 px-3 py-1.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-wider shadow cursor-pointer">
                     📼 {{ $res->lien_replay ? 'Éditer Replay' : '+ Ajouter Replay' }}
                   </button>
                 </td>
@@ -114,19 +114,19 @@
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Lien de la vidéo (Replay) <span class="text-red-500">*</span></label>
           <input type="url" name="lien_replay" required x-model="replayUrl" placeholder="https://youtube.com/watch?v=... ou Vimeo / Drive"
-                 class="w-full px-3 py-2 border border-slate-300 text-xs focus:outline-none focus:border-[#C85A32]" />
+                 class="w-full px-3 py-2 border border-slate-300 text-xs focus:outline-none focus:border-[#0BA20B]" />
           <span class="text-[10px] text-slate-500 mt-1 block">Entrez un lien YouTube, Vimeo ou Google Drive valide.</span>
         </div>
 
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Description / Consignes pour l'apprenant</label>
           <textarea name="description_replay" rows="3" x-model="replayDesc" placeholder="Remarques de l'enseignant, morceaux travaillés, devoirs..."
-                    class="w-full px-3 py-2 border border-slate-300 text-xs focus:outline-none focus:border-[#C85A32]"></textarea>
+                    class="w-full px-3 py-2 border border-slate-300 text-xs focus:outline-none focus:border-[#0BA20B]"></textarea>
         </div>
 
         <div class="flex justify-end gap-2 pt-2 border-t">
           <button type="button" @click="showReplayModal = false" class="px-4 py-2 text-xs font-bold text-slate-600">Annuler</button>
-          <button type="submit" class="px-5 py-2 bg-[#C85A32] hover:bg-[#A84223] text-white text-xs font-bold uppercase tracking-wider shadow">Enregistrer le Replay</button>
+          <button type="submit" class="px-5 py-2 bg-[#0BA20B] hover:bg-[#087A08] text-white text-xs font-bold uppercase tracking-wider shadow">Enregistrer le Replay</button>
         </div>
       </form>
     </div>

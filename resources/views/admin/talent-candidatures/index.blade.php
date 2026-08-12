@@ -14,10 +14,10 @@
   @endif
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">CANDIDATURES TALENTS</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez les candidatures des jeunes talents.</p>
+      <h1 class="admin-title">Candidatures Talents</h1>
+      <p class="admin-subtitle">Gérez les candidatures des jeunes talents.</p>
     </div>
   </div>
 
@@ -40,11 +40,11 @@
             <tr class="hover:bg-slate-50 transition-colors">
               <td class="p-4">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-slate-900 text-amber-500 font-bold flex items-center justify-center text-xs border border-slate-200 shrink-0">
+                  <!-- <div class="w-10 h-10 bg-slate-900 text-amber-500 font-bold flex items-center justify-center text-xs border border-slate-200 shrink-0">
                     {{ strtoupper(substr($candidature->prenom, 0, 1) . substr($candidature->nom, 0, 1)) }}
-                  </div>
+                  </div> -->
                   <div>
-                    <div class="font-serif font-bold text-slate-900 text-sm">{{ $candidature->prenom }} {{ $candidature->nom }}</div>
+                    <div class="font-sans font-bold text-slate-900 text-sm">{{ $candidature->prenom }} {{ $candidature->nom }}</div>
                     @if($candidature->presentation)
                       <div class="text-[11px] text-slate-400 truncate max-w-xs">{{ Str::limit($candidature->presentation, 50) }}</div>
                     @endif
@@ -60,15 +60,15 @@
               </td>
               <td class="p-4">
                 @if($candidature->statut == 'acceptee')
-                  <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                  <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                     Acceptée
                   </span>
                 @elseif($candidature->statut == 'rejetee')
-                  <span class="bg-red-100 text-red-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                  <span class="bg-red-100 text-red-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                     Rejetée
                   </span>
                 @else
-                  <span class="bg-amber-100 text-amber-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                  <span class="bg-amber-100 text-amber-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                     En attente
                   </span>
                 @endif
@@ -132,8 +132,8 @@
   <!-- MODAL D'ACCEPTATION -->
   <div x-show="approveModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" x-cloak>
     <div @click.away="approveModalOpen = false" class="bg-white max-w-2xl w-full rounded-none shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col">
-      <div class="bg-slate-900 px-6 py-4 flex items-center justify-between border-b-2 border-brand-lime shrink-0">
-        <h3 class="text-sm font-serif-heading font-bold text-white uppercase tracking-wider flex items-center gap-2">
+      <div class="bg-slate-900 px-6 py-4 flex items-center justify-between border-b-2 border-[#0BA20B] shrink-0">
+        <h3 class="text-sm font-sans font-bold text-white uppercase tracking-wider flex items-center gap-2 font-sans">
           <span class="w-2 h-2 bg-emerald-500 inline-block"></span>
           Accepter la Candidature
         </h3>
@@ -143,7 +143,7 @@
       <div class="p-6 space-y-4 overflow-y-auto">
         <!-- Informations du candidat -->
         <div class="bg-slate-50 p-4 border border-slate-200">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">Informations du candidat</h4>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3 font-sans">Informations du candidat</h4>
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400 text-xs">Nom complet</span>

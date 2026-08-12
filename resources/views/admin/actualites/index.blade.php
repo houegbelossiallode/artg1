@@ -14,15 +14,15 @@
   @endif -->
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">ACTUALITÉS & PRESSE</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez la publication des articles, communiqués et annonces de l'association.</p>
+      <h1 class="admin-title">Actualités & Presse</h1>
+      <p class="admin-subtitle">Gérez la publication des articles, communiqués et annonces de l'association.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
-      <a href="{{ route('dashboard.admin.actualites.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 text-amber-500 font-bold text-[10px] uppercase tracking-widest hover:bg-slate-800 transition shadow-sm cursor-pointer">
+      <a href="{{ route('dashboard.admin.actualites.create') }}" class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + ACTUALITÉ
+        ACTUALITÉ
       </a>
     </div>
   </div>
@@ -79,7 +79,7 @@
               </div>
 
               <!-- Titre -->
-              <h2 class="text-sm font-bold text-slate-900 group-hover:text-slate-700 transition-colors line-clamp-2 leading-snug">
+              <h2 class="text-sm font-bold text-slate-900 group-hover:text-slate-700 transition-colors line-clamp-2 leading-snug font-sans">
                 {{ $actu->titre }}
               </h2>
 
@@ -129,10 +129,10 @@
       <svg class="w-10 h-10 text-slate-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
       </svg>
-      <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider">Aucune actualité</h3>
+      <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider font-sans">Aucune actualité</h3>
       <p class="text-xs text-slate-500">Commencez par ajouter votre premier article.</p>
       <div class="pt-2">
-        <a href="{{ route('dashboard.admin.actualites.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 text-amber-500 font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition">
+        <a href="{{ route('dashboard.admin.actualites.create') }}" class="btn-primary">
           + PUBLIER UNE ACTUALITÉ
         </a>
       </div>
@@ -157,7 +157,7 @@
       <!-- Modal Header -->
       <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between">
         <div>
-          <h3 class="text-sm font-bold text-white uppercase tracking-wider" x-text="showTitle"></h3>
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider font-sans" x-text="showTitle"></h3>
           <p class="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5">
             Image <span x-text="currentImageIndex + 1"></span> sur <span x-text="activeGallery ? activeGallery.length : 0"></span>
             <template x-if="activeGallery && activeGallery[currentImageIndex] && activeGallery[currentImageIndex].is_principal">

@@ -60,13 +60,13 @@
     <div class="w-px h-8 bg-slate-200 hidden sm:block"></div>
 
     <!-- Quick Action Button -->
-    @if(request()->is('dashboard/admin*'))
+    <!-- @if(request()->is('dashboard/admin*'))
       <button class="btn-primary !py-2 !px-4 !text-[10px] hidden lg:block">+ Nouvel Événement</button>
     @elseif(request()->is('dashboard/professeur*'))
       <button class="btn-primary !py-2 !px-4 !text-[10px] hidden lg:block">+ Ajouter un Support</button>
     @elseif(request()->is('dashboard/apprenant*'))
       <button class="btn-primary !py-2 !px-4 !text-[10px] hidden lg:block">Réserver un cours</button>
-    @endif
+    @endif -->
 
     <!-- Profile Dropdown Trigger (Mockup) -->
     <div class="relative" x-data="{ open: false }" @click.away="open = false">
@@ -103,7 +103,19 @@
              <p class="text-xs font-bold text-slate-900 truncate">{{ Auth::user() ? Auth::user()->prenom . ' ' . Auth::user()->nom : '' }}</p>
              <p class="text-[10px] text-slate-500 truncate">{{ Auth::user() ? Auth::user()->email : '' }}</p>
            </div>
-           <a href="#" class="block px-4 py-3 text-xs text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-bold uppercase tracking-widest">Mon Profil</a>
+           @php
+               $profileRoute = '#';
+               if (Auth::user() && Auth::user()->profil) {
+                   if (Auth::user()->profil->nom === 'administrateur') {
+                       $profileRoute = route('dashboard.admin.profile');
+                   } elseif (Auth::user()->profil->nom === 'apprenant') {
+                       $profileRoute = route('dashboard.apprenant.profile');
+                   } elseif (Auth::user()->profil->nom === 'professeur') {
+                       $profileRoute = route('dashboard.professeur.profile');
+                   }
+               }
+           @endphp
+           <a href="{{ $profileRoute }}" class="block px-4 py-3 text-xs text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-bold uppercase tracking-widest">Mon Profil</a>
            <form method="POST" action="{{ route('logout') }}" id="logout-form" class="hidden">
              @csrf
            </form>

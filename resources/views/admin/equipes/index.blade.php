@@ -14,15 +14,15 @@
   @endif
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">ÉQUIPE DIRIGEANTE</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez les membres du bureau et de l'équipe de direction de l'association.</p>
+      <h1 class="admin-title">Équipe Dirigeante</h1>
+      <p class="admin-subtitle">Gérez les membres du bureau et de l'équipe de direction de l'association.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
-      <button @click="showModal = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-lime text-slate-900 font-bold text-[10px] uppercase tracking-widest hover:brightness-105 transition shadow-sm cursor-pointer">
+      <button @click="showModal = true" type="button" class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + MEMBRE
+        MEMBRE
       </button>
     </div>
   </div>
@@ -50,7 +50,7 @@
                     </div>
                   @endif
                   <div>
-                    <div class="font-serif font-bold text-slate-900 text-sm">{{ $membre->prenom }} {{ $membre->nom }}</div>
+                    <div class="font-sans font-bold text-slate-900 text-sm">{{ $membre->prenom }} {{ $membre->nom }}</div>
                     @if($membre->biographie)
                       <div class="text-[11px] text-slate-400 truncate max-w-xs">{{ Str::limit($membre->biographie, 50) }}</div>
                     @endif
@@ -61,7 +61,7 @@
                 {{ $membre->fonction ?? 'Membre' }}
               </td>
               <td class="p-4">
-                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                   {{ strtoupper($membre->actif) }}
                 </span>
               </td>
@@ -114,8 +114,8 @@
   <!-- MODALE Nouveau Membre -->
   <div x-show="showModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" x-cloak>
     <div @click.away="showModal = false" class="bg-white max-w-lg w-full rounded-none shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col">
-      <div class="bg-slate-900 px-6 py-4 flex items-center justify-between border-b-2 border-brand-lime shrink-0">
-        <h3 class="text-sm font-serif-heading font-bold text-white uppercase tracking-wider flex items-center gap-2">
+      <div class="bg-slate-900 px-6 py-4 flex items-center justify-between border-b-2 border-[#0BA20B] shrink-0">
+        <h3 class="text-sm font-sans font-bold text-white uppercase tracking-wider flex items-center gap-2 font-sans">
           <span class="w-2 h-2 bg-amber-500 inline-block"></span>
           Ajouter un Membre de l'Équipe
         </h3>
@@ -152,7 +152,7 @@
 
         <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
           <button type="button" @click="showModal = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-slate-900 hover:bg-slate-800 text-amber-500 transition-colors rounded-none">Enregistrer</button>
+          <button type="submit" class="btn-primary">Enregistrer</button>
         </div>
       </form>
     </div>
@@ -161,8 +161,8 @@
   <!-- MODALE ÉDITION -->
   <div x-show="editModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" x-cloak>
     <div @click.away="editModalOpen = false" class="bg-white max-w-lg w-full rounded-none shadow-2xl border border-slate-200 overflow-hidden max-h-[90vh] flex flex-col">
-      <div class="bg-slate-900 px-6 py-4 flex items-center justify-between border-b-2 border-brand-lime shrink-0">
-        <h3 class="text-sm font-serif-heading font-bold text-white uppercase tracking-wider flex items-center gap-2">
+      <div class="bg-slate-900 px-6 py-4 flex items-center justify-between border-b-2 border-[#0BA20B] shrink-0">
+        <h3 class="text-sm font-sans font-bold text-white uppercase tracking-wider flex items-center gap-2 font-sans">
           <span class="w-2 h-2 bg-amber-500 inline-block"></span>
           Modifier le Membre de l'Équipe
         </h3>
@@ -200,7 +200,7 @@
 
         <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
           <button type="button" @click="editModalOpen = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-slate-900 hover:bg-slate-800 text-amber-500 transition-colors rounded-none">Mettre à Jour</button>
+          <button type="submit" class="btn-primary">Mettre à Jour</button>
         </div>
       </form>
     </div>

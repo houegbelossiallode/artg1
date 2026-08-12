@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="space-y-6">
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">MODIFIER L'ACTUALITÉ</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Modifiez les informations ou les images de cette actualité.</p>
+      <h1 class="admin-title">Modifier l'Actualité</h1>
+      <p class="admin-subtitle">Modifiez les informations ou les images de cette actualité.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
       <a href="{{ route('dashboard.admin.actualites.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 text-slate-600 font-bold text-[10px] uppercase tracking-widest hover:bg-slate-200 transition shadow-sm cursor-pointer">
@@ -75,7 +75,7 @@
               <div class="absolute inset-0 w-full h-full group">
                 <img :src="previewUrl" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button type="button" @click.stop="removeImage" class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors shadow-sm">
+                  <button type="button" @click.stop="removeImage" class="bg-red-500 text-white p-2 rounded-none hover:bg-red-600 transition-colors shadow-sm">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                   </button>
                 </div>
@@ -103,7 +103,7 @@
               <div class="relative group aspect-square border border-slate-200 bg-slate-100 shadow-sm" x-data="{ removed: false }" x-show="!removed">
                 <img src="{{ asset('storage/' . $img->image_path) }}" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button type="button" @click="removed = true; deletedImages.push({{ $img->id }})" class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors shadow-sm" title="Supprimer cette image">
+                  <button type="button" @click="removed = true; deletedImages.push({{ $img->id }})" class="bg-red-500 text-white p-1.5 rounded-none hover:bg-red-600 transition-colors shadow-sm" title="Supprimer cette image">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                   </button>
                 </div>
@@ -138,7 +138,7 @@
             <div class="relative group aspect-square border border-slate-200 bg-slate-100 shadow-sm">
               <img :src="file.preview" class="w-full h-full object-cover">
               <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <button type="button" @click="removeFile(index)" class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors shadow-sm">
+                <button type="button" @click="removeFile(index)" class="bg-red-500 text-white p-1.5 rounded-none hover:bg-red-600 transition-colors shadow-sm">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                 </button>
               </div>
@@ -150,7 +150,7 @@
 
     <div class="flex justify-end gap-3 pt-6 border-t border-slate-200">
       <a href="{{ route('dashboard.admin.actualites.index') }}" class="px-6 py-2.5 text-xs uppercase font-bold tracking-wider text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors rounded-none">Annuler</a>
-      <button type="submit" class="px-6 py-2.5 text-xs uppercase font-bold tracking-wider bg-slate-900 hover:bg-slate-800 text-amber-500 transition-colors rounded-none shadow-md">Mettre à jour l'Actualité</button>
+      <button type="submit" class="btn-primary">Mettre à jour l'Actualité</button>
     </div>
   </form>
 </div>

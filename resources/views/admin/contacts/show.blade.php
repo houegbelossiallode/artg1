@@ -14,10 +14,10 @@
   @endif
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">DÉTAIL DU MESSAGE</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Consultez les détails du message de contact.</p>
+      <h1 class="admin-title">Détail Du Message</h1>
+      <p class="admin-subtitle">Consultez les détails du message de contact.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
       <a href="{{ route('dashboard.admin.contacts.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10px] uppercase tracking-widest transition shadow-sm cursor-pointer">
@@ -32,7 +32,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
         <label class="block text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Nom complet</label>
-        <div class="text-sm text-slate-900 font-serif font-bold">{{ $contact->nom }}</div>
+        <div class="text-sm text-slate-900 font-sans font-bold">{{ $contact->nom }}</div>
       </div>
       <div>
         <label class="block text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-1">Adresse e-mail</label>

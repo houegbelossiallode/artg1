@@ -6,15 +6,15 @@
 <div class="space-y-6">
 
   {{-- ═══════════════════════ EN-TÊTE ═══════════════════════ --}}
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-lime-500 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
       <div class="flex items-center gap-2 text-xs text-slate-400 mb-1">
         <a href="{{ route('dashboard.admin.professeurs.index') }}" class="hover:text-slate-900 transition-colors">Corps Enseignant</a>
         <span>/</span>
         <span class="text-slate-700 font-bold">Nouveau Professeur</span>
       </div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">ENREGISTRER UN PROFESSEUR</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Créez un compte pour un nouvel intervenant pédagogique. Un email d'accueil lui sera envoyé.</p>
+      <h1 class="admin-title">Enregistrer Un Professeur</h1>
+      <p class="admin-subtitle">Créez un compte pour un nouvel intervenant pédagogique. Un email d'accueil lui sera envoyé.</p>
     </div>
     <a href="{{ route('dashboard.admin.professeurs.index') }}"
        class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-[10px] uppercase tracking-widest transition shadow-sm">
@@ -38,13 +38,13 @@
 
     {{-- Titre de section --}}
     <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center gap-3">
-      <div class="w-7 h-7 bg-lime-500 flex items-center justify-center shrink-0">
+      <div class="w-7 h-7 bg-[#0BA20B] flex items-center justify-center shrink-0">
         <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
         </svg>
       </div>
       <div>
-        <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wide">Informations du Professeur</h2>
+        <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wide font-sans">Informations du Professeur</h2>
         <p class="text-[11px] text-slate-400">Corps enseignant · Arts & Culture</p>
       </div>
     </div>
@@ -54,7 +54,7 @@
 
       {{-- Identité --}}
       <div>
-        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100">Identité</h3>
+        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100 font-sans">Identité</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Nom <span class="text-red-500">*</span></label>
@@ -92,7 +92,7 @@
 
       {{-- Coordonnées --}}
       <div>
-        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100">Coordonnées</h3>
+        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100 font-sans">Coordonnées</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Téléphone <span class="text-red-500">*</span></label>
@@ -113,7 +113,7 @@
 
       {{-- Accès & Sécurité --}}
       <div>
-        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100">Accès & Sécurité</h3>
+        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100 font-sans">Accès & Sécurité</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Adresse Email <span class="text-red-500">*</span></label>
@@ -134,7 +134,7 @@
 
       {{-- Profil artistique --}}
       <div>
-        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100">Profil Artistique</h3>
+        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100 font-sans">Profil Artistique</h3>
         <div>
           <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Biographie / Spécialité Artistique</label>
           <textarea name="biographie" rows="4"
@@ -144,11 +144,11 @@
       </div>
 
       {{-- Note d'information --}}
-      <div class="flex items-start gap-3 bg-lime-50 border border-lime-200 px-4 py-3">
+      <div class="flex items-start gap-3 bg-orange-50 border border-orange-200 px-4 py-3">
         <svg class="w-4 h-4 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
-        <p class="text-[11px] text-lime-800">Un email contenant les identifiants de connexion sera automatiquement envoyé au professeur à l'adresse indiquée après création du compte.</p>
+        <p class="text-[11px] text-[#8A351A]">Un email contenant les identifiants de connexion sera automatiquement envoyé au professeur à l'adresse indiquée après création du compte.</p>
       </div>
 
       {{-- Actions --}}
@@ -158,7 +158,7 @@
           Annuler
         </a>
         <button type="submit"
-          class="px-6 py-2 bg-lime-500 hover:bg-lime-600 text-white font-bold text-xs uppercase tracking-widest transition shadow-sm flex items-center gap-2">
+          class="px-6 py-2 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs uppercase tracking-widest transition shadow-sm flex items-center gap-2">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
           </svg>

@@ -6,9 +6,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col space-y-6">
         
         <!-- Header -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#D4A373]/20 pb-4">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#0BA20B]/20 pb-4">
             <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#C85A32]/20 border border-[#C85A32]/40 text-[#D4A373] text-[10px] font-bold uppercase tracking-widest mb-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#0BA20B]/20 border border-[#0BA20B]/40 text-[#0BA20B] text-[10px] font-bold uppercase tracking-widest mb-2">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     En direct • Visioconférence Sécurisée
                 </div>
@@ -29,21 +29,21 @@
         </div>
 
         <!-- Jitsi Iframe Container -->
-        <div class="w-full flex-1 min-h-[600px] bg-black border border-[#D4A373]/30 shadow-2xl relative overflow-hidden" id="jitsi-container">
+        <div class="w-full flex-1 min-h-[600px] bg-black border border-[#0BA20B]/30 shadow-2xl relative overflow-hidden" id="jitsi-container">
             <div id="jitsi-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-[#1E1613] text-center space-y-4">
-                <div class="w-12 h-12 border-4 border-[#C85A32] border-t-transparent rounded-full animate-spin"></div>
-                <p class="text-sm font-semibold text-[#D4A373] uppercase tracking-wider">Connexion au salon sécurisé Jitsi Meet...</p>
+                <div class="w-12 h-12 border-4 border-[#0BA20B] border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-sm font-semibold text-[#0BA20B] uppercase tracking-wider">Connexion au salon sécurisé Jitsi Meet...</p>
             </div>
         </div>
 
         <!-- Security Banner -->
-        <div class="bg-[#241A16] border border-[#D4A373]/30 p-4 text-xs text-[#D1C5B8] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="bg-[#241A16] border border-[#0BA20B]/30 p-4 text-xs text-[#D1C5B8] flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
                 <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 <span>Ce salon visio est **chiffré et sécurisé**. Seuls les apprenants et professeurs inscrits à ce cours y ont accès.</span>
             </div>
             @if($isTeacher)
-            <span class="bg-[#C85A32] text-white px-3 py-1 font-bold uppercase text-[9px] tracking-widest shrink-0">Vous êtes l'animateur</span>
+            <span class="bg-[#0BA20B] text-white px-3 py-1 font-bold uppercase text-[9px] tracking-widest shrink-0">Vous êtes l'animateur</span>
             @endif
         </div>
     </div>

@@ -62,13 +62,24 @@ class ReservationController extends Controller
         $cours = Cours::with(['professeur', 'mode'])->findOrFail($coursId);
         $professeurId = $cours->user_id;
 
+        $now = now();
         $disponibilites = Disponibilite::where('professeur_id', $professeurId)
             ->where(function ($q) {
                 $q->whereNull('statut')
                   ->orWhere('statut', 'actif')
                   ->orWhere('statut', 'Actif');
             })
-            ->get(['id', 'jour', 'debut', 'fin', 'statut']);
+            ->whereDate('date_dispo', '>=', $now->toDateString())
+            ->orderBy('date_dispo')
+            ->orderBy('debut')
+            ->get(['id', 'date_dispo', 'jour', 'debut', 'fin', 'statut']);
+
+        $disponibilites = $disponibilites->filter(function ($dispo) use ($now) {
+            if ($dispo->date_dispo == $now->toDateString()) {
+                return $dispo->debut > $now->format('H:i');
+            }
+            return true;
+        })->values();
 
         return response()->json([
             'cours' => [
@@ -100,6 +111,13 @@ class ReservationController extends Controller
             'date_reservation.after_or_equal' => 'La date de réservation ne peut pas être dans le passé.',
         ]);
 
+        $now = now();
+        if (Carbon::parse($request->date_reservation)->isToday() && $request->heure_debut <= $now->format('H:i')) {
+            return back()->withErrors([
+                'heure_debut' => "L'heure de réservation ne peut pas être dans le passé."
+            ])->withInput();
+        }
+
         $user = Auth::user();
         if (!$user) {
             return redirect()->route('login')->with('error', 'Veuillez vous connecter pour réserver un cours.');
@@ -108,14 +126,9 @@ class ReservationController extends Controller
         $cours = Cours::with('mode')->findOrFail($request->cours_id);
         $professeurId = $cours->user_id;
 
-        // Determine French day of week for selected date
-        $dateCarbon = Carbon::parse($request->date_reservation);
-        $englishDay = $dateCarbon->format('l');
-        $frenchDay = $this->frenchDays[$englishDay] ?? null;
-
-        // Check if professor is available on this day and time range
+        // Check if professor is available on this specific date and time range
         $matchingDispo = Disponibilite::where('professeur_id', $professeurId)
-            ->where('jour', $frenchDay)
+            ->where('date_dispo', $request->date_reservation)
             ->where(function ($q) {
                 $q->whereNull('statut')
                   ->orWhere('statut', 'actif')
@@ -127,7 +140,7 @@ class ReservationController extends Controller
 
         if (!$matchingDispo) {
             return back()->withErrors([
-                'availability' => "Le professeur n'est pas disponible le {$frenchDay} entre {$request->heure_debut} et {$request->heure_fin}. Veuillez choisir un créneau figurant dans ses disponibilités."
+                'availability' => "Le professeur n'est pas disponible le " . Carbon::parse($request->date_reservation)->format('d/m/Y') . " entre {$request->heure_debut} et {$request->heure_fin}. Veuillez choisir un créneau figurant dans ses disponibilités."
             ])->withInput();
         }
 

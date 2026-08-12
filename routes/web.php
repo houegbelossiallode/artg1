@@ -91,6 +91,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::get('/apprenant', [DashboardController::class, 'index'])->name('dashboard.apprenant');
         Route::get('/apprenant/cours', [DashboardController::class, 'cours'])->name('dashboard.apprenant.cours');
         Route::get('/apprenant/profile', [DashboardController::class, 'profile'])->name('dashboard.apprenant.profile');
+        Route::put('/apprenant/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.apprenant.profile.update');
         Route::get('/apprenant/reservations', [DashboardController::class, 'reservations'])->name('dashboard.apprenant.reservations');
         Route::get('/apprenant/upcoming', [DashboardController::class, 'upcoming'])->name('dashboard.apprenant.upcoming');
         Route::get('/apprenant/supports', [DashboardController::class, 'supports'])->name('dashboard.apprenant.supports');
@@ -101,6 +102,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     // Professeur routes
     Route::middleware('role:professeur')->group(function () {
         Route::get('/professeur', [ProfesseurController::class, 'index'])->name('dashboard.professeur');
+        Route::get('/professeur/profile', [ProfesseurController::class, 'profile'])->name('dashboard.professeur.profile');
+        Route::put('/professeur/profile', [ProfesseurController::class, 'updateProfile'])->name('dashboard.professeur.profile.update');
         Route::resource('professeur/disponibilites', DisponibiliteController::class)->names('dashboard.professeur.disponibilites');
         Route::get('/professeur/reservations', [ProfesseurController::class, 'reservations'])->name('dashboard.professeur.reservations');
         Route::post('/professeur/reservations/{id}/accept', [ReservationActionController::class, 'accept'])->name('dashboard.professeur.reservations.accept');
@@ -145,5 +148,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::resource('/admin/contacts', AdminContactController::class)->names('dashboard.admin.contacts');
         Route::get('/admin/profils/{profil}/permissions', [ProfilpermissionController::class, 'index'])->name('dashboard.admin.profils.permissions');
         Route::put('/admin/profils/{profil}/permissions', [ProfilpermissionController::class, 'update'])->name('dashboard.admin.profils.permissions.update');
+        
+        // Admin Profile Management
+        Route::get('/admin/profile', [AdminController::class, 'profile'])->name('dashboard.admin.profile');
+        Route::put('/admin/profile', [AdminController::class, 'updateProfile'])->name('dashboard.admin.profile.update');
     });
 });

@@ -20,13 +20,13 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
-  <body class="bg-[#F4F6FA] min-h-screen text-slate-900 overflow-x-hidden flex">
+  <body class="bg-[#F4F6FA] min-h-screen text-slate-900 overflow-x-hidden font-sans">
     
     <!-- Sidebar -->
     @include('components.dashboard.sidebar')
 
     <!-- Main Content Wrapper -->
-    <div class="flex-1 md:ml-64 flex flex-col min-h-screen relative">
+    <div class="md:ml-64 flex flex-col min-h-screen relative">
       
       <!-- Header -->
       @include('components.dashboard.header')

@@ -17,16 +17,16 @@
   @endif
 
   {{-- En-tête --}}
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-brand-lime flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">INFORMATIONS & SIÈGE</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez la présentation globale, la mission, la vision et les coordonnées du siège de l'association.</p>
+      <h1 class="admin-title">Informations & Siège</h1>
+      <p class="admin-subtitle">Gérez la présentation globale, la mission, la vision et les coordonnées du siège de l'association.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
       <a href="{{ route('dashboard.admin.associations.create') }}"
-        class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-lime text-slate-900 font-bold text-[10px] uppercase tracking-widest hover:brightness-105 transition shadow-sm cursor-pointer">
+        class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + ASSOCIATION
+        ASSOCIATION
       </a>
     </div>
   </div>
@@ -49,7 +49,7 @@
             <tr class="hover:bg-slate-50 transition-colors">
               <td class="p-4">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-slate-900 text-amber-500 font-bold flex items-center justify-center text-xs overflow-hidden border border-slate-200 shrink-0">
+                  <div class="w-10 h-10 bg-[#0BA20B]/10 text-[#0BA20B] font-bold flex items-center justify-center text-xs overflow-hidden border border-slate-200 shrink-0">
                     @if($asso->logo)
                       <img src="{{ asset('storage/' . $asso->logo) }}" alt="Logo" class="w-full h-full object-cover">
                     @else
@@ -68,7 +68,7 @@
               </td>
               <td class="p-4 text-xs text-slate-600">{{ $asso->adresse }}</td>
               <td class="p-4">
-                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                   {{ strtoupper($asso->actif ?? 'OUI') }}
                 </span>
               </td>
@@ -91,7 +91,7 @@
                     <div class="py-1">
                       <a href="{{ route('dashboard.admin.associations.edit', $asso->id) }}"
                          class="group flex items-center px-4 py-2 text-xs text-slate-700 hover:bg-slate-900 hover:text-white font-bold uppercase tracking-wider">
-                        <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                         Modifier
                       </a>
                     </div>

@@ -6,15 +6,15 @@
 <div class="space-y-6" x-data="{ createModalOpen: false, editModalOpen: false, editSousmenu: {}, updateUrl: '' }">
   
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">SOUS-MENUS</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez les sous-éléments rattachés aux menus de premier niveau.</p>
+      <h1 class="admin-title">Sous-menus</h1>
+      <p class="admin-subtitle">Gérez les sous-éléments rattachés aux menus de premier niveau.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
-      <button @click="createModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-lime text-slate-900 font-bold text-[10px] uppercase tracking-widest hover:brightness-105 transition shadow-sm cursor-pointer">
+      <button @click="createModalOpen = true" type="button" class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + SOUS-MENU
+        SOUS-MENU
       </button>
     </div>
   </div>
@@ -41,7 +41,7 @@
               </td>
               <td class="p-4">
                 @if($sub->menu)
-                  <span class="bg-brand-lime/15 text-slate-900 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                  <span class="bg-[#0BA20B] text-white text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none shadow-sm">
                     {{ $sub->menu->libelle ?? $sub->menu->nom }}
                   </span>
                 @else
@@ -50,7 +50,7 @@
               </td>
               <td class="p-4 text-xs font-mono text-slate-500">{{ $sub->url }}</td>
               <td class="p-4">
-                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                   {{ strtoupper($sub->actif ?? 'OUI') }}
                 </span>
               </td>
@@ -72,7 +72,7 @@
                        x-cloak>
                     <div class="py-1">
                       <button type="button" @click="editSousmenu = { id: {{ $sub->id }}, libelle: '{{ addslashes($sub->libelle ?? $sub->nom) }}', menu_id: {{ $sub->menu_id }}, url: '{{ addslashes($sub->url) }}' }; updateUrl = '/dashboard/admin/sousmenus/' + {{ $sub->id }}; editModalOpen = true; open = false;" class="w-full text-left group flex items-center px-4 py-2 text-xs text-slate-700 hover:bg-slate-900 hover:text-white font-bold uppercase tracking-wider">
-                        <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                         Modifier
                       </button>
                     </div>
@@ -103,9 +103,9 @@
   <!-- MODALE CRÉATION -->
   <div x-show="createModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" x-cloak>
     <div @click.away="createModalOpen = false" class="bg-white max-w-lg w-full rounded-none shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-brand-lime">
-        <h3 class="text-sm font-serif-heading font-bold text-white uppercase tracking-wider flex items-center gap-2">
-          <span class="w-2 h-2 bg-brand-lime inline-block"></span>
+      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-[#0BA20B]">
+        <h3 class="text-sm font-sans font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 font-sans">
+          <span class="w-2 h-2 bg-[#0BA20B] inline-block"></span>
           Nouveau Sous-menu
         </h3>
         <button type="button" @click="createModalOpen = false" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
@@ -135,7 +135,7 @@
 
         <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
           <button type="button" @click="createModalOpen = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-brand-lime hover:bg-brand-lime-light text-slate-900 transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Enregistrer</button>
+          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-[#0BA20B] hover:bg-[#0BA20B]-light text-white transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Enregistrer</button>
         </div>
       </form>
     </div>
@@ -144,9 +144,9 @@
   <!-- MODALE ÉDITION -->
   <div x-show="editModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" x-cloak>
     <div @click.away="editModalOpen = false" class="bg-white max-w-lg w-full rounded-none shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-brand-lime">
-        <h3 class="text-sm font-serif-heading font-bold text-white uppercase tracking-wider flex items-center gap-2">
-          <span class="w-2 h-2 bg-brand-lime inline-block"></span>
+      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-[#0BA20B]">
+        <h3 class="text-sm font-sans font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 font-sans">
+          <span class="w-2 h-2 bg-[#0BA20B] inline-block"></span>
           Modifier le Sous-menu
         </h3>
         <button type="button" @click="editModalOpen = false" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
@@ -176,7 +176,7 @@
 
         <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
           <button type="button" @click="editModalOpen = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-brand-lime hover:bg-brand-lime-light text-slate-900 transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Mettre à Jour</button>
+          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-[#0BA20B] hover:bg-[#0BA20B]-light text-white transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Mettre à Jour</button>
         </div>
       </form>
     </div>

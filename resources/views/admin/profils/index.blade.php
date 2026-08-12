@@ -6,95 +6,90 @@
 <div class="space-y-6" x-data="{ createModalOpen: false, editModalOpen: false, editProfil: {}, updateUrl: '' }">
   
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">PROFILS & RÔLES</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez les types de comptes utilisateurs (Administrateur, Professeur, Apprenant, etc.).</p>
+      <h1 class="admin-title">Profils & Rôles</h1>
+      <p class="admin-subtitle">Gérez les types de comptes utilisateurs (Administrateur, Professeur, Apprenant, etc.).</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
-      <button @click="createModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-lime text-slate-900 font-bold text-[10px] uppercase tracking-widest hover:brightness-105 transition shadow-sm cursor-pointer">
+      <button @click="createModalOpen = true" type="button" class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + PROFIL
+        PROFIL
       </button>
     </div>
   </div>
 
-  <!-- Table des Profils -->
-  <div class="bg-white border border-slate-200 shadow-sm rounded-none">
-    <div class="overflow-x-auto overflow-y-visible min-h-[300px]">
-      <table class="w-full text-left text-sm text-slate-600">
-        <thead class="border-b border-slate-200 text-[10px] uppercase tracking-widest text-slate-400 font-bold bg-slate-50">
-          <tr>
-            <th class="p-4">ID</th>
-            <th class="p-4">Nom du Profil</th>
-            <th class="p-4">Statut</th>
-            <th class="p-4 text-right">Actions</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-100">
-          @forelse ($profils as $profil)
-            <tr class="hover:bg-slate-50 transition-colors">
-              <td class="p-4 font-mono text-xs text-slate-400">#{{ $profil->id }}</td>
-              <td class="p-4 font-bold text-slate-900 capitalize">{{ $profil->nom }}</td>
-              <td class="p-4">
-                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
-                  {{ strtoupper($profil->actif ?? 'OUI') }}
-                </span>
-              </td>
-              <td class="p-4 text-right">
-                <!-- Permissions Button -->
-                <!-- Permissions moved to dropdown -->
-                <!-- DROPDOWN CARRÉ D'ACTIONS -->
-                <div class="relative inline-block text-left" x-data="{ open: false }" @click.away="open = false">
-                  <button @click="open = !open" type="button" class="w-7 h-7 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 inline-flex items-center justify-center rounded-none border border-slate-300 transition-colors focus:outline-none cursor-pointer">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                  </button>
+  <!-- Grille des Profils -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @foreach ($profils as $profil)
+      <div class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 shadow-sm flex flex-col p-6 group hover:border-[#0BA20B]/50 hover:shadow-md transition-all duration-300 rounded-none relative overflow-hidden">
+        
+        <!-- Décoration angulaire (Corporate/Bento) -->
+        <div class="absolute -right-8 -top-8 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none"></div>
 
-                  <div x-show="open" 
-                       x-transition:enter="transition ease-out duration-100" 
-                       x-transition:enter-start="transform opacity-0 scale-95" 
-                       x-transition:enter-end="transform opacity-100 scale-100" 
-                       x-transition:leave="transition ease-in duration-75" 
-                       x-transition:leave-start="transform opacity-100 scale-100" 
-                       x-transition:leave-end="transform opacity-0 scale-95" 
-                       class="origin-top-right absolute right-0 mt-1 w-40 rounded-none bg-white shadow-xl border border-slate-200 z-50 divide-y divide-slate-100" 
-                       x-cloak>
-                        <div class="py-1">
-                          <button type="button" @click="editProfil = { id: {{ $profil->id }}, nom: '{{ addslashes($profil->nom) }}', actif: '{{ $profil->actif }}' }; updateUrl = '/dashboard/admin/profils/' + {{ $profil->id }}; editModalOpen = true; open = false;" class="w-full text-left group flex items-center px-4 py-2 text-xs text-slate-700 hover:bg-slate-900 hover:text-white font-bold uppercase tracking-wider">
-                            <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-brand-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                            Modifier
-                          </button>
-                        </div>
-<div class="py-1">
-    <a href="{{ route('dashboard.admin.profils.permissions', $profil->id) }}" class="block w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-slate-900 hover:text-white font-bold uppercase tracking-wider">Permissions</a>
-</div>
-<div class="py-1">
-    <form action="{{ route('dashboard.admin.profils.destroy', $profil->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce profil ?');">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="block w-full text-left px-4 py-2 text-xs text-red-600 hover:bg-red-600 hover:text-white font-bold uppercase tracking-wider">Supprimer</button>
-    </form>
-</div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          @empty
-            <tr>
-              <td colspan="4" class="p-8 text-center text-xs text-slate-400">Aucun profil enregistré.</td>
-            </tr>
-          @endforelse
-        </tbody>
-      </table>
+        <!-- Icône & Statut -->
+        <div class="flex items-start justify-between mb-4 relative z-10">
+          <div class="w-10 h-10 bg-[#0BA20B] flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-sm rounded-none">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <span class="px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest border {{ strtolower($profil->actif ?? 'oui') === 'oui' ? 'bg-[#0BA20B]/10 text-[#0BA20B] border-[#0BA20B]/30' : 'bg-slate-100 text-slate-500 border-slate-200' }}">
+            {{ strtolower($profil->actif ?? 'oui') === 'oui' ? 'Actif' : 'Inactif' }}
+          </span>
+        </div>
+
+        <!-- Titre -->
+        <div class="mb-6">
+          <h3 class="text-lg font-bold text-slate-900 capitalize font-sans group-hover:text-[#0BA20B] transition-colors">
+            {{ $profil->nom }}
+          </h3>
+          <p class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-mono">ID: #{{ str_pad($profil->id, 3, '0', STR_PAD_LEFT) }}</p>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+          <button type="button" 
+                  @click="editProfil = { id: {{ $profil->id }}, nom: '{{ addslashes($profil->nom) }}', actif: '{{ $profil->actif }}' }; updateUrl = '/dashboard/admin/profils/' + {{ $profil->id }}; editModalOpen = true;" 
+                  class="text-[11px] font-bold text-slate-500 hover:text-[#0BA20B] uppercase tracking-wider flex items-center gap-1.5 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            Renommer
+          </button>
+          
+          <div class="flex items-center gap-4">
+            <a href="{{ route('dashboard.admin.profils.permissions', $profil->id) }}" 
+               class="text-[11px] font-bold text-[#0BA20B] hover:text-[#087A08] uppercase tracking-wider transition-colors">
+              Permissions
+            </a>
+            
+            <form action="{{ route('dashboard.admin.profils.destroy', $profil->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce profil ?');" class="flex items-center">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="text-[10px] font-bold text-red-400 hover:text-red-600 uppercase tracking-wider transition-colors flex items-center gap-1" title="Supprimer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                Supprimer
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    @endforeach
+    
+    <!-- Carte Ajouter un rôle -->
+    <div @click="createModalOpen = true" class="bg-slate-50 border border-dashed border-slate-300 flex flex-col items-center justify-center p-6 rounded-none cursor-pointer hover:border-[#0BA20B] hover:bg-[#0BA20B]/5 transition-colors group min-h-[200px]">
+      <div class="w-12 h-12 bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-[#0BA20B] group-hover:border-[#0BA20B]/30 transition-colors mb-3 rounded-none">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+      </div>
+      <span class="text-sm font-bold text-slate-500 uppercase tracking-wider group-hover:text-[#0BA20B] transition-colors">Ajouter un rôle</span>
     </div>
   </div>
 
   <!-- MODALE CRÉATION -->
   <div x-show="createModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" x-cloak>
     <div @click.away="createModalOpen = false" class="bg-white max-w-lg w-full rounded-none shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-brand-lime">
-        <h3 class="text-sm font-serif-heading font-bold text-white uppercase tracking-wider flex items-center gap-2">
-          <span class="w-2 h-2 bg-brand-lime inline-block"></span>
+      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-[#0BA20B]">
+        <h3 class="text-sm font-sans font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 font-sans">
+          <span class="w-2 h-2 bg-[#0BA20B] inline-block"></span>
           Nouveau Profil
         </h3>
         <button type="button" @click="createModalOpen = false" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
@@ -109,7 +104,7 @@
 
         <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
           <button type="button" @click="createModalOpen = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-brand-lime hover:bg-brand-lime-light text-slate-900 transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Enregistrer</button>
+          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-[#0BA20B] hover:bg-[#0BA20B]-light text-white transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Enregistrer</button>
         </div>
       </form>
     </div>
@@ -118,9 +113,9 @@
   <!-- MODALE ÉDITION -->
   <div x-show="editModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" x-cloak>
     <div @click.away="editModalOpen = false" class="bg-white max-w-lg w-full rounded-none shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-brand-lime">
-        <h3 class="text-sm font-serif-heading font-bold text-white uppercase tracking-wider flex items-center gap-2">
-          <span class="w-2 h-2 bg-brand-lime inline-block"></span>
+      <div class="bg-white px-6 py-4 flex items-center justify-between border-b-2 border-[#0BA20B]">
+        <h3 class="text-sm font-sans font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 font-sans">
+          <span class="w-2 h-2 bg-[#0BA20B] inline-block"></span>
           Modifier le Profil
         </h3>
         <button type="button" @click="editModalOpen = false" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
@@ -136,7 +131,7 @@
 
         <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
           <button type="button" @click="editModalOpen = false" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</button>
-          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-brand-lime hover:bg-brand-lime-light text-slate-900 transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Mettre à Jour</button>
+          <button type="submit" class="px-5 py-2 text-xs uppercase font-bold tracking-wider bg-[#0BA20B] hover:bg-[#0BA20B]-light text-white transition-colors rounded-none shadow-[0_0_16px_rgba(94,245,39,0.25)]">Mettre à Jour</button>
         </div>
       </form>
     </div>

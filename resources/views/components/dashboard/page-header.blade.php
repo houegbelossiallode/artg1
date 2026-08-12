@@ -3,11 +3,11 @@
     'description' => null,
 ])
 
-<div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-[#C85A32] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-        <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">{{ $title }}</h1>
+        <h1 class="admin-title">{{ $title }}</h1>
         @if($description)
-            <p class="text-slate-400 text-sm mt-0.5">{{ $description }}</p>
+            <p class="admin-subtitle">{{ $description }}</p>
         @endif
     </div>
     @if($slot->isNotEmpty())

@@ -17,16 +17,16 @@
   @endif
 
   {{-- En-tête --}}
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-lime-500 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">CORPS ENSEIGNANT</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Supervision des professeurs, intervenants pédagogiques et spécialistes de l'association.</p>
+      <h1 class="admin-title">Corps Enseignant</h1>
+      <p class="admin-subtitle">Supervision des professeurs, intervenants pédagogiques et spécialistes de l'association.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
       <a href="{{ route('dashboard.admin.professeurs.create') }}"
-        class="inline-flex items-center gap-1.5 px-4 py-2 bg-lime-500 hover:bg-lime-600 text-white font-bold text-[10px] uppercase tracking-widest transition shadow-sm cursor-pointer">
+        class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-widest transition shadow-sm cursor-pointer">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + PROFESSEUR
+        PROFESSEUR
       </a>
     </div>
   </div>
@@ -66,7 +66,7 @@
                 <div class="text-[11px] text-slate-400">{{ $prof->adresse ?? '-' }}</div>
               </td>
               <td class="p-4">
-                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
+                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-none">
                   {{ strtoupper($prof->actif) }}
                 </span>
               </td>

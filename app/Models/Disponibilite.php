@@ -13,6 +13,7 @@ class Disponibilite extends Model
 
     protected $fillable = [
         'professeur_id',
+        'date_dispo',
         'jour',
         'debut',
         'fin',

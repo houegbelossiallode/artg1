@@ -160,4 +160,52 @@ class ProfesseurController extends Controller
             ->get();
         return view('professeur.reservations.index', compact('reservations'));
     }
+
+    /** Profile Page */
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('professeur.profile', compact('user'));
+    }
+
+    /** Update Profile */
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'prenom' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+            'sexe' => 'nullable|in:H,F',
+            'telephone' => 'nullable|string|max:20',
+            'adresse' => 'nullable|string|max:255',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user->prenom = $request->prenom;
+        $user->nom = $request->nom;
+        $user->email = $request->email;
+        $user->sexe = $request->sexe;
+        $user->telephone = $request->telephone;
+        $user->adresse = $request->adresse;
+
+        if ($request->filled('password')) {
+            $user->password = \Illuminate\Support\Facades\Hash::make($request->password);
+        }
+
+        if ($request->hasFile('photo')) {
+            // Delete old photo if exists
+            if ($user->photo && Storage::disk('public')->exists($user->photo)) {
+                Storage::disk('public')->delete($user->photo);
+            }
+            $path = $request->file('photo')->store('profiles', 'public');
+            $user->photo = $path;
+        }
+
+        $user->save();
+
+        return back()->with('success', 'Votre profil a été mis à jour avec succès.');
+    }
 }

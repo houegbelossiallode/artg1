@@ -5,12 +5,12 @@
 @section('content')
 <div class="w-full h-full flex flex-col space-y-6">
     <!-- Page Header -->
-    <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-[#C85A32] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
         <div>
-            <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">MES RÉSERVATIONS</h1>
-            <p class="text-slate-500 text-sm mt-0.5">Retrouvez l'historique complet de vos cours, accédez aux visioconférences, replays et supports.</p>
+            <h1 class="admin-title">Mes Réservations</h1>
+            <p class="admin-subtitle">Retrouvez l'historique complet de vos cours, accédez aux visioconférences, replays et supports.</p>
         </div>
-        <a href="{{ route('dashboard.apprenant') }}" class="text-xs font-bold text-[#C85A32] uppercase tracking-wider hover:underline">
+        <a href="{{ route('dashboard.apprenant') }}" class="text-xs font-bold text-slate-600 hover:text-[#0BA20B] uppercase tracking-wider flex items-center gap-1 transition-colors">
             &larr; Retour au tableau de bord
         </a>
     </div>
@@ -28,26 +28,30 @@
     @endif
 
     <!-- Liste de toutes les Réservations -->
-    <div class="bg-white border border-slate-200 p-6">
-        <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-            <div>
-                <h3 class="text-lg font-serif-title font-bold text-slate-900">Toutes mes inscriptions</h3>
-                <p class="text-xs text-slate-500">Un récapitulatif complet de tous vos cours passés et futurs.</p>
+    <div class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 rounded-none relative overflow-hidden group">
+        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-[#0BA20B]/5 rotate-45 group-hover:bg-[#0BA20B]/10 group-hover:rotate-90 transition-all duration-700 pointer-events-none"></div>
+        <div class="relative z-10 flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#0BA20B] block"></span>
+              <div>
+                <h2 class="text-lg font-bold text-slate-900 font-sans tracking-tight">Toutes mes inscriptions</h2>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Un récapitulatif complet de tous vos cours passés et futurs.</p>
+              </div>
             </div>
-            <a href="{{ route('dashboard.apprenant.cours') }}" class="text-xs text-[#C85A32] font-bold uppercase tracking-widest hover:underline">+ Réserver un nouveau cours</a>
+            <a href="{{ route('dashboard.apprenant.cours') }}" class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline">+ Réserver un nouveau cours</a>
         </div>
         
         @if($reservations->isEmpty())
-            <div class="text-center py-10 bg-[#FAF7F2] border border-dashed border-[#D4A373]/40">
+            <div class="text-center py-10 bg-[#FAF7F2] border border-dashed border-[#0BA20B]/40">
                 <p class="text-sm text-[#6B574F] font-medium">Vous n'avez aucune réservation de cours enregistrée.</p>
-                <a href="{{ route('dashboard.apprenant.cours') }}" class="mt-3 inline-block px-5 py-2.5 bg-[#C85A32] text-white text-xs font-bold uppercase tracking-widest shadow hover:bg-[#A84223] transition">
+                <a href="{{ route('dashboard.apprenant.cours') }}" class="mt-3 inline-block px-5 py-2.5 bg-[#0BA20B] text-white text-xs font-bold uppercase tracking-widest shadow hover:bg-[#087A08] transition">
                     Découvrir les cours & réserver
                 </a>
             </div>
         @else
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto relative z-10">
                 <table class="w-full text-left text-xs">
-                    <thead class="bg-[#FAF7F2] text-[#1E1613] font-bold uppercase tracking-wider border-b border-[#D4A373]/30">
+                    <thead class="bg-[#0BA20B]/5 text-slate-700 font-bold uppercase tracking-wider border-b border-[#0BA20B]/20">
                         <tr>
                             <th class="p-3">Cours</th>
                             <th class="p-3">Professeur</th>
@@ -83,13 +87,13 @@
                                 </td>
                                 <td class="p-3 space-x-2">
                                     @if($res->jitsi_room_id)
-                                        <a href="{{ route('meeting.show', $res->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] uppercase tracking-wider shadow">
+                                        <a href="{{ route('meeting.show', $res->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-wider shadow">
                                             🎥 Classe Jitsi
                                         </a>
                                     @endif
 
                                     @if($res->lien_replay)
-                                        <a href="{{ route('visio.replay', $res->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-[10px] uppercase tracking-wider shadow">
+                                        <a href="{{ route('visio.replay', $res->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-wider shadow">
                                             📼 Replay
                                         </a>
                                     @endif
@@ -102,7 +106,7 @@
                                             </button>
                                             <div x-show="open" style="display: none;" class="absolute right-0 mt-1 w-56 bg-white border border-slate-200 shadow-xl z-10 text-left overflow-hidden">
                                                 @foreach($res->course->supports as $support)
-                                                    <a href="{{ route('dashboard.apprenant.supports.download', $support->id) }}" class="block px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 hover:text-[#C85A32] border-b border-slate-100 last:border-0 truncate" title="{{ basename($support->fichier) }}">
+                                                    <a href="{{ route('dashboard.apprenant.supports.download', $support->id) }}" class="block px-4 py-2 text-xs text-slate-700 hover:bg-slate-50 hover:text-[#0BA20B] border-b border-slate-100 last:border-0 truncate" title="{{ basename($support->fichier) }}">
                                                         ⬇️ {{ basename($support->fichier) }}
                                                     </a>
                                                 @endforeach
@@ -117,7 +121,7 @@
             </div>
             
             @if(method_exists($reservations, 'hasPages') && $reservations->hasPages())
-                <div class="mt-6 pt-4 border-t border-slate-100 flex justify-center">
+                <div class="mt-6 pt-4 border-t border-slate-100 flex justify-center relative z-10">
                     {{ $reservations->links() }}
                 </div>
             @endif

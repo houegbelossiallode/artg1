@@ -18,7 +18,7 @@
         .flex-nowrap { flex-wrap: nowrap !important; }
     </style>
 </head>
-<body class="bg-[#FAF7F2] text-[#2C221E] antialiased selection:bg-[#D4A373] selection:text-white">
+<body class="bg-[#FAF7F2] text-[#2C221E] antialiased selection:bg-[#0BA20B] selection:text-white">
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-b from-[#1E1613]/80 via-[#1E1613]/40 to-transparent py-5 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between flex-nowrap gap-4">
 
@@ -27,9 +27,9 @@
                 @if($association && $association->logo)
                     <img src="{{ asset('storage/' . $association->logo) }}" alt="{{ $association->nom }}" class="w-10 h-10 object-cover rounded-none shadow-lg group-hover:scale-105 transition-transform shrink-0" />
                 @else
-                    <div class="w-10 h-10 rounded-none bg-gradient-to-br from-[#C85A32] to-[#D4A373] p-0.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform shrink-0">
-                        <div class="w-full h-full rounded-none bg-[#1E1613] flex items-center justify-center text-[#D4A373]">
-                            <svg aria-hidden="true" class="lucide lucide-sparkles w-5 h-5 text-[#D4A373] animate-pulse" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <div class="w-10 h-10 rounded-none bg-gradient-to-br from-[#0BA20B] to-[#0BA20B] p-0.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform shrink-0">
+                        <div class="w-full h-full rounded-none bg-[#1E1613] flex items-center justify-center text-[#0BA20B]">
+                            <svg aria-hidden="true" class="lucide lucide-sparkles w-5 h-5 text-[#0BA20B] animate-pulse" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
                                 <path d="M20 2v4"></path>
                                 <path d="M22 4h-4"></path>
@@ -42,7 +42,7 @@
                     <span id="logo-title" class="block font-display text-xl sm:text-2xl font-bold tracking-tight text-white transition-colors">
                         {{ $association->nom ?? 'ÉCHO & CULTURE' }}
                     </span>
-                    <span id="logo-subtitle" class="block text-[10px] uppercase tracking-widest font-sans font-semibold text-[#D4A373] transition-colors">
+                    <span id="logo-subtitle" class="block text-[10px] uppercase tracking-widest font-sans font-semibold text-[#0BA20B] transition-colors">
                         Arts • Musique • Raphia
                     </span>
                 </div>
@@ -68,21 +68,21 @@
                         <svg aria-hidden="true" class="lucide lucide-chevron-down w-3.5 h-3.5 opacity-70 group-hover:rotate-180 transition-transform" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg>
                     </button>
                     <!-- Sous-menus Activités -->
-                    <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-[#1E1613] border border-[#D4A373]/30 shadow-2xl py-2 z-50">
-                        <a href="{{ url('/#events') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#D4A373] hover:bg-white/5 transition-colors uppercase tracking-wider">
-                            <span class="w-1.5 h-1.5 bg-[#C85A32]"></span>
+                    <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl py-2 z-50">
+                        <a href="{{ url('/#events') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#0BA20B] hover:bg-white/5 transition-colors uppercase tracking-wider">
+                            <span class="w-1.5 h-1.5 bg-[#0BA20B]"></span>
                             Événements
                         </a>
-                        <a href="{{ url('/#courses') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#D4A373] hover:bg-white/5 transition-colors uppercase tracking-wider">
-                            <span class="w-1.5 h-1.5 bg-[#D4A373]"></span>
+                        <a href="{{ url('/#courses') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#0BA20B] hover:bg-white/5 transition-colors uppercase tracking-wider">
+                            <span class="w-1.5 h-1.5 bg-[#0BA20B]"></span>
                             Formations (Cours &amp; Formations)
                         </a>
-                        <a href="{{ url('/#gallery') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#D4A373] hover:bg-white/5 transition-colors uppercase tracking-wider">
-                            <span class="w-1.5 h-1.5 bg-[#C85A32]"></span>
+                        <a href="{{ url('/#gallery') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#0BA20B] hover:bg-white/5 transition-colors uppercase tracking-wider">
+                            <span class="w-1.5 h-1.5 bg-[#0BA20B]"></span>
                             Galerie
                         </a>
-                        <a href="{{ url('/#news') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#D4A373] hover:bg-white/5 transition-colors uppercase tracking-wider">
-                            <span class="w-1.5 h-1.5 bg-[#D4A373]"></span>
+                        <a href="{{ url('/#news') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-white/90 hover:text-[#0BA20B] hover:bg-white/5 transition-colors uppercase tracking-wider">
+                            <span class="w-1.5 h-1.5 bg-[#0BA20B]"></span>
                             Actualités
                         </a>
                     </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="relative group">
                     <a id="member-btn" href="{{ route('login') }}" class="nav-link-item px-3 py-2 text-sm font-medium transition-colors rounded-none flex items-center gap-1.5 text-white/90 hover:text-white hover:bg-white/10 whitespace-nowrap" title="Espace Apprenant / Professeur">
-                        <svg aria-hidden="true" class="lucide lucide-user w-4 h-4 text-[#D4A373]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <svg aria-hidden="true" class="lucide lucide-user w-4 h-4 text-[#0BA20B]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                         <span class="whitespace-nowrap">Espace Membre</span>
                     </a>
                 </div>
@@ -111,7 +111,7 @@
     @yield('content')
 
     {{-- Footer --}}
-    <footer class="bg-[#1E1613] text-[#FAF7F2] pt-16 pb-12 border-t border-[#D4A373]/20">
+    <footer class="bg-[#1E1613] text-[#FAF7F2] pt-16 pb-12 border-t border-[#0BA20B]/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="space-y-4">
@@ -119,9 +119,9 @@
                         @if($association && $association->logo)
                             <img src="{{ asset('storage/' . $association->logo) }}" alt="{{ $association->nom }}" class="w-8 h-8 object-cover rounded-none" />
                         @else
-                            <div class="w-8 h-8 rounded-none bg-gradient-to-br from-[#C85A32] to-[#D4A373] p-0.5 flex items-center justify-center">
-                                <div class="w-full h-full bg-[#1E1613] flex items-center justify-center text-[#D4A373]">
-                                    <svg aria-hidden="true" class="lucide lucide-sparkles w-4 h-4 text-[#D4A373]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+                            <div class="w-8 h-8 rounded-none bg-gradient-to-br from-[#0BA20B] to-[#0BA20B] p-0.5 flex items-center justify-center">
+                                <div class="w-full h-full bg-[#1E1613] flex items-center justify-center text-[#0BA20B]">
+                                    <svg aria-hidden="true" class="lucide lucide-sparkles w-4 h-4 text-[#0BA20B]" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
                                 </div>
                             </div>
                         @endif
@@ -130,7 +130,7 @@
                     <p class="text-xs text-[#D1C5B8] leading-relaxed">Maison associative dédiée à la promotion des arts musicaux traditionnels, à la valorisation de la filière raphia et à l'épanouissement des jeunes talents.</p>
                 </div>
                 <div>
-                    <h4 class="font-serif-title font-bold text-sm text-[#D4A373] uppercase tracking-wider mb-4">Navigation</h4>
+                    <h4 class="font-serif-title font-bold text-sm text-[#0BA20B] uppercase tracking-wider mb-4">Navigation</h4>
                     <ul class="space-y-2 text-xs text-[#D1C5B8]">
                         <li><a class="hover:text-white transition-colors" href="{{ url('/#hero') }}">Accueil</a></li>
                         <li><a class="hover:text-white transition-colors" href="{{ url('/#about') }}">À Propos &amp; Historique</a></li>
@@ -139,7 +139,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-serif-title font-bold text-sm text-[#D4A373] uppercase tracking-wider mb-4">Activités</h4>
+                    <h4 class="font-serif-title font-bold text-sm text-[#0BA20B] uppercase tracking-wider mb-4">Activités</h4>
                     <ul class="space-y-2 text-xs text-[#D1C5B8]">
                         <li><a class="hover:text-white transition-colors" href="{{ url('/#courses') }}">Cours de Musique</a></li>
                         <li><a class="hover:text-white transition-colors" href="{{ url('/#courses') }}">Ateliers Tissage Raphia</a></li>
@@ -148,12 +148,12 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-serif-title font-bold text-sm text-[#D4A373] uppercase tracking-wider mb-4">Newsletter</h4>
+                    <h4 class="font-serif-title font-bold text-sm text-[#0BA20B] uppercase tracking-wider mb-4">Newsletter</h4>
                     <p class="text-xs text-[#D1C5B8] mb-4">Recevez nos actualités et événements directement dans votre boîte mail.</p>
                     <form id="newsletterForm" action="{{ route('newsletter.store') }}" method="POST" class="space-y-3">
                         @csrf
-                        <input type="email" name="email" required placeholder="Votre email" class="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-none text-white placeholder-white/50 text-xs focus:outline-none focus:border-[#D4A373] focus:ring-1 focus:ring-[#D4A373] transition-colors">
-                        <button type="submit" class="w-full px-4 py-2.5 bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-xs rounded-none transition-colors shadow-lg">
+                        <input type="email" name="email" required placeholder="Votre email" class="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-none text-white placeholder-white/50 text-xs focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] transition-colors">
+                        <button type="submit" class="w-full px-4 py-2.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs rounded-none transition-colors shadow-lg">
                             S'inscrire
                         </button>
                     </form>
@@ -164,11 +164,11 @@
                     © {{ date('Y') }} {{ $association->nom ?? 'Association Écho & Culture' }}. Tous droits réservés.
                 </div>
                 <div>
-                    <h4 class="font-serif-title font-bold text-sm text-[#D4A373] uppercase tracking-wider mb-2">Contact &amp; Mécénat</h4>
+                    <h4 class="font-serif-title font-bold text-sm text-[#0BA20B] uppercase tracking-wider mb-2">Contact &amp; Mécénat</h4>
                     <ul class="space-y-1 text-xs text-[#D1C5B8]">
                         <li><span>📍{{ $association->adresse }}</span></li>
                         <li><span>✉️ {{ $association->email }}</span></li>
-                        <li><a class="text-[#D4A373] hover:underline font-semibold" href="{{ url('/#donation') }}">Faire un Don / Adhérer →</a></li>
+                        <li><a class="text-[#0BA20B] hover:underline font-semibold" href="{{ url('/#donation') }}">Faire un Don / Adhérer →</a></li>
                     </ul>
                 </div>
             </div>
@@ -200,7 +200,7 @@
                             icon: 'success',
                             title: 'Inscription réussie !',
                             text: data.message,
-                            confirmButtonColor: '#C85A32',
+                            confirmButtonColor: '#0BA20B',
                             confirmButtonText: 'OK'
                         });
                         newsletterForm.reset();
@@ -209,7 +209,7 @@
                             icon: 'error',
                             title: 'Erreur',
                             text: 'Une erreur est survenue. Veuillez réessayer.',
-                            confirmButtonColor: '#C85A32',
+                            confirmButtonColor: '#0BA20B',
                             confirmButtonText: 'OK'
                         });
                     }
@@ -219,7 +219,7 @@
                         icon: 'error',
                         title: 'Erreur',
                         text: 'Une erreur est survenue. Veuillez réessayer.',
-                        confirmButtonColor: '#C85A32',
+                        confirmButtonColor: '#0BA20B',
                         confirmButtonText: 'OK'
                     });
                 });
@@ -240,23 +240,23 @@
             function checkScroll() {
                 if (window.scrollY > 30) {
                     header.classList.remove('bg-gradient-to-b', 'from-[#1E1613]/80', 'via-[#1E1613]/40', 'to-transparent', 'py-5', 'text-white');
-                    header.classList.add('bg-[#FAF7F2]/95', 'backdrop-blur-md', 'shadow-md', 'py-3', 'border-b', 'border-[#D4A373]/30');
+                    header.classList.add('bg-[#FAF7F2]/95', 'backdrop-blur-md', 'shadow-md', 'py-3', 'border-b', 'border-[#0BA20B]/30');
 
                     if(logoTitle) {
                         logoTitle.classList.remove('text-white');
                         logoTitle.classList.add('text-[#2C221E]');
                     }
                     if(logoSubtitle) {
-                        logoSubtitle.classList.remove('text-[#D4A373]');
-                        logoSubtitle.classList.add('text-[#C85A32]');
+                        logoSubtitle.classList.remove('text-[#0BA20B]');
+                        logoSubtitle.classList.add('text-[#0BA20B]');
                     }
                     navLinks.forEach(link => {
                         link.classList.remove('text-white/90', 'hover:text-white', 'hover:bg-white/10');
-                        link.classList.add('text-[#2C221E]', 'hover:text-[#C85A32]', 'hover:bg-[#F4EFE6]');
+                        link.classList.add('text-[#2C221E]', 'hover:text-[#0BA20B]', 'hover:bg-[#F4EFE6]');
                     });
                     if(memberBtn) {
                         memberBtn.classList.remove('text-white/90', 'bg-white/10', 'hover:bg-white/20', 'backdrop-blur-sm');
-                        memberBtn.classList.add('text-[#2C221E]', 'hover:bg-[#F4EFE6]', 'border', 'border-[#D4A373]/40');
+                        memberBtn.classList.add('text-[#2C221E]', 'hover:bg-[#F4EFE6]', 'border', 'border-[#0BA20B]/40');
                     }
                     if(mobileMenuBtn) {
                         mobileMenuBtn.classList.remove('text-white', 'hover:bg-white/10');
@@ -264,23 +264,23 @@
                     }
                 } else {
                     header.classList.add('bg-gradient-to-b', 'from-[#1E1613]/80', 'via-[#1E1613]/40', 'to-transparent', 'py-5', 'text-white');
-                    header.classList.remove('bg-[#FAF7F2]/95', 'backdrop-blur-md', 'shadow-md', 'py-3', 'border-b', 'border-[#D4A373]/30');
+                    header.classList.remove('bg-[#FAF7F2]/95', 'backdrop-blur-md', 'shadow-md', 'py-3', 'border-b', 'border-[#0BA20B]/30');
 
                     if(logoTitle) {
                         logoTitle.classList.add('text-white');
                         logoTitle.classList.remove('text-[#2C221E]');
                     }
                     if(logoSubtitle) {
-                        logoSubtitle.classList.add('text-[#D4A373]');
-                        logoSubtitle.classList.remove('text-[#C85A32]');
+                        logoSubtitle.classList.add('text-[#0BA20B]');
+                        logoSubtitle.classList.remove('text-[#0BA20B]');
                     }
                     navLinks.forEach(link => {
                         link.classList.add('text-white/90', 'hover:text-white', 'hover:bg-white/10');
-                        link.classList.remove('text-[#2C221E]', 'hover:text-[#C85A32]', 'hover:bg-[#F4EFE6]');
+                        link.classList.remove('text-[#2C221E]', 'hover:text-[#0BA20B]', 'hover:bg-[#F4EFE6]');
                     });
                     if(memberBtn) {
                         memberBtn.classList.add('text-white/90', 'bg-white/10', 'hover:bg-white/20', 'backdrop-blur-sm');
-                        memberBtn.classList.remove('text-[#2C221E]', 'hover:bg-[#F4EFE6]', 'border', 'border-[#D4A373]/40');
+                        memberBtn.classList.remove('text-[#2C221E]', 'hover:bg-[#F4EFE6]', 'border', 'border-[#0BA20B]/40');
                     }
                     if(mobileMenuBtn) {
                         mobileMenuBtn.classList.add('text-white', 'hover:bg-white/10');
@@ -301,14 +301,14 @@
     <!-- Global Candidature Modal -->
 <div id="candidature-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
     <div class="relative w-full max-w-2xl bg-[#FAF7F2] rounded-none p-8 sm:p-10 shadow-2xl overflow-y-auto max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
-       <button onclick="document.getElementById('candidature-modal').classList.add('hidden')" class="absolute top-4 right-4 p-2 bg-[#F4EFE6] hover:bg-[#D4A373] text-[#2C221E] hover:text-white transition-colors rounded-none" aria-label="Fermer">
+       <button onclick="document.getElementById('candidature-modal').classList.add('hidden')" class="absolute top-4 right-4 p-2 bg-[#F4EFE6] hover:bg-[#0BA20B] text-[#2C221E] hover:text-white transition-colors rounded-none" aria-label="Fermer">
            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
            </svg>
        </button>
 
        <div class="text-center mb-8">
-           <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-[#F4EFE6] border border-[#D4A373]/20 text-[#C85A32] text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-none mb-4">
+           <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-[#F4EFE6] border border-[#0BA20B]/20 text-[#0BA20B] text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-none mb-4">
                <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
                </svg>
@@ -328,31 +328,31 @@
            @csrf
            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                <div class="space-y-2">
-                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Nom <span class="text-[#C85A32]">*</span></label>
-                   <input required name="nom" type="text" placeholder="e.g. Samuel Nguema" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Nom <span class="text-[#0BA20B]">*</span></label>
+                   <input required name="nom" type="text" placeholder="e.g. Samuel Nguema" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                </div>
                <div class="space-y-2">
                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Prénom</label>
-                   <input name="prenom" type="text" placeholder="e.g. Samuel" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                   <input name="prenom" type="text" placeholder="e.g. Samuel" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                </div>
                <div class="space-y-2">
                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Nom de Scène / Pseudo</label>
-                   <input name="pseudo" type="text" placeholder="e.g. Sam Kora" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                   <input name="pseudo" type="text" placeholder="e.g. Sam Kora" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                </div>
                <div class="space-y-2">
-                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Âge (15 – 25 ans) <span class="text-[#C85A32]">*</span></label>
-                   <input required name="age" type="number" min="15" max="25" placeholder="21" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Âge (15 – 25 ans) <span class="text-[#0BA20B]">*</span></label>
+                   <input required name="age" type="number" min="15" max="25" placeholder="21" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                </div>
                <div class="space-y-2">
-                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Discipline <span class="text-[#C85A32]">*</span></label>
+                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Discipline <span class="text-[#0BA20B]">*</span></label>
                    <div class="relative">
-                       <select required name="discipline_id" class="w-full appearance-none bg-white border border-[#D4A373]/40 p-3 pr-10 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors">
+                       <select required name="discipline_id" class="w-full appearance-none bg-white border border-[#0BA20B]/40 p-3 pr-10 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors">
                            <option value="">Sélectionnez une discipline...</option>
                            @foreach($disciplines as $discipline)
                                <option value="{{ $discipline->id }}">{{ $discipline->libelle }}</option>
                            @endforeach
                        </select>
-                       <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-[#C85A32]">
+                       <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-[#0BA20B]">
                            <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                            </svg>
@@ -360,30 +360,30 @@
                    </div>
                </div>
                <div class="space-y-2">
-                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Email <span class="text-[#C85A32]">*</span></label>
-                   <input required name="email" type="email" placeholder="e.g. samuel@exemple.com" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                   <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Email <span class="text-[#0BA20B]">*</span></label>
+                   <input required name="email" type="email" placeholder="e.g. samuel@exemple.com" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                </div>
                <div class="space-y-2">
                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Téléphone</label>
-                   <input name="telephone" type="text" placeholder="e.g. +241 06 12 34 56" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                   <input name="telephone" type="text" placeholder="e.g. +241 06 12 34 56" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                </div>
                <div class="space-y-2">
                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Numéro WhatsApp</label>
-                   <input name="whatsapp" type="text" placeholder="e.g. +241 06 12 34 56" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                   <input name="whatsapp" type="text" placeholder="e.g. +241 06 12 34 56" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                </div>
            </div>
 
            <div class="space-y-2">
-               <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Lien Audio / Vidéo Démo (Youtube, Soundcloud, Drive) <span class="text-[#C85A32]">*</span></label>
-               <input required name="demo_link" type="url" placeholder="https://youtube.com/watch?v=..." class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+               <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Lien Audio / Vidéo Démo (Youtube, Soundcloud, Drive) <span class="text-[#0BA20B]">*</span></label>
+               <input required name="demo_link" type="url" placeholder="https://youtube.com/watch?v=..." class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
            </div>
 
            <div class="space-y-2">
-               <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Présentation de votre projet artistique <span class="text-[#C85A32]">*</span></label>
-               <textarea required name="presentation" rows="4" placeholder="Racontez-nous votre parcours, vos influences et ce que vous attendez de l'association..." class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50 resize-y"></textarea>
+               <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Présentation de votre projet artistique <span class="text-[#0BA20B]">*</span></label>
+               <textarea required name="presentation" rows="4" placeholder="Racontez-nous votre parcours, vos influences et ce que vous attendez de l'association..." class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50 resize-y"></textarea>
            </div>
 
-           <button type="submit" class="w-full px-6 py-3.5 bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-sm tracking-wide uppercase shadow-lg transition-transform hover:-translate-y-0.5 rounded-none flex items-center justify-center gap-2">
+           <button type="submit" class="w-full px-6 py-3.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-sm tracking-wide uppercase shadow-lg transition-transform hover:-translate-y-0.5 rounded-none flex items-center justify-center gap-2">
                <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                </svg>

@@ -5,8 +5,8 @@
 @section('content')
 <div class="space-y-6">
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900">
-    <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">MODIFIER LA CATÉGORIE DE COURS</h1>
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
+    <h1 class="admin-title">Modifier la Catégorie de Cours</h1>
   </div>
 
   <div class="bg-white border border-slate-200 shadow-sm rounded-none p-6">
@@ -25,7 +25,7 @@
 
       <div class="flex justify-end gap-3 pt-4">
         <a href="{{ route('dashboard.admin.categories-cours.index') }}" class="px-4 py-2 text-xs uppercase font-bold tracking-wider text-slate-600 hover:bg-slate-100 transition-colors rounded-none">Annuler</a>
-        <button type="submit" class="px-4 py-2 text-xs uppercase font-bold tracking-wider bg-brand-lime hover:bg-brand-lime-light text-slate-900 transition-colors rounded-none">Mettre à jour</button>
+        <button type="submit" class="px-4 py-2 text-xs uppercase font-bold tracking-wider bg-[#0BA20B] hover:bg-[#0BA20B]-light text-white transition-colors rounded-none">Mettre à jour</button>
       </div>
     </form>
   </div>

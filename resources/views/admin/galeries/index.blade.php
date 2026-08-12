@@ -3,7 +3,7 @@
 @section('title', 'Galeries | AssoCulture')
 
 @section('content')
-<div class="space-y-6">
+<div class="space-y-6" x-data="{ activeImage: null, showTitle: '' }">
   
   <!-- Flash Messages -->
   @if (session('success'))
@@ -14,115 +14,135 @@
   @endif
 
   <!-- En-tête -->
-  <div class="bg-white border border-slate-200 shadow-sm px-6 py-5 border-l-4 border-l-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
     <div>
-      <h1 class="text-lg font-bold text-slate-900 uppercase tracking-wide">GALERIE</h1>
-      <p class="text-slate-400 text-sm mt-0.5">Gérez les photos, vidéos et créations de la médiathèque.</p>
+      <h1 class="admin-title">Galerie</h1>
+      <p class="admin-subtitle">Gérez les photos, vidéos et créations de la médiathèque.</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
-      <a href="{{ route('dashboard.admin.galeries.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-[10px] uppercase tracking-widest transition shadow-sm cursor-pointer">
+      <a href="{{ route('dashboard.admin.galeries.create') }}" class="btn-primary">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-        + ÉLÉMENT
+        ÉLÉMENT
       </a>
     </div>
   </div>
 
-  <!-- Table des Galeries -->
-  <div class="bg-white border border-slate-200 shadow-sm rounded-none">
-    <div class="overflow-x-auto overflow-y-visible min-h-[300px]">
-      <table class="w-full text-left text-sm text-slate-600">
-        <thead class="border-b border-slate-200 text-[10px] uppercase tracking-widest text-slate-400 font-bold bg-slate-50">
-          <tr>
-            <th class="p-4">Aperçu</th>
-            <th class="p-4">Titre</th>
-            <th class="p-4">Catégorie</th>
-            <th class="p-4">Statut</th>
-            <th class="p-4 text-right">Actions</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-100">
-          @forelse ($galeries as $galerie)
-            <tr class="hover:bg-slate-50 transition-colors">
-              <td class="p-4">
-                @if($galerie->fichier)
-                  @if($galerie->categorie && $galerie->categorie->slug == 'videos')
-                    <video src="{{ asset('storage/' . $galerie->fichier) }}" alt="{{ $galerie->titre }}" class="w-16 h-16 object-cover border border-slate-200"></video>
-                  @else
-                    <img src="{{ asset('storage/' . $galerie->fichier) }}" alt="{{ $galerie->titre }}" class="w-16 h-16 object-cover border border-slate-200">
-                  @endif
-                @elseif($galerie->categorie && $galerie->categorie->slug == 'videos')
-                  <div class="w-16 h-16 bg-slate-900 flex items-center justify-center text-amber-500">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  </div>
-                @else
-                  <div class="w-16 h-16 bg-slate-200 flex items-center justify-center text-slate-400">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                  </div>
-                @endif
-              </td>
-              <td class="p-4">
-                <div class="font-serif font-bold text-slate-900 text-sm">{{ $galerie->titre }}</div>
-                @if($galerie->description)
-                  <div class="text-[11px] text-slate-400 truncate max-w-xs">{{ Str::limit($galerie->description, 40) }}</div>
-                @endif
-              </td>
-              <td class="p-4 text-xs font-semibold text-slate-700">
-                {{ $galerie->categorie ? $galerie->categorie->libelle : 'Non catégorisé' }}
-              </td>
-              <td class="p-4">
-                @if($galerie->actif == 'OUI')
-                  <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
-                    Actif
-                  </span>
-                @else
-                  <span class="bg-slate-100 text-slate-700 text-[9px] font-bold px-2 py-0.5 uppercase tracking-widest rounded-sm">
-                    Inactif
-                  </span>
-                @endif
-              </td>
-              <td class="p-4 text-right pr-6">
-                <!-- DROPDOWN CARRÉ D'ACTIONS -->
-                <div class="relative inline-block text-left" x-data="{ open: false }" @click.away="open = false">
-                  <button @click="open = !open" type="button" class="w-7 h-7 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 inline-flex items-center justify-center rounded-none border border-slate-300 transition-colors focus:outline-none cursor-pointer">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                  </button>
-
-                  <div x-show="open" 
-                       x-transition:enter="transition ease-out duration-100" 
-                       x-transition:enter-start="transform opacity-0 scale-95" 
-                       x-transition:enter-end="transform opacity-100 scale-100" 
-                       x-transition:leave="transition ease-in duration-75" 
-                       x-transition:leave-start="transform opacity-100 scale-100" 
-                       x-transition:leave-end="transform opacity-0 scale-95" 
-                       class="origin-top-right absolute right-0 mt-2 w-40 rounded-none bg-white shadow-xl border border-slate-200 z-50 divide-y divide-slate-100" 
-                       x-cloak>
-                    <div class="py-1">
-                      <a href="{{ route('dashboard.admin.galeries.edit', $galerie) }}" class="w-full text-left group flex items-center px-4 py-2 text-xs text-slate-700 hover:bg-slate-900 hover:text-white font-bold uppercase tracking-wider">
-                        <svg class="mr-2 h-4 w-4 text-slate-400 group-hover:text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                        Modifier
-                      </a>
-                    </div>
-                    <div class="py-1">
-                      <form action="{{ route('dashboard.admin.galeries.destroy', $galerie) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément ?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="w-full text-left group flex items-center px-4 py-2 text-xs text-red-600 hover:bg-red-600 hover:text-white font-bold uppercase tracking-wider">
-                          <svg class="mr-2 h-4 w-4 text-red-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                          Supprimer
-                        </button>
-                      </form>
-                    </div>
+  <!-- Grille de la Galerie -->
+  @if($galeries->count() > 0)
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      @foreach ($galeries as $galerie)
+        <div class="bg-white border border-slate-200 shadow-sm flex flex-col group hover:border-[#0BA20B] transition-colors rounded-none relative overflow-hidden">
+          
+          <!-- Aperçu du Média -->
+          <div class="h-40 bg-slate-100 relative overflow-hidden border-b border-slate-100">
+            @if($galerie->fichier)
+              @if($galerie->categorie && $galerie->categorie->slug == 'videos')
+                <div x-data="{ playing: false }" class="w-full h-full relative">
+                  <video x-ref="videoPlayer" src="{{ asset('storage/' . $galerie->fichier) }}" controls preload="metadata" class="w-full h-full object-cover bg-slate-900" @play="playing = true" @pause="playing = false" @ended="playing = false"></video>
+                  
+                  <!-- Overlay Play -->
+                  <div x-show="!playing" @click="$refs.videoPlayer.play()" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/60 cursor-pointer hover:bg-slate-900/40 transition-colors z-10">
+                     <svg class="w-16 h-16 text-[#0BA20B] opacity-90 group-hover:scale-110 transition-transform drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                     <span class="text-white text-[10px] uppercase tracking-widest mt-2 font-bold bg-black/50 px-2 py-1 rounded-none border border-white/20">Lire la vidéo</span>
                   </div>
                 </div>
-              </td>
-            </tr>
-          @empty
-            <tr>
-              <td colspan="7" class="p-8 text-center text-xs text-slate-400">Aucun élément dans la galerie pour le moment.</td>
-            </tr>
-          @endforelse
-        </tbody>
-      </table>
+              @else
+                <img src="{{ asset('storage/' . $galerie->fichier) }}" 
+                     alt="{{ $galerie->titre }}" 
+                     @click="activeImage = '{{ asset('storage/' . $galerie->fichier) }}'; showTitle = '{{ addslashes($galerie->titre) }}'"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer">
+              @endif
+            @else
+              <div class="w-full h-full flex items-center justify-center text-slate-300 bg-slate-50">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              </div>
+            @endif
+            
+            <!-- Badge Statut -->
+            <div class="absolute top-3 right-3">
+              <span class="px-2 py-1 text-[9px] font-bold uppercase tracking-widest border shadow-sm {{ $galerie->actif == 'OUI' ? 'bg-[#0BA20B] text-white border-transparent' : 'bg-slate-900/80 text-white border-transparent' }}">
+                {{ $galerie->actif == 'OUI' ? 'Actif' : 'Inactif' }}
+              </span>
+            </div>
+          </div>
+          
+          <!-- Informations -->
+          <div class="p-4 flex flex-col flex-1">
+            <h3 class="text-sm font-bold text-slate-900 truncate font-sans group-hover:text-[#0BA20B] transition-colors" title="{{ $galerie->titre }}">
+              {{ $galerie->titre }}
+            </h3>
+            <p class="text-[10px] font-bold text-[#0BA20B] bg-[#0BA20B]/10 px-2 py-0.5 inline-block self-start border border-[#0BA20B]/20 uppercase tracking-widest mt-2 rounded-none">
+              {{ $galerie->categorie ? $galerie->categorie->libelle : 'Non catégorisé' }}
+            </p>
+            
+            @if($galerie->description)
+              <p class="text-xs text-slate-500 mt-3 line-clamp-2 leading-relaxed" title="{{ $galerie->description }}">
+                {{ Str::limit($galerie->description, 35) }}
+              </p>
+            @else
+              <p class="text-xs text-slate-400 mt-3 italic">
+                Aucune description
+              </p>
+            @endif
+            
+            <!-- Actions -->
+            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+              <a href="{{ route('dashboard.admin.galeries.edit', $galerie) }}" class="text-[10px] font-bold text-slate-500 hover:text-[#0BA20B] uppercase tracking-wider flex items-center gap-1.5 transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                Modifier
+              </a>
+              
+              <form action="{{ route('dashboard.admin.galeries.destroy', $galerie) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cet élément ?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-[10px] font-bold text-red-400 hover:text-red-600 uppercase tracking-wider transition-colors flex items-center gap-1" title="Supprimer">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                  Supprimer
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  @else
+    <!-- État Vide -->
+    <div class="bg-white border border-slate-200 p-10 text-center space-y-3 max-w-md mx-auto my-8 rounded-none">
+      <svg class="w-10 h-10 text-slate-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider font-sans">Aucun média</h3>
+      <p class="text-xs text-slate-500">La galerie est vide. Ajoutez des photos ou des vidéos.</p>
+      <div class="pt-2">
+        <a href="{{ route('dashboard.admin.galeries.create') }}" class="btn-primary">
+          + AJOUTER UN ÉLÉMENT
+        </a>
+      </div>
+    </div>
+  @endif
+
+  <!-- MODAL LIGHTBOX POUR IMAGE EN PLEINE TAILLE -->
+  <div x-show="activeImage !== null" 
+       x-transition:enter="transition ease-out duration-200"
+       x-transition:enter-start="opacity-0"
+       x-transition:enter-end="opacity-100"
+       x-transition:leave="transition ease-in duration-150"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+       x-cloak
+       @keydown.escape.window="activeImage = null">
+    
+    <div class="relative w-full max-w-5xl bg-transparent flex flex-col items-center justify-center h-full"
+         @click.away="activeImage = null">
+         
+       <button @click="activeImage = null" class="absolute top-4 right-4 text-white/50 hover:text-white p-2 transition-colors z-10 bg-black/20 hover:bg-black/50 rounded-none" title="Fermer (Echap)">
+         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+       </button>
+
+       <img :src="activeImage" class="max-h-[85vh] max-w-full object-contain shadow-2xl transition-all duration-300 border border-white/10">
+       
+       <h3 class="text-lg font-bold text-white uppercase tracking-wider mt-4 font-sans" x-text="showTitle"></h3>
     </div>
   </div>
 

@@ -14,12 +14,12 @@
         
         /* Base */
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #FAF7F2; color: #2C221E; margin: 0; padding: 40px 20px; }
-        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #E5DFD3; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid #C85A32; overflow: hidden; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #E5DFD3; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid #0BA20B; overflow: hidden; }
         
         /* Header */
         .header { background-color: #1E1613; padding: 40px 30px; text-align: center; }
         .header h1 { margin: 0; font-size: 28px; font-weight: bold; letter-spacing: 2px; color: #ffffff; text-transform: uppercase; font-family: 'Georgia', serif; }
-        .header p { color: #D4A373; margin-top: 8px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        .header p { color: #0BA20B; margin-top: 8px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
         
         /* Typography */
         .content { padding: 40px 30px; line-height: 1.6; }
@@ -38,20 +38,20 @@
         .info-box-value { color: #4A3C31; font-size: 14px; font-weight: 500; text-align: right; }
         
         /* Button */
-        .button { display: inline-block; padding: 14px 28px; background-color: #C85A32; color: #ffffff !important; text-decoration: none; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-align: center; margin: 20px 0; transition: background-color 0.3s; }
-        .button:hover { background-color: #A84223; }
+        .button { display: inline-block; padding: 14px 28px; background-color: #0BA20B; color: #ffffff !important; text-decoration: none; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; text-align: center; margin: 20px 0; transition: background-color 0.3s; }
+        .button:hover { background-color: #087A08; }
         .button-secondary { background-color: #1E1613; }
         .button-secondary:hover { background-color: #2C221E; }
         
         /* Status Badge */
-        .status-badge { display: inline-block; padding: 6px 12px; background-color: #C85A32; color: #ffffff; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .status-badge { display: inline-block; padding: 6px 12px; background-color: #0BA20B; color: #ffffff; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         
         /* Alert/Warning */
-        .alert-box { font-size: 13px; color: #1E1613; background-color: #F4EFE6; padding: 16px; border-left: 4px solid #D4A373; margin-top: 16px; }
+        .alert-box { font-size: 13px; color: #1E1613; background-color: #F4EFE6; padding: 16px; border-left: 4px solid #0BA20B; margin-top: 16px; }
         
         /* Footer */
-        .footer { background-color: #1E1613; padding: 24px; text-align: center; font-size: 11px; color: #D4A373; letter-spacing: 0.5px; }
-        .footer p { color: #D4A373; margin: 4px 0; font-size: 11px; }
+        .footer { background-color: #1E1613; padding: 24px; text-align: center; font-size: 11px; color: #0BA20B; letter-spacing: 0.5px; }
+        .footer p { color: #0BA20B; margin: 4px 0; font-size: 11px; }
         
         /* Responsive */
         @media only screen and (max-width: 600px) {
@@ -123,7 +123,7 @@
                 <h2>Cours en Présentiel</h2>
                 <p>Rendez-vous dans les locaux de notre association culturelle à la date et heure convenues. N'oubliez pas d'apporter votre matériel si nécessaire.</p>
                 
-                <div class="alert-box" style="border-left-color: #C85A32;">
+                <div class="alert-box" style="border-left-color: #0BA20B;">
                     <strong>Adresse :</strong> Les locaux de l'association Écho & Culture
                 </div>
             </div>

@@ -18,8 +18,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <div class="lg:col-span-7 space-y-6 text-left">
                         <!-- <div
-                                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/10 backdrop-blur-md border border-[#D4A373]/40 text-[#D4A373] text-xs font-semibold tracking-wider uppercase">
-                                            <svg aria-hidden="true" class="lucide lucide-sparkles w-3.5 h-3.5 text-[#D4A373]" fill="none"
+                                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/10 backdrop-blur-md border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-semibold tracking-wider uppercase">
+                                            <svg aria-hidden="true" class="lucide lucide-sparkles w-3.5 h-3.5 text-[#0BA20B]" fill="none"
                                                 height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                                 <path
@@ -39,13 +39,13 @@
                         <h1
                             class="font-serif-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FAF7F2] leading-[1.08] tracking-tight">
                             Célébrer la
-                            <span class="italic text-[#D4A373] font-normal">
+                            <span class="italic text-[#0BA20B] font-normal">
                                 Culture
                             </span>
                             ,
                             <br />
                             Façonner le
-                            <span class="text-[#C85A32]">
+                            <span class="text-[#0BA20B]">
                                 Raphia
                             </span>
                             &amp;
@@ -59,8 +59,8 @@
                         </p>
                         <div class="pt-2 flex flex-wrap gap-3 items-center">
                             <a href="#courses"
-                                class="px-6 py-3.5 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white font-semibold text-sm shadow-xl shadow-[#C85A32]/25 hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2 group">
-                                <svg aria-hidden="true" class="lucide lucide-graduation-cap w-4 h-4 text-[#D4A373]"
+                                class="px-6 py-3.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-semibold text-sm shadow-xl shadow-[#0BA20B]/25 hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2 group">
+                                <svg aria-hidden="true" class="lucide lucide-graduation-cap w-4 h-4 text-[#0BA20B]"
                                     fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@
                             </a>
                             <a class="px-5 py-3.5 rounded-none bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-md transition-all flex items-center gap-2"
                                 href="#events">
-                                <svg aria-hidden="true" class="lucide lucide-calendar w-4 h-4 text-[#D4A373]" fill="none"
+                                <svg aria-hidden="true" class="lucide lucide-calendar w-4 h-4 text-[#0BA20B]" fill="none"
                                     height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8 2v4">
@@ -105,7 +105,7 @@
                                 </span>
                             </a>
                             <a href="#donation"
-                                class="px-5 py-3.5 rounded-none bg-gradient-to-r from-[#D4A373] to-[#B8860B] text-[#1E1613] font-bold text-sm shadow-lg hover:brightness-110 transition-all flex items-center gap-2">
+                                class="px-5 py-3.5 rounded-none bg-gradient-to-r from-[#0BA20B] to-[#087A08] text-[#1E1613] font-bold text-sm shadow-lg hover:brightness-110 transition-all flex items-center gap-2">
                                 <svg aria-hidden="true" class="lucide lucide-heart w-4 h-4 fill-current text-[#1E1613]"
                                     fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
@@ -118,7 +118,7 @@
                                     Faire un Don
                                 </span>
                             </a>
-                            <a class="px-4 py-3.5 text-xs text-[#D4A373] hover:text-white underline underline-offset-4 font-semibold flex items-center gap-1.5 transition-colors"
+                            <a class="px-4 py-3.5 text-xs text-[#0BA20B] hover:text-white underline underline-offset-4 font-semibold flex items-center gap-1.5 transition-colors"
                                 href="#contact">
                                 <svg aria-hidden="true" class="lucide lucide-handshake w-4 h-4" fill="none" height="24"
                                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -142,7 +142,7 @@
                         </div>
                         <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-xs text-[#C5B8AD]">
                             <div class="flex items-center gap-2">
-                                <div class="w-2 h-2 rounded-none bg-[#C85A32]">
+                                <div class="w-2 h-2 rounded-none bg-[#0BA20B]">
                                 </div>
                                 <span>
                                     <strong>
@@ -152,7 +152,7 @@
                                 </span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-2 h-2 rounded-none bg-[#D4A373]">
+                                <div class="w-2 h-2 rounded-none bg-[#0BA20B]">
                                 </div>
                                 <span>
                                     <strong>
@@ -174,17 +174,17 @@
                         </div>
                     </div>
                     <div class="lg:col-span-5 relative">
-                        <div class="glass-dark rounded-none p-6 shadow-2xl border border-[#D4A373]/30 space-y-5">
+                        <div class="glass-dark rounded-none p-6 shadow-2xl border border-[#0BA20B]/30 space-y-5">
                             <div class="flex items-center justify-between pb-3 border-b border-white/10">
                                 <div class="flex items-center gap-2">
                                     <span class="flex h-3 w-3 relative">
                                         <span
-                                            class="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#C85A32] opacity-75">
+                                            class="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#0BA20B] opacity-75">
                                         </span>
-                                        <span class="relative inline-flex rounded-none h-3 w-3 bg-[#C85A32]">
+                                        <span class="relative inline-flex rounded-none h-3 w-3 bg-[#0BA20B]">
                                         </span>
                                     </span>
-                                    <span class="text-xs font-bold uppercase tracking-wider text-[#D4A373]">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-[#0BA20B]">
                                         À la Une ce Mois-ci
                                     </span>
                                 </div>
@@ -226,7 +226,7 @@
                                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                                             <div>
                                                 <span
-                                                    class="text-[10px] uppercase font-bold text-[#D4A373] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">
+                                                    class="text-[10px] uppercase font-bold text-[#0BA20B] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">
                                                     {{ $evenementPhare->categorie ? $evenementPhare->categorie->libelle : 'Événement' }}
                                                 </span>
                                                 <h4 class="text-sm font-bold text-white font-serif-title mt-1 line-clamp-2">
@@ -238,7 +238,7 @@
                                     {{-- @if(count($galleryData) > 1)
                                         <div class="flex gap-2 overflow-x-auto pb-2">
                                             @foreach($evenementPhare->images as $index => $img)
-                                                <div class="flex-shrink-0 w-16 h-16 rounded-none overflow-hidden border-2 {{ $img->is_principal ? 'border-[#C85A32]' : 'border-[#D4A373]/30' }} cursor-pointer hover:border-[#C85A32] transition-colors"
+                                                <div class="flex-shrink-0 w-16 h-16 rounded-none overflow-hidden border-2 {{ $img->is_principal ? 'border-[#0BA20B]' : 'border-[#0BA20B]/30' }} cursor-pointer hover:border-[#0BA20B] transition-colors"
                                                     @click="
                                                                                     activeGallery = JSON.parse($el.parentElement.parentElement.querySelector('[data-gallery]').dataset.gallery);
                                                                                     currentImageIndex = {{ $index }};
@@ -276,7 +276,7 @@
                                     </div>
                                 </div>
                                 <div class="pt-2 flex gap-2">
-                                    <a class="w-full py-2.5 rounded-none bg-[#D4A373] hover:bg-[#B8860B] text-[#1E1613] font-bold text-xs text-center transition-colors shadow"
+                                    <a class="w-full py-2.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-[#1E1613] font-bold text-xs text-center transition-colors shadow"
                                         href="{{ route('evenements.show', $evenementPhare->id) }}">
                                         Voir les détails
                                     </a>
@@ -292,7 +292,7 @@
                                         </div>
                                         <div class="absolute bottom-3 left-3 right-3">
                                             <span
-                                                class="text-[10px] uppercase font-bold text-[#D4A373] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">
+                                                class="text-[10px] uppercase font-bold text-[#0BA20B] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">
                                                 À venir
                                             </span>
                                             <h4 class="text-sm font-bold text-white font-serif-title mt-1">
@@ -308,7 +308,7 @@
                             <div
                                 class="p-3 rounded-none bg-white/5 border border-white/10 flex items-center justify-between text-xs">
                                 <div class="flex items-center gap-2 text-white/90">
-                                    <svg aria-hidden="true" class="lucide lucide-sparkles w-4 h-4 text-[#D4A373]"
+                                    <svg aria-hidden="true" class="lucide lucide-sparkles w-4 h-4 text-[#0BA20B]"
                                         fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                         stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -326,7 +326,7 @@
                                         Vous êtes un jeune talent ?
                                     </span>
                                 </div>
-                                <button onclick="document.getElementById('candidature-modal').classList.remove('hidden')" class="text-xs font-bold text-[#C85A32] hover:underline cursor-pointer">
+                                <button onclick="document.getElementById('candidature-modal').classList.remove('hidden')" class="text-xs font-bold text-[#0BA20B] hover:underline cursor-pointer">
                                     Postuler →
                                 </button>
                             </div>
@@ -340,24 +340,24 @@
                 class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
                 x-cloak @keydown.escape.window="activeGallery = null">
 
-                <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#D4A373]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
+                <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
                     @click.away="activeGallery = null">
 
-                    <div class="px-6 py-4 border-b border-[#D4A373]/20 flex items-center justify-between bg-[#1E1613]">
+                    <div class="px-6 py-4 border-b border-[#0BA20B]/20 flex items-center justify-between bg-[#1E1613]">
                         <div>
                             <h3 class="text-sm font-serif-title font-bold text-[#FAF7F2] uppercase tracking-wider"
                                 x-text="showTitle"></h3>
-                            <p class="text-[10px] text-[#D4A373] uppercase tracking-widest mt-0.5">
+                            <p class="text-[10px] text-[#0BA20B] uppercase tracking-widest mt-0.5">
                                 Image <span x-text="currentImageIndex + 1"></span> sur <span
                                     x-text="activeGallery ? activeGallery.length : 0"></span>
                                 <template
                                     x-if="activeGallery && activeGallery[currentImageIndex] && activeGallery[currentImageIndex].is_principal">
-                                    <span class="ml-2 text-[#C85A32] font-bold">• Image Principale</span>
+                                    <span class="ml-2 text-[#0BA20B] font-bold">• Image Principale</span>
                                 </template>
                             </p>
                         </div>
                         <button @click="activeGallery = null"
-                            class="text-[#D4A373] hover:text-[#C85A32] p-1 transition-colors" title="Fermer (Echap)">
+                            class="text-[#0BA20B] hover:text-[#0BA20B] p-1 transition-colors" title="Fermer (Echap)">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M6 18L18 6M6 6l12 12" />
@@ -375,7 +375,7 @@
                             <div>
                                 <button
                                     @click="currentImageIndex = (currentImageIndex === 0) ? activeGallery.length - 1 : currentImageIndex - 1"
-                                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#C85A32] text-[#FAF7F2] p-3 transition-colors border border-[#D4A373]/30 shadow-xl rounded-none">
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                             d="M15 19l-7-7 7-7" />
@@ -383,7 +383,7 @@
                                 </button>
                                 <button
                                     @click="currentImageIndex = (currentImageIndex === activeGallery.length - 1) ? 0 : currentImageIndex + 1"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#C85A32] text-[#FAF7F2] p-3 transition-colors border border-[#D4A373]/30 shadow-xl rounded-none">
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                             d="M9 5l7 7-7 7" />
@@ -395,11 +395,11 @@
 
                     <template x-if="activeGallery && activeGallery.length > 1">
                         <div
-                            class="px-6 py-4 bg-[#1E1613] border-t border-[#D4A373]/20 flex items-center justify-center gap-3 overflow-x-auto">
+                            class="px-6 py-4 bg-[#1E1613] border-t border-[#0BA20B]/20 flex items-center justify-center gap-3 overflow-x-auto">
                             <template x-for="(img, idx) in activeGallery" :key="idx">
                                 <button @click="currentImageIndex = idx"
                                     class="w-14 h-14 border-2 overflow-hidden transition-all shrink-0 rounded-none"
-                                    :class="currentImageIndex === idx ? 'border-[#C85A32] scale-105 opacity-100' : 'border-[#D4A373]/30 opacity-50 hover:opacity-100'">
+                                    :class="currentImageIndex === idx ? 'border-[#0BA20B] scale-105 opacity-100' : 'border-[#0BA20B]/30 opacity-50 hover:opacity-100'">
                                     <img :src="img.url" class="w-full h-full object-cover">
                                 </button>
                             </template>
@@ -409,14 +409,14 @@
             </div>
         </section>
         <section class="py-24 bg-[#FAF7F2] relative overflow-hidden" id="about">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-[#D4A373]/10 rounded-full blur-3xl -z-10">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-[#0BA20B]/10 rounded-full blur-3xl -z-10">
             </div>
-            <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#C85A32]/10 rounded-full blur-3xl -z-10">
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#0BA20B]/10 rounded-full blur-3xl -z-10">
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#D4A373]/30 text-[#C85A32] text-xs font-bold uppercase tracking-widest">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#0BA20B]/30 text-[#0BA20B] text-xs font-bold uppercase tracking-widest">
                         <svg aria-hidden="true" class="lucide lucide-sparkles w-3.5 h-3.5" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -444,7 +444,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
                         <h3
-                            class="font-serif-title text-2xl sm:text-3xl font-bold text-[#2C221E] border-l-4 border-[#C85A32] pl-4">
+                            class="font-serif-title text-2xl sm:text-3xl font-bold text-[#2C221E] border-l-4 border-[#0BA20B] pl-4">
                             Notre Histoire
                         </h3>
                         <p class="text-sm sm:text-base text-[#5C4A42] leading-relaxed">
@@ -460,7 +460,7 @@
                             </div>
                             <div class="absolute bottom-6 left-6 right-6 text-white">
                                 <span
-                                    class="text-xs uppercase font-bold text-[#D4A373] bg-[#1E1613]/80 px-2.5 py-1 rounded-none">
+                                    class="text-xs uppercase font-bold text-[#0BA20B] bg-[#1E1613]/80 px-2.5 py-1 rounded-none">
                                     Atelier Vivant
                                 </span>
                                 <p class="text-sm font-serif-title italic mt-2 text-white/90">
@@ -469,10 +469,10 @@
                             </div>
                         </div>
                         <div
-                            class="absolute -bottom-6 -left-6 bg-[#1E1613] text-[#FAF7F2] p-5 rounded-none shadow-xl border border-[#D4A373]/40 max-w-xs hidden sm:block">
+                            class="absolute -bottom-6 -left-6 bg-[#1E1613] text-[#FAF7F2] p-5 rounded-none shadow-xl border border-[#0BA20B]/40 max-w-xs hidden sm:block">
                             <div class="flex items-center gap-3">
                                 <div
-                                    class="w-10 h-10 rounded-none bg-[#C85A32] flex items-center justify-center text-white shrink-0">
+                                    class="w-10 h-10 rounded-none bg-[#0BA20B] flex items-center justify-center text-white shrink-0">
                                     <svg aria-hidden="true" class="lucide lucide-shield-check w-5 h-5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -484,7 +484,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <span class="text-xs font-bold text-[#D4A373] uppercase tracking-wider block">
+                                    <span class="text-xs font-bold text-[#0BA20B] uppercase tracking-wider block">
                                         Association Agréée
                                     </span>
                                     <span class="text-xs text-white/80">
@@ -497,8 +497,8 @@
                 </div>
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
                     <div
-                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#C85A32]/40 transition-all transform hover:-translate-y-1 shadow-sm">
-                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#C85A32]">
+                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
+                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
                             350+
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
@@ -506,8 +506,8 @@
                         </div>
                     </div>
                     <div
-                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#C85A32]/40 transition-all transform hover:-translate-y-1 shadow-sm">
-                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#C85A32]">
+                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
+                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
                             18
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
@@ -515,8 +515,8 @@
                         </div>
                     </div>
                     <div
-                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#C85A32]/40 transition-all transform hover:-translate-y-1 shadow-sm">
-                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#C85A32]">
+                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
+                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
                             45+
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
@@ -524,8 +524,8 @@
                         </div>
                     </div>
                     <div
-                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#C85A32]/40 transition-all transform hover:-translate-y-1 shadow-sm">
-                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#C85A32]">
+                        class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
+                        <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
                             120+
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
@@ -533,7 +533,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-12 border-t border-[#D4A373]/20 space-y-8" id="team">
+                <div class="pt-12 border-t border-[#0BA20B]/20 space-y-8" id="team">
                     <div class="text-center space-y-2">
                         <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
                             Équipe Dirigeante &amp; Maîtres-Artisans
@@ -545,22 +545,22 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         @foreach($equipes as $equipe)
                             <div
-                                class="bg-white rounded-none p-6 border border-[#D4A373]/20 text-center space-y-4 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                                class="bg-white rounded-none p-6 border border-[#0BA20B]/20 text-center space-y-4 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
                                 @if($equipe->photo)
                                     <img alt="{{ $equipe->nom }} {{ $equipe->prenom }}"
-                                        class="w-24 h-24 rounded-none mx-auto object-cover ring-2 ring-[#D4A373]/40 group-hover:ring-[#C85A32] transition-all duration-300"
+                                        class="w-24 h-24 rounded-none mx-auto object-cover ring-2 ring-[#0BA20B]/40 group-hover:ring-[#0BA20B] transition-all duration-300"
                                         referrerpolicy="no-referrer" src="{{ asset('storage/' . $equipe->photo) }}" />
                                 @else
                                     <img alt="{{ $equipe->nom }} {{ $equipe->prenom }}"
-                                        class="w-24 h-24 rounded-none mx-auto object-cover ring-2 ring-[#D4A373]/40 group-hover:ring-[#C85A32] transition-all duration-300"
+                                        class="w-24 h-24 rounded-none mx-auto object-cover ring-2 ring-[#0BA20B]/40 group-hover:ring-[#0BA20B] transition-all duration-300"
                                         referrerpolicy="no-referrer"
                                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;q=80&amp;w=300" />
                                 @endif
                                 <div class="space-y-2">
-                                    <h4 class="font-bold text-base text-[#2C221E] group-hover:text-[#C85A32] transition-colors">
+                                    <h4 class="font-bold text-base text-[#2C221E] group-hover:text-[#0BA20B] transition-colors">
                                         {{ $equipe->nom }} {{ $equipe->prenom }}
                                     </h4>
-                                    <p class="text-xs text-[#C85A32] font-medium uppercase tracking-wide">
+                                    <p class="text-xs text-[#0BA20B] font-medium uppercase tracking-wide">
                                         {{ $equipe->fonction }}
                                     </p>
                                     @if($equipe->biographie)
@@ -579,7 +579,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest shadow-sm">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest shadow-sm">
                         <svg aria-hidden="true" class="lucide lucide-tree-pine w-3.5 h-3.5" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -603,9 +603,9 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div
-                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#D4A373]/30 space-y-3 relative group hover:border-[#C85A32] transition-colors shadow-sm">
+                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#0BA20B]/30 space-y-3 relative group hover:border-[#0BA20B] transition-colors shadow-sm">
                         <div
-                            class="text-2xl font-bold font-serif-title text-[#C85A32] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
+                            class="text-2xl font-bold font-serif-title text-[#0BA20B] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
                             01
                         </div>
                         <h4 class="font-bold text-base text-[#2C221E]">
@@ -617,9 +617,9 @@
                         </p>
                     </div>
                     <div
-                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#D4A373]/30 space-y-3 relative group hover:border-[#C85A32] transition-colors shadow-sm">
+                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#0BA20B]/30 space-y-3 relative group hover:border-[#0BA20B] transition-colors shadow-sm">
                         <div
-                            class="text-2xl font-bold font-serif-title text-[#C85A32] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
+                            class="text-2xl font-bold font-serif-title text-[#0BA20B] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
                             02
                         </div>
                         <h4 class="font-bold text-base text-[#2C221E]">
@@ -631,9 +631,9 @@
                         </p>
                     </div>
                     <div
-                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#D4A373]/30 space-y-3 relative group hover:border-[#C85A32] transition-colors shadow-sm">
+                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#0BA20B]/30 space-y-3 relative group hover:border-[#0BA20B] transition-colors shadow-sm">
                         <div
-                            class="text-2xl font-bold font-serif-title text-[#C85A32] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
+                            class="text-2xl font-bold font-serif-title text-[#0BA20B] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
                             03
                         </div>
                         <h4 class="font-bold text-base text-[#2C221E]">
@@ -645,9 +645,9 @@
                         </p>
                     </div>
                     <div
-                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#D4A373]/30 space-y-3 relative group hover:border-[#C85A32] transition-colors shadow-sm">
+                        class="bg-[#FAF7F2] rounded-none p-6 border border-[#0BA20B]/30 space-y-3 relative group hover:border-[#0BA20B] transition-colors shadow-sm">
                         <div
-                            class="text-2xl font-bold font-serif-title text-[#C85A32] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
+                            class="text-2xl font-bold font-serif-title text-[#0BA20B] bg-[#F4EFE6] w-10 h-10 rounded-none flex items-center justify-center">
                             04
                         </div>
                         <h4 class="font-bold text-base text-[#2C221E]">
@@ -660,10 +660,10 @@
                     </div>
                 </div>
                 <div
-                    class="bg-[#1E1613] text-[#FAF7F2] rounded-none overflow-hidden shadow-2xl border border-[#D4A373]/30 grid grid-cols-1 lg:grid-cols-12">
+                    class="bg-[#1E1613] text-[#FAF7F2] rounded-none overflow-hidden shadow-2xl border border-[#0BA20B]/30 grid grid-cols-1 lg:grid-cols-12">
                     <div class="lg:col-span-7 p-8 sm:p-12 space-y-6 flex flex-col justify-center">
                         <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-[#C85A32]/30 border border-[#C85A32]/50 text-[#D4A373] text-xs font-bold uppercase">
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-[#0BA20B]/30 border border-[#0BA20B]/50 text-[#0BA20B] text-xs font-bold uppercase">
                             <svg aria-hidden="true" class="lucide lucide-sparkles w-3.5 h-3.5" fill="none" height="24"
                                 stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -691,7 +691,7 @@
                         </p>
                         <div class="grid grid-cols-2 gap-4 text-xs text-[#E6DCD3] pt-2">
                             <div class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#D4A373]" fill="none"
+                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#0BA20B]" fill="none"
                                     height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20 6 9 17l-5-5">
@@ -702,7 +702,7 @@
                                 </span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#D4A373]" fill="none"
+                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#0BA20B]" fill="none"
                                     height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20 6 9 17l-5-5">
@@ -713,7 +713,7 @@
                                 </span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#D4A373]" fill="none"
+                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#0BA20B]" fill="none"
                                     height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20 6 9 17l-5-5">
@@ -724,7 +724,7 @@
                                 </span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#D4A373]" fill="none"
+                                <svg aria-hidden="true" class="lucide lucide-check w-4 h-4 text-[#0BA20B]" fill="none"
                                     height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20 6 9 17l-5-5">
@@ -736,7 +736,7 @@
                             </div>
                         </div>
                         <div class="pt-4 flex flex-wrap gap-4">
-                            <a class="px-6 py-3 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-xs shadow-lg transition-colors inline-flex items-center gap-2"
+                            <a class="px-6 py-3 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs shadow-lg transition-colors inline-flex items-center gap-2"
                                 href="#courses">
                                 <span>
                                     S'inscrire à l'Atelier de Tissage
@@ -762,7 +762,7 @@
                 </div>
                 <div class="space-y-8">
                     <div
-                        class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#D4A373]/30 pb-4">
+                        class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#0BA20B]/30 pb-4">
                         <div>
                             <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
                                 Galerie des Créations Artisanales
@@ -773,26 +773,26 @@
                         </div>
                         <div class="flex flex-wrap gap-2">
                             <button
-                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#C85A32] text-white shadow-sm">
+                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#0BA20B] text-white shadow-sm">
                                 Tous
                             </button>
                             <button
-                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30">
+                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30">
                                 Luminaires
                             </button>
                             <button
-                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30">
+                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30">
                                 Décoration
                             </button>
                             <button
-                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30">
+                                class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30">
                                 Sacs &amp; Accessoires
                             </button>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div
-                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#D4A373]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#0BA20B]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                             <div>
                                 <div class="relative h-48 overflow-hidden">
                                     <img alt="Suspension Lumineuse en Raphia Tissé à la Main"
@@ -800,7 +800,7 @@
                                         referrerpolicy="no-referrer"
                                         src="/assets/raphia_artisanal_crafts_1785764982514-DDF_8lz7.jpg" />
                                     <span
-                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#D4A373] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
+                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#0BA20B] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
                                         Luminaires
                                     </span>
                                 </div>
@@ -812,7 +812,7 @@
                                         Une pièce maîtresse de décoration apportant une lumière douce, tamisée et
                                         chaleureuse. Tissage fin à motifs losanges traditionnels.
                                     </p>
-                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#D4A373]/20">
+                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#0BA20B]/20">
                                         <p>
                                             <strong>
                                                 Matière:
@@ -828,12 +828,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#D4A373]/10 mt-2">
-                                <span class="font-bold font-serif-title text-lg text-[#C85A32]">
+                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#0BA20B]/10 mt-2">
+                                <span class="font-bold font-serif-title text-lg text-[#0BA20B]">
                                     75 €
                                 </span>
                                 <button
-                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#C85A32] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
+                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#0BA20B] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
                                     <svg aria-hidden="true" class="lucide lucide-shopping-bag w-3.5 h-3.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -852,7 +852,7 @@
                             </div>
                         </div>
                         <div
-                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#D4A373]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#0BA20B]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                             <div>
                                 <div class="relative h-48 overflow-hidden">
                                     <img alt="Panier Cérémoniel &amp; Tenture Murale Organique"
@@ -860,7 +860,7 @@
                                         referrerpolicy="no-referrer"
                                         src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
                                     <span
-                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#D4A373] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
+                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#0BA20B] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
                                         Décoration
                                     </span>
                                 </div>
@@ -872,7 +872,7 @@
                                         Objet mural décoratif inspiré des motifs sacrés du village. Teinture naturelle
                                         écologique issue de plantes locales.
                                     </p>
-                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#D4A373]/20">
+                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#0BA20B]/20">
                                         <p>
                                             <strong>
                                                 Matière:
@@ -888,12 +888,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#D4A373]/10 mt-2">
-                                <span class="font-bold font-serif-title text-lg text-[#C85A32]">
+                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#0BA20B]/10 mt-2">
+                                <span class="font-bold font-serif-title text-lg text-[#0BA20B]">
                                     55 €
                                 </span>
                                 <button
-                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#C85A32] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
+                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#0BA20B] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
                                     <svg aria-hidden="true" class="lucide lucide-shopping-bag w-3.5 h-3.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -912,7 +912,7 @@
                             </div>
                         </div>
                         <div
-                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#D4A373]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#0BA20B]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                             <div>
                                 <div class="relative h-48 overflow-hidden">
                                     <img alt='Sac Cabas Artisanal "Elegance Raphia"'
@@ -920,7 +920,7 @@
                                         referrerpolicy="no-referrer"
                                         src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
                                     <span
-                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#D4A373] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
+                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#0BA20B] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
                                         Sacs &amp; Accessoires
                                     </span>
                                 </div>
@@ -932,7 +932,7 @@
                                         Cabas robuste, léger et élégant, idéal pour l’été ou la ville. Résistant à l’eau et
                                         ultra-durable.
                                     </p>
-                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#D4A373]/20">
+                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#0BA20B]/20">
                                         <p>
                                             <strong>
                                                 Matière:
@@ -948,12 +948,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#D4A373]/10 mt-2">
-                                <span class="font-bold font-serif-title text-lg text-[#C85A32]">
+                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#0BA20B]/10 mt-2">
+                                <span class="font-bold font-serif-title text-lg text-[#0BA20B]">
                                     48 €
                                 </span>
                                 <button
-                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#C85A32] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
+                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#0BA20B] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
                                     <svg aria-hidden="true" class="lucide lucide-shopping-bag w-3.5 h-3.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -972,7 +972,7 @@
                             </div>
                         </div>
                         <div
-                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#D4A373]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#0BA20B]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                             <div>
                                 <div class="relative h-48 overflow-hidden">
                                     <img alt="Ensemble de Tapis de Table &amp; Dessous de Verres"
@@ -980,7 +980,7 @@
                                         referrerpolicy="no-referrer"
                                         src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&amp;fit=crop&amp;q=80&amp;w=800" />
                                     <span
-                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#D4A373] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
+                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#0BA20B] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm">
                                         Décoration
                                     </span>
                                 </div>
@@ -992,7 +992,7 @@
                                         Set de 6 sets de table élégants qui apportent la richesse des matières naturelles à
                                         votre table.
                                     </p>
-                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#D4A373]/20">
+                                    <div class="text-[11px] text-[#8C766B] space-y-1 pt-2 border-t border-[#0BA20B]/20">
                                         <p>
                                             <strong>
                                                 Matière:
@@ -1008,12 +1008,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#D4A373]/10 mt-2">
-                                <span class="font-bold font-serif-title text-lg text-[#C85A32]">
+                            <div class="p-5 pt-0 flex items-center justify-between border-t border-[#0BA20B]/10 mt-2">
+                                <span class="font-bold font-serif-title text-lg text-[#0BA20B]">
                                     35 €
                                 </span>
                                 <button
-                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#C85A32] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
+                                    class="px-3 py-1.5 rounded-none bg-[#2C221E] hover:bg-[#0BA20B] text-white text-xs font-bold transition-colors flex items-center gap-1.5">
                                     <svg aria-hidden="true" class="lucide lucide-shopping-bag w-3.5 h-3.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1040,7 +1040,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest">
                         <svg aria-hidden="true" class="lucide lucide-radio w-3.5 h-3.5 animate-pulse" fill="none"
                             height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1068,7 +1068,7 @@
                     </p>
                 </div>
                 <div
-                    class="bg-[#1E1613] rounded-none overflow-hidden shadow-2xl border border-[#D4A373]/40 grid grid-cols-1 lg:grid-cols-12 text-[#FAF7F2]">
+                    class="bg-[#1E1613] rounded-none overflow-hidden shadow-2xl border border-[#0BA20B]/40 grid grid-cols-1 lg:grid-cols-12 text-[#FAF7F2]">
                     <div class="lg:col-span-5 relative min-h-[350px]">
                         <img alt="Samuel Nguema" class="w-full h-full object-cover" referrerpolicy="no-referrer"
                             src="/assets/young_musician_talent_1785764994375-Cmnv-yWc.jpg" />
@@ -1078,7 +1078,7 @@
                             class="absolute bottom-6 left-6 right-6 glass-dark p-4 rounded-none border border-white/20 space-y-3">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-2">
-                                    <svg aria-hidden="true" class="lucide lucide-disc w-5 h-5 text-[#D4A373]" fill="none"
+                                    <svg aria-hidden="true" class="lucide lucide-disc w-5 h-5 text-[#0BA20B]" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10">
@@ -1087,7 +1087,7 @@
                                         </circle>
                                     </svg>
                                     <div>
-                                        <span class="text-[10px] uppercase font-bold text-[#D4A373]">
+                                        <span class="text-[10px] uppercase font-bold text-[#0BA20B]">
                                             Extrait Audio Enregistré
                                         </span>
                                         <h5 class="text-xs font-bold text-white line-clamp-1">
@@ -1096,7 +1096,7 @@
                                     </div>
                                 </div>
                                 <button aria-label="Play sample"
-                                    class="w-10 h-10 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white flex items-center justify-center shadow-lg transition-transform hover:scale-105">
+                                    class="w-10 h-10 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white flex items-center justify-center shadow-lg transition-transform hover:scale-105">
                                     <svg aria-hidden="true" class="lucide lucide-play w-5 h-5 ml-0.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1174,7 +1174,7 @@
                         <div class="space-y-4">
                             <div class="flex items-center justify-between">
                                 <span
-                                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-none bg-[#C85A32]/20 border border-[#C85A32]/40 text-[#D4A373] text-xs font-bold uppercase">
+                                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-none bg-[#0BA20B]/20 border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase">
                                     <svg aria-hidden="true" class="lucide lucide-sparkles w-3.5 h-3.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1199,7 +1199,7 @@
                             <div>
                                 <h3 class="font-serif-title text-3xl sm:text-4xl font-bold text-white">
                                     Samuel Nguema
-                                    <span class="text-[#D4A373] font-normal italic">
+                                    <span class="text-[#0BA20B] font-normal italic">
                                         (Sam Kora)
                                     </span>
                                 </h3>
@@ -1210,13 +1210,13 @@
                                 </p>
                             </div>
                             <div class="space-y-2 pt-2">
-                                <h4 class="text-xs font-bold uppercase text-[#D4A373] tracking-wider">
+                                <h4 class="text-xs font-bold uppercase text-[#0BA20B] tracking-wider">
                                     Réalisations &amp; Parcours :
                                 </h4>
                                 <ul class="space-y-1.5 text-xs text-white/90 font-sans">
                                     <li class="flex items-center gap-2">
                                         <svg aria-hidden="true"
-                                            class="lucide lucide-award w-3.5 h-3.5 text-[#C85A32] shrink-0" fill="none"
+                                            class="lucide lucide-award w-3.5 h-3.5 text-[#0BA20B] shrink-0" fill="none"
                                             height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" viewbox="0 0 24 24" width="24"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -1232,7 +1232,7 @@
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg aria-hidden="true"
-                                            class="lucide lucide-award w-3.5 h-3.5 text-[#C85A32] shrink-0" fill="none"
+                                            class="lucide lucide-award w-3.5 h-3.5 text-[#0BA20B] shrink-0" fill="none"
                                             height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" viewbox="0 0 24 24" width="24"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -1248,7 +1248,7 @@
                                     </li>
                                     <li class="flex items-center gap-2">
                                         <svg aria-hidden="true"
-                                            class="lucide lucide-award w-3.5 h-3.5 text-[#C85A32] shrink-0" fill="none"
+                                            class="lucide lucide-award w-3.5 h-3.5 text-[#0BA20B] shrink-0" fill="none"
                                             height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" viewbox="0 0 24 24" width="24"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -1268,12 +1268,12 @@
                         <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
                             <div class="text-xs text-white/70">
                                 Suivre :
-                                <span class="text-[#D4A373] font-semibold">
+                                <span class="text-[#0BA20B] font-semibold">
                                     @samkora_music
                                 </span>
                             </div>
                             <button onclick="document.getElementById('candidature-modal').classList.remove('hidden')"
-                                class="px-5 py-2.5 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-xs shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
+                                class="px-5 py-2.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
                                 <svg aria-hidden="true" class="lucide lucide-user-plus w-4 h-4" fill="none" height="24"
                                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1300,15 +1300,15 @@
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         @forelse($talents as $talent)
                             <div
-                                class="cursor-pointer bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl {{ $loop->first ? 'border-[#C85A32] ring-2 ring-[#C85A32]/20 shadow-md' : 'border-[#D4A373]/30 hover:border-[#D4A373]' }}">
+                                class="cursor-pointer bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl {{ $loop->first ? 'border-[#0BA20B] ring-2 ring-[#0BA20B]/20 shadow-md' : 'border-[#0BA20B]/30 hover:border-[#0BA20B]' }}">
                                 <div class="flex items-center gap-4">
                                     @if($talent->photo)
                                         <img alt="{{ trim($talent->prenom . ' ' . $talent->nom) }}"
-                                            class="w-16 h-16 rounded-none object-cover ring-2 ring-[#D4A373]/40"
+                                            class="w-16 h-16 rounded-none object-cover ring-2 ring-[#0BA20B]/40"
                                             referrerpolicy="no-referrer" src="{{ asset('storage/' . $talent->photo) }}" />
                                     @else
                                         <div
-                                            class="w-16 h-16 rounded-none bg-[#F4EFE6] flex items-center justify-center text-[#C85A32] font-bold text-lg ring-2 ring-[#D4A373]/40">
+                                            class="w-16 h-16 rounded-none bg-[#F4EFE6] flex items-center justify-center text-[#0BA20B] font-bold text-lg ring-2 ring-[#0BA20B]/40">
                                             {{ strtoupper(substr($talent->prenom, 0, 1)) }}{{ strtoupper(substr($talent->nom, 0, 1)) }}
                                         </div>
                                     @endif
@@ -1316,7 +1316,7 @@
                                         <h4 class="font-bold text-base text-[#2C221E]">
                                             {{ $talent->prenom }} {{ $talent->nom }}
                                         </h4>
-                                        <p class="text-xs text-[#C85A32] font-semibold">
+                                        <p class="text-xs text-[#0BA20B] font-semibold">
                                             {{ $talent->categorie ? $talent->categorie->libelle : 'Talent émergent' }}
                                         </p>
                                         <span class="text-[10px] text-[#8C766B]">
@@ -1343,20 +1343,20 @@
                                     <div class="flex flex-wrap gap-2 pt-1">
                                         @if($talent->youtube)
                                             <a href="{{ $talent->youtube }}" target="_blank" rel="noopener noreferrer"
-                                                class="text-[10px] font-semibold text-[#C85A32] hover:underline">
+                                                class="text-[10px] font-semibold text-[#0BA20B] hover:underline">
                                                 YouTube
                                             </a>
                                         @endif
                                         @if($talent->facebook)
                                             <a href="{{ $talent->facebook }}" target="_blank" rel="noopener noreferrer"
-                                                class="text-[10px] font-semibold text-[#C85A32] hover:underline">
+                                                class="text-[10px] font-semibold text-[#0BA20B] hover:underline">
                                                 Facebook
                                             </a>
                                         @endif
                                     </div>
                                 @endif
                                 <div
-                                    class="pt-2 border-t border-[#D4A373]/20 flex items-center justify-between text-xs text-[#C85A32] font-bold">
+                                    class="pt-2 border-t border-[#0BA20B]/20 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
                                     <span class="flex items-center gap-1">
                                         <svg aria-hidden="true" class="lucide lucide-music w-3.5 h-3.5" fill="none" height="24"
                                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -1374,14 +1374,14 @@
                             </div>
                         @empty
                             <div
-                                class="sm:col-span-3 rounded-none border border-dashed border-[#D4A373]/40 bg-[#FAF7F2] p-8 text-center text-sm text-[#6B574F]">
+                                class="sm:col-span-3 rounded-none border border-dashed border-[#0BA20B]/40 bg-[#FAF7F2] p-8 text-center text-sm text-[#6B574F]">
                                 Aucun talent n’est encore publié.
                             </div>
                         @endforelse
                     </div>
                 </div>
                 <div
-                    class="p-8 rounded-none bg-gradient-to-r from-[#F4EFE6] to-[#FAF7F2] border border-[#D4A373]/40 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    class="p-8 rounded-none bg-gradient-to-r from-[#F4EFE6] to-[#FAF7F2] border border-[#0BA20B]/40 flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div class="space-y-2 text-center sm:text-left">
                         <h4 class="font-serif-title text-xl font-bold text-[#2C221E]">
                             Vous êtes un jeune artiste ou créateur de 15 à 25 ans ?
@@ -1392,7 +1392,7 @@
                         </p>
                     </div>
                     <button onclick="document.getElementById('candidature-modal').classList.remove('hidden')"
-                        class="px-6 py-3 rounded-none bg-[#2C221E] hover:bg-[#C85A32] text-white font-bold text-xs whitespace-nowrap transition-colors flex items-center gap-2 shadow">
+                        class="px-6 py-3 rounded-none bg-[#2C221E] hover:bg-[#0BA20B] text-white font-bold text-xs whitespace-nowrap transition-colors flex items-center gap-2 shadow">
                         <svg aria-hidden="true" class="lucide lucide-send w-4 h-4" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1414,7 +1414,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest shadow-sm">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest shadow-sm">
                         <svg aria-hidden="true" class="lucide lucide-calendar w-3.5 h-3.5" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1442,19 +1442,19 @@
 
                 <div class="space-y-6">
                     <div
-                        class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#D4A373]/30 pb-4">
+                        class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#0BA20B]/30 pb-4">
                         <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
                             Prochains Événements à venir
                         </h3>
                         <div class="flex flex-wrap gap-2">
                             <button @click="activeCategory = 'Tous'"
-                                :class="activeCategory === 'Tous' ? 'bg-[#C85A32] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                                :class="activeCategory === 'Tous' ? 'bg-[#0BA20B] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                                 class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all shadow-sm">
                                 Tous
                             </button>
                             @foreach ($categoriesEvenements as $categorie)
                                 <button @click="activeCategory = '{{ $categorie->libelle }}'"
-                                    :class="activeCategory === '{{ $categorie->libelle }}' ? 'bg-[#C85A32] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                                    :class="activeCategory === '{{ $categorie->libelle }}' ? 'bg-[#0BA20B] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                                     class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all shadow-sm">
                                     {{ $categorie->libelle }}
                                 </button>
@@ -1483,7 +1483,7 @@
                                 x-transition:enter="transition ease-out duration-300"
                                 x-transition:enter-start="opacity-0 transform scale-95"
                                 x-transition:enter-end="opacity-100 transform scale-100"
-                                class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#D4A373]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                                class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#0BA20B]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                                 <div>
                                     <div class="relative h-44 overflow-hidden bg-slate-900 cursor-pointer"
                                         data-gallery="{{ json_encode($galleryData) }}" data-title="{{ $evenement->titre }}"
@@ -1496,12 +1496,12 @@
                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             referrerpolicy="no-referrer" src="{{ $imgPath }}" />
                                         <span
-                                            class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#D4A373] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm uppercase">
+                                            class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#0BA20B] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm uppercase">
                                             {{ $evenement->categorie ? $evenement->categorie->libelle : 'Événement' }}
                                         </span>
                                     </div>
                                     <div class="p-5 space-y-3">
-                                        <div class="flex items-center gap-2 text-xs text-[#C85A32] font-semibold">
+                                        <div class="flex items-center gap-2 text-xs text-[#0BA20B] font-semibold">
                                             <svg aria-hidden="true" class="lucide lucide-calendar w-3.5 h-3.5" fill="none"
                                                 height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2" viewbox="0 0 24 24" width="24"
@@ -1525,9 +1525,9 @@
                                         <p class="text-xs text-[#6B574F] line-clamp-2">
                                             {{ strip_tags($evenement->description) }}
                                         </p>
-                                        <div class="space-y-1 text-xs text-[#8C766B] pt-2 border-t border-[#D4A373]/20">
+                                        <div class="space-y-1 text-xs text-[#8C766B] pt-2 border-t border-[#0BA20B]/20">
                                             <p class="flex items-center gap-1.5">
-                                                <svg aria-hidden="true" class="lucide lucide-map-pin w-3.5 h-3.5 text-[#D4A373]"
+                                                <svg aria-hidden="true" class="lucide lucide-map-pin w-3.5 h-3.5 text-[#0BA20B]"
                                                     fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -1542,7 +1542,7 @@
                                                 </span>
                                             </p>
                                             <p class="flex items-center gap-1.5">
-                                                <svg aria-hidden="true" class="lucide lucide-clock w-3.5 h-3.5 text-[#D4A373]"
+                                                <svg aria-hidden="true" class="lucide lucide-clock w-3.5 h-3.5 text-[#0BA20B]"
                                                     fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -1558,12 +1558,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="p-5 pt-0 flex items-center justify-between border-t border-[#D4A373]/10 mt-2">
+                                <div class="p-5 pt-0 flex items-center justify-between border-t border-[#0BA20B]/10 mt-2">
                                     <span class="font-bold text-xs text-[#2C221E]">
                                         Plus de détails
                                     </span>
                                     <a href="{{ route('evenements.show', $evenement->id) }}"
-                                        class="px-3.5 py-1.5 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white text-xs font-bold transition-colors flex items-center gap-1">
+                                        class="px-3.5 py-1.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white text-xs font-bold transition-colors flex items-center gap-1">
                                         <span>
                                             Consulter
                                         </span>
@@ -1588,25 +1588,25 @@
                         class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
                         x-cloak @keydown.escape.window="activeGallery = null">
 
-                        <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#D4A373]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
+                        <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
                             @click.away="activeGallery = null">
 
                             <div
-                                class="px-6 py-4 border-b border-[#D4A373]/20 flex items-center justify-between bg-[#1E1613]">
+                                class="px-6 py-4 border-b border-[#0BA20B]/20 flex items-center justify-between bg-[#1E1613]">
                                 <div>
                                     <h3 class="text-sm font-serif-title font-bold text-[#FAF7F2] uppercase tracking-wider"
                                         x-text="showTitle"></h3>
-                                    <p class="text-[10px] text-[#D4A373] uppercase tracking-widest mt-0.5">
+                                    <p class="text-[10px] text-[#0BA20B] uppercase tracking-widest mt-0.5">
                                         Image <span x-text="currentImageIndex + 1"></span> sur <span
                                             x-text="activeGallery ? activeGallery.length : 0"></span>
                                         <template
                                             x-if="activeGallery && activeGallery[currentImageIndex] && activeGallery[currentImageIndex].is_principal">
-                                            <span class="ml-2 text-[#C85A32] font-bold">• Image Principale</span>
+                                            <span class="ml-2 text-[#0BA20B] font-bold">• Image Principale</span>
                                         </template>
                                     </p>
                                 </div>
                                 <button @click="activeGallery = null"
-                                    class="text-[#D4A373] hover:text-[#C85A32] p-1 transition-colors"
+                                    class="text-[#0BA20B] hover:text-[#0BA20B] p-1 transition-colors"
                                     title="Fermer (Echap)">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1625,7 +1625,7 @@
                                     <div>
                                         <button
                                             @click="currentImageIndex = (currentImageIndex === 0) ? activeGallery.length - 1 : currentImageIndex - 1"
-                                            class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#C85A32] text-[#FAF7F2] p-3 transition-colors border border-[#D4A373]/30 shadow-xl rounded-none">
+                                            class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                                     d="M15 19l-7-7 7-7" />
@@ -1633,7 +1633,7 @@
                                         </button>
                                         <button
                                             @click="currentImageIndex = (currentImageIndex === activeGallery.length - 1) ? 0 : currentImageIndex + 1"
-                                            class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#C85A32] text-[#FAF7F2] p-3 transition-colors border border-[#D4A373]/30 shadow-xl rounded-none">
+                                            class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                                     d="M9 5l7 7-7 7" />
@@ -1645,11 +1645,11 @@
 
                             <template x-if="activeGallery && activeGallery.length > 1">
                                 <div
-                                    class="px-6 py-4 bg-[#1E1613] border-t border-[#D4A373]/20 flex items-center justify-center gap-3 overflow-x-auto">
+                                    class="px-6 py-4 bg-[#1E1613] border-t border-[#0BA20B]/20 flex items-center justify-center gap-3 overflow-x-auto">
                                     <template x-for="(img, idx) in activeGallery" :key="idx">
                                         <button @click="currentImageIndex = idx"
                                             class="w-14 h-14 border-2 overflow-hidden transition-all shrink-0 rounded-none"
-                                            :class="currentImageIndex === idx ? 'border-[#C85A32] scale-105 opacity-100' : 'border-[#D4A373]/30 opacity-50 hover:opacity-100'">
+                                            :class="currentImageIndex === idx ? 'border-[#0BA20B] scale-105 opacity-100' : 'border-[#0BA20B]/30 opacity-50 hover:opacity-100'">
                                             <img :src="img.url" class="w-full h-full object-cover">
                                         </button>
                                     </template>
@@ -1822,7 +1822,7 @@
 
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest">
                         <svg aria-hidden="true" class="lucide lucide-graduation-cap w-3.5 h-3.5" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -1845,10 +1845,10 @@
 
                 {{-- Filters --}}
                 <div
-                    class="bg-[#F4EFE6] p-4 rounded-none border border-[#D4A373]/30 flex flex-col md:flex-row items-center justify-between gap-4">
+                    class="bg-[#F4EFE6] p-4 rounded-none border border-[#0BA20B]/30 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
                         <span class="text-xs font-bold text-[#2C221E] uppercase flex items-center gap-1 shrink-0">
-                            <svg aria-hidden="true" class="lucide lucide-funnel w-3.5 h-3.5 text-[#C85A32]" fill="none"
+                            <svg aria-hidden="true" class="lucide lucide-funnel w-3.5 h-3.5 text-[#0BA20B]" fill="none"
                                 height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -1858,13 +1858,13 @@
                             Catégories :
                         </span>
                         <button @click="activeCategory = 'Tous'"
-                            :class="activeCategory === 'Tous' ? 'bg-[#C85A32] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                            :class="activeCategory === 'Tous' ? 'bg-[#0BA20B] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                             class="px-3 py-1.5 rounded-none text-xs font-semibold capitalize whitespace-nowrap transition-all shadow-sm">
                             Tous
                         </button>
                         @foreach($categoriesCours ?? [] as $cat)
                             <button @click="activeCategory = '{{ addslashes($cat->nom) }}'"
-                                :class="activeCategory === '{{ addslashes($cat->nom) }}' ? 'bg-[#C85A32] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                                :class="activeCategory === '{{ addslashes($cat->nom) }}' ? 'bg-[#0BA20B] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                                 class="px-3 py-1.5 rounded-none text-xs font-semibold capitalize whitespace-nowrap transition-all shadow-sm">
                                 {{ $cat->nom }}
                             </button>
@@ -1873,13 +1873,13 @@
                     <div class="flex items-center gap-2 shrink-0 overflow-x-auto">
                         <span class="text-xs font-bold text-[#2C221E] uppercase">Modes :</span>
                         <button @click="activeMode = 'Tous'"
-                            :class="activeMode === 'Tous' ? 'bg-[#2C221E] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                            :class="activeMode === 'Tous' ? 'bg-[#2C221E] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                             class="px-3 py-1.5 rounded-none text-xs font-semibold transition-all shadow-sm">
                             Tous
                         </button>
                         @foreach($modes ?? [] as $m)
                             <button @click="activeMode = '{{ addslashes($m->libelle) }}'"
-                                :class="activeMode === '{{ addslashes($m->libelle) }}' ? 'bg-[#2C221E] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                                :class="activeMode === '{{ addslashes($m->libelle) }}' ? 'bg-[#2C221E] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                                 class="px-3 py-1.5 rounded-none text-xs font-semibold transition-all shadow-sm">
                                 {{ $m->libelle }}
                             </button>
@@ -1916,7 +1916,7 @@
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 transform scale-95"
                             x-transition:enter-end="opacity-100 transform scale-100"
-                            class="bg-white rounded-none overflow-hidden border border-[#D4A373]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                            class="bg-white rounded-none overflow-hidden border border-[#0BA20B]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                             <div>
                                 <div class="relative h-52 overflow-hidden bg-slate-900">
                                     <img alt="{{ $item->titre }}"
@@ -1924,11 +1924,11 @@
                                         referrerpolicy="no-referrer" src="{{ $cardImg }}" />
                                     <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
                                         <span
-                                            class="bg-[#1E1613]/85 text-[#D4A373] text-[10px] font-bold px-2.5 py-1 rounded-none backdrop-blur-sm uppercase">
+                                            class="bg-[#1E1613]/85 text-[#0BA20B] text-[10px] font-bold px-2.5 py-1 rounded-none backdrop-blur-sm uppercase">
                                             {{ $catName }}
                                         </span>
                                         <span
-                                            class="text-[10px] font-bold px-2.5 py-1 rounded-none text-white backdrop-blur-sm {{ Str::contains(strtolower($modeName), ['distanciel', 'ligne', 'visio']) ? 'bg-emerald-600' : 'bg-[#C85A32]' }}">
+                                            class="text-[10px] font-bold px-2.5 py-1 rounded-none text-white backdrop-blur-sm {{ Str::contains(strtolower($modeName), ['distanciel', 'ligne', 'visio']) ? 'bg-emerald-600' : 'bg-[#0BA20B]' }}">
                                             {{ $modeName }}
                                         </span>
                                     </div>
@@ -1941,16 +1941,16 @@
                                     </div>
                                 </div>
                                 <div class="p-6 space-y-4">
-                                    <div class="flex items-center gap-3 pb-3 border-b border-[#D4A373]/20">
+                                    <div class="flex items-center gap-3 pb-3 border-b border-[#0BA20B]/20">
                                         <div
-                                            class="w-10 h-10 bg-[#1E1613] text-[#D4A373] font-bold flex items-center justify-center text-xs uppercase border border-[#D4A373]/40 shrink-0">
+                                            class="w-10 h-10 bg-[#1E1613] text-[#0BA20B] font-bold flex items-center justify-center text-xs uppercase border border-[#0BA20B]/40 shrink-0">
                                             {{ strtoupper(substr($profName, 0, 2)) }}
                                         </div>
                                         <div>
                                             <h5 class="font-bold text-xs text-[#2C221E]">
                                                 {{ $profName }}
                                             </h5>
-                                            <span class="text-[10px] text-[#C85A32] font-semibold block">
+                                            <span class="text-[10px] text-[#0BA20B] font-semibold block">
                                                 Professeur / Formatrice
                                             </span>
                                         </div>
@@ -1961,9 +1961,9 @@
                                     <p class="text-xs text-[#6B574F] line-clamp-3 leading-relaxed">
                                         {{ $item->description ?? 'Cours pratique avec encadrement pédagogique personnalisé et transmission des savoirs.' }}
                                     </p>
-                                    <div class="space-y-2 text-xs text-[#8C766B] pt-2 border-t border-[#D4A373]/20">
+                                    <div class="space-y-2 text-xs text-[#8C766B] pt-2 border-t border-[#0BA20B]/20">
                                         <p class="flex items-center gap-2">
-                                            <svg aria-hidden="true" class="lucide lucide-tag w-3.5 h-3.5 text-[#D4A373]"
+                                            <svg aria-hidden="true" class="lucide lucide-tag w-3.5 h-3.5 text-[#0BA20B]"
                                                 fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1973,7 +1973,7 @@
                                             <span>Catégorie : <strong class="text-[#2C221E]">{{ $catName }}</strong></span>
                                         </p>
                                         <p class="flex items-center gap-2">
-                                            <svg aria-hidden="true" class="lucide lucide-monitor w-3.5 h-3.5 text-[#D4A373]"
+                                            <svg aria-hidden="true" class="lucide lucide-monitor w-3.5 h-3.5 text-[#0BA20B]"
                                                 fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1984,7 +1984,7 @@
                                             <span>Mode : <strong class="text-[#2C221E]">{{ $modeName }}</strong></span>
                                         </p>
                                         <p class="flex items-center gap-2">
-                                            <svg aria-hidden="true" class="lucide lucide-user-check w-3.5 h-3.5 text-[#D4A373]"
+                                            <svg aria-hidden="true" class="lucide lucide-user-check w-3.5 h-3.5 text-[#0BA20B]"
                                                 fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1997,17 +1997,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-6 pt-0 flex items-center justify-between border-t border-[#D4A373]/10 mt-2">
+                            <div class="p-6 pt-0 flex items-center justify-between border-t border-[#0BA20B]/10 mt-2">
                                 <div>
                                     <span class="text-[10px] uppercase text-[#8C766B] block font-semibold">Tarif</span>
-                                    <span class="font-bold font-serif-title text-lg text-[#C85A32]">
+                                    <span class="font-bold font-serif-title text-lg text-[#0BA20B]">
                                         {{ number_format($item->tarif, 0, ',', ' ') }} € <span
                                             class="text-[11px] font-sans font-normal text-[#6B574F]">/ séance</span>
                                     </span>
                                 </div>
                                 <button
                                     @click="openBookingModal({{ $item->id }}, '{{ addslashes($item->titre) }}', '{{ addslashes($profName) }}', '{{ addslashes($modeName) }}', '{{ number_format($item->tarif, 0, ',', ' ') }}')"
-                                    class="px-4 py-2 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white text-xs font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer">
+                                    class="px-4 py-2 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white text-xs font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer">
                                     <svg aria-hidden="true" class="lucide lucide-graduation-cap w-4 h-4" fill="none" height="24"
                                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2023,7 +2023,7 @@
                         </div>
                     @empty
                         <div
-                            class="col-span-3 text-center py-12 text-[#8C766B] bg-[#FAF7F2] border border-dashed border-[#D4A373]/40">
+                            class="col-span-3 text-center py-12 text-[#8C766B] bg-[#FAF7F2] border border-dashed border-[#0BA20B]/40">
                             <p class="text-sm font-semibold">Aucun cours n'est actuellement disponible dans le catalogue.</p>
                         </div>
                     @endforelse
@@ -2035,29 +2035,29 @@
                 class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1E1613]/70 backdrop-blur-sm" x-cloak
                 style="display:none;">
                 <div @click.away="showModal = false"
-                    class="bg-[#FAF7F2] w-full max-w-lg shadow-2xl border border-[#D4A373]/40 p-6 sm:p-8 relative">
+                    class="bg-[#FAF7F2] w-full max-w-lg shadow-2xl border border-[#0BA20B]/40 p-6 sm:p-8 relative">
 
-                    <div class="flex justify-between items-start border-b border-[#D4A373]/20 pb-4 mb-5">
+                    <div class="flex justify-between items-start border-b border-[#0BA20B]/20 pb-4 mb-5">
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-[#C85A32]">Réservation de cours</span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-[#0BA20B]">Réservation de cours</span>
                                 <span x-show="coursMode"
-                                    class="text-[9px] font-bold uppercase px-2 py-0.5 bg-[#1E1613] text-[#D4A373]"
+                                    class="text-[9px] font-bold uppercase px-2 py-0.5 bg-[#1E1613] text-[#0BA20B]"
                                     x-text="coursMode"></span>
                                 <span x-show="coursTarif"
-                                    class="text-[9px] font-bold uppercase px-2 py-0.5 bg-[#C85A32] text-white"
+                                    class="text-[9px] font-bold uppercase px-2 py-0.5 bg-[#0BA20B] text-white"
                                     x-text="coursTarif + ' € / séance'"></span>
                             </div>
                             <h3 class="font-serif-title font-bold text-xl text-[#2C221E] mt-0.5" x-text="coursTitre"></h3>
                             <p class="text-xs text-[#6B574F] mt-1" x-text="'Professeur : ' + profName"></p>
                         </div>
                         <button @click="showModal = false"
-                            class="text-[#2C221E] hover:text-[#C85A32] text-2xl font-bold leading-none cursor-pointer">&times;</button>
+                            class="text-[#2C221E] hover:text-[#0BA20B] text-2xl font-bold leading-none cursor-pointer">&times;</button>
                     </div>
 
                     {{-- Loader --}}
                     <div x-show="loading" class="py-8 text-center text-xs text-[#6B574F]">
-                        <svg class="animate-spin h-6 w-6 text-[#C85A32] mx-auto mb-2" fill="none" viewBox="0 0 24 24">
+                        <svg class="animate-spin h-6 w-6 text-[#0BA20B] mx-auto mb-2" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
                             </circle>
                             <path class="opacity-75" fill="currentColor"
@@ -2069,11 +2069,11 @@
 
                     <div x-show="!loading">
                         {{-- Section Disponibilités du professeur --}}
-                        <div class="mb-4 bg-[#F4EFE6] border border-[#D4A373]/30 p-3">
+                        <div class="mb-4 bg-[#F4EFE6] border border-[#0BA20B]/30 p-3">
                             <div class="flex items-center justify-between mb-2">
                                 <h4
                                     class="text-[10px] font-bold uppercase tracking-widest text-[#2C221E] flex items-center gap-1.5">
-                                    <svg class="w-3.5 h-3.5 text-[#C85A32]" fill="none" stroke="currentColor"
+                                    <svg class="w-3.5 h-3.5 text-[#0BA20B]" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -2081,7 +2081,7 @@
                                     Disponibilités du professeur :
                                 </h4>
                                 <span x-show="disponibilites.length > 0"
-                                    class="text-[9px] font-bold text-[#C85A32] bg-[#FAF7F2] border border-[#D4A373]/40 px-2 py-0.5"
+                                    class="text-[9px] font-bold text-[#0BA20B] bg-[#FAF7F2] border border-[#0BA20B]/40 px-2 py-0.5"
                                     x-text="disponibilites.length + ' créneau(x)'"></span>
                             </div>
                             <template x-if="disponibilites.length === 0">
@@ -2092,9 +2092,9 @@
                             {{-- Zone défilante exclusive aux disponibilités --}}
                             <div x-show="disponibilites.length > 0" class="space-y-2 max-h-40 overflow-y-auto pr-1">
                                 <template x-for="(slots, jour) in getGroupedDisponibilites()" :key="jour">
-                                    <div class="bg-white border border-[#D4A373]/30 p-2 shadow-sm">
+                                    <div class="bg-white border border-[#0BA20B]/30 p-2 shadow-sm">
                                         <div
-                                            class="text-[10px] font-bold text-[#C85A32] uppercase mb-1.5 flex items-center justify-between border-b border-[#D4A373]/20 pb-1">
+                                            class="text-[10px] font-bold text-[#0BA20B] uppercase mb-1.5 flex items-center justify-between border-b border-[#0BA20B]/20 pb-1">
                                             <div class="flex items-center gap-1.5">
                                                 <span class="w-2 h-2 bg-[#5EF527] rounded-full inline-block"></span>
                                                 <span
@@ -2106,12 +2106,12 @@
                                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                                             <template x-for="slot in slots" :key="slot.id">
                                                 <button type="button" @click="selectSlot(slot)"
-                                                    :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'bg-[#C85A32] text-white border-[#C85A32]' : 'bg-[#FAF7F2] hover:bg-[#F4EFE6] text-[#2C221E] border-[#D4A373]/30'"
+                                                    :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'bg-[#0BA20B] text-white border-[#0BA20B]' : 'bg-[#FAF7F2] hover:bg-[#F4EFE6] text-[#2C221E] border-[#0BA20B]/30'"
                                                     class="w-full flex items-center justify-between border px-2.5 py-1 text-[11px] font-bold transition cursor-pointer">
                                                     <span
                                                         x-text="slot.debut.substring(0,5) + ' - ' + slot.fin.substring(0,5)"></span>
                                                     <span class="text-[9px] font-bold uppercase"
-                                                        :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'text-white' : 'text-[#C85A32]'">✓
+                                                        :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'text-white' : 'text-[#0BA20B]'">✓
                                                         Choisir</span>
                                                 </button>
                                             </template>
@@ -2129,29 +2129,29 @@
 
                             <div>
                                 <label class="block text-[10px] font-bold uppercase tracking-widest text-[#2C221E] mb-1">
-                                    Date souhaitée <span class="text-[#C85A32]">*</span>
+                                    Date souhaitée <span class="text-[#0BA20B]">*</span>
                                 </label>
                                 <input type="date" name="date_reservation" required min="{{ date('Y-m-d') }}"
                                     x-model="dateReservation" @change="onDateChange($event)"
-                                    class="w-full px-3 py-2 bg-white border border-[#D4A373]/50 text-xs text-[#2C221E] focus:outline-none focus:border-[#C85A32]" />
+                                    class="w-full px-3 py-2 bg-white border border-[#0BA20B]/50 text-xs text-[#2C221E] focus:outline-none focus:border-[#0BA20B]" />
                             </div>
 
                             <div class="grid grid-cols-2 gap-3">
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-[#2C221E] mb-1">
-                                        Heure de début <span class="text-[#C85A32]">*</span>
+                                        Heure de début <span class="text-[#0BA20B]">*</span>
                                     </label>
                                     <input type="time" name="heure_debut" required x-model="heureDebut"
-                                        class="w-full px-3 py-2 bg-white border border-[#D4A373]/50 text-xs text-[#2C221E] focus:outline-none focus:border-[#C85A32]" />
+                                        class="w-full px-3 py-2 bg-white border border-[#0BA20B]/50 text-xs text-[#2C221E] focus:outline-none focus:border-[#0BA20B]" />
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] font-bold uppercase tracking-widest text-[#2C221E] mb-1">
-                                        Heure de fin <span class="text-[#C85A32]">*</span>
+                                        Heure de fin <span class="text-[#0BA20B]">*</span>
                                     </label>
                                     <input type="time" name="heure_fin" required x-model="heureFin"
-                                        class="w-full px-3 py-2 bg-white border border-[#D4A373]/50 text-xs text-[#2C221E] focus:outline-none focus:border-[#C85A32]" />
+                                        class="w-full px-3 py-2 bg-white border border-[#0BA20B]/50 text-xs text-[#2C221E] focus:outline-none focus:border-[#0BA20B]" />
                                 </div>
                             </div>
 
@@ -2160,13 +2160,13 @@
                                 <span x-text="errorMessage"></span>
                             </div>
 
-                            <div class="flex justify-end gap-3 pt-3 border-t border-[#D4A373]/20">
+                            <div class="flex justify-end gap-3 pt-3 border-t border-[#0BA20B]/20">
                                 <button type="button" @click="showModal = false"
                                     class="px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#6B574F] hover:text-[#2C221E] cursor-pointer">
                                     Annuler
                                 </button>
                                 <button type="submit" :disabled="disponibilites.length === 0"
-                                    class="px-5 py-2.5 bg-[#C85A32] hover:bg-[#A84223] disabled:opacity-50 text-white font-bold text-xs uppercase tracking-widest transition shadow-md cursor-pointer">
+                                    class="px-5 py-2.5 bg-[#0BA20B] hover:bg-[#087A08] disabled:opacity-50 text-white font-bold text-xs uppercase tracking-widest transition shadow-md cursor-pointer">
                                     Confirmer la réservation
                                 </button>
                             </div>
@@ -2181,7 +2181,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest shadow-sm">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest shadow-sm">
                         <svg aria-hidden="true" class="lucide lucide-image w-3.5 h-3.5" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2207,14 +2207,14 @@
                 <div class="flex justify-center gap-2 flex-wrap">
                     <button
                         @click="activeCategory = 'all'"
-                        :class="activeCategory === 'all' ? 'bg-[#C85A32] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                        :class="activeCategory === 'all' ? 'bg-[#0BA20B] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                         class="px-4 py-2 rounded-none text-xs font-semibold transition-all">
                         Tous
                     </button>
                     @foreach($categoriesGaleries as $cat)
                         <button
                             @click="activeCategory = '{{ $cat->slug }}'"
-                            :class="activeCategory === '{{ $cat->slug }}' ? 'bg-[#C85A32] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#D4A373]/30'"
+                            :class="activeCategory === '{{ $cat->slug }}' ? 'bg-[#0BA20B] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                             class="px-4 py-2 rounded-none text-xs font-semibold transition-all">
                             {{ $cat->libelle }}
                         </button>
@@ -2235,7 +2235,7 @@
                                 @if($isVideo)
                                     <video src="{{ $fichierUrl }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" muted loop playsinline poster=""></video>
                                     <div class="absolute inset-0 flex items-center justify-center z-10">
-                                        <div class="w-12 h-12 rounded-none bg-[#C85A32] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                        <div class="w-12 h-12 rounded-none bg-[#0BA20B] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                             <svg class="w-6 h-6 ml-1 fill-current" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
                                             </svg>
@@ -2249,7 +2249,7 @@
                             @else
                                 @if($isVideo)
                                     <div class="absolute inset-0 flex items-center justify-center z-10">
-                                        <div class="w-12 h-12 rounded-none bg-[#C85A32] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                        <div class="w-12 h-12 rounded-none bg-[#0BA20B] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                             <svg class="w-6 h-6 ml-1 fill-current" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
                                             </svg>
@@ -2257,7 +2257,7 @@
                                     </div>
                                 @else
                                     <div class="w-full h-full flex items-center justify-center bg-[#2C221E]">
-                                        <svg class="w-12 h-12 text-[#D4A373]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-12 h-12 text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                         </svg>
                                     </div>
@@ -2267,7 +2267,7 @@
                             </div>
                             @if($galerie->categorie)
                                 <div class="absolute top-4 left-4">
-                                    <span class="bg-[#1E1613]/80 text-[#D4A373] text-[10px] font-bold px-2.5 py-1 rounded-none backdrop-blur-sm border border-white/10 uppercase">
+                                    <span class="bg-[#1E1613]/80 text-[#0BA20B] text-[10px] font-bold px-2.5 py-1 rounded-none backdrop-blur-sm border border-white/10 uppercase">
                                         {{ $galerie->categorie->libelle }}
                                     </span>
                                 </div>
@@ -2276,7 +2276,7 @@
                                 <h4 class="font-serif-title text-sm font-bold leading-snug">
                                     {{ $galerie->titre }}
                                 </h4>
-                                <span class="text-[10px] text-[#D4A373] flex items-center gap-1 font-sans">
+                                <span class="text-[10px] text-[#0BA20B] flex items-center gap-1 font-sans">
                                     <svg aria-hidden="true" class="lucide lucide-zoom-in w-3 h-3" fill="none" height="24"
                                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2294,7 +2294,7 @@
                             </div>
                         </div>
                     @empty
-                        <div class="col-span-3 rounded-none border border-dashed border-[#D4A373]/40 bg-[#FAF7F2] p-8 text-center text-sm text-[#6B574F]">
+                        <div class="col-span-3 rounded-none border border-dashed border-[#0BA20B]/40 bg-[#FAF7F2] p-8 text-center text-sm text-[#6B574F]">
                             Aucun élément de galerie n'est encore publié.
                         </div>
                     @endforelse
@@ -2306,16 +2306,16 @@
                 class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
                 x-cloak @keydown.escape.window="activeGallery = null">
 
-                <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#D4A373]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
+                <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
                     @click.away="activeGallery = null">
 
-                    <div class="px-6 py-4 border-b border-[#D4A373]/20 flex items-center justify-between bg-[#1E1613]">
+                    <div class="px-6 py-4 border-b border-[#0BA20B]/20 flex items-center justify-between bg-[#1E1613]">
                         <div>
                             <h3 class="text-sm font-serif-title font-bold text-[#FAF7F2] uppercase tracking-wider"
                                 x-text="showTitle"></h3>
                         </div>
                         <button @click="activeGallery = null"
-                            class="text-[#D4A373] hover:text-[#C85A32] p-1 transition-colors" title="Fermer (Echap)">
+                            class="text-[#0BA20B] hover:text-[#0BA20B] p-1 transition-colors" title="Fermer (Echap)">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M6 18L18 6M6 6l12 12" />
@@ -2351,8 +2351,8 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest">
-                        <svg aria-hidden="true" class="lucide lucide-heart w-3.5 h-3.5 fill-current text-[#C85A32]"
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest">
+                        <svg aria-hidden="true" class="lucide lucide-heart w-3.5 h-3.5 fill-current text-[#0BA20B]"
                             fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -2404,71 +2404,71 @@
                 }">
                     @csrf
                     <div
-                        class="bg-[#1E1613] text-[#FAF7F2] rounded-none p-8 sm:p-12 shadow-2xl border border-[#D4A373]/30 max-w-4xl mx-auto space-y-8">
+                        class="bg-[#1E1613] text-[#FAF7F2] rounded-none p-8 sm:p-12 shadow-2xl border border-[#0BA20B]/30 max-w-4xl mx-auto space-y-8">
                     <div class="text-center space-y-2">
                         <h3 class="font-serif-title text-2xl sm:text-3xl font-bold text-white">
                             Choisissez le montant de votre soutien
                         </h3>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        <button type="button" @click="selectedAmount = 20; customAmount = ''" :class="selectedAmount === 20 && !customAmount ? 'bg-[#C85A32] text-white border-[#C85A32] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
+                        <button type="button" @click="selectedAmount = 20; customAmount = ''" :class="selectedAmount === 20 && !customAmount ? 'bg-[#0BA20B] text-white border-[#0BA20B] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
                             20 €
                         </button>
-                        <button type="button" @click="selectedAmount = 50; customAmount = ''" :class="selectedAmount === 50 && !customAmount ? 'bg-[#C85A32] text-white border-[#C85A32] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
+                        <button type="button" @click="selectedAmount = 50; customAmount = ''" :class="selectedAmount === 50 && !customAmount ? 'bg-[#0BA20B] text-white border-[#0BA20B] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
                             50 €
                         </button>
-                        <button type="button" @click="selectedAmount = 100; customAmount = ''" :class="selectedAmount === 100 && !customAmount ? 'bg-[#C85A32] text-white border-[#C85A32] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
+                        <button type="button" @click="selectedAmount = 100; customAmount = ''" :class="selectedAmount === 100 && !customAmount ? 'bg-[#0BA20B] text-white border-[#0BA20B] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
                             100 €
                         </button>
-                        <button type="button" @click="selectedAmount = 200; customAmount = ''" :class="selectedAmount === 200 && !customAmount ? 'bg-[#C85A32] text-white border-[#C85A32] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
+                        <button type="button" @click="selectedAmount = 200; customAmount = ''" :class="selectedAmount === 200 && !customAmount ? 'bg-[#0BA20B] text-white border-[#0BA20B] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
                             200 €
                         </button>
                     </div>
                     <div class="max-w-xs mx-auto">
-                        <input x-model="customAmount" @input="selectedAmount = 0" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm text-center focus:outline-none focus:border-[#D4A373]" placeholder="Autre montant libre (€)" type="number" name="montant" required min="1" step="0.01"/>
+                        <input x-model="customAmount" @input="selectedAmount = 0" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm text-center focus:outline-none focus:border-[#0BA20B]" placeholder="Autre montant libre (€)" type="number" name="montant" required min="1" step="0.01"/>
                     </div>
 
                     <!-- Informations personnelles -->
                     <div class="space-y-4">
                         <div class="flex items-center gap-3 mb-4">
-                            <input type="checkbox" id="anonyme" x-model="isAnonymous" name="anonyme" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#C85A32] focus:ring-[#C85A32] focus:ring-offset-0">
+                            <input type="checkbox" id="anonyme" x-model="isAnonymous" name="anonyme" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#0BA20B] focus:ring-[#0BA20B] focus:ring-offset-0">
                             <label for="anonyme" class="text-sm text-white/80">Je souhaite rester anonyme</label>
                         </div>
 
                         <div x-show="!isAnonymous" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-bold text-[#D4A373] mb-2">Nom complet</label>
-                                <input type="text" name="nom" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#D4A373]" placeholder="Votre nom">
+                                <label class="block text-xs font-bold text-[#0BA20B] mb-2">Nom complet</label>
+                                <input type="text" name="nom" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#0BA20B]" placeholder="Votre nom">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-[#D4A373] mb-2">Email</label>
-                                <input type="email" name="email" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#D4A373]" placeholder="votre@email.com">
+                                <label class="block text-xs font-bold text-[#0BA20B] mb-2">Email</label>
+                                <input type="email" name="email" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#0BA20B]" placeholder="votre@email.com">
                             </div>
                             <div class="sm:col-span-2">
-                                <label class="block text-xs font-bold text-[#D4A373] mb-2">Téléphone</label>
-                                <input type="tel" name="telephone" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#D4A373]" placeholder="+229 XX XX XX XX">
+                                <label class="block text-xs font-bold text-[#0BA20B] mb-2">Téléphone</label>
+                                <input type="tel" name="telephone" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#0BA20B]" placeholder="+229 XX XX XX XX">
                             </div>
                         </div>
                     </div>
 
                     <!-- Mode de paiement -->
                     <div>
-                        <label class="block text-xs font-bold text-[#D4A373] mb-3">Mode de paiement préféré</label>
+                        <label class="block text-xs font-bold text-[#0BA20B] mb-3">Mode de paiement préféré</label>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                             <label class="flex items-center gap-2 p-3 bg-white/5 border border-white/20 rounded-none cursor-pointer hover:bg-white/10 transition-all">
-                                <input type="radio" name="mode_paiement" value="especes" checked class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#C85A32] focus:ring-[#C85A32] focus:ring-offset-0">
+                                <input type="radio" name="mode_paiement" value="especes" checked class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#0BA20B] focus:ring-[#0BA20B] focus:ring-offset-0">
                                 <span class="text-sm text-white">Espèces</span>
                             </label>
                             <label class="flex items-center gap-2 p-3 bg-white/5 border border-white/20 rounded-none cursor-pointer hover:bg-white/10 transition-all">
-                                <input type="radio" name="mode_paiement" value="cheque" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#C85A32] focus:ring-[#C85A32] focus:ring-offset-0">
+                                <input type="radio" name="mode_paiement" value="cheque" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#0BA20B] focus:ring-[#0BA20B] focus:ring-offset-0">
                                 <span class="text-sm text-white">Chèque</span>
                             </label>
                             <label class="flex items-center gap-2 p-3 bg-white/5 border border-white/20 rounded-none cursor-pointer hover:bg-white/10 transition-all">
-                                <input type="radio" name="mode_paiement" value="virement" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#C85A32] focus:ring-[#C85A32] focus:ring-offset-0">
+                                <input type="radio" name="mode_paiement" value="virement" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#0BA20B] focus:ring-[#0BA20B] focus:ring-offset-0">
                                 <span class="text-sm text-white">Virement</span>
                             </label>
                             <label class="flex items-center gap-2 p-3 bg-white/5 border border-white/20 rounded-none cursor-pointer hover:bg-white/10 transition-all">
-                                <input type="radio" name="mode_paiement" value="mobile_money" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#C85A32] focus:ring-[#C85A32] focus:ring-offset-0">
+                                <input type="radio" name="mode_paiement" value="mobile_money" class="w-4 h-4 rounded border-white/30 bg-white/10 text-[#0BA20B] focus:ring-[#0BA20B] focus:ring-offset-0">
                                 <span class="text-sm text-white">Mobile Money</span>
                             </label>
                         </div>
@@ -2476,12 +2476,12 @@
 
                     <!-- Message -->
                     <div>
-                        <label class="block text-xs font-bold text-[#D4A373] mb-2">Message (optionnel)</label>
-                        <textarea name="message" rows="3" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#D4A373]" placeholder="Un message pour notre équipe..."></textarea>
+                        <label class="block text-xs font-bold text-[#0BA20B] mb-2">Message (optionnel)</label>
+                        <textarea name="message" rows="3" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-none focus:border-[#0BA20B]" placeholder="Un message pour notre équipe..."></textarea>
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="px-8 py-4 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-sm shadow-xl transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        <button type="submit" class="px-8 py-4 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-sm shadow-xl transition-all transform hover:scale-105 inline-flex items-center gap-2">
                             <svg aria-hidden="true" class="lucide lucide-heart w-4 h-4 fill-current text-white" fill="none"
                                 height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2510,7 +2510,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest shadow-sm">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest shadow-sm">
                         <svg aria-hidden="true" class="lucide lucide-newspaper w-3.5 h-3.5" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2555,7 +2555,7 @@
                             }
                         @endphp
                         <article
-                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#D4A373]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                            class="bg-[#FAF7F2] rounded-none overflow-hidden border border-[#0BA20B]/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                             <div>
                                 <div class="relative h-48 overflow-hidden bg-slate-900 cursor-pointer"
                                     data-gallery="{{ json_encode($galleryData) }}" data-title="{{ $actu->titre }}" @click="
@@ -2567,14 +2567,14 @@
                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                         referrerpolicy="no-referrer" src="{{ $imgPath }}" />
                                     <span
-                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#D4A373] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm uppercase">
+                                        class="absolute top-3 left-3 bg-[#1E1613]/80 text-[#0BA20B] text-[10px] font-bold px-2.5 py-0.5 rounded-none backdrop-blur-sm uppercase">
                                         Actualité
                                     </span>
                                 </div>
                                 <div class="p-6 space-y-3">
                                     <div class="flex items-center gap-3 text-xs text-[#8C766B]">
                                         <span class="flex items-center gap-1">
-                                            <svg aria-hidden="true" class="lucide lucide-calendar w-3.5 h-3.5 text-[#C85A32]"
+                                            <svg aria-hidden="true" class="lucide lucide-calendar w-3.5 h-3.5 text-[#0BA20B]"
                                                 fill="none" height="24" stroke="currentColor" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -2587,7 +2587,7 @@
                                         </span>
                                     </div>
                                     <h3
-                                        class="font-serif-title font-bold text-lg text-[#2C221E] leading-snug group-hover:text-[#C85A32] transition-colors line-clamp-2">
+                                        class="font-serif-title font-bold text-lg text-[#2C221E] leading-snug group-hover:text-[#0BA20B] transition-colors line-clamp-2">
                                         {{ $actu->titre }}
                                     </h3>
                                     <p class="text-xs text-[#6B574F] line-clamp-3 leading-relaxed">
@@ -2596,7 +2596,7 @@
                                 </div>
                             </div>
                             <div
-                                class="p-6 pt-0 border-t border-[#D4A373]/10 mt-2 flex items-center justify-between text-xs text-[#C85A32] font-bold">
+                                class="p-6 pt-0 border-t border-[#0BA20B]/10 mt-2 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
                                 <span class="flex items-center gap-1 text-[#8C766B] font-normal">
                                     <svg aria-hidden="true" class="lucide lucide-user w-3.5 h-3.5" fill="none" height="24"
                                         stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -2630,24 +2630,24 @@
                     class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
                     x-cloak @keydown.escape.window="activeGallery = null">
 
-                    <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#D4A373]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
+                    <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
                         @click.away="activeGallery = null">
 
-                        <div class="px-6 py-4 border-b border-[#D4A373]/20 flex items-center justify-between bg-[#1E1613]">
+                        <div class="px-6 py-4 border-b border-[#0BA20B]/20 flex items-center justify-between bg-[#1E1613]">
                             <div>
                                 <h3 class="text-sm font-serif-title font-bold text-[#FAF7F2] uppercase tracking-wider"
                                     x-text="showTitle"></h3>
-                                <p class="text-[10px] text-[#D4A373] uppercase tracking-widest mt-0.5">
+                                <p class="text-[10px] text-[#0BA20B] uppercase tracking-widest mt-0.5">
                                     Image <span x-text="currentImageIndex + 1"></span> sur <span
                                         x-text="activeGallery ? activeGallery.length : 0"></span>
                                     <template
                                         x-if="activeGallery && activeGallery[currentImageIndex] && activeGallery[currentImageIndex].is_principal">
-                                        <span class="ml-2 text-[#C85A32] font-bold">• Image Principale</span>
+                                        <span class="ml-2 text-[#0BA20B] font-bold">• Image Principale</span>
                                     </template>
                                 </p>
                             </div>
                             <button @click="activeGallery = null"
-                                class="text-[#D4A373] hover:text-[#C85A32] p-1 transition-colors" title="Fermer (Echap)">
+                                class="text-[#0BA20B] hover:text-[#0BA20B] p-1 transition-colors" title="Fermer (Echap)">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
@@ -2665,7 +2665,7 @@
                                 <div>
                                     <button
                                         @click="currentImageIndex = (currentImageIndex === 0) ? activeGallery.length - 1 : currentImageIndex - 1"
-                                        class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#C85A32] text-[#FAF7F2] p-3 transition-colors border border-[#D4A373]/30 shadow-xl rounded-none">
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                                 d="M15 19l-7-7 7-7" />
@@ -2673,7 +2673,7 @@
                                     </button>
                                     <button
                                         @click="currentImageIndex = (currentImageIndex === activeGallery.length - 1) ? 0 : currentImageIndex + 1"
-                                        class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#C85A32] text-[#FAF7F2] p-3 transition-colors border border-[#D4A373]/30 shadow-xl rounded-none">
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                                 d="M9 5l7 7-7 7" />
@@ -2685,11 +2685,11 @@
 
                         <template x-if="activeGallery && activeGallery.length > 1">
                             <div
-                                class="px-6 py-4 bg-[#1E1613] border-t border-[#D4A373]/20 flex items-center justify-center gap-3 overflow-x-auto">
+                                class="px-6 py-4 bg-[#1E1613] border-t border-[#0BA20B]/20 flex items-center justify-center gap-3 overflow-x-auto">
                                 <template x-for="(img, idx) in activeGallery" :key="idx">
                                     <button @click="currentImageIndex = idx"
                                         class="w-14 h-14 border-2 overflow-hidden transition-all shrink-0 rounded-none"
-                                        :class="currentImageIndex === idx ? 'border-[#C85A32] scale-105 opacity-100' : 'border-[#D4A373]/30 opacity-50 hover:opacity-100'">
+                                        :class="currentImageIndex === idx ? 'border-[#0BA20B] scale-105 opacity-100' : 'border-[#0BA20B]/30 opacity-50 hover:opacity-100'">
                                         <img :src="img.url" class="w-full h-full object-cover">
                                     </button>
                                 </template>
@@ -2704,7 +2704,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
-                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#D4A373]/40 text-[#C85A32] text-xs font-bold uppercase tracking-widest">
+                        class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#F4EFE6] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest">
                         <svg aria-hidden="true" class="lucide lucide-mail w-3.5 h-3.5" fill="none" height="24"
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2727,7 +2727,7 @@
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                     <div
-                        class="lg:col-span-7 bg-white rounded-none p-8 sm:p-10 border border-[#D4A373]/30 shadow-xl space-y-6">
+                        class="lg:col-span-7 bg-white rounded-none p-8 sm:p-10 border border-[#0BA20B]/30 shadow-xl space-y-6">
                         <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
                             Envoyer un message à l'association
                         </h3>
@@ -2739,7 +2739,7 @@
                                         Nom complet *
                                     </label>
                                     <input name="nom"
-                                        class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#D4A373]/30 text-xs focus:outline-none focus:border-[#C85A32]"
+                                        class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]"
                                         placeholder="e.g. Marie Nguema" required type="text" value="" />
                                 </div>
                                 <div>
@@ -2747,7 +2747,7 @@
                                         Adresse e-mail *
                                     </label>
                                     <input name="email"
-                                        class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#D4A373]/30 text-xs focus:outline-none focus:border-[#C85A32]"
+                                        class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]"
                                         placeholder="e.g. marie@exemple.com" required type="email" value="" />
                                 </div>
                             </div>
@@ -2756,7 +2756,7 @@
                                     Objet de votre demande *
                                 </label>
                                 <select name="objet"
-                                    class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#D4A373]/30 text-xs focus:outline-none focus:border-[#C85A32]" required>
+                                    class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]" required>
                                     <option value="Renseignements Généraux">
                                         Renseignements Généraux
                                     </option>
@@ -2779,12 +2779,12 @@
                                     Votre Message *
                                 </label>
                                 <textarea name="message"
-                                    class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#D4A373]/30 text-xs focus:outline-none focus:border-[#C85A32]"
+                                    class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]"
                                     placeholder="Précisez votre demande, vos disponibilités ou vos questions..." required
                                     rows="4"></textarea>
                             </div>
                             <button type="submit"
-                                class="w-full py-3.5 rounded-none bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2">
+                                class="w-full py-3.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2">
                                 <svg aria-hidden="true" class="lucide lucide-send w-4 h-4" fill="none" height="24"
                                     stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2802,14 +2802,14 @@
                     </div>
                     <div class="lg:col-span-5 space-y-6">
                         <div
-                            class="bg-[#1E1613] text-[#FAF7F2] rounded-none p-8 border border-[#D4A373]/30 space-y-6 shadow-xl">
+                            class="bg-[#1E1613] text-[#FAF7F2] rounded-none p-8 border border-[#0BA20B]/30 space-y-6 shadow-xl">
                             <h3 class="font-serif-title text-2xl font-bold text-white">
                                 Maison de l’Association Culturelle
                             </h3>
                             <div class="space-y-4 text-xs font-sans">
                                 <div class="flex items-start gap-3">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-map-pin w-5 h-5 text-[#D4A373] shrink-0 mt-0.5" fill="none"
+                                        class="lucide lucide-map-pin w-5 h-5 text-[#0BA20B] shrink-0 mt-0.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -2829,7 +2829,7 @@
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-phone-call w-5 h-5 text-[#D4A373] shrink-0 mt-0.5" fill="none"
+                                        class="lucide lucide-phone-call w-5 h-5 text-[#0BA20B] shrink-0 mt-0.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13 2a9 9 0 0 1 9 9">
@@ -2851,7 +2851,7 @@
                                 </div>
                                 <div class="flex items-start gap-3">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-mail w-5 h-5 text-[#D4A373] shrink-0 mt-0.5" fill="none"
+                                        class="lucide lucide-mail w-5 h-5 text-[#0BA20B] shrink-0 mt-0.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7">
@@ -2870,7 +2870,7 @@
                                 </div>
                                 <div class="flex items-start gap-3 pt-2 border-t border-white/10">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-clock w-5 h-5 text-[#D4A373] shrink-0 mt-0.5" fill="none"
+                                        class="lucide lucide-clock w-5 h-5 text-[#0BA20B] shrink-0 mt-0.5" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 6v6l4 2">
@@ -2894,7 +2894,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-12 border-t border-[#D4A373]/20 space-y-8 max-w-4xl mx-auto">
+                <div class="pt-12 border-t border-[#0BA20B]/20 space-y-8 max-w-4xl mx-auto">
                     <div class="text-center space-y-2">
                         <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
                             Foire Aux Questions (FAQ)
@@ -2905,12 +2905,12 @@
                     </div>
                     <div class="space-y-3" x-data="{ activeFaq: 1 }">
                         <!-- FAQ Item 1 -->
-                        <div class="bg-white rounded-none border border-[#D4A373]/30 overflow-hidden shadow-sm">
+                        <div class="bg-white rounded-none border border-[#0BA20B]/30 overflow-hidden shadow-sm">
                             <button @click="activeFaq = activeFaq === 1 ? null : 1"
-                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#C85A32] transition-colors">
+                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#0BA20B] transition-colors">
                                 <span class="flex items-center gap-2">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#C85A32]" fill="none"
+                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#0BA20B]" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10"></circle>
@@ -2929,7 +2929,7 @@
                             </button>
                             <div x-show="activeFaq === 1" x-collapse x-cloak>
                                 <div
-                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#D4A373]/10">
+                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#0BA20B]/10">
                                     Vous pouvez réserver directement en ligne via le bouton 'Réserver un cours' ou dans la
                                     section Formations. Choisissez votre discipline, l'enseignant, le créneau horaire
                                     souhaité et confirmez votre inscription.
@@ -2938,12 +2938,12 @@
                         </div>
 
                         <!-- FAQ Item 2 -->
-                        <div class="bg-white rounded-none border border-[#D4A373]/30 overflow-hidden shadow-sm">
+                        <div class="bg-white rounded-none border border-[#0BA20B]/30 overflow-hidden shadow-sm">
                             <button @click="activeFaq = activeFaq === 2 ? null : 2"
-                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#C85A32] transition-colors">
+                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#0BA20B] transition-colors">
                                 <span class="flex items-center gap-2">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#C85A32]" fill="none"
+                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#0BA20B]" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10"></circle>
@@ -2962,7 +2962,7 @@
                             </button>
                             <div x-show="activeFaq === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" x-cloak>
                                 <div
-                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#D4A373]/10">
+                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#0BA20B]/10">
                                     Oui, tout le matériel nécessaire (fibres de raphia, outils de tissage) est fourni sur
                                     place pour les débutants. Les artisans avancés peuvent apporter leurs propres outils
                                     s'ils le souhaitent.
@@ -2971,12 +2971,12 @@
                         </div>
 
                         <!-- FAQ Item 3 -->
-                        <div class="bg-white rounded-none border border-[#D4A373]/30 overflow-hidden shadow-sm">
+                        <div class="bg-white rounded-none border border-[#0BA20B]/30 overflow-hidden shadow-sm">
                             <button @click="activeFaq = activeFaq === 3 ? null : 3"
-                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#C85A32] transition-colors">
+                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#0BA20B] transition-colors">
                                 <span class="flex items-center gap-2">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#C85A32]" fill="none"
+                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#0BA20B]" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10"></circle>
@@ -2995,7 +2995,7 @@
                             </button>
                             <div x-show="activeFaq === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" x-cloak>
                                 <div
-                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#D4A373]/10">
+                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#0BA20B]/10">
                                     Le programme sélectionne de jeunes talents de 15 à 25 ans. Les sélectionnés bénéficient
                                     d'un accès gratuit à nos studios, d'un accompagnement personnalisé et de l'opportunité
                                     de se produire lors de nos événements.
@@ -3004,12 +3004,12 @@
                         </div>
 
                         <!-- FAQ Item 4 -->
-                        <div class="bg-white rounded-none border border-[#D4A373]/30 overflow-hidden shadow-sm">
+                        <div class="bg-white rounded-none border border-[#0BA20B]/30 overflow-hidden shadow-sm">
                             <button @click="activeFaq = activeFaq === 4 ? null : 4"
-                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#C85A32] transition-colors">
+                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#0BA20B] transition-colors">
                                 <span class="flex items-center gap-2">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#C85A32]" fill="none"
+                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#0BA20B]" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10"></circle>
@@ -3028,7 +3028,7 @@
                             </button>
                             <div x-show="activeFaq === 4" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" x-cloak>
                                 <div
-                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#D4A373]/10">
+                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#0BA20B]/10">
                                     Oui, notre association étant reconnue d'intérêt général, vos dons ouvrent droit à une
                                     réduction d'impôt (66% du montant du don pour les particuliers). Un reçu fiscal vous
                                     sera envoyé automatiquement.
@@ -3037,12 +3037,12 @@
                         </div>
 
                         <!-- FAQ Item 5 -->
-                        <div class="bg-white rounded-none border border-[#D4A373]/30 overflow-hidden shadow-sm">
+                        <div class="bg-white rounded-none border border-[#0BA20B]/30 overflow-hidden shadow-sm">
                             <button @click="activeFaq = activeFaq === 5 ? null : 5"
-                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#C85A32] transition-colors">
+                                class="w-full p-5 text-left flex items-center justify-between font-bold text-sm text-[#2C221E] hover:text-[#0BA20B] transition-colors">
                                 <span class="flex items-center gap-2">
                                     <svg aria-hidden="true"
-                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#C85A32]" fill="none"
+                                        class="lucide lucide-circle-question-mark w-4 h-4 text-[#0BA20B]" fill="none"
                                         height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="12" cy="12" r="10"></circle>
@@ -3061,7 +3061,7 @@
                             </button>
                             <div x-show="activeFaq === 5" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" x-cloak>
                                 <div
-                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#D4A373]/10">
+                                    class="p-5 pt-0 text-xs text-[#6B574F] font-sans leading-relaxed border-t border-[#0BA20B]/10">
                                     Absolument ! Tous nos cours (musique, tissage, chant) proposent des niveaux débutants.
                                     Nos professeurs s'adaptent à votre rythme, même si vous n'avez aucune expérience
                                     préalable.
@@ -3077,14 +3077,14 @@
 <div id="candidature-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
     <div class="relative w-full max-w-2xl bg-[#FAF7F2] rounded-none p-8 sm:p-10 shadow-2xl overflow-y-auto max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
         <!-- Close Button -->
-        <button onclick="document.getElementById('candidature-modal').classList.add('hidden')" class="absolute top-4 right-4 p-2 bg-[#F4EFE6] hover:bg-[#D4A373] text-[#2C221E] hover:text-white transition-colors rounded-none" aria-label="Fermer">
+        <button onclick="document.getElementById('candidature-modal').classList.add('hidden')" class="absolute top-4 right-4 p-2 bg-[#F4EFE6] hover:bg-[#0BA20B] text-[#2C221E] hover:text-white transition-colors rounded-none" aria-label="Fermer">
             <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
 
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-[#F4EFE6] border border-[#D4A373]/20 text-[#C85A32] text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-none mb-4">
+            <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-[#F4EFE6] border border-[#0BA20B]/20 text-[#0BA20B] text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-none mb-4">
                 <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
                 </svg>
@@ -3098,37 +3098,37 @@
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Nom <span class="text-[#C85A32]">*</span></label>
-                    <input name="nom" required type="text" placeholder="e.g. Nguema" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Nom <span class="text-[#0BA20B]">*</span></label>
+                    <input name="nom" required type="text" placeholder="e.g. Nguema" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Prénom <span class="text-[#C85A32]">*</span></label>
-                    <input name="prenom" required type="text" placeholder="e.g. Samuel" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Prénom <span class="text-[#0BA20B]">*</span></label>
+                    <input name="prenom" required type="text" placeholder="e.g. Samuel" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                 </div>
                 <div class="space-y-2">
                     <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Nom de Scène / Pseudo</label>
-                    <input name="pseudo" type="text" placeholder="e.g. Sam Kora" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                    <input name="pseudo" type="text" placeholder="e.g. Sam Kora" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Age <span class="text-[#C85A32]">*</span></label>
-                    <input name="age" required type="number" placeholder="21" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Age <span class="text-[#0BA20B]">*</span></label>
+                    <input name="age" required type="number" placeholder="21" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Email <span class="text-[#C85A32]">*</span></label>
-                    <input name="email" required type="email" placeholder="e.g. samuel@example.com" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Email <span class="text-[#0BA20B]">*</span></label>
+                    <input name="email" required type="email" placeholder="e.g. samuel@example.com" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Téléphone <span class="text-[#C85A32]">*</span></label>
-                    <input name="telephone" required type="tel" placeholder="e.g. +241 07 45 12 89" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Téléphone <span class="text-[#0BA20B]">*</span></label>
+                    <input name="telephone" required type="tel" placeholder="e.g. +241 07 45 12 89" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">WhatsApp <span class="text-[#C85A32]">*</span></label>
-                    <input name="whatsapp" required type="tel" placeholder="e.g. +241 07 45 12 89" class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">WhatsApp <span class="text-[#0BA20B]">*</span></label>
+                    <input name="whatsapp" required type="tel" placeholder="e.g. +241 07 45 12 89" class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
                 </div>
                 <div class="space-y-2">
-                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Discipline <span class="text-[#C85A32]">*</span></label>
+                    <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Discipline <span class="text-[#0BA20B]">*</span></label>
                     <div class="relative">
-                        <select name="discipline_id" required class="w-full appearance-none bg-white border border-[#D4A373]/40 p-3 pr-10 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors">
+                        <select name="discipline_id" required class="w-full appearance-none bg-white border border-[#0BA20B]/40 p-3 pr-10 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors">
                             <option value="">Sélectionnez une discipline...</option>
                             <option value="1">Chant & Polyphonie</option>
                             <option value="2">Percussions & Balafon</option>
@@ -3136,7 +3136,7 @@
                             <option value="4">Création Numérique Audio</option>
                             <option value="5">Autre</option>
                         </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-[#C85A32]">
+                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-[#0BA20B]">
                             <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                             </svg>
@@ -3146,16 +3146,16 @@
             </div>
 
             <div class="space-y-2">
-                <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Lien Audio / Vidéo Démo (Youtube, Soundcloud, Drive) <span class="text-[#C85A32]">*</span></label>
-                <input name="demo_link" required type="url" placeholder="https://youtube.com/watch?v=..." class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50" />
+                <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Lien Audio / Vidéo Démo (Youtube, Soundcloud, Drive) <span class="text-[#0BA20B]">*</span></label>
+                <input name="demo_link" required type="url" placeholder="https://youtube.com/watch?v=..." class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50" />
             </div>
 
             <div class="space-y-2">
-                <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Présentation de votre projet artistique <span class="text-[#C85A32]">*</span></label>
-                <textarea name="presentation" required rows="4" placeholder="Racontez-nous votre parcours, vos influences et ce que vous attendez de l'association..." class="w-full bg-white border border-[#D4A373]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#C85A32] focus:ring-1 focus:ring-[#C85A32] rounded-none transition-colors placeholder-[#8C766B]/50 resize-y"></textarea>
+                <label class="block text-xs font-bold text-[#2C221E] uppercase tracking-wider">Présentation de votre projet artistique <span class="text-[#0BA20B]">*</span></label>
+                <textarea name="presentation" required rows="4" placeholder="Racontez-nous votre parcours, vos influences et ce que vous attendez de l'association..." class="w-full bg-white border border-[#0BA20B]/40 p-3 text-sm text-[#2C221E] focus:outline-none focus:border-[#0BA20B] focus:ring-1 focus:ring-[#0BA20B] rounded-none transition-colors placeholder-[#8C766B]/50 resize-y"></textarea>
             </div>
 
-            <button type="submit" class="w-full px-6 py-3.5 bg-[#C85A32] hover:bg-[#A84223] text-white font-bold text-sm tracking-wide uppercase shadow-lg transition-transform hover:-translate-y-0.5 rounded-none flex items-center justify-center gap-2">
+            <button type="submit" class="w-full px-6 py-3.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-sm tracking-wide uppercase shadow-lg transition-transform hover:-translate-y-0.5 rounded-none flex items-center justify-center gap-2">
                 <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                 </svg>
@@ -3190,7 +3190,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         icon: 'success',
                         title: 'Message envoyé !',
                         text: data.message,
-                        confirmButtonColor: '#C85A32',
+                        confirmButtonColor: '#0BA20B',
                         confirmButtonText: 'OK'
                     });
                     contactForm.reset();
@@ -3199,7 +3199,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         icon: 'error',
                         title: 'Erreur',
                         text: 'Une erreur est survenue. Veuillez réessayer.',
-                        confirmButtonColor: '#C85A32',
+                        confirmButtonColor: '#0BA20B',
                         confirmButtonText: 'OK'
                     });
                 }
@@ -3209,7 +3209,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon: 'error',
                     title: 'Erreur',
                     text: 'Une erreur est survenue. Veuillez réessayer.',
-                    confirmButtonColor: '#C85A32',
+                    confirmButtonColor: '#0BA20B',
                     confirmButtonText: 'OK'
                 });
             });
@@ -3238,7 +3238,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         icon: 'success',
                         title: 'Candidature envoyée !',
                         text: data.message,
-                        confirmButtonColor: '#C85A32',
+                        confirmButtonColor: '#0BA20B',
                         confirmButtonText: 'OK'
                     });
                     candidatureForm.reset();
@@ -3248,7 +3248,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         icon: 'error',
                         title: 'Erreur',
                         text: 'Une erreur est survenue. Veuillez réessayer.',
-                        confirmButtonColor: '#C85A32',
+                        confirmButtonColor: '#0BA20B',
                         confirmButtonText: 'OK'
                     });
                 }
@@ -3258,7 +3258,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon: 'error',
                     title: 'Erreur',
                     text: 'Une erreur est survenue. Veuillez réessayer.',
-                    confirmButtonColor: '#C85A32',
+                    confirmButtonColor: '#0BA20B',
                     confirmButtonText: 'OK'
                 });
             });

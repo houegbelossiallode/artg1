@@ -22,7 +22,7 @@ class ProfesseurCoursController extends Controller
             ->with(['categorie', 'mode'])
             ->withCount('supports')
             ->latest()
-            ->get();
+            ->paginate(9);
         $categories = CategorieCours::all();
         $modes = Mode::all();
         return view('professeur.cours.index', compact('cours', 'categories', 'modes'));
