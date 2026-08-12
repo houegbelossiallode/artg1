@@ -1,25 +1,10 @@
 #!/bin/bash
 
-# 1. On lance les migrations
-php artisan migrate --force
+# 1. On lance les migrations (si ça échoue à cause de "Too many connections", le script continue)
+php artisan migrate --force || true
 
-# 2. Configuration INFAILLIBLE d'Apache pour Render
-# On récupère le port de Render (ou 10000 par défaut)
+# 2. Lancement du serveur intégré de Laravel
+# C'est la méthode 100% garantie pour que Render détecte le port ouvert immédiatement.
 PORT=${PORT:-10000}
-
-# On écrase totalement la configuration des ports pour être sûr à 100% qu'il écoute sur 0.0.0.0 et sur le bon port
-echo "Listen 0.0.0.0:$PORT" > /etc/apache2/ports.conf
-
-# On écrase totalement le VirtualHost pour qu'il pointe vers le bon dossier public avec le bon port
-echo "<VirtualHost *:$PORT>
-    DocumentRoot /var/www/html/public
-    <Directory /var/www/html/public>
-        AllowOverride All
-        Require all granted
-    </Directory>
-    ErrorLog \${APACHE_LOG_DIR}/error.log
-    CustomLog \${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>" > /etc/apache2/sites-available/000-default.conf
-
-# 3. Lancement d'Apache
-apache2-foreground
+echo "Starting Laravel on 0.0.0.0:$PORT"
+php artisan serve --host=0.0.0.0 --port=$PORT
