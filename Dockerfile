@@ -71,7 +71,5 @@ RUN chmod +x /usr/local/bin/start.sh
 # Convertir les fins de ligne au cas où le script est créé sous Windows
 RUN sed -i -e 's/\r$//' /usr/local/bin/start.sh
 
-# 8. Exposition du port et lancement
-EXPOSE 80
-
+# 8. Commande exécutée au démarrage du conteneur
 CMD ["/usr/local/bin/start.sh"]
