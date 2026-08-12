@@ -41,6 +41,7 @@ ENV APP_ENV=production
 ENV APP_KEY=base64:cO1b6jYgqE8uPlXvR2h7K9zNxLmQ4wTpvBaSsDdFfGg=
 ENV DB_CONNECTION=sqlite
 ENV DB_DATABASE=:memory:
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Copie des fichiers composer avant le reste du code (optimisation du cache Docker)
 COPY composer.json composer.lock ./
