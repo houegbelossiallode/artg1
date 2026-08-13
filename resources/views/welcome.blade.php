@@ -435,10 +435,10 @@
                         </span>
                     </div>
                     <h2 class="font-serif-title text-3xl sm:text-4xl md:text-5xl font-bold text-[#2C221E] tracking-tight">
-                        {{ $association->mission}}
+                        {{ $association?->mission ?? 'Mission à définir' }}
                     </h2>
                     <p class="text-sm sm:text-base text-[#6B574F] font-sans leading-relaxed">
-                        {{ $association->vision}}
+                        {{ $association?->vision ?? 'Vision à définir' }}
                     </p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -448,7 +448,7 @@
                             Notre Histoire
                         </h3>
                         <p class="text-sm sm:text-base text-[#5C4A42] leading-relaxed">
-                            {{ $association->historique }}
+                            {{ $association?->historique ?? 'Historique à définir' }}
                         </p>
                     </div>
                     <div class="relative">
