@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# 1. On lance les migrations (si ça échoue à cause de "Too many connections", le script continue)
+# 1. Mise en cache de la configuration (TRÈS IMPORTANT sur Render pour lire les variables d'environnement)
+php artisan config:clear
+php artisan config:cache
+php artisan view:clear
+
+# 2. On lance les migrations et les seeders
 php artisan migrate --force || true
+php artisan db:seed --force || true
 
 # 2. Lancement du serveur intégré de Laravel
 # C'est la méthode 100% garantie pour que Render détecte le port ouvert immédiatement.
