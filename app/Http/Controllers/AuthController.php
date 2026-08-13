@@ -47,12 +47,12 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             // Check if user is active
             $user = Auth::user();
-            if ($user->actif !== 'oui') {
-                Auth::logout();
-                return back()->withErrors([
-                    'email' => 'Votre compte a été désactivé. Veuillez contacter l\'administration.',
-                ])->withInput($request->only('email'));
-            }
+            // if ($user->actif !== 'oui') {
+            //     Auth::logout();
+            //     return back()->withErrors([
+            //         'email' => 'Votre compte a été désactivé. Veuillez contacter l\'administration.',
+            //     ])->withInput($request->only('email'));
+            // }
 
             RateLimiter::clear($throttleKey);
             $request->session()->regenerate();
