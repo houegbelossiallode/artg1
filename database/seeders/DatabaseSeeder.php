@@ -124,10 +124,6 @@ class DatabaseSeeder extends Seeder
             'user_id' => $teacher->id,
             'titre' => 'Initiation à la Guitare Acoustique',
             'description' => 'Un cours complet pour maîtriser les accords de base et les rythmes modernes.',
-            'date_cours' => '2026-08-10',
-            'heure_debut' => '10:00:00',
-            'heure_fin' => '12:00:00',
-            'duree' => 120,
             'tarif' => 15000,
             'mode_id' => 1,
             'actif' => 'OUI'
@@ -138,10 +134,6 @@ class DatabaseSeeder extends Seeder
             'user_id' => $teacher->id,
             'titre' => 'Tissage Traditionnel de Raphia',
             'description' => 'Découvrez l\'art du tissage et fabriquez votre premier sac ou chapeau en raphia.',
-            'date_cours' => '2026-08-12',
-            'heure_debut' => '14:00:00',
-            'heure_fin' => '16:30:00',
-            'duree' => 150,
             'tarif' => 20000,
             'mode_id' => 1,
             'actif' => 'OUI'
