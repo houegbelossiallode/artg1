@@ -2,9 +2,9 @@
 @section('content')
     <main>
         <section class="relative min-h-screen overflow-hidden bg-[#1E1613]" id="hero"
-    x-data="{ 
-        activeGallery: null, 
-        currentImageIndex: 0, 
+    x-data="{
+        activeGallery: null,
+        currentImageIndex: 0,
         showTitle: '',
         heroSlide: 0,
         slidesCount: 3,
@@ -33,7 +33,7 @@
     <!-- Slider Track -->
     <div class="flex h-screen transition-transform duration-1000 ease-in-out"
          :style="`transform: translateX(-${heroSlide * 100}vw); width: ${slidesCount * 100}vw;`">
-        
+
         <!-- SLIDE 1: Culture & Raphia -->
         <div class="w-screen h-screen relative flex items-center pt-24 pb-16 shrink-0 overflow-hidden">
             <div class="absolute inset-0 z-0">
@@ -44,7 +44,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-[#1E1613]/70 z-20"></div>
                 <div class="absolute inset-0 opacity-10 bg-pattern-raphia pointer-events-none z-20"></div>
             </div>
-            
+
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-1000 delay-300"
                  :class="heroSlide === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -70,7 +70,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="lg:col-span-5 relative hidden lg:block">
                         <!-- Event Card / Feature for Slide 1 -->
                         <div class="glass-dark rounded-none p-6 shadow-2xl border border-[#0BA20B]/30 space-y-5">
@@ -84,7 +84,7 @@
                                 </div>
                                 <span class="text-[11px] text-white/60 bg-white/10 px-2 py-0.5 rounded-none">Prochain Rendez-vous</span>
                             </div>
-                            
+
                             @if(isset($evenementPhare) && $evenementPhare)
                                 @php
                                     $mainImg = $evenementPhare->images->where('is_principal', true)->first() ?? $evenementPhare->images->first();
@@ -131,7 +131,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- SLIDE 2: Musique & Talents -->
         <div class="w-screen h-screen relative flex items-center pt-24 pb-16 shrink-0 overflow-hidden">
             <div class="absolute inset-0 z-0">
@@ -142,7 +142,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-[#1E1613]/70 z-20"></div>
                 <div class="absolute inset-0 opacity-10 bg-pattern-raphia pointer-events-none z-20"></div>
             </div>
-            
+
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-1000 delay-300"
                  :class="heroSlide === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -184,7 +184,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-[#1E1613]/70 z-20"></div>
                 <div class="absolute inset-0 opacity-10 bg-pattern-raphia pointer-events-none z-20"></div>
             </div>
-            
+
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-1000 delay-300"
                  :class="heroSlide === 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -455,7 +455,7 @@
                 </div>
             </div>
         </section>
-        <section class="py-24 bg-[#F4EFE6] relative overflow-hidden" id="raphia-showcase">
+        {{-- <section class="py-24 bg-[#F4EFE6] relative overflow-hidden" id="raphia-showcase">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
                     <div
@@ -914,7 +914,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <section class="py-24 bg-[#FAF7F2] relative overflow-hidden" id="talents"
             x-data="{ activeGallery: null, currentImageIndex: 0, showTitle: '' }">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -1714,7 +1714,7 @@
                             </button>
                         @endforeach
                     </div>
-                    <div class="flex items-center gap-2 shrink-0 overflow-x-auto">
+                    {{-- <div class="flex items-center gap-2 shrink-0 overflow-x-auto">
                         <span class="text-xs font-bold text-[#2C221E] uppercase">Modes :</span>
                         <button @click="activeMode = 'Tous'"
                             :class="activeMode === 'Tous' ? 'bg-[#2C221E] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
@@ -1728,7 +1728,7 @@
                                 {{ $m->libelle }}
                             </button>
                         @endforeach
-                    </div>
+                    </div> --}}
                 </div>
 
                 {{-- Course Cards Grid --}}
@@ -2601,24 +2601,9 @@
                                 <label class="block text-xs font-bold text-[#2C221E] uppercase mb-1">
                                     Objet de votre demande *
                                 </label>
-                                <select name="objet"
-                                    class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]" required>
-                                    <option value="Renseignements Généraux">
-                                        Renseignements Généraux
-                                    </option>
-                                    <option value="Inscription aux Cours d'Instruments">
-                                        Inscription aux Cours d'Instruments
-                                    </option>
-                                    <option value="Ateliers &amp; Stages Artisanat Raphia">
-                                        Ateliers &amp; Stages Artisanat Raphia
-                                    </option>
-                                    <option value="Proposition de Partenariat / Sponsoring">
-                                        Proposition de Partenariat / Sponsoring
-                                    </option>
-                                    <option value="Presse &amp; Médias">
-                                        Presse &amp; Médias
-                                    </option>
-                                </select>
+                                <input name="objet"
+                                    class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]"
+                                    required type="text" value="" />
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-[#2C221E] uppercase mb-1">
