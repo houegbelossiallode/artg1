@@ -28,15 +28,24 @@ class JitsiService
         $apiKeyId = env('JITSI_API_KEY_ID');
         $privateKeyPath = storage_path('app/jitsi_private.key');
 
-        // Si on utilise JaaS (8x8) avec clé privée RSA
-        if ($apiKeyId && file_exists($privateKeyPath)) {
+        // Pour JaaS (8x8.vc), on DOIT utiliser la clé privée RSA avec kid
+        if ($apiKeyId && str_contains($this->jitsiUrl, '8x8.vc')) {
+            if (!file_exists($privateKeyPath)) {
+                throw new \Exception("Clé privée RSA manquante pour JaaS. Veuillez placer votre clé privée dans storage/app/jitsi_private.key");
+            }
+
             $privateKey = file_get_contents($privateKeyPath);
+
+            // Vérifier que la clé est valide
+            if (empty($privateKey)) {
+                throw new \Exception("La clé privée RSA est vide. Vérifiez le fichier storage/app/jitsi_private.key");
+            }
 
             $payload = [
                 'iss' => 'chat',
                 'aud' => 'jitsi',
                 'exp' => now()->addHours(2)->timestamp,
-                'sub' => $this->appId, // Doit être l'AppID (vpaas-magic-cookie-...)
+                'sub' => $this->appId,
                 'room' => '*',
                 'context' => [
                     'user' => [
@@ -53,33 +62,8 @@ class JitsiService
                 'moderator' => $isModerator,
             ];
 
+            // Le 4ème paramètre est le kid (Key ID) - OBLIGATOIRE pour JaaS
             return JWT::encode($payload, $privateKey, 'RS256', $apiKeyId);
-        }
-
-        // Si on utilise JaaS sans clé privée (fallback avec AppID comme secret)
-        if ($apiKeyId && str_contains($this->jitsiUrl, '8x8.vc')) {
-            $payload = [
-                'iss' => $this->appId,
-                'aud' => $this->appId,
-                'exp' => now()->addHours(2)->timestamp,
-                'sub' => $this->appId,
-                'room' => $roomName,
-                'context' => [
-                    'user' => [
-                        'name' => $user->name,
-                        'email' => $user->email,
-                        'id' => $user->id,
-                        'avatar' => $user->avatar ?? null,
-                    ],
-                    'features' => [
-                        'livestreaming' => $isModerator,
-                        'recording' => $isModerator,
-                    ],
-                ],
-                'moderator' => $isModerator,
-            ];
-
-            return JWT::encode($payload, $this->appId, 'HS256');
         }
 
         // Fallback pour serveur auto-hébergé simple avec secret (HS256)
