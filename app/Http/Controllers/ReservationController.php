@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ReservationConfirmedMail;
-use App\Models\Cours;
-use App\Models\Disponibilite;
-use App\Models\Reservation;
-use App\Services\JitsiService;
 use Carbon\Carbon;
+use App\Models\Cours;
+use App\Models\Reservation;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Disponibilite;
+use App\Services\JitsiService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
+use App\Mail\ReservationConfirmedMail;
 
 class ReservationController extends Controller
 {

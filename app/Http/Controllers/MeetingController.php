@@ -84,4 +84,66 @@ class MeetingController extends Controller
 
         return response()->json(['success' => true, 'meetingUrl' => $newMeetingUrl]);
     }
+
+    /**
+     * View secure course replay.
+     */
+    public function viewReplay($reservationId)
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $reservation = Reservation::with(['course'])->findOrFail($reservationId);
+
+        $isStudent = ($reservation->user_id === $user->id);
+        $isTeacher = ($reservation->course && $reservation->course->user_id === $user->id);
+        $isAdmin = ($user->profil && in_array(strtolower($user->profil->libelle), ['admin', 'administrateur']));
+
+        if (!$isStudent && !$isTeacher && !$isAdmin) {
+            abort(403, 'Accès refusé à cet enregistrement.');
+        }
+
+        if (!$reservation->lien_replay) {
+            return back()->with('error', 'Aucun enregistrement n\'est disponible pour ce cours pour le moment.');
+        }
+
+        return view('visio.replay', [
+            'reservation' => $reservation,
+            'cours' => $reservation->course,
+        ]);
+    }
+
+    /**
+     * Store course replay link (Professor action).
+     */
+    public function storeReplay(Request $request, $reservationId)
+    {
+        $user = Auth::user();
+
+        $reservation = Reservation::with(['course'])->findOrFail($reservationId);
+
+        $isTeacher = ($reservation->course && $reservation->course->user_id === $user->id);
+        $isAdmin = ($user->profil && in_array(strtolower($user->profil->libelle), ['admin', 'administrateur']));
+
+        if (!$isTeacher && !$isAdmin) {
+            abort(403, 'Seul le professeur du cours peut enregistrer ou publier un replay.');
+        }
+
+        $request->validate([
+            'lien_replay' => 'required|url',
+            'description_replay' => 'nullable|string|max:1000',
+        ], [
+            'lien_replay.required' => 'Le lien de l\'enregistrement vidéo est obligatoire.',
+            'lien_replay.url' => 'Le lien doit être une URL valide (ex: YouTube, Vimeo, Drive, etc.).',
+        ]);
+
+        $reservation->update([
+            'lien_replay' => $request->lien_replay,
+            'description_replay' => $request->description_replay,
+        ]);
+
+        return back()->with('success', 'L\'enregistrement du cours a été sauvegardé avec succès et est désormais accessible aux apprenants inscrits.');
+    }
 }

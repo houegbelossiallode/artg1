@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\VisioController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\Admin\MenuController;
@@ -19,7 +19,6 @@ use App\Http\Controllers\Admin\TalentController;
 use App\Http\Controllers\Admin\OeuvreController as AdminOeuvreController;
 use App\Http\Controllers\Admin\SousmenuController;
 use App\Http\Controllers\Admin\ActualiteController;
-use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\Admin\EvenementController;
 use App\Http\Controllers\Admin\AssociationController;
 use App\Http\Controllers\Learner\DashboardController;
@@ -57,12 +56,9 @@ Route::get('/api/cours/{id}/slots', [ReservationController::class, 'getSlotsForC
 // Donation Route
 Route::post('/don', [DonController::class, 'store'])->name('don.store');
 
-// Resourceful Reservations Route & Visio Routes
+// Resourceful Reservations Route
 Route::middleware('auth')->group(function () {
     Route::resource('reservations', ReservationController::class);
-    Route::get('/visio/{reservation}', [VisioController::class, 'joinSession'])->name('visio.join');
-    Route::get('/visio/{reservation}/replay', [VisioController::class, 'viewReplay'])->name('visio.replay');
-    Route::post('/visio/{reservation}/replay', [VisioController::class, 'storeReplay'])->name('visio.replay.store');
 });
 Route::get('/galerie', [HomeController::class, 'galerie'])->name('galerie');
 Route::get('/actualites', [HomeController::class, 'actualites'])->name('actualites');
@@ -93,7 +89,7 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
     $request->fulfill();
-    
+
     \Illuminate\Support\Facades\Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
@@ -115,7 +111,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::get('/apprenant/profile', [DashboardController::class, 'profile'])->name('dashboard.apprenant.profile');
         Route::put('/apprenant/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.apprenant.profile.update');
         Route::get('/apprenant/reservations', [DashboardController::class, 'reservations'])->name('dashboard.apprenant.reservations');
-        
+
         // Actions de réservation (Apprenant)
         Route::post('/apprenant/reservations/{id}/accept', [ReservationActionController::class, 'accept'])->name('dashboard.apprenant.reservations.accept');
         Route::post('/apprenant/reservations/{id}/refuse', [ReservationActionController::class, 'refuse'])->name('dashboard.apprenant.reservations.refuse');
@@ -150,6 +146,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/meeting/{reservation}', [MeetingController::class, 'show'])->name('meeting.show');
         Route::post('/meeting/{reservation}/regenerate-token', [MeetingController::class, 'regenerateToken'])->name('meeting.regenerate-token');
+        Route::get('/meeting/{reservation}/replay', [MeetingController::class, 'viewReplay'])->name('meeting.replay');
+        Route::post('/meeting/{reservation}/replay', [MeetingController::class, 'storeReplay'])->name('meeting.replay.store');
     });
 
     // Admin routes
@@ -180,7 +178,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::resource('/admin/contacts', AdminContactController::class)->names('dashboard.admin.contacts');
         Route::get('/admin/profils/{profil}/permissions', [ProfilpermissionController::class, 'index'])->name('dashboard.admin.profils.permissions');
         Route::put('/admin/profils/{profil}/permissions', [ProfilpermissionController::class, 'update'])->name('dashboard.admin.profils.permissions.update');
-        
+
         // Admin Profile Management
         Route::get('/admin/profile', [AdminController::class, 'profile'])->name('dashboard.admin.profile');
         Route::put('/admin/profile', [AdminController::class, 'updateProfile'])->name('dashboard.admin.profile.update');

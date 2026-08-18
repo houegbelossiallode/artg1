@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Services\JitsiService;
+use Illuminate\Support\Facades\Auth;
 
 class VisioController extends Controller
 {
+    protected JitsiService $jitsiService;
+
+    public function __construct(JitsiService $jitsiService)
+    {
+        $this->jitsiService = $jitsiService;
+    }
+
     /**
      * Join secure Jitsi Meet videoconference session.
      */
@@ -34,12 +42,18 @@ class VisioController extends Controller
             $reservation->update(['jitsi_room_id' => $roomName]);
         }
 
-        return view('visio.room', [
+        // Generate secure meeting URL with JWT
+        $isModerator = $isTeacher || $isAdmin;
+        $meetingUrl = $this->jitsiService->generateMeetingUrl(
+            $reservation->jitsi_room_id,
+            $user,
+            $isModerator
+        );
+
+        return view('meeting.show', [
             'reservation' => $reservation,
-            'cours' => $reservation->course,
-            'jitsiRoomName' => $reservation->jitsi_room_id,
-            'userName' => $user->name,
-            'isTeacher' => $isTeacher,
+            'meetingUrl' => $meetingUrl,
+            'isModerator' => $isModerator,
         ]);
     }
 

@@ -131,7 +131,7 @@
                     @elseif($res->status === 'accepted')
                         <div class="flex flex-col gap-2">
                             @if($res->jitsi_room_id || ($res->course && $res->course->mode && Str::contains(strtolower($res->course->mode->libelle), ['distanciel', 'ligne', 'visio'])))
-                                <a href="{{ route('visio.join', $res->id) }}" class="w-full flex items-center justify-center gap-2 px-3 py-2.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-wider transition shadow-sm">
+                                <a href="{{ route('meeting.show', $res->id) }}" class="w-full flex items-center justify-center gap-2 px-3 py-2.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-wider transition shadow-sm">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                     Lancer la Visio Jitsi
                                 </a>
@@ -197,7 +197,7 @@
         <button @click="showReplayModal = false" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">&times;</button>
       </div>
 
-      <form :action="'/visio/' + activeReservationId + '/replay'" method="POST" class="space-y-4">
+      <form :action="'/dashboard/meeting/' + activeReservationId + '/replay'" method="POST" class="space-y-4">
         @csrf
         <div>
           <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">Lien de la vidéo (YouTube, Google Drive, etc.) <span class="text-red-500">*</span></label>
