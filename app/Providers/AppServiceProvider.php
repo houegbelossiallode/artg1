@@ -63,12 +63,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
-        // if (Schema::hasTable('associations')) {
-        //     View::composer('*', function ($view) {
-        //         $association = Association::where('actif', 'OUI')->latest()->first() ?? Association::first();
-        //         $view->with('association', $association);
-        //     });
-        // }
+        if (Schema::hasTable('associations')) {
+            View::composer('*', function ($view) {
+                $association = Association::where('actif', 'OUI')->latest()->first() ?? Association::first();
+                $view->with('association', $association);
+            });
+        }
 
 
 
