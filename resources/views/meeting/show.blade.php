@@ -27,7 +27,7 @@
           <div>
             <h1 class="text-lg font-bold text-slate-900">{{ $reservation->course->titre }}</h1>
             <p class="text-xs text-slate-500">
-              {{ \Carbon\Carbon::parse($reservation->date_reservation)->format('d/m/Y') }} 
+              {{ \Carbon\Carbon::parse($reservation->date_reservation)->format('d/m/Y') }}
               de {{ $reservation->heure_debut }} à {{ $reservation->heure_fin }}
             </p>
           </div>
@@ -54,22 +54,45 @@
 
   <!-- Iframe Jitsi plein écran -->
   <div class="relative" style="height: calc(100vh - 60px);">
-    <iframe 
-      src="{{ $meetingUrl }}" 
+    <iframe
+      src="{{ $meetingUrl }}"
       allow="camera; microphone; fullscreen; display-capture; autoplay"
       style="width: 100%; height: 100%; border: none;"
       id="jitsiFrame"
-      class="bg-slate-900">
+      class="bg-slate-900"
+      sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-presentation">
     </iframe>
-    
+
     <!-- Overlay de chargement -->
     <div id="loadingOverlay" class="absolute inset-0 bg-slate-900 flex items-center justify-center z-10">
       <div class="text-center">
         <div class="w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        <p class="text-white text-sm">Chargement de la réunion...</p>
+        <p class="text-white text-sm" id="loadingText">Chargement de la réunion...</p>
+        <p class="text-slate-400 text-xs mt-2" id="loadingHint">Si cela prend trop de temps, cliquez sur "Rafraîchir"</p>
       </div>
     </div>
-    
+
+    <!-- Overlay d'erreur -->
+    <div id="errorOverlay" class="hidden absolute inset-0 bg-slate-900 flex items-center justify-center z-20">
+      <div class="text-center max-w-md p-6">
+        <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+        </div>
+        <h3 class="text-white text-lg font-bold mb-2">Erreur de chargement</h3>
+        <p class="text-slate-300 text-sm mb-4" id="errorMessage">La réunion n'a pas pu être chargée. Vérifiez votre connexion internet ou réessayez.</p>
+        <div class="space-y-2">
+          <button onclick="refreshMeeting()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
+            Rafraîchir
+          </button>
+          <button onclick="openInNewTab()" class="w-full bg-slate-700 hover:bg-slate-600 text-white py-2 px-4 rounded-lg text-sm font-medium">
+            Ouvrir dans un nouvel onglet
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Menu flottant -->
     <div class="absolute bottom-4 right-4 z-20">
       <button onclick="toggleMenu()" class="bg-slate-800 hover:bg-slate-700 text-white p-3 rounded-full shadow-lg">
@@ -77,7 +100,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
         </svg>
       </button>
-      
+
       <!-- Menu déroulant -->
       <div id="dropdownMenu" class="hidden absolute bottom-14 right-0 bg-white rounded-lg shadow-xl border border-slate-200 p-2 w-64">
         <div class="mb-3 pb-3 border-b border-slate-100">
@@ -85,7 +108,7 @@
           <p class="text-sm text-slate-700">{{ $reservation->course->professeur ? $reservation->course->professeur->name : 'Non spécifié' }}</p>
           <p class="text-xs text-slate-500">{{ $reservation->heure_debut }} - {{ $reservation->heure_fin }}</p>
         </div>
-        
+
         <div class="space-y-2">
           <button onclick="copyMeetingLink()" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +116,7 @@
             </svg>
             Copier le lien
           </button>
-          
+
           @if($isModerator)
           <button onclick="regenerateToken()" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,14 +125,14 @@
             Régénérer le token
           </button>
           @endif
-          
+
           <button onclick="refreshMeeting()" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 rounded-lg">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
             </svg>
             Rafraîchir
           </button>
-          
+
           <button onclick="closeMeeting()" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
@@ -122,11 +145,52 @@
   </div>
 
 <script>
+// Variables pour le timeout
+let loadingTimeout;
+let iframeLoadTimeout;
+const MAX_LOADING_TIME = 30000; // 30 secondes max pour le chargement
+
 // Masquer l'overlay de chargement quand l'iframe est chargée
-document.getElementById('jitsiFrame').onload = function() {
+const jitsiFrame = document.getElementById('jitsiFrame');
+const loadingOverlay = document.getElementById('loadingOverlay');
+const errorOverlay = document.getElementById('errorOverlay');
+const loadingText = document.getElementById('loadingText');
+
+// Timeout pour détecter un chargement trop long
+loadingTimeout = setTimeout(function() {
+  if (loadingOverlay.style.display !== 'none') {
+    loadingText.textContent = 'Chargement en cours... Cela prend plus de temps que prévu.';
+    document.getElementById('loadingHint').textContent = 'Cliquez sur "Rafraîchir" ou "Ouvrir dans un nouvel onglet" si le problème persiste.';
+  }
+}, 15000); // 15 secondes
+
+// Timeout pour détecter une erreur de chargement
+iframeLoadTimeout = setTimeout(function() {
+  if (loadingOverlay.style.display !== 'none') {
+    loadingOverlay.style.display = 'none';
+    errorOverlay.classList.remove('hidden');
+    document.getElementById('errorMessage').textContent =
+      'La réunion n\'a pas pu être chargée dans le délai imparti. ' +
+      'Cela peut être dû à une connexion internet instable ou à un problème avec le serveur Jitsi.';
+  }
+}, MAX_LOADING_TIME);
+
+jitsiFrame.onload = function() {
+  clearTimeout(loadingTimeout);
+  clearTimeout(iframeLoadTimeout);
+
   setTimeout(function() {
-    document.getElementById('loadingOverlay').style.display = 'none';
+    loadingOverlay.style.display = 'none';
   }, 2000);
+};
+
+jitsiFrame.onerror = function() {
+  clearTimeout(loadingTimeout);
+  clearTimeout(iframeLoadTimeout);
+  loadingOverlay.style.display = 'none';
+  errorOverlay.classList.remove('hidden');
+  document.getElementById('errorMessage').textContent =
+    'Une erreur est survenue lors du chargement de la réunion.';
 };
 
 // Toggle menu
@@ -156,10 +220,35 @@ function copyMeetingLink() {
 
 // Rafraîchir la réunion
 function refreshMeeting() {
+  clearTimeout(loadingTimeout);
+  clearTimeout(iframeLoadTimeout);
+
   const iframe = document.getElementById('jitsiFrame');
   iframe.src = iframe.src;
-  document.getElementById('loadingOverlay').style.display = 'flex';
+  loadingOverlay.style.display = 'flex';
+  errorOverlay.classList.add('hidden');
   document.getElementById('dropdownMenu').classList.add('hidden');
+
+  // Relancer les timeouts
+  loadingTimeout = setTimeout(function() {
+    if (loadingOverlay.style.display !== 'none') {
+      loadingText.textContent = 'Chargement en cours... Cela prend plus de temps que prévu.';
+      document.getElementById('loadingHint').textContent = 'Cliquez sur "Rafraîchir" ou "Ouvrir dans un nouvel onglet" si le problème persiste.';
+    }
+  }, 15000);
+
+  iframeLoadTimeout = setTimeout(function() {
+    if (loadingOverlay.style.display !== 'none') {
+      loadingOverlay.style.display = 'none';
+      errorOverlay.classList.remove('hidden');
+    }
+  }, MAX_LOADING_TIME);
+}
+
+// Ouvrir dans un nouvel onglet
+function openInNewTab() {
+  const meetingUrl = '{{ $meetingUrl }}';
+  window.open(meetingUrl, '_blank');
 }
 
 // Régénérer le token JWT (pour le modérateur)

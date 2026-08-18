@@ -28,48 +28,48 @@ class DatabaseSeeder extends Seeder
         $profProfil = Profil::firstOrCreate(['id' => 2, 'nom' => 'professeur', 'actif' => 'OUI']);
         $apprenantProfil = Profil::firstOrCreate(['id' => 3, 'nom' => 'apprenant', 'actif' => 'OUI']);
 
-        // 2. Users
-        User::firstOrCreate([
-            'nom' => 'Admin',
-            'prenom' => 'System',
-            'email' => 'admin@assoculture.com',
-            'password' => Hash::make('password'),
-            'profil_id' => 1,
-            'sexe' => 'M',
-            'date_naissance' => '1985-01-01',
-            'biographie' => 'Administrateur général de la plateforme.',
-            'telephone' => '+22900000001',
-            'adresse' => 'Cotonou, Bénin',
-            'actif' => 'OUI'
-        ]);
+        // // 2. Users
+        // User::firstOrCreate([
+        //     'nom' => 'Admin',
+        //     'prenom' => 'System',
+        //     'email' => 'admin@assoculture.com',
+        //     'password' => Hash::make('password'),
+        //     'profil_id' => 1,
+        //     'sexe' => 'M',
+        //     'date_naissance' => '1985-01-01',
+        //     'biographie' => 'Administrateur général de la plateforme.',
+        //     'telephone' => '+22900000001',
+        //     'adresse' => 'Cotonou, Bénin',
+        //     'actif' => 'OUI'
+        // ]);
 
-        $teacher = User::firstOrCreate([
-            'nom' => 'Dupont',
-            'prenom' => 'Jean-Marc',
-            'email' => 'jeanmarc@assoculture.com',
-            'password' => Hash::make('password'),
-            'profil_id' => 2,
-            'sexe' => 'M',
-            'date_naissance' => '1978-05-15',
-            'biographie' => 'Professeur de guitare et percussions traditionnelles avec plus de 15 ans d\'expérience.',
-            'telephone' => '+22900000002',
-            'adresse' => 'Porto-Novo, Bénin',
-            'actif' => 'OUI'
-        ]);
+        // $teacher = User::firstOrCreate([
+        //     'nom' => 'Dupont',
+        //     'prenom' => 'Jean-Marc',
+        //     'email' => 'jeanmarc@assoculture.com',
+        //     'password' => Hash::make('password'),
+        //     'profil_id' => 2,
+        //     'sexe' => 'M',
+        //     'date_naissance' => '1978-05-15',
+        //     'biographie' => 'Professeur de guitare et percussions traditionnelles avec plus de 15 ans d\'expérience.',
+        //     'telephone' => '+22900000002',
+        //     'adresse' => 'Porto-Novo, Bénin',
+        //     'actif' => 'OUI'
+        // ]);
 
-        $student = User::firstOrCreate([
-            'nom' => 'Martin',
-            'prenom' => 'Alice',
-            'email' => 'alice@assoculture.com',
-            'password' => Hash::make('password'),
-            'profil_id' => 3,
-            'sexe' => 'F',
-            'date_naissance' => '2000-09-20',
-            'biographie' => 'Étudiante passionnée de tissage de raphia et d\'arts musicaux traditionnels.',
-            'telephone' => '+22900000003',
-            'adresse' => 'Ouidah, Bénin',
-            'actif' => 'OUI'
-        ]);
+        // $student = User::firstOrCreate([
+        //     'nom' => 'Martin',
+        //     'prenom' => 'Alice',
+        //     'email' => 'alice@assoculture.com',
+        //     'password' => Hash::make('password'),
+        //     'profil_id' => 3,
+        //     'sexe' => 'F',
+        //     'date_naissance' => '2000-09-20',
+        //     'biographie' => 'Étudiante passionnée de tissage de raphia et d\'arts musicaux traditionnels.',
+        //     'telephone' => '+22900000003',
+        //     'adresse' => 'Ouidah, Bénin',
+        //     'actif' => 'OUI'
+        // ]);
 
         // // 3. Associations
         // Association::create([

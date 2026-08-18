@@ -27,11 +27,11 @@ class JitsiService
     {
         $apiKeyId = env('JITSI_API_KEY_ID');
         $privateKeyPath = storage_path('app/jitsi_private.key');
-        
+
         // Si on utilise JaaS (8x8) avec clé privée RSA
         if ($apiKeyId && file_exists($privateKeyPath)) {
             $privateKey = file_get_contents($privateKeyPath);
-            
+
             $payload = [
                 'iss' => 'chat',
                 'aud' => 'jitsi',
@@ -54,6 +54,32 @@ class JitsiService
             ];
 
             return JWT::encode($payload, $privateKey, 'RS256', $apiKeyId);
+        }
+
+        // Si on utilise JaaS sans clé privée (fallback avec AppID comme secret)
+        if ($apiKeyId && str_contains($this->jitsiUrl, '8x8.vc')) {
+            $payload = [
+                'iss' => $this->appId,
+                'aud' => $this->appId,
+                'exp' => now()->addHours(2)->timestamp,
+                'sub' => $this->appId,
+                'room' => $roomName,
+                'context' => [
+                    'user' => [
+                        'name' => $user->name,
+                        'email' => $user->email,
+                        'id' => $user->id,
+                        'avatar' => $user->avatar ?? null,
+                    ],
+                    'features' => [
+                        'livestreaming' => $isModerator,
+                        'recording' => $isModerator,
+                    ],
+                ],
+                'moderator' => $isModerator,
+            ];
+
+            return JWT::encode($payload, $this->appId, 'HS256');
         }
 
         // Fallback pour serveur auto-hébergé simple avec secret (HS256)
@@ -99,20 +125,20 @@ class JitsiService
     public function generateMeetingUrl($roomName, $user, $isModerator = false)
     {
         $apiKeyId = env('JITSI_API_KEY_ID');
-        
+
         // Si pas de secret configuré ni de clé JaaS (instance publique), utiliser l'URL simple
         if (empty($this->appSecret) && empty($apiKeyId)) {
             return rtrim($this->jitsiUrl, '/') . '/' . $roomName;
         }
-        
+
         // Générer le token approprié
         $token = $this->generateToken($roomName, $user, $isModerator);
-        
+
         // Pour JaaS (8x8.vc), l'URL doit inclure le tenant (AppID)
         if ($apiKeyId && str_contains($this->jitsiUrl, '8x8.vc')) {
             return rtrim($this->jitsiUrl, '/') . '/' . $this->appId . '/' . $roomName . '?jwt=' . $token;
         }
-        
+
         // Sinon, utiliser JWT pour l'instance privée normale
         return rtrim($this->jitsiUrl, '/') . '/' . $roomName . '?jwt=' . $token;
     }
@@ -122,7 +148,7 @@ class JitsiService
      */
     public function canAccessRoom($user, $reservation)
     {
-        return $reservation->user_id === $user->id || 
+        return $reservation->user_id === $user->id ||
                $reservation->course->user_id === $user->id;
     }
 
@@ -133,7 +159,7 @@ class JitsiService
     {
         $now = now();
         $meetingStart = $reservation->date_reservation . ' ' . $reservation->heure_debut;
-        
+
         return $now->gte(\Carbon\Carbon::parse($meetingStart)->subMinutes(5));
     }
 
@@ -144,7 +170,7 @@ class JitsiService
     {
         $now = now();
         $meetingEnd = $reservation->date_reservation . ' ' . $reservation->heure_fin;
-        
+
         return $now->gt(\Carbon\Carbon::parse($meetingEnd)->addMinutes(15));
     }
 }
