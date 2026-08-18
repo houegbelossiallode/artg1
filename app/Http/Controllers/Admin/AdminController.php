@@ -25,12 +25,14 @@ class AdminController extends Controller
             $query->where('nom', 'professeur');
         })->latest()->get();
 
-        $recentUsers = User::with('profil')->latest()->take(10)->get();
+        $recentUsers = User::with('profil')->latest()->take(4)->get();
         $talents = Talent::with('category')->latest()->get();
 
         $totalUsers = User::count();
         $totalProfesseurs = $professeurs->count();
         $totalTalents = $talents->count();
+
+        $pendingCandidatures = \App\Models\TalentCandidature::with('discipline')->where('statut', 'en attente')->latest()->get();
 
         return view('dashboards.admin', compact(
             'categorieTalents',
@@ -41,7 +43,8 @@ class AdminController extends Controller
             'talents',
             'totalUsers',
             'totalProfesseurs',
-            'totalTalents'
+            'totalTalents',
+            'pendingCandidatures'
         ));
     }
 

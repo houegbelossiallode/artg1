@@ -64,7 +64,7 @@ class TalentController extends Controller
             'facebook' => $request->facebook,
             'instagram' => $request->instagram,
             'youtube' => $request->youtube,
-            'photo' => $photoPath,
+            'photo' => $photoPath
         ]);
 
         // Return directly to the talents list page
@@ -104,6 +104,9 @@ class TalentController extends Controller
             'telephone' => ['nullable', 'string', 'max:20'],
             'whatsapp' => ['nullable', 'string', 'max:20'],
             'email' => ['nullable', 'email', 'max:255'],
+            'facebook' => ['nullable', 'url', 'max:255'],
+            'instagram' => ['nullable', 'url', 'max:255'],
+            'youtube' => ['nullable', 'url', 'max:255'],
             'photo' => ['nullable', 'image', 'max:2048'],
         ]);
 
@@ -111,9 +114,18 @@ class TalentController extends Controller
             $talent->photo = $request->file('photo')->store('talents', 'public');
         }
 
-        $talent->update($request->only([
-            'nom', 'prenom', 'categorie_talent_id', 'biographie', 'telephone', 'whatsapp', 'email', 'facebook', 'instagram', 'youtube'
-        ]));
+        $talent->update([
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'categorie_talent_id' => $request->categorie_talent_id,
+            'biographie' => $request->biographie,
+            'telephone' => $request->telephone,
+            'whatsapp' => $request->whatsapp,
+            'email' => $request->email,
+            'facebook' => $request->facebook,
+            'instagram' => $request->instagram,
+            'youtube' => $request->youtube
+        ]);
 
         return redirect()->route('dashboard.admin.talents.index')->with('success', 'Talent mis à jour avec succès.');
     }

@@ -64,7 +64,7 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Écho & Culture</h1>
+            <h1>{{ $association->nom }}</h1>
             <p>Réservation Confirmée</p>
         </div>
         
@@ -148,7 +148,7 @@
         
         <!-- Footer -->
         <div class="footer">
-            <p>© {{ date('Y') }} Écho & Culture. Transmettons notre passion.</p>
+            <p>© {{ date('Y') }} {{ $association->nom }}. Transmettons notre passion.</p>
             <p style="opacity: 0.7; font-size: 10px;">Cet email a été envoyé automatiquement, merci de ne pas y répondre.</p>
         </div>
     </div>

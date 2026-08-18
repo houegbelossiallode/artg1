@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\EquipeController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\TalentController;
+use App\Http\Controllers\Admin\OeuvreController as AdminOeuvreController;
 use App\Http\Controllers\Admin\SousmenuController;
 use App\Http\Controllers\Admin\ActualiteController;
 use App\Http\Controllers\MeetingController;
@@ -46,6 +47,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/a-propos', [HomeController::class, 'aPropos'])->name('a-propos');
 Route::get('/actions', [HomeController::class, 'actions'])->name('actions');
 Route::get('/talents', [HomeController::class, 'talents'])->name('talents');
+Route::get('/talents/{id}', [HomeController::class, 'showTalent'])->name('talents.show');
 Route::get('/evenements', [HomeController::class, 'evenements'])->name('evenements');
 Route::get('/evenements/{id}', [HomeController::class, 'showEvenement'])->name('evenements.show');
 Route::get('/galerie', [PublicGalerieController::class, 'index'])->name('galerie');
@@ -84,15 +86,42 @@ Route::post('forgot-password', [AuthController::class, 'sendResetLinkEmail'])->n
 Route::get('reset-password/{token}', [AuthController::class, 'showResetForm'])->name('password.reset');
 Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
+// Email Verification Routes
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
+    $request->fulfill();
+    
+    \Illuminate\Support\Facades\Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login')->with('success', 'Votre compte a été validé avec succès. Veuillez vous connecter.');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (\Illuminate\Http\Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', 'Un nouveau lien de vérification a été envoyé à votre adresse email.');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 // Secure Dashboard Routes
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     // Apprenant routes
-    Route::middleware('role:apprenant')->group(function () {
+    Route::middleware(['role:apprenant', 'verified'])->group(function () {
         Route::get('/apprenant', [DashboardController::class, 'index'])->name('dashboard.apprenant');
         Route::get('/apprenant/cours', [DashboardController::class, 'cours'])->name('dashboard.apprenant.cours');
         Route::get('/apprenant/profile', [DashboardController::class, 'profile'])->name('dashboard.apprenant.profile');
         Route::put('/apprenant/profile', [DashboardController::class, 'updateProfile'])->name('dashboard.apprenant.profile.update');
         Route::get('/apprenant/reservations', [DashboardController::class, 'reservations'])->name('dashboard.apprenant.reservations');
+        
+        // Actions de réservation (Apprenant)
+        Route::post('/apprenant/reservations/{id}/accept', [ReservationActionController::class, 'accept'])->name('dashboard.apprenant.reservations.accept');
+        Route::post('/apprenant/reservations/{id}/refuse', [ReservationActionController::class, 'refuse'])->name('dashboard.apprenant.reservations.refuse');
+        Route::post('/apprenant/reservations/{id}/propose-report', [ReservationActionController::class, 'proposeReport'])->name('dashboard.apprenant.reservations.proposeReport');
+        Route::get('/apprenant/reservations/{id}/discussions', [ReservationActionController::class, 'showDiscussions'])->name('dashboard.apprenant.reservations.discussions');
+
         Route::get('/apprenant/upcoming', [DashboardController::class, 'upcoming'])->name('dashboard.apprenant.upcoming');
         Route::get('/apprenant/supports', [DashboardController::class, 'supports'])->name('dashboard.apprenant.supports');
         Route::get('/apprenant/supports/{id}/download', [DashboardController::class, 'downloadSupport'])->name('dashboard.apprenant.supports.download');
@@ -100,7 +129,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     });
 
     // Professeur routes
-    Route::middleware('role:professeur')->group(function () {
+    Route::middleware(['role:professeur', 'verified'])->group(function () {
         Route::get('/professeur', [ProfesseurController::class, 'index'])->name('dashboard.professeur');
         Route::get('/professeur/profile', [ProfesseurController::class, 'profile'])->name('dashboard.professeur.profile');
         Route::put('/professeur/profile', [ProfesseurController::class, 'updateProfile'])->name('dashboard.professeur.profile.update');
@@ -109,6 +138,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::post('/professeur/reservations/{id}/accept', [ReservationActionController::class, 'accept'])->name('dashboard.professeur.reservations.accept');
         Route::post('/professeur/reservations/{id}/refuse', [ReservationActionController::class, 'refuse'])->name('dashboard.professeur.reservations.refuse');
         Route::post('/professeur/reservations/{id}/propose-report', [ReservationActionController::class, 'proposeReport'])->name('dashboard.professeur.reservations.proposeReport');
+        Route::get('/professeur/reservations/{id}/discussions', [ReservationActionController::class, 'showDiscussions'])->name('dashboard.professeur.reservations.discussions');
         Route::get('/professeur/eleves', [ProfesseurController::class, 'eleves'])->name('dashboard.professeur.eleves');
         Route::get('/professeur/eleves/{id}/suivi', [ProfesseurController::class, 'suiviEleve'])->name('dashboard.professeur.eleves.suivi');
         Route::resource('professeur/cours', ProfesseurCoursController::class)->names('dashboard.professeur.cours');
@@ -127,6 +157,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::get('/admin', [AdminController::class, 'index'])->name('dashboard.admin');
         Route::resource('/admin/professeurs', AdminProfesseurController::class)->names('dashboard.admin.professeurs');
         Route::resource('/admin/talents', TalentController::class)->names('dashboard.admin.talents');
+        Route::resource('/admin/talents-oeuvres', AdminOeuvreController::class)->names('dashboard.admin.talents.oeuvres');
         Route::get('/admin/talent-candidatures', [AdminTalentCandidatureController::class, 'index'])->name('dashboard.admin.talent-candidatures.index');
         Route::post('/admin/talent-candidatures/{talentCandidature}/approve', [AdminTalentCandidatureController::class, 'approve'])->name('dashboard.admin.talent-candidatures.approve');
         Route::post('/admin/talent-candidatures/{talentCandidature}/reject', [AdminTalentCandidatureController::class, 'reject'])->name('dashboard.admin.talent-candidatures.reject');
@@ -142,6 +173,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
         Route::resource('/admin/menus', MenuController::class)->names('dashboard.admin.menus');
         Route::resource('/admin/sousmenus', SousmenuController::class)->names('dashboard.admin.sousmenus');
         Route::resource('/admin/modes', ModeController::class)->names('dashboard.admin.modes');
+        Route::get('/admin/membres', [\App\Http\Controllers\Admin\MembreController::class, 'index'])->name('dashboard.admin.membres.index');
         Route::resource('/admin/cours', CoursController::class)->names('dashboard.admin.cours');
         Route::resource('/admin/evenements', EvenementController::class)->names('dashboard.admin.evenements');
         Route::resource('/admin/profils', ProfilController::class)->names('dashboard.admin.profils');

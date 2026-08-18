@@ -23,7 +23,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Écho & Culture</h1>
+            <h1>{{ $association->nom }}</h1>
             <p>Association Culturelle & Artistique</p>
         </div>
         <div class="content">
@@ -45,7 +45,7 @@
             </p>
         </div>
         <div class="footer">
-            &copy; {{ date('Y') }} Écho & Culture. Transmettons notre passion.<br>
+            &copy; {{ date('Y') }} {{ $association->nom }}. Transmettons notre passion.<br>
             <span style="opacity: 0.7; font-size: 10px; margin-top: 8px; display: block;">Ce message est généré automatiquement, merci de ne pas y répondre.</span>
         </div>
     </div>

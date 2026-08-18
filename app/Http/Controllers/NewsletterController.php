@@ -11,6 +11,10 @@ class NewsletterController extends Controller
     {
         $request->validate([
             'email' => ['required', 'email', 'unique:newsletters,email'],
+        ], [
+            'email.unique' => 'Cette adresse email est déjà inscrite à notre newsletter.',
+            'email.required' => 'L\'adresse email est requise.',
+            'email.email' => 'Veuillez fournir une adresse email valide.'
         ]);
 
         Newsletter::create([

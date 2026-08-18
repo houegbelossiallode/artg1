@@ -34,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
 
+        \Illuminate\Pagination\Paginator::useTailwind();
+
 
        View::composer('*', function ($view) {
             $user = Auth::user();

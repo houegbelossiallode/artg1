@@ -114,21 +114,12 @@
       {{-- Accès & Sécurité --}}
       <div>
         <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-3 pb-2 border-b border-slate-100 font-sans">Accès & Sécurité</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Adresse Email <span class="text-red-500">*</span></label>
-            <input type="email" name="email" value="{{ old('email') }}" required
-              class="w-full px-3 py-2 bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-amber-500 transition @error('email') border-red-400 bg-red-50 @enderror"
-              placeholder="professeur@assoculture.com">
-            @error('email')<p class="text-red-500 text-[11px] mt-1">{{ $message }}</p>@enderror
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Mot de passe <span class="text-red-500">*</span></label>
-            <input type="password" name="password" required
-              class="w-full px-3 py-2 bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-amber-500 transition @error('password') border-red-400 bg-red-50 @enderror"
-              placeholder="Minimum 8 caractères">
-            @error('password')<p class="text-red-500 text-[11px] mt-1">{{ $message }}</p>@enderror
-          </div>
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Adresse Email <span class="text-red-500">*</span></label>
+          <input type="email" name="email" value="{{ old('email') }}" required
+            class="w-full px-3 py-2 bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-amber-500 transition @error('email') border-red-400 bg-red-50 @enderror"
+            placeholder="professeur@assoculture.com">
+          @error('email')<p class="text-red-500 text-[11px] mt-1">{{ $message }}</p>@enderror
         </div>
       </div>
 

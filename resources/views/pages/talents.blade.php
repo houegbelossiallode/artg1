@@ -29,9 +29,17 @@
      Notre association offre aux jeunes musiciens, chanteurs et artisans un studio d'enregistrement, un accompagnement personnalisé et des scènes publiques pour propulser leurs créations.
     </p>
 </div>
+@php $talentDuMois = $talents->first(); @endphp
+@if($talentDuMois)
 <div class="bg-[#1E1613] rounded-none overflow-hidden shadow-2xl border border-[#0BA20B]/40 grid grid-cols-1 lg:grid-cols-12 text-[#FAF7F2]">
 <div class="lg:col-span-5 relative min-h-[350px]">
-<img alt="Samuel Nguema" class="w-full h-full object-cover" referrerpolicy="no-referrer" src="/assets/young_musician_talent_1785764994375-Cmnv-yWc.jpg"/>
+@if($talentDuMois->photo)
+    <img alt="{{ trim($talentDuMois->prenom . ' ' . $talentDuMois->nom) }}" class="absolute inset-0 w-full h-full object-cover" referrerpolicy="no-referrer" src="{{ asset('storage/' . $talentDuMois->photo) }}"/>
+@else
+    <div class="absolute inset-0 w-full h-full bg-[#2C221E] flex items-center justify-center text-[#0BA20B] text-6xl font-bold">
+        {{ strtoupper(substr($talentDuMois->prenom, 0, 1)) }}{{ strtoupper(substr($talentDuMois->nom, 0, 1)) }}
+    </div>
+@endif
 <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-[#1E1613]/40 to-transparent">
 </div>
 <div class="absolute bottom-6 left-6 right-6 glass-dark p-4 rounded-none border border-white/20 space-y-3">
@@ -122,18 +130,15 @@
         </span>
 </span>
 <span class="text-xs text-white/60 font-sans">
-        21 ans • Joueur de Kora &amp; Auteur-Compositeur
+        {{ $talentDuMois->categorie ? $talentDuMois->categorie->libelle : 'Artiste' }}
        </span>
 </div>
 <div>
 <h3 class="font-serif-title text-3xl sm:text-4xl font-bold text-white">
-        Samuel Nguema
-        <span class="text-[#0BA20B] font-normal italic">
-         (Sam Kora)
-        </span>
+        {{ $talentDuMois->prenom }} {{ $talentDuMois->nom }}
 </h3>
 <p class="text-xs sm:text-sm text-[#D1C5B8] mt-2 font-sans leading-relaxed">
-        Formé au sein de l’association depuis 3 ans, Samuel marie les mélodies ancestrales de la Kora avec des sonorités folk contemporaines. Il a sorti son premier EP solo enregistré dans notre studio associatif.
+        {{ $talentDuMois->biographie ?? 'Une nouvelle voix passionnante accompagnée par notre association.' }}
        </p>
 </div>
 <div class="space-y-2 pt-2">
@@ -181,7 +186,7 @@
 <div class="text-xs text-white/70">
        Suivre :
        <span class="text-[#0BA20B] font-semibold">
-        @samkora_music
+        {{ '@' . strtolower($talentDuMois->prenom) }}_{{ strtolower($talentDuMois->nom) }}
        </span>
 </div>
 <button onclick="document.getElementById('candidature-modal').classList.remove('hidden')" class="px-5 py-2.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
@@ -202,117 +207,55 @@
 </div>
 </div>
 </div>
+@endif
 <div class="space-y-6 pt-6">
 <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
      Galerie des Artistes Émergents
     </h3>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-<div class="cursor-pointer bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl border-[#0BA20B] ring-2 ring-[#0BA20B]/20 shadow-md">
-<div class="flex items-center gap-4">
-<img alt="Samuel Nguema" class="w-16 h-16 rounded-none object-cover ring-2 ring-[#0BA20B]/40" referrerpolicy="no-referrer" src="/assets/young_musician_talent_1785764994375-Cmnv-yWc.jpg"/>
-<div>
-<h4 class="font-bold text-base text-[#2C221E]">
-         Samuel Nguema
-        </h4>
-<p class="text-xs text-[#0BA20B] font-semibold">
-         Joueur de Kora &amp; Auteur-Compositeur
+    @forelse($talents as $talent)
+    <a href="{{ route('talents.show', $talent->id) }}" class="block bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl {{ $loop->first ? 'border-[#0BA20B] ring-2 ring-[#0BA20B]/20 shadow-md' : 'border-[#0BA20B]/30 hover:border-[#0BA20B]' }}">
+        <div class="flex items-center gap-4">
+            @if($talent->photo)
+                <img alt="{{ trim($talent->prenom . ' ' . $talent->nom) }}" class="w-16 h-16 rounded-none object-cover ring-2 ring-[#0BA20B]/40" referrerpolicy="no-referrer" src="{{ asset('storage/' . $talent->photo) }}"/>
+            @else
+                <div class="w-16 h-16 rounded-none bg-[#F4EFE6] flex items-center justify-center text-[#0BA20B] font-bold text-lg ring-2 ring-[#0BA20B]/40">
+                    {{ strtoupper(substr($talent->prenom, 0, 1)) }}{{ strtoupper(substr($talent->nom, 0, 1)) }}
+                </div>
+            @endif
+            <div>
+                <h4 class="font-bold text-base text-[#2C221E]">
+                    {{ $talent->prenom }} {{ $talent->nom }}
+                </h4>
+                <p class="text-xs text-[#0BA20B] font-semibold">
+                    {{ $talent->categorie ? $talent->categorie->libelle : 'Talent émergent' }}
+                </p>
+                <span class="text-[10px] text-[#8C766B]">
+                    Jeune artiste
+                </span>
+            </div>
+        </div>
+        <p class="text-xs text-[#6B574F] line-clamp-2">
+            {{ \Illuminate\Support\Str::limit($talent->biographie ?? 'Talent en pleine évolution, porté par l’association pour révéler son potentiel artistique.', 140) }}
         </p>
-<span class="text-[10px] text-[#8C766B]">
-         21 ans
-        </span>
-</div>
-</div>
-<p class="text-xs text-[#6B574F] line-clamp-2">
-       Formé au sein de l’association depuis 3 ans, Samuel marie les mélodies ancestrales de la Kora avec des sonorités folk contemporaines. Il a sorti son premier EP solo enregistré dans notre studio associatif.
-      </p>
-<div class="pt-2 border-t border-[#0BA20B]/20 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
-<span class="flex items-center gap-1">
-<svg aria-hidden="true" class="lucide lucide-music w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 18V5l12-2v13">
-</path>
-<circle cx="6" cy="18" r="3">
-</circle>
-<circle cx="18" cy="16" r="3">
-</circle>
-</svg>
-        Écouter l'extrait
-       </span>
-<span>
-        3:42
-       </span>
-</div>
-</div>
-<div class="cursor-pointer bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl border-[#0BA20B]/30 hover:border-[#0BA20B]">
-<div class="flex items-center gap-4">
-<img alt="Inès Biyogo" class="w-16 h-16 rounded-none object-cover ring-2 ring-[#0BA20B]/40" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;q=80&amp;w=400"/>
-<div>
-<h4 class="font-bold text-base text-[#2C221E]">
-         Inès Biyogo
-        </h4>
-<p class="text-xs text-[#0BA20B] font-semibold">
-         Chanteuse Polyphonique &amp; Poétesse
-        </p>
-<span class="text-[10px] text-[#8C766B]">
-         19 ans
-        </span>
-</div>
-</div>
-<p class="text-xs text-[#6B574F] line-clamp-2">
-       Dotée d’un timbre vocal profond et chaleureux, Inès explore la poésie francophone et les chants d’initiation traditionnels. Elle prépare sa première tournée régionale.
-      </p>
-<div class="pt-2 border-t border-[#0BA20B]/20 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
-<span class="flex items-center gap-1">
-<svg aria-hidden="true" class="lucide lucide-music w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 18V5l12-2v13">
-</path>
-<circle cx="6" cy="18" r="3">
-</circle>
-<circle cx="18" cy="16" r="3">
-</circle>
-</svg>
-        Écouter l'extrait
-       </span>
-<span>
-        2:55
-       </span>
-</div>
-</div>
-<div class="cursor-pointer bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl border-[#0BA20B]/30 hover:border-[#0BA20B]">
-<div class="flex items-center gap-4">
-<img alt="Lionel Kassa" class="w-16 h-16 rounded-none object-cover ring-2 ring-[#0BA20B]/40" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;q=80&amp;w=400"/>
-<div>
-<h4 class="font-bold text-base text-[#2C221E]">
-         Lionel Kassa
-        </h4>
-<p class="text-xs text-[#0BA20B] font-semibold">
-         Master Balafon &amp; Percussions
-        </p>
-<span class="text-[10px] text-[#8C766B]">
-         23 ans
-        </span>
-</div>
-</div>
-<p class="text-xs text-[#6B574F] line-clamp-2">
-       Passionné de percussions depuis son plus jeune âge, Lionel est aujourd’hui tuteur au sein des ateliers enfants. Ses improvisations virtuoses au balafon captivent le public à chaque événement.
-      </p>
-<div class="pt-2 border-t border-[#0BA20B]/20 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
-<span class="flex items-center gap-1">
-<svg aria-hidden="true" class="lucide lucide-music w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 18V5l12-2v13">
-</path>
-<circle cx="6" cy="18" r="3">
-</circle>
-<circle cx="18" cy="16" r="3">
-</circle>
-</svg>
-        Écouter l'extrait
-       </span>
-<span>
-        4:10
-       </span>
-</div>
-</div>
-</div>
+        <div class="pt-2 border-t border-[#0BA20B]/20 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
+            <span class="flex items-center gap-1">
+                <svg aria-hidden="true" class="lucide lucide-music w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                </svg>
+                Découvrir le profil
+            </span>
+            <span>&rarr;</span>
+        </div>
+    </a>
+    @empty
+        <div class="sm:col-span-3 rounded-none border border-dashed border-[#0BA20B]/40 bg-[#FAF7F2] p-8 text-center text-sm text-[#6B574F]">
+            Aucun talent n’est encore publié.
+        </div>
+    @endforelse
+    </div>
 </div>
 <div class="p-8 rounded-none bg-gradient-to-r from-[#F4EFE6] to-[#FAF7F2] border border-[#0BA20B]/40 flex flex-col sm:flex-row items-center justify-between gap-6">
 <div class="space-y-2 text-center sm:text-left">

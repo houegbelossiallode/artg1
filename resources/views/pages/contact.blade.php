@@ -57,23 +57,7 @@
         <label class="block text-xs font-bold text-[#2C221E] uppercase mb-1">
             Objet de votre demande *
         </label>
-        <select name="objet" class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]" required>
-            <option value="Renseignements Généraux" {{ old('objet') == 'Renseignements Généraux' ? 'selected' : '' }}>
-                Renseignements Généraux
-            </option>
-            <option value="Inscription aux Cours d'Instruments" {{ old('objet') == 'Inscription aux Cours d\'Instruments' ? 'selected' : '' }}>
-                Inscription aux Cours d'Instruments
-            </option>
-            <option value="Ateliers & Stages Artisanat Raphia" {{ old('objet') == 'Ateliers & Stages Artisanat Raphia' ? 'selected' : '' }}>
-                Ateliers & Stages Artisanat Raphia
-            </option>
-            <option value="Proposition de Partenariat / Sponsoring" {{ old('objet') == 'Proposition de Partenariat / Sponsoring' ? 'selected' : '' }}>
-                Proposition de Partenariat / Sponsoring
-            </option>
-            <option value="Presse & Médias" {{ old('objet') == 'Presse & Médias' ? 'selected' : '' }}>
-                Presse & Médias
-            </option>
-        </select>
+        <input type="text" name="objet" class="w-full px-4 py-2.5 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/30 text-xs focus:outline-none focus:border-[#0BA20B]" placeholder="e.g. Demande de renseignements" required value="{{ old('objet') }}"/>
     </div>
     <div>
         <label class="block text-xs font-bold text-[#2C221E] uppercase mb-1">

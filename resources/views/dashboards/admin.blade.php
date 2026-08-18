@@ -16,7 +16,7 @@
           class="text-xs text-slate-500 font-medium bg-white px-3 py-1.5 border border-slate-200 flex items-center gap-2">
           <span class="w-1.5 h-1.5 bg-emerald-500 block"></span> Dernière synchro: Aujourd'hui, 13:24
         </div>
-        <button
+        <!-- <button
           class="relative p-2 bg-white border border-slate-200 text-slate-500 hover:text-slate-900 transition-colors">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -24,7 +24,7 @@
           </svg>
           <span
             class="absolute top-0 right-0 w-4 h-4 bg-[#0BA20B] text-white text-[9px] font-bold flex items-center justify-center -mt-1 -mr-1">2</span>
-        </button>
+        </button> -->
         <button @click="showProfModal = true"
           class="bg-[#0BA20B] text-white px-4 py-2 text-sm font-bold hover:bg-[#087A08] transition-colors flex items-center gap-2 border border-[#0BA20B]">
           <span>+</span> Créer un compte
@@ -136,14 +136,11 @@
               </div>
             </div>
             <div class="flex gap-2">
-              <button @click="showCatModal = true"
-                class="text-xs font-bold text-slate-600 bg-white border border-slate-200 px-3 py-1.5 hover:bg-slate-50 transition-colors flex items-center gap-1">
-                <span>+</span> Catégorie
-              </button>
-              <button @click="showTalentModal = true"
+              
+              <a href="{{ route('dashboard.admin.membres.index') }}"
                 class="text-xs font-bold text-[#0BA20B] bg-orange-50 border border-orange-100 px-3 py-1.5 hover:bg-orange-100 transition-colors flex items-center gap-1">
-                <span>+</span> Talent
-              </button>
+                Voir plus
+              </a>
             </div>
           </div>
 
@@ -169,7 +166,7 @@
                 @forelse ($recentUsers as $userItem)
                   <tr class="hover:bg-slate-50 transition-colors">
                     <td class="py-4 px-4">
-                      <p class="text-sm font-bold text-slate-900">{{ $userItem->prenom }} {{ $userItem->nom }}</p>
+                      <p class="text-sm font-bold text-slate-540">{{ $userItem->prenom }} {{ $userItem->nom }}</p>
                       <p class="text-xs text-slate-500 font-medium">{{ $userItem->email }}</p>
                     </td>
                     <td class="py-4 px-4">
@@ -189,21 +186,20 @@
 
                       </div>
                     </td>
-                    <td class="py-4 px-4 text-right">
-                      <button
-                        class="text-slate-400 hover:text-[#0BA20B] transition-colors p-1.5 border border-transparent hover:border-slate-200 bg-white shadow-sm">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                        </svg>
-                      </button>
-                      <button
-                        class="text-slate-400 hover:text-red-500 transition-colors p-1.5 border border-transparent hover:border-slate-200 bg-white shadow-sm ml-1">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                      </button>
+                    <td class="py-4 px-4 text-right" x-data="{ open: false }">
+                      <div class="relative inline-block text-left">
+                        <button @click="open = !open" @click.away="open = false"
+                          class="text-slate-400 hover:text-[#0BA20B] transition-colors p-1.5 border border-transparent hover:border-slate-200 bg-white shadow-sm">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                          </svg>
+                        </button>
+                        <div x-show="open" x-transition style="display: none;"
+                          class="absolute right-0 mt-2 w-32 bg-white border border-slate-200 shadow-lg z-10 text-left">
+                          <a href="#" class="block px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-[#0BA20B] transition-colors border-b border-slate-100">Modifier</a>
+                          <a href="#" class="block px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-red-500 transition-colors">Supprimer</a>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 @empty
@@ -218,7 +214,7 @@
       </div>
 
       {{-- Right Side: Alertes & Moderation --}}
-      <div class="lg:col-span-1 flex flex-col gap-4">
+      <div class="lg:col-span-1 flex flex-col gap-4 sticky top-6 self-start">
         <div class="bg-white border border-slate-200 p-6 shadow-sm">
           <div class="flex justify-between items-center mb-6">
             <div class="flex items-center gap-2">
@@ -232,59 +228,53 @@
               Action(s)</span>
           </div>
 
-          {{-- Tabs --}}
-          <div class="flex w-full mb-6 border border-slate-200 p-1 bg-slate-50">
-            <button class="flex-1 bg-white border border-slate-200 text-slate-900 text-xs font-bold py-2 shadow-sm">Jeunes
-              Talents</button>
-            <button
-              class="flex-1 text-slate-500 text-xs font-medium py-2 hover:bg-slate-100 transition-colors">Professeurs</button>
-          </div>
-
-          {{-- Content List --}}
-          <div class="flex flex-col gap-4">
-            <div
-              class="border border-slate-200 p-4 relative group hover:border-[#0BA20B] transition-colors cursor-pointer bg-white">
-              <div class="absolute right-4 top-4">
-                <span class="w-2 h-2 bg-[#0BA20B] block"></span>
-              </div>
-              <div class="flex items-center gap-3 mb-3">
-                <div
-                  class="w-8 h-8 bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-700 font-bold text-xs">
-                  JT
-                </div>
-                <div>
-                  <p class="text-sm font-bold text-slate-900">Demande d'inscription</p>
-                  <p class="text-[11px] text-slate-500 font-medium">Nouveau Jeune Talent</p>
-                </div>
-              </div>
-              <p class="text-xs text-slate-600 font-medium leading-relaxed">
-                Un nouveau dossier de candidature a été soumis par un jeune artiste. En attente de validation par la
-                direction artistique.
-              </p>
-              <div
-                class="mt-4 flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-                <span>Aujourd'hui, 10:15</span>
-                <span class="text-[#0BA20B] group-hover:translate-x-1 transition-transform">Examiner &rarr;</span>
-              </div>
+          <div x-data="{ activeTab: 'talents' }">
+            <div class="flex w-full mb-6 border border-slate-200 p-1 bg-slate-50">
+              <button @click="activeTab = 'talents'" :class="activeTab === 'talents' ? 'bg-white border-slate-200 text-slate-900 shadow-sm' : 'text-slate-500 border-transparent hover:bg-slate-100'" class="flex-1 border text-xs font-bold py-2 transition-colors">Jeunes Talents</button>
+              <button @click="activeTab = 'professeurs'" :class="activeTab === 'professeurs' ? 'bg-white border-slate-200 text-slate-900 shadow-sm' : 'text-slate-500 border-transparent hover:bg-slate-100'" class="flex-1 border text-xs font-bold py-2 transition-colors">Professeurs</button>
             </div>
 
-            <div
-              class="border border-slate-200 p-4 relative group hover:border-slate-400 transition-colors cursor-pointer bg-slate-50 opacity-75">
-              <div class="flex items-center gap-3 mb-3">
-                <div
-                  class="w-8 h-8 bg-white border border-slate-200 flex items-center justify-center text-slate-400 font-bold text-xs">
-                  RP
+            {{-- Content List --}}
+            <div class="flex flex-col gap-4">
+              
+              {{-- Talents Tab --}}
+              <div x-show="activeTab === 'talents'" class="space-y-4">
+                @forelse($pendingCandidatures as $candidature)
+                <div class="border border-slate-200 p-4 relative group hover:border-[#0BA20B] transition-colors cursor-pointer bg-white">
+                  <div class="absolute right-4 top-4">
+                    <span class="w-2 h-2 bg-[#0BA20B] block"></span>
+                  </div>
+                  <div class="flex items-center gap-3 mb-3">
+                    <div class="w-8 h-8 bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-700 font-bold text-xs uppercase">
+                      {{ substr($candidature->prenom, 0, 1) }}{{ substr($candidature->nom, 0, 1) }}
+                    </div>
+                    <div>
+                      <p class="text-sm font-bold text-slate-900">Demande d'inscription</p>
+                      <p class="text-[11px] text-slate-500 font-medium">Nouveau Jeune Talent ({{ $candidature->discipline->nom ?? 'Discipline' }})</p>
+                    </div>
+                  </div>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed">
+                    Un nouveau dossier de candidature a été soumis par {{ $candidature->prenom }} {{ $candidature->nom }}. En attente de validation par la direction artistique.
+                  </p>
+                  <div class="mt-4 flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+                    <span>{{ $candidature->created_at->diffForHumans() }}</span>
+                    <a href="{{ route('dashboard.admin.talent-candidatures.index') }}" class="text-[#0BA20B] group-hover:translate-x-1 transition-transform inline-block">Examiner &rarr;</a>
+                  </div>
                 </div>
-                <div>
-                  <p class="text-sm font-bold text-slate-900">Mise à jour profil</p>
-                  <p class="text-[11px] text-slate-500 font-medium">Professeur de Raphia</p>
+                @empty
+                <div class="p-6 text-center border border-slate-200 bg-slate-50">
+                  <p class="text-xs font-medium text-slate-500">Aucune candidature en attente.</p>
+                </div>
+                @endforelse
+              </div>
+
+              {{-- Professeurs Tab --}}
+              <div x-show="activeTab === 'professeurs'" style="display: none;" class="space-y-4">
+                <div class="p-6 text-center border border-slate-200 bg-slate-50">
+                  <p class="text-xs font-medium text-slate-500">Aucune alerte pour les professeurs.</p>
                 </div>
               </div>
-              <div
-                class="mt-2 flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-                <span>Hier, 14:20</span>
-                <span class="text-slate-500">Traité</span>
-              </div>
+
             </div>
           </div>
         </div>
@@ -329,13 +319,6 @@
             <input type="email" name="email" required
               class="w-full px-3 py-2 bg-slate-50 border border-slate-300 text-sm font-medium focus:outline-none focus:border-slate-900 transition"
               placeholder="professeur@assoculture.com">
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1.5">Mot de
-              passe</label>
-            <input type="password" name="password" required
-              class="w-full px-3 py-2 bg-slate-50 border border-slate-300 text-sm font-medium focus:outline-none focus:border-slate-900 transition"
-              placeholder="Minimum 8 caractères">
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>

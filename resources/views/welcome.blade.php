@@ -1,413 +1,293 @@
 @extends('layouts.app')
 @section('content')
     <main>
-        <section class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-[#1E1613]" id="hero"
-            x-data="{ activeGallery: null, currentImageIndex: 0, showTitle: '' }">
+        <section class="relative min-h-screen overflow-hidden bg-[#1E1613]" id="hero"
+    x-data="{ 
+        activeGallery: null, 
+        currentImageIndex: 0, 
+        showTitle: '',
+        heroSlide: 0,
+        slidesCount: 3,
+        init() {
+            this.startInterval();
+        },
+        startInterval() {
+            this.interval = setInterval(() => {
+                this.next();
+            }, 7000);
+        },
+        resetInterval() {
+            clearInterval(this.interval);
+            this.startInterval();
+        },
+        next() {
+            this.heroSlide = (this.heroSlide + 1) % this.slidesCount;
+            this.resetInterval();
+        },
+        prev() {
+            this.heroSlide = (this.heroSlide - 1 + this.slidesCount) % this.slidesCount;
+            this.resetInterval();
+        }
+    }">
+
+    <!-- Slider Track -->
+    <div class="flex h-screen transition-transform duration-1000 ease-in-out"
+         :style="`transform: translateX(-${heroSlide * 100}vw); width: ${slidesCount * 100}vw;`">
+        
+        <!-- SLIDE 1: Culture & Raphia -->
+        <div class="w-screen h-screen relative flex items-center pt-24 pb-16 shrink-0 overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img alt="Patrimoine Culturel et Arts Musicaux"
-                    class="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110 transform transition-transform duration-1000"
+                    class="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
                     referrerpolicy="no-referrer" src="/assets/hero_cultural_bg_1785764970571-BS2uarbi.jpg" />
-                <div class="absolute inset-0 bg-gradient-to-r from-[#1E1613] via-[#1E1613]/85 to-[#1E1613]/50">
-                </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-[#1E1613]/70">
-                </div>
-                <div class="absolute inset-0 opacity-10 bg-pattern-raphia pointer-events-none">
-                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-[#1E1613] via-[#1E1613]/85 to-[#1E1613]/50 z-20"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-[#1E1613]/70 z-20"></div>
+                <div class="absolute inset-0 opacity-10 bg-pattern-raphia pointer-events-none z-20"></div>
             </div>
-            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-1000 delay-300"
+                 :class="heroSlide === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <div class="lg:col-span-7 space-y-6 text-left">
-                        <!-- <div
-                                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-white/10 backdrop-blur-md border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-semibold tracking-wider uppercase">
-                                            <svg aria-hidden="true" class="lucide lucide-sparkles w-3.5 h-3.5 text-[#0BA20B]" fill="none"
-                                                height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
-                                                </path>
-                                                <path d="M20 2v4">
-                                                </path>
-                                                <path d="M22 4h-4">
-                                                </path>
-                                                <circle cx="4" cy="20" r="2">
-                                                </circle>
-                                            </svg>
-                                            <span>
-                                            Maison de l'Art, de la Musique &amp; du Raphia
-                                            </span>
-                                        </div> -->
-                        <h1
-                            class="font-serif-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FAF7F2] leading-[1.08] tracking-tight">
-                            Célébrer la
-                            <span class="italic text-[#0BA20B] font-normal">
-                                Culture
-                            </span>
-                            ,
-                            <br />
-                            Façonner le
-                            <span class="text-[#0BA20B]">
-                                Raphia
-                            </span>
-                            &amp;
-                            <br />
+                        <h1 class="font-serif-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FAF7F2] leading-[1.08] tracking-tight">
+                            Célébrer l' <span class="italic text-[#0BA20B] font-normal">Agriculture</span>, <br />
+                            Façonner le <span class="text-[#0BA20B]">Raphia</span> &amp; <br />
                             Transmettre l'Art.
                         </h1>
                         <p class="text-base sm:text-lg text-[#E6DCD3] font-sans font-light max-w-2xl leading-relaxed">
                             Vitrine officielle de notre association culturelle : découvrez la richesse des arts musicaux
                             traditionnels et modernes, explorez la valeur agro-artisanale du raphia, réservez vos cours
-                            d’instruments et soutenez l’émergence des jeunes talents.
+                            d'instruments et soutenez l'émergence des jeunes talents.
                         </p>
                         <div class="pt-2 flex flex-wrap gap-3 items-center">
-                            <a href="#courses"
-                                class="px-6 py-3.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-semibold text-sm shadow-xl shadow-[#0BA20B]/25 hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2 group">
-                                <svg aria-hidden="true" class="lucide lucide-graduation-cap w-4 h-4 text-[#0BA20B]"
-                                    fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z">
-                                    </path>
-                                    <path d="M22 10v6">
-                                    </path>
-                                    <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5">
-                                    </path>
-                                </svg>
-                                <span>
-                                    Réserver un Cours
-                                </span>
-                                <svg aria-hidden="true"
-                                    class="lucide lucide-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform"
-                                    fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 12h14">
-                                    </path>
-                                    <path d="m12 5 7 7-7 7">
-                                    </path>
-                                </svg>
+                            <a href="#courses" class="px-6 py-3.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-semibold text-sm shadow-xl shadow-[#0BA20B]/25 hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2 group">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                <span>Réserver un Cours</span>
                             </a>
-                            <a class="px-5 py-3.5 rounded-none bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-md transition-all flex items-center gap-2"
-                                href="#events">
-                                <svg aria-hidden="true" class="lucide lucide-calendar w-4 h-4 text-[#0BA20B]" fill="none"
-                                    height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 2v4">
-                                    </path>
-                                    <path d="M16 2v4">
-                                    </path>
-                                    <rect height="18" rx="2" width="18" x="3" y="4">
-                                    </rect>
-                                    <path d="M3 10h18">
-                                    </path>
-                                </svg>
-                                <span>
-                                    Voir les Événements
-                                </span>
+                            <a class="px-5 py-3.5 rounded-none bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-md transition-all flex items-center gap-2" href="#events">
+                                <svg class="w-4 h-4 text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span>Voir les Événements</span>
                             </a>
-                            <a href="#donation"
-                                class="px-5 py-3.5 rounded-none bg-gradient-to-r from-[#0BA20B] to-[#087A08] text-[#1E1613] font-bold text-sm shadow-lg hover:brightness-110 transition-all flex items-center gap-2">
-                                <svg aria-hidden="true" class="lucide lucide-heart w-4 h-4 fill-current text-[#1E1613]"
-                                    fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5">
-                                    </path>
-                                </svg>
-                                <span>
-                                    Faire un Don
-                                </span>
-                            </a>
-                            <a class="px-4 py-3.5 text-xs text-[#0BA20B] hover:text-white underline underline-offset-4 font-semibold flex items-center gap-1.5 transition-colors"
-                                href="#contact">
-                                <svg aria-hidden="true" class="lucide lucide-handshake w-4 h-4" fill="none" height="24"
-                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m11 17 2 2a1 1 0 1 0 3-3">
-                                    </path>
-                                    <path
-                                        d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4">
-                                    </path>
-                                    <path d="m21 3 1 11h-2">
-                                    </path>
-                                    <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3">
-                                    </path>
-                                    <path d="M3 4h8">
-                                    </path>
-                                </svg>
-                                <span>
-                                    Devenir Partenaire
-                                </span>
-                            </a>
-                        </div>
-                        <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-xs text-[#C5B8AD]">
-                            <div class="flex items-center gap-2">
-                                <div class="w-2 h-2 rounded-none bg-[#0BA20B]">
-                                </div>
-                                <span>
-                                    <strong>
-                                        Musique
-                                    </strong>
-                                    &amp; Chorale
-                                </span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-2 h-2 rounded-none bg-[#0BA20B]">
-                                </div>
-                                <span>
-                                    <strong>
-                                        Artisanat
-                                    </strong>
-                                    Raphia
-                                </span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-2 h-2 rounded-none bg-[#52B788]">
-                                </div>
-                                <span>
-                                    <strong>
-                                        Jeunes
-                                    </strong>
-                                    Talents
-                                </span>
-                            </div>
                         </div>
                     </div>
-                    <div class="lg:col-span-5 relative">
+                    
+                    <div class="lg:col-span-5 relative hidden lg:block">
+                        <!-- Event Card / Feature for Slide 1 -->
                         <div class="glass-dark rounded-none p-6 shadow-2xl border border-[#0BA20B]/30 space-y-5">
                             <div class="flex items-center justify-between pb-3 border-b border-white/10">
                                 <div class="flex items-center gap-2">
                                     <span class="flex h-3 w-3 relative">
-                                        <span
-                                            class="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#0BA20B] opacity-75">
-                                        </span>
-                                        <span class="relative inline-flex rounded-none h-3 w-3 bg-[#0BA20B]">
-                                        </span>
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-none bg-[#0BA20B] opacity-75"></span>
+                                        <span class="relative inline-flex rounded-none h-3 w-3 bg-[#0BA20B]"></span>
                                     </span>
-                                    <span class="text-xs font-bold uppercase tracking-wider text-[#0BA20B]">
-                                        À la Une ce Mois-ci
-                                    </span>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-[#0BA20B]">À la Une ce Mois-ci</span>
                                 </div>
-                                <span class="text-[11px] text-white/60 bg-white/10 px-2 py-0.5 rounded-none">
-                                    Prochain Rendez-vous
-                                </span>
+                                <span class="text-[11px] text-white/60 bg-white/10 px-2 py-0.5 rounded-none">Prochain Rendez-vous</span>
                             </div>
-                            @if($evenementPhare)
+                            
+                            @if(isset($evenementPhare) && $evenementPhare)
                                 @php
                                     $mainImg = $evenementPhare->images->where('is_principal', true)->first() ?? $evenementPhare->images->first();
                                     $imgPath = $mainImg ? asset('storage/' . $mainImg->image_path) : '/assets/hero_cultural_bg_1785764970571-BS2uarbi.jpg';
-
                                     $galleryData = $evenementPhare->images->map(function ($img) {
-                                        return [
-                                            'url' => asset('storage/' . $img->image_path),
-                                            'is_principal' => (bool) $img->is_principal
-                                        ];
+                                        return ['url' => asset('storage/' . $img->image_path), 'is_principal' => (bool) $img->is_principal];
                                     })->values()->all();
-                                    if (empty($galleryData)) {
-                                        $galleryData = [
-                                            ['url' => $imgPath, 'is_principal' => true]
-                                        ];
-                                    }
+                                    if(empty($galleryData)) $galleryData = [['url' => $imgPath, 'is_principal' => true]];
                                 @endphp
                                 <div class="space-y-3">
                                     <div class="relative rounded-none overflow-hidden h-44 group cursor-pointer"
                                         data-gallery="{{ json_encode($galleryData) }}" data-title="{{ $evenementPhare->titre }}"
-                                        @click="
-                                                                activeGallery = JSON.parse($el.dataset.gallery);
-                                                                currentImageIndex = 0;
-                                                                showTitle = $el.dataset.title;
-                                                            ">
-                                        <img alt="{{ $evenementPhare->titre }}"
-                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                            referrerpolicy="no-referrer" src="{{ $imgPath }}" />
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-transparent">
-                                        </div>
+                                        @click="activeGallery = JSON.parse($el.dataset.gallery); currentImageIndex = 0; showTitle = $el.dataset.title;">
+                                        <img alt="{{ $evenementPhare->titre }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="{{ $imgPath }}" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-transparent"></div>
                                         <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                                             <div>
-                                                <span
-                                                    class="text-[10px] uppercase font-bold text-[#0BA20B] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">
-                                                    {{ $evenementPhare->categorie ? $evenementPhare->categorie->libelle : 'Événement' }}
-                                                </span>
-                                                <h4 class="text-sm font-bold text-white font-serif-title mt-1 line-clamp-2">
-                                                    {{ $evenementPhare->titre }}
-                                                </h4>
+                                                <span class="text-[10px] uppercase font-bold text-[#0BA20B] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">{{ $evenementPhare->categorie ? $evenementPhare->categorie->libelle : 'Événement' }}</span>
+                                                <h4 class="text-sm font-bold text-white font-serif-title mt-1 line-clamp-2">{{ $evenementPhare->titre }}</h4>
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- @if(count($galleryData) > 1)
-                                        <div class="flex gap-2 overflow-x-auto pb-2">
-                                            @foreach($evenementPhare->images as $index => $img)
-                                                <div class="flex-shrink-0 w-16 h-16 rounded-none overflow-hidden border-2 {{ $img->is_principal ? 'border-[#0BA20B]' : 'border-[#0BA20B]/30' }} cursor-pointer hover:border-[#0BA20B] transition-colors"
-                                                    @click="
-                                                                                    activeGallery = JSON.parse($el.parentElement.parentElement.querySelector('[data-gallery]').dataset.gallery);
-                                                                                    currentImageIndex = {{ $index }};
-                                                                                    showTitle = $el.parentElement.parentElement.querySelector('[data-title]').dataset.title;
-                                                                                ">
-                                                    <img alt="{{ $evenementPhare->titre }} - vignette {{ $index + 1 }}"
-                                                        class="w-full h-full object-cover" referrerpolicy="no-referrer"
-                                                        src="{{ asset('storage/' . $img->image_path) }}" />
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    @endif --}}
-                                    <div class="text-xs text-[#D1C5B8] space-y-1.5">
-                                        @if($evenementPhare->date_debut)
-                                            <p class="flex items-center justify-between">
-                                                <span class="text-white/70">
-                                                    📅 Date:
-                                                </span>
-                                                <span class="font-semibold text-white">
-                                                    {{ \Carbon\Carbon::parse($evenementPhare->date_debut)->translatedFormat('d F Y') }}
-                                                    {{ $evenementPhare->heure ? '• ' . $evenementPhare->heure : '' }}
-                                                </span>
-                                            </p>
-                                        @endif
-                                        @if($evenementPhare->lieu)
-                                            <p class="flex items-center justify-between">
-                                                <span class="text-white/70">
-                                                    📍 Lieu:
-                                                </span>
-                                                <span class="font-semibold text-white">
-                                                    {{ $evenementPhare->lieu }}
-                                                </span>
-                                            </p>
-                                        @endif
-                                    </div>
                                 </div>
                                 <div class="pt-2 flex gap-2">
-                                    <a class="w-full py-2.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-[#1E1613] font-bold text-xs text-center transition-colors shadow"
-                                        href="{{ route('evenements.show', $evenementPhare->id) }}">
+                                    <a class="w-full py-2.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-[#1E1613] font-bold text-xs text-center transition-colors shadow" href="{{ route('evenements.show', $evenementPhare->id) }}">
                                         Voir les détails
                                     </a>
                                 </div>
                             @else
                                 <div class="space-y-3">
                                     <div class="relative rounded-none overflow-hidden h-44">
-                                        <img alt="Aucun événement" class="w-full h-full object-cover"
-                                            referrerpolicy="no-referrer"
-                                            src="/assets/hero_cultural_bg_1785764970571-BS2uarbi.jpg" />
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-transparent">
-                                        </div>
+                                        <img alt="Aucun événement" class="w-full h-full object-cover" src="/assets/hero_cultural_bg_1785764970571-BS2uarbi.jpg" />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-transparent"></div>
                                         <div class="absolute bottom-3 left-3 right-3">
-                                            <span
-                                                class="text-[10px] uppercase font-bold text-[#0BA20B] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">
-                                                À venir
-                                            </span>
-                                            <h4 class="text-sm font-bold text-white font-serif-title mt-1">
-                                                Aucun événement à la une
-                                            </h4>
+                                            <span class="text-[10px] uppercase font-bold text-[#0BA20B] bg-[#1E1613]/80 px-2 py-0.5 rounded-none">À venir</span>
+                                            <h4 class="text-sm font-bold text-white font-serif-title mt-1">Aucun événement à la une</h4>
                                         </div>
                                     </div>
-                                    <div class="text-xs text-[#D1C5B8] text-center py-4">
-                                        Revenez bientôt pour découvrir nos prochains événements.
-                                    </div>
+                                    <div class="text-xs text-[#D1C5B8] text-center py-4">Revenez bientôt pour découvrir nos prochains événements.</div>
                                 </div>
                             @endif
-                            <div
-                                class="p-3 rounded-none bg-white/5 border border-white/10 flex items-center justify-between text-xs">
-                                <div class="flex items-center gap-2 text-white/90">
-                                    <svg aria-hidden="true" class="lucide lucide-sparkles w-4 h-4 text-[#0BA20B]"
-                                        fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
-                                        </path>
-                                        <path d="M20 2v4">
-                                        </path>
-                                        <path d="M22 4h-4">
-                                        </path>
-                                        <circle cx="4" cy="20" r="2">
-                                        </circle>
-                                    </svg>
-                                    <span>
-                                        Vous êtes un jeune talent ?
-                                    </span>
-                                </div>
-                                <button onclick="document.getElementById('candidature-modal').classList.remove('hidden')" class="text-xs font-bold text-[#0BA20B] hover:underline cursor-pointer">
-                                    Postuler →
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Lightbox Modal -->
-            <div x-show="activeGallery"
-                class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-                x-cloak @keydown.escape.window="activeGallery = null">
-
-                <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
-                    @click.away="activeGallery = null">
-
-                    <div class="px-6 py-4 border-b border-[#0BA20B]/20 flex items-center justify-between bg-[#1E1613]">
-                        <div>
-                            <h3 class="text-sm font-serif-title font-bold text-[#FAF7F2] uppercase tracking-wider"
-                                x-text="showTitle"></h3>
-                            <p class="text-[10px] text-[#0BA20B] uppercase tracking-widest mt-0.5">
-                                Image <span x-text="currentImageIndex + 1"></span> sur <span
-                                    x-text="activeGallery ? activeGallery.length : 0"></span>
-                                <template
-                                    x-if="activeGallery && activeGallery[currentImageIndex] && activeGallery[currentImageIndex].is_principal">
-                                    <span class="ml-2 text-[#0BA20B] font-bold">• Image Principale</span>
-                                </template>
+        </div>
+        
+        <!-- SLIDE 2: Musique & Talents -->
+        <div class="w-screen h-screen relative flex items-center pt-24 pb-16 shrink-0 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img alt="Arts Musicaux et Talents"
+                    class="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
+                    referrerpolicy="no-referrer" src="/assets/hero_music_art.png" />
+                <div class="absolute inset-0 bg-gradient-to-r from-[#1E1613] via-[#1E1613]/85 to-[#1E1613]/50 z-20"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-[#1E1613]/70 z-20"></div>
+                <div class="absolute inset-0 opacity-10 bg-pattern-raphia pointer-events-none z-20"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-1000 delay-300"
+                 :class="heroSlide === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-left">
+                        <h2 class="font-serif-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FAF7F2] leading-[1.08] tracking-tight">
+                            L'Excellence <span class="italic text-[#0BA20B] font-normal">Musicale</span> &amp; <br />
+                            Les Voix de <span class="text-[#0BA20B]">Demain</span>.
+                        </h2>
+                        <p class="text-base sm:text-lg text-[#E6DCD3] font-sans font-light max-w-2xl leading-relaxed">
+                            Plongez dans l'univers de notre chorale et de nos classes de musique. Que vous soyez débutant ou artiste confirmé, nos professeurs vous accompagnent pour perfectionner votre art dans un cadre exceptionnel.
+                        </p>
+                        <div class="pt-2 flex flex-wrap gap-3 items-center">
+                            <a href="#talents" class="px-6 py-3.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-semibold text-sm shadow-xl shadow-[#0BA20B]/25 hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2 group">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.017 2.814a1 1 0 011.966 0l1.051 5.558a2 2 0 001.594 1.594l5.558 1.051a1 1 0 010 1.966l-5.558 1.051a2 2 0 00-1.594 1.594l-1.051 5.558a1 1 0 01-1.966 0l-1.051-5.558a2 2 0 00-1.594-1.594l-5.558-1.051a1 1 0 010-1.966l5.558-1.051a2 2 0 001.594-1.594l1.051-5.558z"/></svg>
+                                <span>Découvrir les Talents</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 relative hidden lg:block">
+                        <div class="glass-dark rounded-none p-10 shadow-2xl border border-white/10 relative overflow-hidden group">
+                            <div class="absolute inset-0 bg-[#0BA20B]/5 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out"></div>
+                            <svg class="w-12 h-12 text-[#0BA20B]/40 mb-6 relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L16.4 14.602H11.6V3H21.6V14.602L19.217 21H14.017ZM3.617 21L6 14.602H1.2V3H11.2V14.602L8.817 21H3.617Z"/></svg>
+                            <p class="text-xl font-serif-title font-light leading-relaxed text-[#FAF7F2] relative z-10">
+                                "La musique est la langue des émotions, et le talent notre plus belle voix. Rejoignez une communauté où chaque note compte."
                             </p>
                         </div>
-                        <button @click="activeGallery = null"
-                            class="text-[#0BA20B] hover:text-[#0BA20B] p-1 transition-colors" title="Fermer (Echap)">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
                     </div>
-
-                    <div
-                        class="relative flex-1 bg-black flex items-center justify-center min-h-[350px] p-4 overflow-hidden">
-                        <template x-if="activeGallery && activeGallery[currentImageIndex]">
-                            <img :src="activeGallery[currentImageIndex].url"
-                                class="max-h-[60vh] max-w-full object-contain shadow-2xl transition-all duration-300">
-                        </template>
-                        <template x-if="activeGallery && activeGallery.length > 1">
-                            <div>
-                                <button
-                                    @click="currentImageIndex = (currentImageIndex === 0) ? activeGallery.length - 1 : currentImageIndex - 1"
-                                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                </button>
-                                <button
-                                    @click="currentImageIndex = (currentImageIndex === activeGallery.length - 1) ? 0 : currentImageIndex + 1"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </template>
-                    </div>
-
-                    <template x-if="activeGallery && activeGallery.length > 1">
-                        <div
-                            class="px-6 py-4 bg-[#1E1613] border-t border-[#0BA20B]/20 flex items-center justify-center gap-3 overflow-x-auto">
-                            <template x-for="(img, idx) in activeGallery" :key="idx">
-                                <button @click="currentImageIndex = idx"
-                                    class="w-14 h-14 border-2 overflow-hidden transition-all shrink-0 rounded-none"
-                                    :class="currentImageIndex === idx ? 'border-[#0BA20B] scale-105 opacity-100' : 'border-[#0BA20B]/30 opacity-50 hover:opacity-100'">
-                                    <img :src="img.url" class="w-full h-full object-cover">
-                                </button>
-                            </template>
-                        </div>
-                    </template>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- SLIDE 3: Agriculture & Raphia -->
+        <div class="w-screen h-screen relative flex items-center pt-24 pb-16 shrink-0 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img alt="Filière Raphia"
+                    class="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-110"
+                    referrerpolicy="no-referrer" src="/assets/hero_agriculture.png" />
+                <div class="absolute inset-0 bg-gradient-to-r from-[#1E1613] via-[#1E1613]/85 to-[#1E1613]/50 z-20"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-transparent to-[#1E1613]/70 z-20"></div>
+                <div class="absolute inset-0 opacity-10 bg-pattern-raphia pointer-events-none z-20"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full transition-all duration-1000 delay-300"
+                 :class="heroSlide === 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-left">
+                        <h2 class="font-serif-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#FAF7F2] leading-[1.08] tracking-tight">
+                            L'Héritage du <span class="italic text-[#0BA20B] font-normal">Raphia</span>, <br />
+                            Une Filière <span class="text-[#0BA20B]">d'Avenir</span>.
+                        </h2>
+                        <p class="text-base sm:text-lg text-[#E6DCD3] font-sans font-light max-w-2xl leading-relaxed">
+                            De la culture de la plante jusqu'au tissage artisanal, nous valorisons la filière raphia. Découvrez un savoir-faire ancestral qui allie respect de la nature et développement socio-économique.
+                        </p>
+                        <div class="pt-2 flex flex-wrap gap-3 items-center">
+                            <a href="#about" class="px-6 py-3.5 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-semibold text-sm shadow-xl shadow-[#0BA20B]/25 hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center gap-2 group">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                <span>Explorer la Filière Raphia</span>
+                            </a>
+                            <a class="px-5 py-3.5 rounded-none bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 backdrop-blur-md transition-all flex items-center gap-2" href="#donation">
+                                <svg class="w-4 h-4 text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                <span>Soutenir les Artisans</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 relative hidden lg:block">
+                        <div class="glass-dark rounded-none p-10 shadow-2xl border border-white/10 relative overflow-hidden group border-t-4 border-t-[#0BA20B]">
+                            <h4 class="text-[#0BA20B] text-xs font-bold uppercase tracking-wider mb-2">Impact Écologique</h4>
+                            <p class="text-3xl font-serif-title font-bold text-white mb-4">100% Naturel</p>
+                            <p class="text-sm text-white/70 leading-relaxed mb-6">
+                                Le raphia est une fibre entièrement biodégradable et respectueuse de l'environnement, contribuant à la préservation de nos écosystèmes.
+                            </p>
+                            <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-[#0BA20B] w-[100%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button type="button" @click.stop.prevent="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-none bg-[#1E1613]/40 border border-white/10 hover:border-[#0BA20B] hover:bg-[#0BA20B]/80 text-white transition-all backdrop-blur-sm group">
+        <svg class="w-6 h-6 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button type="button" @click.stop.prevent="next()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center rounded-none bg-[#1E1613]/40 border border-white/10 hover:border-[#0BA20B] hover:bg-[#0BA20B]/80 text-white transition-all backdrop-blur-sm group">
+        <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    <!-- Navigation Dots -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+        <template x-for="i in slidesCount" :key="i">
+            <button type="button" @click.stop.prevent="heroSlide = i - 1; resetInterval();"
+                class="h-2 transition-all rounded-none"
+                :class="heroSlide === i - 1 ? 'w-8 bg-[#0BA20B]' : 'w-2 bg-white/30 hover:bg-white/60'">
+            </button>
+        </template>
+    </div>
+
+    <!-- Lightbox Modal (For Event Card in Slide 1) -->
+    <div x-show="activeGallery" class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6" x-cloak @keydown.escape.window="activeGallery = null">
+        <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none" @click.away="activeGallery = null">
+            <div class="px-6 py-4 border-b border-[#0BA20B]/20 flex items-center justify-between bg-[#1E1613]">
+                <div>
+                    <h3 class="text-sm font-serif-title font-bold text-[#FAF7F2] uppercase tracking-wider" x-text="showTitle"></h3>
+                    <p class="text-[10px] text-[#0BA20B] uppercase tracking-widest mt-0.5">
+                        Image <span x-text="currentImageIndex + 1"></span> sur <span x-text="activeGallery ? activeGallery.length : 0"></span>
+                        <template x-if="activeGallery && activeGallery[currentImageIndex] && activeGallery[currentImageIndex].is_principal">
+                            <span class="ml-2 text-[#0BA20B] font-bold">• Image Principale</span>
+                        </template>
+                    </p>
+                </div>
+                <button type="button" @click="activeGallery = null" class="text-[#0BA20B] hover:text-[#0BA20B] p-1 transition-colors" title="Fermer (Echap)">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div class="relative flex-1 bg-black flex items-center justify-center min-h-[350px] p-4 overflow-hidden">
+                <template x-if="activeGallery && activeGallery[currentImageIndex]">
+                    <img :src="activeGallery[currentImageIndex].url" class="max-h-[60vh] max-w-full object-contain shadow-2xl transition-all duration-300">
+                </template>
+                <template x-if="activeGallery && activeGallery.length > 1">
+                    <div>
+                        <button type="button" @click.stop.prevent="currentImageIndex = (currentImageIndex === 0) ? activeGallery.length - 1 : currentImageIndex - 1" class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button type="button" @click.stop.prevent="currentImageIndex = (currentImageIndex === activeGallery.length - 1) ? 0 : currentImageIndex + 1" class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1E1613]/80 hover:bg-[#0BA20B] text-[#FAF7F2] p-3 transition-colors border border-[#0BA20B]/30 shadow-xl rounded-none">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+                        </button>
+                    </div>
+                </template>
+            </div>
+            <template x-if="activeGallery && activeGallery.length > 1">
+                <div class="px-6 py-4 bg-[#1E1613] border-t border-[#0BA20B]/20 flex items-center justify-center gap-3 overflow-x-auto">
+                    <template x-for="(img, idx) in activeGallery" :key="idx">
+                        <button type="button" @click.stop.prevent="currentImageIndex = idx" class="w-14 h-14 border-2 overflow-hidden transition-all shrink-0 rounded-none" :class="currentImageIndex === idx ? 'border-[#0BA20B] scale-105 opacity-100' : 'border-[#0BA20B]/30 opacity-50 hover:opacity-100'">
+                            <img :src="img.url" class="w-full h-full object-cover">
+                        </button>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>
+
         <section class="py-24 bg-[#FAF7F2] relative overflow-hidden" id="about">
             <div class="absolute top-0 right-0 w-96 h-96 bg-[#0BA20B]/10 rounded-full blur-3xl -z-10">
             </div>
@@ -1035,7 +915,7 @@
                 </div>
             </div>
         </section>
-        <section class="py-24 bg-[#FAF7F2] relative overflow-hidden" id="gallery"
+        <section class="py-24 bg-[#FAF7F2] relative overflow-hidden" id="talents"
             x-data="{ activeGallery: null, currentImageIndex: 0, showTitle: '' }">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 <div class="text-center max-w-3xl mx-auto space-y-4">
@@ -1067,11 +947,17 @@
                         accompagnement personnalisé et des scènes publiques pour propulser leurs créations.
                     </p>
                 </div>
-                <div
-                    class="bg-[#1E1613] rounded-none overflow-hidden shadow-2xl border border-[#0BA20B]/40 grid grid-cols-1 lg:grid-cols-12 text-[#FAF7F2]">
+                @php $talentDuMois = $talents->first(); @endphp
+                @if($talentDuMois)
+                <div class="bg-[#1E1613] rounded-none overflow-hidden shadow-2xl border border-[#0BA20B]/40 grid grid-cols-1 lg:grid-cols-12 text-[#FAF7F2]">
                     <div class="lg:col-span-5 relative min-h-[350px]">
-                        <img alt="Samuel Nguema" class="w-full h-full object-cover" referrerpolicy="no-referrer"
-                            src="/assets/young_musician_talent_1785764994375-Cmnv-yWc.jpg" />
+                        @if($talentDuMois->photo)
+                            <img alt="{{ trim($talentDuMois->prenom . ' ' . $talentDuMois->nom) }}" class="absolute inset-0 w-full h-full object-cover" referrerpolicy="no-referrer" src="{{ asset('storage/' . $talentDuMois->photo) }}"/>
+                        @else
+                            <div class="absolute inset-0 w-full h-full bg-[#2C221E] flex items-center justify-center text-[#0BA20B] text-6xl font-bold">
+                                {{ strtoupper(substr($talentDuMois->prenom, 0, 1)) }}{{ strtoupper(substr($talentDuMois->nom, 0, 1)) }}
+                            </div>
+                        @endif
                         <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-[#1E1613]/40 to-transparent">
                         </div>
                         <div
@@ -1193,20 +1079,15 @@
                                     </span>
                                 </span>
                                 <span class="text-xs text-white/60 font-sans">
-                                    21 ans • Joueur de Kora &amp; Auteur-Compositeur
+                                    {{ $talentDuMois->categorie ? $talentDuMois->categorie->libelle : 'Artiste' }}
                                 </span>
                             </div>
                             <div>
                                 <h3 class="font-serif-title text-3xl sm:text-4xl font-bold text-white">
-                                    Samuel Nguema
-                                    <span class="text-[#0BA20B] font-normal italic">
-                                        (Sam Kora)
-                                    </span>
+                                    {{ $talentDuMois->prenom }} {{ $talentDuMois->nom }}
                                 </h3>
                                 <p class="text-xs sm:text-sm text-[#D1C5B8] mt-2 font-sans leading-relaxed">
-                                    Formé au sein de l’association depuis 3 ans, Samuel marie les mélodies ancestrales de la
-                                    Kora avec des sonorités folk contemporaines. Il a sorti son premier EP solo enregistré
-                                    dans notre studio associatif.
+                                    {{ $talentDuMois->biographie ?? 'Une nouvelle voix passionnante accompagnée par notre association.' }}
                                 </p>
                             </div>
                             <div class="space-y-2 pt-2">
@@ -1269,7 +1150,7 @@
                             <div class="text-xs text-white/70">
                                 Suivre :
                                 <span class="text-[#0BA20B] font-semibold">
-                                    @samkora_music
+                                    {{ '@' . strtolower($talentDuMois->prenom) }}_{{ strtolower($talentDuMois->nom) }}
                                 </span>
                             </div>
                             <button onclick="document.getElementById('candidature-modal').classList.remove('hidden')"
@@ -1293,92 +1174,55 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="space-y-6 pt-6">
                     <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
                         Galerie des Artistes Émergents
                     </h3>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         @forelse($talents as $talent)
-                            <div
-                                class="cursor-pointer bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl {{ $loop->first ? 'border-[#0BA20B] ring-2 ring-[#0BA20B]/20 shadow-md' : 'border-[#0BA20B]/30 hover:border-[#0BA20B]' }}">
-                                <div class="flex items-center gap-4">
-                                    @if($talent->photo)
-                                        <img alt="{{ trim($talent->prenom . ' ' . $talent->nom) }}"
-                                            class="w-16 h-16 rounded-none object-cover ring-2 ring-[#0BA20B]/40"
-                                            referrerpolicy="no-referrer" src="{{ asset('storage/' . $talent->photo) }}" />
-                                    @else
-                                        <div
-                                            class="w-16 h-16 rounded-none bg-[#F4EFE6] flex items-center justify-center text-[#0BA20B] font-bold text-lg ring-2 ring-[#0BA20B]/40">
-                                            {{ strtoupper(substr($talent->prenom, 0, 1)) }}{{ strtoupper(substr($talent->nom, 0, 1)) }}
-                                        </div>
-                                    @endif
-                                    <div>
-                                        <h4 class="font-bold text-base text-[#2C221E]">
-                                            {{ $talent->prenom }} {{ $talent->nom }}
-                                        </h4>
-                                        <p class="text-xs text-[#0BA20B] font-semibold">
-                                            {{ $talent->categorie ? $talent->categorie->libelle : 'Talent émergent' }}
-                                        </p>
-                                        <span class="text-[10px] text-[#8C766B]">
-                                            Jeune artiste
-                                        </span>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-[#6B574F] line-clamp-2">
-                                    {{ \Illuminate\Support\Str::limit($talent->biographie ?? 'Talent en pleine évolution, porté par l’association pour révéler son potentiel artistique.', 140) }}
-                                </p>
-                                <div class="space-y-1 text-[11px] text-[#6B574F]">
-                                    @if($talent->telephone)
-                                        <div>
-                                            <span class="font-semibold text-[#2C221E]">Tél :</span> {{ $talent->telephone }}
-                                        </div>
-                                    @endif
-                                    @if($talent->email)
-                                        <div class="break-all">
-                                            <span class="font-semibold text-[#2C221E]">Email :</span> {{ $talent->email }}
-                                        </div>
-                                    @endif
-                                </div>
-                                @if($talent->youtube || $talent->facebook)
-                                    <div class="flex flex-wrap gap-2 pt-1">
-                                        @if($talent->youtube)
-                                            <a href="{{ $talent->youtube }}" target="_blank" rel="noopener noreferrer"
-                                                class="text-[10px] font-semibold text-[#0BA20B] hover:underline">
-                                                YouTube
-                                            </a>
-                                        @endif
-                                        @if($talent->facebook)
-                                            <a href="{{ $talent->facebook }}" target="_blank" rel="noopener noreferrer"
-                                                class="text-[10px] font-semibold text-[#0BA20B] hover:underline">
-                                                Facebook
-                                            </a>
-                                        @endif
+                        <a href="{{ route('talents.show', $talent->id) }}" class="block bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl {{ $loop->first ? 'border-[#0BA20B] ring-2 ring-[#0BA20B]/20 shadow-md' : 'border-[#0BA20B]/30 hover:border-[#0BA20B]' }}">
+                            <div class="flex items-center gap-4">
+                                @if($talent->photo)
+                                    <img alt="{{ trim($talent->prenom . ' ' . $talent->nom) }}" class="w-16 h-16 rounded-none object-cover ring-2 ring-[#0BA20B]/40" referrerpolicy="no-referrer" src="{{ asset('storage/' . $talent->photo) }}"/>
+                                @else
+                                    <div class="w-16 h-16 rounded-none bg-[#F4EFE6] flex items-center justify-center text-[#0BA20B] font-bold text-lg ring-2 ring-[#0BA20B]/40">
+                                        {{ strtoupper(substr($talent->prenom, 0, 1)) }}{{ strtoupper(substr($talent->nom, 0, 1)) }}
                                     </div>
                                 @endif
-                                <div
-                                    class="pt-2 border-t border-[#0BA20B]/20 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
-                                    <span class="flex items-center gap-1">
-                                        <svg aria-hidden="true" class="lucide lucide-music w-3.5 h-3.5" fill="none" height="24"
-                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9 18V5l12-2v13">
-                                            </path>
-                                            <circle cx="6" cy="18" r="3">
-                                            </circle>
-                                            <circle cx="18" cy="16" r="3">
-                                            </circle>
-                                        </svg>
-                                        Découvrir le parcours
+                                <div>
+                                    <h4 class="font-bold text-base text-[#2C221E]">
+                                        {{ $talent->prenom }} {{ $talent->nom }}
+                                    </h4>
+                                    <p class="text-xs text-[#0BA20B] font-semibold">
+                                        {{ $talent->categorie ? $talent->categorie->libelle : 'Talent émergent' }}
+                                    </p>
+                                    <span class="text-[10px] text-[#8C766B]">
+                                        Jeune artiste
                                     </span>
                                 </div>
                             </div>
+                            <p class="text-xs text-[#6B574F] line-clamp-2">
+                                {{ \Illuminate\Support\Str::limit($talent->biographie ?? 'Talent en pleine évolution, porté par l’association pour révéler son potentiel artistique.', 140) }}
+                            </p>
+                            <div class="pt-2 border-t border-[#0BA20B]/20 flex items-center justify-between text-xs text-[#0BA20B] font-bold">
+                                <span class="flex items-center gap-1">
+                                    <svg aria-hidden="true" class="lucide lucide-music w-3.5 h-3.5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18V5l12-2v13"></path>
+                                        <circle cx="6" cy="18" r="3"></circle>
+                                        <circle cx="18" cy="16" r="3"></circle>
+                                    </svg>
+                                    Découvrir le profil
+                                </span>
+                                <span>&rarr;</span>
+                            </div>
+                        </a>
                         @empty
-                            <div
-                                class="sm:col-span-3 rounded-none border border-dashed border-[#0BA20B]/40 bg-[#FAF7F2] p-8 text-center text-sm text-[#6B574F]">
+                            <div class="sm:col-span-3 rounded-none border border-dashed border-[#0BA20B]/40 bg-[#FAF7F2] p-8 text-center text-sm text-[#6B574F]">
                                 Aucun talent n’est encore publié.
                             </div>
                         @endforelse
-                    </div>
+    </div>
                 </div>
                 <div
                     class="p-8 rounded-none bg-gradient-to-r from-[#F4EFE6] to-[#FAF7F2] border border-[#0BA20B]/40 flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -2383,13 +2227,24 @@
                 </div>
                 @endif
 
-                @if(session('error'))
-                <div class="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-lg max-w-2xl mx-auto">
+                @if(session('success'))
+                <div class="bg-[#0BA20B]/10 border border-[#0BA20B] text-white px-6 py-4 rounded-none max-w-2xl mx-auto mb-8 shadow-lg">
                     <div class="flex items-center gap-3">
-                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="font-bold text-sm">{{ session('success') }}</p>
+                    </div>
+                </div>
+                @endif
+
+                @if(session('error'))
+                <div class="bg-red-500/10 border border-red-500 text-white px-6 py-4 rounded-none max-w-2xl mx-auto mb-8 shadow-lg">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        <p>{{ session('error') }}</p>
+                        <p class="font-bold text-sm">{{ session('error') }}</p>
                     </div>
                 </div>
                 @endif
@@ -2407,10 +2262,10 @@
                         class="bg-[#1E1613] text-[#FAF7F2] rounded-none p-8 sm:p-12 shadow-2xl border border-[#0BA20B]/30 max-w-4xl mx-auto space-y-8">
                     <div class="text-center space-y-2">
                         <h3 class="font-serif-title text-2xl sm:text-3xl font-bold text-white">
-                            Choisissez le montant de votre soutien
+                            Tapez le montant de votre soutien
                         </h3>
                     </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <!-- <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                         <button type="button" @click="selectedAmount = 20; customAmount = ''" :class="selectedAmount === 20 && !customAmount ? 'bg-[#0BA20B] text-white border-[#0BA20B] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
                             20 €
                         </button>
@@ -2423,9 +2278,9 @@
                         <button type="button" @click="selectedAmount = 200; customAmount = ''" :class="selectedAmount === 200 && !customAmount ? 'bg-[#0BA20B] text-white border-[#0BA20B] shadow-lg scale-105' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'" class="py-4 rounded-none text-lg font-bold font-serif-title border transition-all">
                             200 €
                         </button>
-                    </div>
+                    </div> -->
                     <div class="max-w-xs mx-auto">
-                        <input x-model="customAmount" @input="selectedAmount = 0" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm text-center focus:outline-none focus:border-[#0BA20B]" placeholder="Autre montant libre (€)" type="number" name="montant" required min="1" step="0.01"/>
+                        <input x-model="customAmount" @input="selectedAmount = 0" class="w-full px-4 py-3 rounded-none bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm text-center focus:outline-none focus:border-[#0BA20B]" placeholder="montant(€)" type="number" name="montant" required min="1" step="0.01"/>
                     </div>
 
                     <!-- Informations personnelles -->
@@ -2481,7 +2336,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="px-8 py-4 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-sm shadow-xl transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        <button type="submit" class="px-8 py-4 rounded-none bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-sm uppercase tracking-widest shadow-xl transition-all transform hover:scale-105 inline-flex items-center gap-2">
                             <svg aria-hidden="true" class="lucide lucide-heart w-4 h-4 fill-current text-white" fill="none"
                                 height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -2489,16 +2344,7 @@
                                     d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5">
                                 </path>
                             </svg>
-                            <span x-text="'Valider mon Don de ' + displayAmount + ' €'">
-                            </span>
-                            <svg aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4" fill="none" height="24"
-                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 12h14">
-                                </path>
-                                <path d="m12 5 7 7-7 7">
-                                </path>
-                            </svg>
+                            <span>Valider mon Don</span>
                         </button>
                     </div>
                 </div>

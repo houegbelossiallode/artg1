@@ -40,7 +40,6 @@ class ProfesseurController extends Controller
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
             'sexe' => ['required', 'string', 'in:M,F'],
             'date_naissance' => ['required', 'date'],
             'telephone' => ['required', 'string', 'max:20'],
@@ -50,7 +49,12 @@ class ProfesseurController extends Controller
             'email.unique' => 'Cet email est déjà attribué à un autre compte.',
         ]);
 
-        $plainPassword = $request->password;
+        $plainPassword = \Illuminate\Support\Str::random(10);
+        $profil = \App\Models\Profil::where('nom', 'professeur')->first();
+        
+        if(!$profil) {
+            return redirect()->route('dashboard.admin.professeurs.index')->with('error', 'Le profil professeur n\'existe pas.');
+        }
 
         $professeur = User::create([
             'nom' => $request->nom,
@@ -62,13 +66,12 @@ class ProfesseurController extends Controller
             'telephone' => $request->telephone,
             'adresse' => $request->adresse,
             'biographie' => $request->biographie,
-            'profil_id' => 2, // 2 = professeur
-            'actif' => 'oui',
+            'profil_id' => $profil->id,
         ]);
 
         // Send email with credentials
         try {
-            Mail::to($professeur->email)->send(new ProfesseurAccountCreated($professeur, $plainPassword));
+            Mail::to($professeur->email)->send(new \App\Mail\ProfesseurCreated($professeur, $plainPassword));
             $mailMsg = ' Un email contenant ses identifiants lui a été envoyé.';
         } catch (\Exception $e) {
             $mailMsg = ' (Note: L\'email n\'a pas pu être envoyé suite à un problème de serveur mail).';
@@ -118,12 +121,6 @@ class ProfesseurController extends Controller
             'adresse' => $request->adresse,
             'biographie' => $request->biographie,
         ]);
-
-        if ($request->filled('password')) {
-            $professeur->update([
-                'password' => Hash::make($request->password),
-            ]);
-        }
 
         return redirect()->route('dashboard.admin.professeurs.index')->with('success', 'Professeur mis à jour avec succès.');
     }

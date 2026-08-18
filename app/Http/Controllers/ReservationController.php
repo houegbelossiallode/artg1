@@ -126,7 +126,8 @@ class ReservationController extends Controller
         $cours = Cours::with('mode')->findOrFail($request->cours_id);
         $professeurId = $cours->user_id;
 
-        // Check if professor is available on this specific date and time range
+        // ANCIEN CODE : Vérification des disponibilités du professeur (Désactivé)
+        /*
         $matchingDispo = Disponibilite::where('professeur_id', $professeurId)
             ->where('date_dispo', $request->date_reservation)
             ->where(function ($q) {
@@ -143,6 +144,7 @@ class ReservationController extends Controller
                 'availability' => "Le professeur n'est pas disponible le " . Carbon::parse($request->date_reservation)->format('d/m/Y') . " entre {$request->heure_debut} et {$request->heure_fin}. Veuillez choisir un créneau figurant dans ses disponibilités."
             ])->withInput();
         }
+        */
 
         // Check for duplicate reservation by the SAME user at the SAME slot (Unicité par apprenant)
         $existing = Reservation::where('cours_id', $cours->id)
@@ -155,24 +157,15 @@ class ReservationController extends Controller
             return back()->with('error', 'Vous avez déjà effectué une réservation pour ce créneau de cours.');
         }
 
-        // Generate secure Jitsi Room ID if course is online/distanciel
-        $isDistanciel = $cours->mode && (
-            Str::contains(strtolower($cours->mode->libelle), ['distanciel', 'ligne', 'online', 'visio', 'remote'])
-        );
-        $jitsiRoomId = null;
-        if ($isDistanciel) {
-            $jitsiRoomId = $this->jitsiService->generateSecureRoomName($cours->id, $request->date_reservation, $user->id, $request->heure_debut);
-        }
-
         $reservation = Reservation::create([
             'cours_id' => $cours->id,
             'user_id' => $user->id,
             'date_reservation' => $request->date_reservation,
             'heure_debut' => $request->heure_debut,
             'heure_fin' => $request->heure_fin,
-            'disponibilite_id' => $matchingDispo->id,
-            'status' => 'accepted',
-            'jitsi_room_id' => $jitsiRoomId,
+            // 'disponibilite_id' => $matchingDispo->id,
+            'status' => 'pending_teacher',
+            'jitsi_room_id' => null,
         ]);
 
         // Try sending confirmation email
@@ -182,7 +175,7 @@ class ReservationController extends Controller
             // Log mail exception if needed, continue gracefullly
         }
 
-        return back()->with('success', "Votre réservation pour le cours '{$cours->titre}' le {$dateCarbon->format('d/m/Y')} de {$request->heure_debut} à {$request->heure_fin} a été validée avec succès ! Un e-mail de confirmation vous a été envoyé.");
+        return back()->with('success', "Votre demande de réservation a été envoyée au professeur. Vous recevrez une notification dès qu'il l'aura acceptée ou s'il propose un autre horaire.");
     }
 
     /**

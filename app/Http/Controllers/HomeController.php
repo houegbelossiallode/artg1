@@ -55,6 +55,12 @@ class HomeController extends Controller
         return view('pages.talents', compact('talents'));
     }
 
+    public function showTalent($id)
+    {
+        $talent = Talent::with(['categorie', 'oeuvres'])->findOrFail($id);
+        return view('pages.talent-details', compact('talent'));
+    }
+
     public function evenements()
     {
         $evenements = Evenement::with(['categorie', 'images'])->latest()->get();

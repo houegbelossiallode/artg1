@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profil;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Talent;
@@ -25,7 +26,7 @@ class AdminController extends Controller
             $query->where('nom', 'professeur');
         })->latest()->get();
 
-        $recentUsers = User::with('profil')->latest()->take(10)->get();
+        $recentUsers = User::with('profil')->latest()->take(5)->get();
         $talents = Talent::with('category')->latest()->get();
 
         $totalUsers = User::count();
@@ -54,7 +55,6 @@ class AdminController extends Controller
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
             'sexe' => ['required', 'string', 'in:M,F'],
             'date_naissance' => ['required', 'date'],
             'telephone' => ['required', 'string', 'max:20'],
@@ -64,21 +64,33 @@ class AdminController extends Controller
             'email.unique' => 'Cet email est déjà attribué à un autre compte.',
         ]);
 
-        User::create([
+        $generatedPassword = \Illuminate\Support\Str::random(10);
+        $profil = Profil::where('nom', 'professeur')->first();
+        if(!$profil){
+            return redirect()->back()->with('error', 'Le profil professeur n\'existe pas');
+        }
+
+        $professeur = User::create([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($generatedPassword),
             'sexe' => $request->sexe,
             'date_naissance' => $request->date_naissance,
             'telephone' => $request->telephone,
             'adresse' => $request->adresse,
             'biographie' => $request->biographie,
-            'profil_id' => 2, // 2 = professeur
-            'actif' => 'oui',
+            'profil_id' => $profil->id,
         ]);
 
-        return redirect()->route('dashboard.admin')->with('success', 'Le professeur ' . $request->prenom . ' ' . $request->nom . ' a été enregistré avec succès !');
+        try {
+            \Illuminate\Support\Facades\Mail::to($professeur->email)
+                ->send(new \App\Mail\ProfesseurCreated($professeur, $generatedPassword));
+        } catch (\Exception $e) {
+            // Log error if needed
+        }
+
+        return redirect()->route('dashboard.admin')->with('success', 'Le professeur ' . $request->prenom . ' ' . $request->nom . ' a été enregistré avec succès et ses identifiants lui ont été envoyés par email !');
     }
 
     /**

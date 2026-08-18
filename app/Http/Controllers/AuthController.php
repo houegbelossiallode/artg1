@@ -110,7 +110,10 @@ class AuthController extends Controller
             'profil_id' => 3, // id 3 is 'apprenant'
         ]);
 
-        return redirect()->route('login')->with('success', 'Votre compte a été créé avec succès ! Vous pouvez maintenant vous connecter.');
+        event(new \Illuminate\Auth\Events\Registered($user));
+        Auth::login($user);
+
+        return redirect()->route('dashboard.apprenant')->with('success', 'Votre compte a été créé avec succès ! Un email de vérification vous a été envoyé.');
     }
 
     /**
@@ -177,9 +180,9 @@ class AuthController extends Controller
     /**
      * Show the password reset form for a given token.
      */
-    public function showResetForm($token)
+    public function showResetForm(Request $request, $token)
     {
-        return view('auth.reset-password', ['token' => $token]);
+        return view('auth.reset-password', ['request' => $request, 'token' => $token]);
     }
 
     /**

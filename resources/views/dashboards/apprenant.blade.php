@@ -25,7 +25,7 @@
             this.coursMode = mode;
             this.coursTarif = tarif;
             this.showModal = true;
-            this.loading = true;
+            this.loading = false;
             this.disponibilites = [];
             this.errorMessage = '';
             this.dateReservation = '';
@@ -33,6 +33,7 @@
             this.heureFin = '';
             this.activeSlotDay = '';
 
+            /*
             fetch('/api/cours/' + id + '/slots')
                 .then(res => res.json())
                 .then(data => {
@@ -47,6 +48,7 @@
                     console.error(err);
                     this.loading = false;
                 });
+            */
         },
 
         getNextDateForDay(dayName) {
@@ -103,35 +105,11 @@
         },
 
         onDateChange(e) {
-            const selectedDateStr = e.target.value;
-            if (!selectedDateStr) return;
-            const selectedDate = new Date(selectedDateStr + 'T00:00:00');
-            const daysMap = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-            const selectedDayName = daysMap[selectedDate.getDay()];
-
-            const matchingSlot = (this.disponibilites || []).find(s => (s.jour || '').toLowerCase().trim() === selectedDayName);
-            if (matchingSlot) {
-                if (matchingSlot.debut) this.heureDebut = matchingSlot.debut.substring(0, 5);
-                if (matchingSlot.fin) this.heureFin = matchingSlot.fin.substring(0, 5);
-                this.errorMessage = '';
-            } else if (this.disponibilites.length > 0) {
-                const validDays = [...new Set(this.disponibilites.map(s => s.jour))].join(', ');
-                this.errorMessage = 'Le professeur n\'est pas disponible le ' + selectedDayName + '. Jours disponibles : ' + validDays;
-            }
+            this.errorMessage = '';
         },
 
         validateForm(e) {
-            if (this.disponibilites.length === 0) return;
-            const selectedDate = new Date(this.dateReservation + 'T00:00:00');
-            const daysMap = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-            const selectedDayName = daysMap[selectedDate.getDay()];
-
-            const isValidDay = (this.disponibilites || []).some(s => (s.jour || '').toLowerCase().trim() === selectedDayName);
-            if (!isValidDay) {
-                e.preventDefault();
-                const validDays = [...new Set(this.disponibilites.map(s => s.jour))].join(', ');
-                this.errorMessage = 'Le professeur n\'est disponible que les jours suivants : ' + validDays;
-            }
+            // Libre choix
         }
     }">
 
@@ -545,10 +523,10 @@
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
             </path>
           </svg>
-          Chargement des disponibilités du professeur...
         </div>
 
         <div x-show="!loading">
+          <!-- ANCIEN CODE : Disponibilités du professeur (Désactivé)
           <div class="mb-3 bg-[#F4EFE6] border border-[#0BA20B]/30 p-2.5">
             <div class="flex items-center justify-between mb-1.5">
               <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#2C221E] flex items-center gap-1.5">
@@ -594,6 +572,7 @@
               </template>
             </div>
           </div>
+          -->
 
           <form action="{{ route('reservations.store') }}" method="POST" @submit="validateForm($event)" class="space-y-3">
             @csrf
@@ -634,8 +613,8 @@
                 class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#6B574F] hover:text-[#2C221E] cursor-pointer">
                 Annuler
               </button>
-              <button type="submit" :disabled="disponibilites.length === 0"
-                class="px-4 py-2 bg-[#0BA20B] hover:bg-[#087A08] disabled:opacity-50 text-white font-bold text-xs uppercase tracking-widest transition shadow-md cursor-pointer">
+              <button type="submit"
+                class="px-4 py-2 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs uppercase tracking-widest transition shadow-md cursor-pointer">
                 Confirmer la réservation
               </button>
             </div>

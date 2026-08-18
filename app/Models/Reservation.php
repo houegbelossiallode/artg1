@@ -36,6 +36,11 @@ class Reservation extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function discussions()
+    {
+        return $this->hasMany(ReservationDiscussion::class);
+    }
+
     public function disponibilite()
     {
         return $this->belongsTo(Disponibilite::class, 'disponibilite_id');
