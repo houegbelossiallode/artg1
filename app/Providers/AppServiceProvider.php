@@ -14,6 +14,7 @@ use App\Observers\ProfilObserver;
 use App\Observers\SousmenuObserver;
 use Illuminate\Support\Facades\Auth;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+       Schema::defaultStringLength(191);
 
        if ($this->app->environment('production')) {
             \Illuminate\Support\Facades\URL::forceScheme('https');
