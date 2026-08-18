@@ -30,25 +30,23 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::table('disponibilites', function (Blueprint $table) {
-            // Tente de supprimer la clé étrangère si elle existe, sinon ignore l'erreur
-            try {
-                $table->dropForeign(['cours_id']);
-            } catch (\Exception $e) {
-                // La clé étrangère n'existe pas, on passe à la suite
-            }
+        // Désactiver temporairement la vérification des clés étrangères pour MySQL
+        Schema::disableForeignKeyConstraints();
 
-            // Supprime la colonne cours_id si elle existe toujours
+        Schema::table('disponibilites', function (Blueprint $table) {
+            // Supprimer la colonne cours_id uniquement si elle existe
             if (Schema::hasColumn('disponibilites', 'cours_id')) {
                 $table->dropColumn('cours_id');
             }
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     public function down(): void
     {
         Schema::table('disponibilites', function (Blueprint $table) {
-            $table->foreignId('cours_id')->nullable()->constrained();
+            $table->unsignedBigInteger('cours_id')->nullable();
         });
     }
 
