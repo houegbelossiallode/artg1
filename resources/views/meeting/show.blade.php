@@ -59,37 +59,14 @@
       allow="camera; microphone; fullscreen; display-capture; autoplay"
       style="width: 100%; height: 100%; border: none;"
       id="jitsiFrame"
-      class="bg-slate-900"
-      sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-presentation">
+      class="bg-slate-900">
     </iframe>
 
     <!-- Overlay de chargement -->
     <div id="loadingOverlay" class="absolute inset-0 bg-slate-900 flex items-center justify-center z-10">
       <div class="text-center">
         <div class="w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        <p class="text-white text-sm" id="loadingText">Chargement de la réunion...</p>
-        <p class="text-slate-400 text-xs mt-2" id="loadingHint">Si cela prend trop de temps, cliquez sur "Rafraîchir"</p>
-      </div>
-    </div>
-
-    <!-- Overlay d'erreur -->
-    <div id="errorOverlay" class="hidden absolute inset-0 bg-slate-900 flex items-center justify-center z-20">
-      <div class="text-center max-w-md p-6">
-        <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-          </svg>
-        </div>
-        <h3 class="text-white text-lg font-bold mb-2">Erreur de chargement</h3>
-        <p class="text-slate-300 text-sm mb-4" id="errorMessage">La réunion n'a pas pu être chargée. Vérifiez votre connexion internet ou réessayez.</p>
-        <div class="space-y-2">
-          <button onclick="refreshMeeting()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
-            Rafraîchir
-          </button>
-          <button onclick="openInNewTab()" class="w-full bg-slate-700 hover:bg-slate-600 text-white py-2 px-4 rounded-lg text-sm font-medium">
-            Ouvrir dans un nouvel onglet
-          </button>
-        </div>
+        <p class="text-white text-sm">Chargement de la réunion...</p>
       </div>
     </div>
 
@@ -145,52 +122,11 @@
   </div>
 
 <script>
-// Variables pour le timeout
-let loadingTimeout;
-let iframeLoadTimeout;
-const MAX_LOADING_TIME = 30000; // 30 secondes max pour le chargement
-
 // Masquer l'overlay de chargement quand l'iframe est chargée
-const jitsiFrame = document.getElementById('jitsiFrame');
-const loadingOverlay = document.getElementById('loadingOverlay');
-const errorOverlay = document.getElementById('errorOverlay');
-const loadingText = document.getElementById('loadingText');
-
-// Timeout pour détecter un chargement trop long
-loadingTimeout = setTimeout(function() {
-  if (loadingOverlay.style.display !== 'none') {
-    loadingText.textContent = 'Chargement en cours... Cela prend plus de temps que prévu.';
-    document.getElementById('loadingHint').textContent = 'Cliquez sur "Rafraîchir" ou "Ouvrir dans un nouvel onglet" si le problème persiste.';
-  }
-}, 15000); // 15 secondes
-
-// Timeout pour détecter une erreur de chargement
-iframeLoadTimeout = setTimeout(function() {
-  if (loadingOverlay.style.display !== 'none') {
-    loadingOverlay.style.display = 'none';
-    errorOverlay.classList.remove('hidden');
-    document.getElementById('errorMessage').textContent =
-      'La réunion n\'a pas pu être chargée dans le délai imparti. ' +
-      'Cela peut être dû à une connexion internet instable ou à un problème avec le serveur Jitsi.';
-  }
-}, MAX_LOADING_TIME);
-
-jitsiFrame.onload = function() {
-  clearTimeout(loadingTimeout);
-  clearTimeout(iframeLoadTimeout);
-
+document.getElementById('jitsiFrame').onload = function() {
   setTimeout(function() {
-    loadingOverlay.style.display = 'none';
+    document.getElementById('loadingOverlay').style.display = 'none';
   }, 2000);
-};
-
-jitsiFrame.onerror = function() {
-  clearTimeout(loadingTimeout);
-  clearTimeout(iframeLoadTimeout);
-  loadingOverlay.style.display = 'none';
-  errorOverlay.classList.remove('hidden');
-  document.getElementById('errorMessage').textContent =
-    'Une erreur est survenue lors du chargement de la réunion.';
 };
 
 // Toggle menu
@@ -220,35 +156,10 @@ function copyMeetingLink() {
 
 // Rafraîchir la réunion
 function refreshMeeting() {
-  clearTimeout(loadingTimeout);
-  clearTimeout(iframeLoadTimeout);
-
   const iframe = document.getElementById('jitsiFrame');
   iframe.src = iframe.src;
-  loadingOverlay.style.display = 'flex';
-  errorOverlay.classList.add('hidden');
+  document.getElementById('loadingOverlay').style.display = 'flex';
   document.getElementById('dropdownMenu').classList.add('hidden');
-
-  // Relancer les timeouts
-  loadingTimeout = setTimeout(function() {
-    if (loadingOverlay.style.display !== 'none') {
-      loadingText.textContent = 'Chargement en cours... Cela prend plus de temps que prévu.';
-      document.getElementById('loadingHint').textContent = 'Cliquez sur "Rafraîchir" ou "Ouvrir dans un nouvel onglet" si le problème persiste.';
-    }
-  }, 15000);
-
-  iframeLoadTimeout = setTimeout(function() {
-    if (loadingOverlay.style.display !== 'none') {
-      loadingOverlay.style.display = 'none';
-      errorOverlay.classList.remove('hidden');
-    }
-  }, MAX_LOADING_TIME);
-}
-
-// Ouvrir dans un nouvel onglet
-function openInNewTab() {
-  const meetingUrl = '{{ $meetingUrl }}';
-  window.open(meetingUrl, '_blank');
 }
 
 // Régénérer le token JWT (pour le modérateur)
