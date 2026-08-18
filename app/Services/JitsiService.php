@@ -30,15 +30,16 @@ class JitsiService
 
         // Pour JaaS (8x8.vc), on DOIT utiliser la clé privée RSA avec kid
         if ($apiKeyId && str_contains($this->jitsiUrl, '8x8.vc')) {
-            if (!file_exists($privateKeyPath)) {
-                throw new \Exception("Clé privée RSA manquante pour JaaS. Veuillez placer votre clé privée dans storage/app/jitsi_private.key");
+            // Essayer d'abord depuis la variable d'environnement (pour Railway/production)
+            $privateKey = env('JITSI_PRIVATE_KEY');
+
+            // Si pas en env, essayer depuis le fichier local (pour dev local)
+            if (empty($privateKey) && file_exists($privateKeyPath)) {
+                $privateKey = file_get_contents($privateKeyPath);
             }
 
-            $privateKey = file_get_contents($privateKeyPath);
-
-            // Vérifier que la clé est valide
             if (empty($privateKey)) {
-                throw new \Exception("La clé privée RSA est vide. Vérifiez le fichier storage/app/jitsi_private.key");
+                throw new \Exception("Clé privée RSA manquante pour JaaS. Configurez la variable d'environnement JITSI_PRIVATE_KEY ou placez votre clé dans storage/app/jitsi_private.key");
             }
 
             $payload = [
