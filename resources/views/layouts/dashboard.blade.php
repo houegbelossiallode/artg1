@@ -32,12 +32,12 @@
       @include('components.dashboard.header')
 
       <!-- Page Content -->
-      <main class="flex-1 p-4 md:p-8 bg-[#F4F6FA] overflow-x-hidden">
+      <main class="flex-1 p-4 md:p-8 bg-[#F4F6FA]">
         @yield('content')
       </main>
       
       <!-- Footer Simple pour Dashboard -->
-      <footer class="p-4 md:p-6 text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest border-t border-slate-200 bg-[#F4F6FA]">
+      <footer class="p-6 text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest border-t border-slate-200 bg-[#F4F6FA]">
         &copy; 2026 AssoCulture. Espace Privé.
       </footer>
     </div>

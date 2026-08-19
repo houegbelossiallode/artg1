@@ -142,7 +142,7 @@
     @endif --}}
 
     <!-- Metric Cards (Style Admin) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {{-- Card 1 : Inscriptions --}}
       <div class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
         <div class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none"></div>
@@ -200,11 +200,11 @@
       </div>
     </div>
     <!-- Bento Box Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
 
       <!-- 1. Prochain Cours (Dynamic) -->
       <div
-        class="lg:col-span-3 bg-[#1E1613] text-white relative overflow-hidden group min-h-[260px] flex flex-col justify-end p-6 lg:p-8 border border-[#0BA20B]/30 shadow-xl rounded-none">
+        class="md:col-span-3 bg-[#1E1613] text-white relative overflow-hidden group min-h-[260px] flex flex-col justify-end p-6 md:p-8 border border-[#0BA20B]/30 shadow-xl rounded-none">
         <img src="/assets/hero_cultural_bg_1785764970571-BS2uarbi.jpg" alt="Musique"
           class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#1E1613] via-[#1E1613]/70 to-transparent"></div>
@@ -284,7 +284,7 @@
       </div>
 
       <!-- 3. Liste de mes Réservations -->
-      <div class="lg:col-span-4 bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 rounded-none relative overflow-hidden group">
+      <div class="md:col-span-4 bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 rounded-none relative overflow-hidden group">
         <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-[#0BA20B]/5 rotate-45 group-hover:bg-[#0BA20B]/10 group-hover:rotate-90 transition-all duration-700 pointer-events-none"></div>
         <div class="relative z-10 flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
           <div class="flex items-center gap-2">
@@ -308,7 +308,7 @@
           </div>
         @else
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs min-w-[800px]">
+            <table class="w-full text-left text-xs">
               <thead class="bg-[#0BA20B]/5 text-slate-700 font-bold uppercase tracking-wider border-b border-[#0BA20B]/20">
                 <tr>
                   <th class="p-3">Cours</th>

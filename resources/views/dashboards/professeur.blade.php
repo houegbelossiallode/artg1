@@ -11,8 +11,8 @@
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
       Disponibilités
     </a>
-  </x-dashboard.page-header>  {{-- ═══════════════════════ CARTES MÉTRIQUES ═══════════════════════ --}}
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  </x-dashboard.page-header> {{-- ═══════════════════════ CARTES MÉTRIQUES ═══════════════════════ --}}
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
 
     {{-- Carte 1 : Élèves --}}
     <div class="bg-white border border-slate-200 shadow-sm p-3.5 border-l-4 border-l-[#0BA20B] flex flex-col gap-2.5">
@@ -109,15 +109,15 @@
   </div>
 
   {{-- ═══════════════════════ NAVIGATION RAPIDE ═══════════════════════ --}}
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-4">
 
     {{-- ACTIONS (span 3) --}}
-    <div class="lg:col-span-3 bg-white border border-slate-200 shadow-sm">
+    <div class="xl:col-span-3 bg-white border border-slate-200 shadow-sm">
       <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
         <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wide">ACTIONS RAPIDES</h2>
       </div>
 
-      <div class="divide-y divide-slate-100 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="divide-y divide-slate-100 p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
         <a href="{{ route('dashboard.professeur.cours.index') }}" class="block bg-white border border-slate-200 rounded-sm shadow-sm hover:shadow-md transition p-6 text-center group">
           <div class="w-12 h-12 bg-indigo-50 border border-indigo-200 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-indigo-600 transition-colors">
             <svg class="w-5 h-5 text-indigo-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
@@ -149,7 +149,7 @@
 {{-- Tableau des Élèves déplacé vers sa propre page --}}
 
     {{-- PANNEAU LATÉRAL --}}
-    <div class="lg:col-span-1 flex flex-col gap-4">
+    <div class="xl:col-span-1 flex flex-col gap-4">
       <div class="bg-white border border-slate-200 shadow-sm flex-1">
         <div class="px-5 py-3.5 border-b border-slate-200">
           <h2 class="text-xs font-bold text-slate-900 uppercase tracking-widest">Aujourd'hui</h2>
