@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Cours;
+use App\Models\User;
+use App\Models\ReservationDiscussion;
+use App\Models\Disponibilite;
+use App\Models\Notification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,5 +49,10 @@ class Reservation extends Model
     public function disponibilite()
     {
         return $this->belongsTo(Disponibilite::class, 'disponibilite_id');
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
     }
 }

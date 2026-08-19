@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DonController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalerieController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ModeController;
 use App\Http\Controllers\NewsletterController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\Admin\EquipeController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\ProfilController;
 use App\Http\Controllers\Admin\TalentController;
-use App\Http\Controllers\Admin\OeuvreController as AdminOeuvreController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Admin\SousmenuController;
 use App\Http\Controllers\Admin\ActualiteController;
 use App\Http\Controllers\Admin\EvenementController;
@@ -28,13 +29,13 @@ use App\Http\Controllers\Admin\CategorieCoursController;
 use App\Http\Controllers\Admin\CategorieTalentController;
 use App\Http\Controllers\Professeur\ProfesseurController;
 use App\Http\Controllers\Admin\CategorieGalerieController;
-use App\Http\Controllers\DonController;
 use App\Http\Controllers\Admin\ProfilpermissionController;
 use App\Http\Controllers\Admin\CategorieEvenementController;
 use App\Http\Controllers\Professeur\DisponibiliteController;
 use App\Http\Controllers\Professeur\ProfesseurCoursController;
 use App\Http\Controllers\Professeur\ProfesseurSupportController;
 use App\Http\Controllers\GalerieController as PublicGalerieController;
+use App\Http\Controllers\Admin\OeuvreController as AdminOeuvreController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\GalerieController as AdminGalerieController;
 use App\Http\Controllers\Admin\ProfesseurController as AdminProfesseurController;
@@ -100,6 +101,14 @@ Route::post('/email/verification-notification', function (\Illuminate\Http\Reque
     $request->user()->sendEmailVerificationNotification();
     return back()->with('message', 'Un nouveau lien de vérification a été envoyé à votre adresse email.');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+// Notification routes (accessible par tous les utilisateurs authentifiés)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/mark-read', [NotificationController::class, 'markAsRead'])->name('notifications.mark-read');
+    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.mark-all-read');
+    Route::get('/notifications/unread-count', [NotificationController::class, 'getUnreadCount'])->name('notifications.unread-count');
+});
 
 // Secure Dashboard Routes
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {

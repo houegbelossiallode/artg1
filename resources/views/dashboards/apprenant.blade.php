@@ -130,7 +130,7 @@
     </div>
 
     <!-- Flash Notifications -->
-    @if(session('success'))
+    {{-- @if(session('success'))
       <div class="p-4 bg-emerald-50 border-l-4 border-l-emerald-600 text-emerald-800 text-xs font-semibold">
         {{ session('success') }}
       </div>
@@ -139,7 +139,7 @@
       <div class="p-4 bg-red-50 border-l-4 border-l-red-600 text-red-800 text-xs font-semibold">
         {{ session('error') }}
       </div>
-    @endif
+    @endif --}}
 
     <!-- Metric Cards (Style Admin) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

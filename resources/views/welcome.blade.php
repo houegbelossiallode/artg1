@@ -1537,14 +1537,16 @@
                             this.coursMode = mode;
                             this.coursTarif = tarif;
                             this.showModal = true;
-                            this.loading = true;
-                            this.disponibilites = [];
+                            this.loading = false;
+                            // this.disponibilites = [];
                             this.errorMessage = '';
                             this.dateReservation = '';
                             this.heureDebut = '';
                             this.heureFin = '';
                             this.activeSlotDay = '';
 
+                            // Commenté : fetch des disponibilités du professeur
+                            /*
                             fetch('/api/cours/' + id + '/slots')
                                 .then(res => res.json())
                                 .then(data => {
@@ -1559,8 +1561,11 @@
                                     console.error(err);
                                     this.loading = false;
                                 });
+                            */
                         },
 
+                        // Commenté : méthodes liées aux disponibilités du professeur
+                        /*
                         getNextDateForDay(dayName) {
                             if (!dayName) return '';
                             const daysMap = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
@@ -1643,6 +1648,7 @@
                                 this.errorMessage = 'Erreur : Le professeur n\'est pas disponible le ' + dayName + '.';
                             }
                         }
+                        */
                     }">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
                 {{-- Flash Notifications --}}
@@ -1920,11 +1926,12 @@
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                             </path>
                         </svg>
-                        Chargement des disponibilités du professeur...
+                        Chargement...
                     </div>
 
                     <div x-show="!loading">
-                        {{-- Section Disponibilités du professeur --}}
+                        {{-- Section Disponibilités du professeur - COMMENTÉE --}}
+                        {{--
                         <div class="mb-4 bg-[#F4EFE6] border border-[#0BA20B]/30 p-3">
                             <div class="flex items-center justify-between mb-2">
                                 <h4
@@ -1946,7 +1953,7 @@
                             </template>
 
                             {{-- Zone défilante exclusive aux disponibilités --}}
-                            <div x-show="disponibilites.length > 0" class="space-y-2 max-h-40 overflow-y-auto pr-1">
+                            {{-- <div x-show="disponibilites.length > 0" class="space-y-2 max-h-40 overflow-y-auto pr-1">
                                 <template x-for="(slots, jour) in getGroupedDisponibilites()" :key="jour">
                                     <div class="bg-white border border-[#0BA20B]/30 p-2 shadow-sm">
                                         <div
@@ -1975,10 +1982,11 @@
                                     </div>
                                 </template>
                             </div>
-                        </div>
+                        </div> --}}
+
 
                         {{-- Formulaire de réservation --}}
-                        <form action="{{ route('reservations.store') }}" method="POST" @submit="validateForm($event)"
+                        <form action="{{ route('reservations.store') }}" method="POST"
                             class="space-y-4">
                             @csrf
                             <input type="hidden" name="cours_id" :value="coursId" />
@@ -1988,7 +1996,7 @@
                                     Date souhaitée <span class="text-[#0BA20B]">*</span>
                                 </label>
                                 <input type="date" name="date_reservation" required min="{{ date('Y-m-d') }}"
-                                    x-model="dateReservation" @change="onDateChange($event)"
+                                    x-model="dateReservation"
                                     class="w-full px-3 py-2 bg-white border border-[#0BA20B]/50 text-xs text-[#2C221E] focus:outline-none focus:border-[#0BA20B]" />
                             </div>
 
@@ -2021,8 +2029,8 @@
                                     class="px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#6B574F] hover:text-[#2C221E] cursor-pointer">
                                     Annuler
                                 </button>
-                                <button type="submit" :disabled="disponibilites.length === 0"
-                                    class="px-5 py-2.5 bg-[#0BA20B] hover:bg-[#087A08] disabled:opacity-50 text-white font-bold text-xs uppercase tracking-widest transition shadow-md cursor-pointer">
+                                <button type="submit"
+                                    class="px-5 py-2.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-xs uppercase tracking-widest transition shadow-md cursor-pointer">
                                     Confirmer la réservation
                                 </button>
                             </div>

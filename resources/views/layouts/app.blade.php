@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/css/reference_style.css">
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         [x-cloak] {
             display: none !important;
@@ -71,7 +73,7 @@
             </a>
 
             {{-- Mobile Menu Button --}}
-            <button id="mobile-menu-btn" 
+            <button id="mobile-menu-btn"
                 class="lg:hidden p-2 rounded-none text-white hover:bg-white/10 transition-colors"
                 aria-label="Menu"
                 x-data="{ mobileMenuOpen: false }"
@@ -83,6 +85,63 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
+
+            {{-- Notification Bell --}}
+            @auth
+            @php
+                $user = auth()->user();
+                $unreadCount = \App\Models\Notification::forUser($user->id)->unread()->count();
+                $recentNotifications = \App\Models\Notification::forUser($user->id)->orderBy('created_at', 'desc')->limit(5)->get();
+            @endphp
+            <div class="relative">
+                <button onclick="document.getElementById('notifications-dropdown').classList.toggle('hidden')"
+                    class="p-2 rounded-none text-white hover:bg-white/10 transition-colors relative"
+                    aria-label="Notifications">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                    @if($unreadCount > 0)
+                        <span class="absolute -top-1 -right-1 w-5 h-5 bg-[#0BA20B] text-white text-xs font-bold rounded-full flex items-center justify-center">
+                            {{ $unreadCount }}
+                        </span>
+                    @endif
+                </button>
+
+                {{-- Notifications Dropdown --}}
+                <div id="notifications-dropdown" class="hidden absolute right-0 top-full mt-2 w-80 max-h-96 overflow-y-auto bg-[#1E1613]/98 backdrop-blur-md border border-[#0BA20B]/30 shadow-2xl rounded-none z-50">
+                    <div class="p-4 border-b border-[#0BA20B]/20 flex items-center justify-between">
+                        <h3 class="text-white font-bold text-sm">Notifications</h3>
+                        @if($unreadCount > 0)
+                            <button class="text-xs text-[#0BA20B] hover:text-white transition-colors">
+                                Tout marquer comme lu
+                            </button>
+                        @endif
+                    </div>
+                    @if($recentNotifications->isEmpty())
+                        <div class="p-8 text-center text-white/60 text-sm">
+                            Aucune notification
+                        </div>
+                    @else
+                        @foreach($recentNotifications as $notification)
+                            <div class="p-4 border-b border-[#0BA20B]/10 hover:bg-white/5 cursor-pointer transition-colors {{ !$notification->read ? 'bg-white/5' : '' }}">
+                                <div class="flex items-start gap-3">
+                                    <div class="mt-1 w-2 h-2 rounded-full flex-shrink-0
+                                        @if($notification->type === 'success') bg-[#0BA20B]
+                                        @elseif($notification->type === 'warning') bg-yellow-500
+                                        @elseif($notification->type === 'error') bg-red-500
+                                        @else bg-blue-500 @endif"></div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-white text-sm font-medium">{{ $notification->title }}</p>
+                                        <p class="text-white/70 text-xs mt-1">{{ $notification->message }}</p>
+                                        <p class="text-white/50 text-xs mt-2">{{ $notification->created_at->format('d/m/Y H:i') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+            @endauth
 
             {{-- Nav Links --}}
             <nav class="hidden lg:flex items-center gap-1 xl:gap-2 flex-nowrap shrink-0">
@@ -168,17 +227,17 @@
             <div x-data="{ mobileMenuOpen: false }" @mobile-menu-toggle.window="mobileMenuOpen = $event.detail.open" class="lg:hidden">
                 <div x-show="mobileMenuOpen" x-cloak
                     class="absolute top-full left-0 right-0 bg-[#1E1613]/98 backdrop-blur-md border-b border-[#0BA20B]/30 shadow-2xl py-4 px-4 space-y-2 z-50">
-                    <a href="{{ url('/#hero') }}" 
+                    <a href="{{ url('/#hero') }}"
                         @click="mobileMenuOpen = false"
                         class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
                         Accueil
                     </a>
-                    <a href="{{ url('/#about') }}" 
+                    <a href="{{ url('/#about') }}"
                         @click="mobileMenuOpen = false"
                         class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
                         À propos
                     </a>
-                    
+
                     {{-- Mobile Activités Submenu --}}
                     <div x-data="{ activitiesOpen: false }">
                         <button @click="activitiesOpen = !activitiesOpen"
@@ -189,40 +248,40 @@
                             </svg>
                         </button>
                         <div x-show="activitiesOpen" x-collapse class="pl-4 space-y-1 mt-1">
-                            <a href="{{ url('/#events') }}" 
+                            <a href="{{ url('/#events') }}"
                                 @click="mobileMenuOpen = false"
                                 class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
                                 Événements
                             </a>
-                            <a href="{{ url('/#courses') }}" 
+                            <a href="{{ url('/#courses') }}"
                                 @click="mobileMenuOpen = false"
                                 class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
                                 Formations (Cours & Formations)
                             </a>
-                            <a href="{{ url('/#gallery') }}" 
+                            <a href="{{ url('/#gallery') }}"
                                 @click="mobileMenuOpen = false"
                                 class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
                                 Galerie
                             </a>
-                            <a href="{{ url('/#news') }}" 
+                            <a href="{{ url('/#news') }}"
                                 @click="mobileMenuOpen = false"
                                 class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
                                 Actualités
                             </a>
                         </div>
                     </div>
-                    
-                    <a href="{{ url('/#talents') }}" 
+
+                    <a href="{{ url('/#talents') }}"
                         @click="mobileMenuOpen = false"
                         class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
                         Jeunes Talents
                     </a>
-                    <a href="{{ url('/#contact') }}" 
+                    <a href="{{ url('/#contact') }}"
                         @click="mobileMenuOpen = false"
                         class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
                         Contact
                     </a>
-                    <a href="{{ route('login') }}" 
+                    <a href="{{ route('login') }}"
                         @click="mobileMenuOpen = false"
                         class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium flex items-center gap-2">
                         <svg class="w-4 h-4 text-[#0BA20B]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -597,6 +656,18 @@
             </form>
         </div>
     </div>
+
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès',
+                text: '{{ session('success') }}',
+                timer: 3000,
+                showConfirmButton: false
+            });
+        </script>
+    @endif
 
 </body>
 

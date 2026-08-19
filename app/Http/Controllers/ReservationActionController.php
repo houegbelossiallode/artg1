@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Reservation;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -11,22 +13,41 @@ use App\Mail\ReservationReportProposed;
 
 class ReservationActionController extends Controller
 {
+    protected NotificationService $notificationService;
+
+    public function __construct(NotificationService $notificationService)
+    {
+        $this->notificationService = $notificationService;
+    }
+
     public function accept($id, \App\Services\JitsiService $jitsiService)
     {
         $reservation = Reservation::findOrFail($id);
-        
+
         $cours = $reservation->course;
         $isOnline = $cours->mode && (
             \Illuminate\Support\Str::contains(strtolower($cours->mode->libelle), ['distanciel', 'hybride', 'ligne', 'online', 'visio', 'remote'])
         );
-        
+
         if ($isOnline && !$reservation->jitsi_room_id) {
             $reservation->jitsi_room_id = $jitsiService->generateSecureRoomName($cours->id, $reservation->date_reservation, $reservation->user_id, $reservation->heure_debut);
         }
 
         $reservation->status = 'accepted';
         $reservation->save();
+
+        // Send email notification
         Mail::to($reservation->user->email)->queue(new ReservationAccepted($reservation));
+
+        // Create in-app notification
+        $this->notificationService->notifyReservationAccepted(
+            $reservation->user,
+            $cours->titre,
+            \Carbon\Carbon::parse($reservation->date_reservation)->translatedFormat('d/m/Y'),
+            \Carbon\Carbon::parse($reservation->heure_debut)->format('H:i'),
+            $reservation->id
+        );
+
         return back()->with('success', 'Réservation acceptée');
     }
 
@@ -35,35 +56,47 @@ class ReservationActionController extends Controller
         $reservation = Reservation::findOrFail($id);
         $reservation->status = 'refused';
         $reservation->save();
+
+        // Send email notification
         Mail::to($reservation->user->email)->queue(new ReservationRefused($reservation));
+
+        // Create in-app notification
+        $this->notificationService->notifyReservationRefused(
+            $reservation->user,
+            $reservation->course->titre,
+            '',
+            $reservation->id
+        );
+
         return back()->with('success', 'Réservation refusée');
     }
 
     public function proposeReport($id, Request $request)
     {
         $reservation = Reservation::findOrFail($id);
-        
-        
+
         $data = $request->validate([
             'new_date' => 'required|date',
             'new_time' => 'required|date_format:H:i',
             'new_time_end' => 'nullable|date_format:H:i',
             'message' => 'nullable|string|max:1000',
         ]);
-        
+
         $user = Auth::user();
         $isProf = ($reservation->course->user_id === $user->id);
 
         if ($isProf) {
             $reservation->status = 'pending_student';
-            $recipient = $reservation->user->email;
+            $recipient = $reservation->user;
+            $recipientEmail = $reservation->user->email;
         } else {
             $reservation->status = 'pending_teacher';
-            $recipient = $reservation->course->professeur->email ?? null;
+            $recipient = $reservation->course->professeur;
+            $recipientEmail = $reservation->course->professeur->email ?? null;
         }
 
         $newStart = \Carbon\Carbon::parse($data['new_date'] . ' ' . $data['new_time']);
-        
+
         if (!empty($data['new_time_end'])) {
             $newEnd = \Carbon\Carbon::parse($data['new_date'] . ' ' . $data['new_time_end']);
         } else {
@@ -89,13 +122,26 @@ class ReservationActionController extends Controller
             'proposed_start_time' => $newStart->format('H:i:s'),
             'proposed_end_time' => $newEnd->format('H:i:s'),
         ]);
-        
-        if ($recipient) {
+
+        // Send email notification
+        if ($recipientEmail) {
             try {
-                Mail::to($recipient)->queue(new ReservationReportProposed($reservation, $data));
+                Mail::to($recipientEmail)->queue(new ReservationReportProposed($reservation, $data));
             } catch (\Exception $e) {}
         }
-        
+
+        // Create in-app notification
+        if ($recipient) {
+            $this->notificationService->notifyReservationReport(
+                $recipient,
+                $reservation->course->titre,
+                $newStart->translatedFormat('d/m/Y'),
+                $newStart->format('H:i'),
+                $user->name,
+                $reservation->id
+            );
+        }
+
         if ($isProf) {
             return redirect()->route('dashboard.professeur.reservations')->with('success', 'Nouvel horaire proposé avec succès.');
         } else {
@@ -114,7 +160,7 @@ class ReservationActionController extends Controller
         if (!$isProf && !$isApprenant) {
             abort(403);
         }
-        
+
         return view('shared.reservations.discussions', compact('reservation', 'user'));
     }
 }

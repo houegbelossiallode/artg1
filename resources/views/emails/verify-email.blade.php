@@ -3,7 +3,7 @@
 @section('content')
 <div style="color: #2C221E; line-height: 1.6; font-size: 16px;">
     <p>Bonjour <strong>{{ $user->prenom }}</strong>,</p>
-    <p>Bienvenue sur la plateforme AssoCulture !</p>
+    <p>Bienvenue sur la plateforme {{$association->nom }} !</p>
     <p>Pour finaliser la création de votre compte et accéder à votre espace membre, veuillez valider votre adresse email en cliquant sur le bouton ci-dessous :</p>
     
     <div style="text-align: center; margin: 30px 0;">
