@@ -70,6 +70,20 @@
                 </div>
             </a>
 
+            {{-- Mobile Menu Button --}}
+            <button id="mobile-menu-btn" 
+                class="lg:hidden p-2 rounded-none text-white hover:bg-white/10 transition-colors"
+                aria-label="Menu"
+                x-data="{ mobileMenuOpen: false }"
+                @click="mobileMenuOpen = !mobileMenuOpen; $dispatch('mobile-menu-toggle', { open: mobileMenuOpen })">
+                <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg x-show="mobileMenuOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+
             {{-- Nav Links --}}
             <nav class="hidden lg:flex items-center gap-1 xl:gap-2 flex-nowrap shrink-0">
                 <div class="relative group">
@@ -149,6 +163,76 @@
                     </a>
                 </div>
             </nav>
+
+            {{-- Mobile Menu --}}
+            <div x-data="{ mobileMenuOpen: false }" @mobile-menu-toggle.window="mobileMenuOpen = $event.detail.open" class="lg:hidden">
+                <div x-show="mobileMenuOpen" x-cloak
+                    class="absolute top-full left-0 right-0 bg-[#1E1613]/98 backdrop-blur-md border-b border-[#0BA20B]/30 shadow-2xl py-4 px-4 space-y-2 z-50">
+                    <a href="{{ url('/#hero') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
+                        Accueil
+                    </a>
+                    <a href="{{ url('/#about') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
+                        À propos
+                    </a>
+                    
+                    {{-- Mobile Activités Submenu --}}
+                    <div x-data="{ activitiesOpen: false }">
+                        <button @click="activitiesOpen = !activitiesOpen"
+                            class="w-full px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium flex items-center justify-between">
+                            Activités
+                            <svg class="w-4 h-4 transition-transform" :class="activitiesOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div x-show="activitiesOpen" x-collapse class="pl-4 space-y-1 mt-1">
+                            <a href="{{ url('/#events') }}" 
+                                @click="mobileMenuOpen = false"
+                                class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
+                                Événements
+                            </a>
+                            <a href="{{ url('/#courses') }}" 
+                                @click="mobileMenuOpen = false"
+                                class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
+                                Formations (Cours & Formations)
+                            </a>
+                            <a href="{{ url('/#gallery') }}" 
+                                @click="mobileMenuOpen = false"
+                                class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
+                                Galerie
+                            </a>
+                            <a href="{{ url('/#news') }}" 
+                                @click="mobileMenuOpen = false"
+                                class="block px-4 py-2 text-sm text-white/80 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors">
+                                Actualités
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ url('/#talents') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
+                        Jeunes Talents
+                    </a>
+                    <a href="{{ url('/#contact') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium">
+                        Contact
+                    </a>
+                    <a href="{{ route('login') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white/90 hover:text-[#0BA20B] hover:bg-white/5 rounded-none transition-colors font-medium flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#0BA20B]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Espace Membre
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 

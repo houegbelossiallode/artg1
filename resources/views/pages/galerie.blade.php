@@ -2,7 +2,8 @@
 @section('title', 'Écho & Culture — Galerie')
 
 @section('content')
-<section class="pt-32 pb-24 bg-[#F4EFE6] relative overflow-hidden" id="gallery">
+<section class="pt-32 pb-24 bg-[#F4EFE6] relative overflow-hidden" id="gallery"
+    x-data="{ activeGallery: null, currentImageIndex: 0, showTitle: '', selectedCategory: 'all' }">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 <div class="text-center max-w-3xl mx-auto space-y-4">
 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-none bg-[#FAF7F2] border border-[#0BA20B]/40 text-[#0BA20B] text-xs font-bold uppercase tracking-widest shadow-sm">
@@ -42,7 +43,11 @@
       $isVideo = $galerie->fichier && in_array(strtolower(pathinfo($galerie->fichier, PATHINFO_EXTENSION)), ['mp4', 'webm', 'mov', 'avi', 'mkv']);
       $fichierUrl = $galerie->fichier ? asset('storage/' . $galerie->fichier) : null;
     @endphp
-    <div x-show="selectedCategory === 'all' || selectedCategory === '{{ $galerie->categorie->slug }}'" class="group relative rounded-none overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-300 h-64 bg-[#1E1613]">
+    <div x-show="selectedCategory === 'all' || selectedCategory === '{{ $galerie->categorie->slug }}'" 
+         class="group relative rounded-none overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-300 h-64 bg-[#1E1613]"
+         data-gallery='[{"url":"{{ $fichierUrl }}","type":"{{ $isVideo ? 'video' : 'image' }}"}]' 
+         data-title="{{ $galerie->titre }}"
+         @click="activeGallery = JSON.parse($el.dataset.gallery); currentImageIndex = 0; showTitle = $el.dataset.title">
       @if($fichierUrl)
         @if($isVideo)
           <video src="{{ $fichierUrl }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" muted loop playsinline poster=""></video>
@@ -101,6 +106,66 @@
     </div>
   @endif
 </div>
+</div>
+
+<!-- Lightbox Modal pour la galerie -->
+<div x-show="activeGallery"
+    class="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+    x-cloak @keydown.escape.window="activeGallery = null">
+
+    <div class="relative w-full max-w-4xl bg-[#1E1613] border border-[#0BA20B]/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden rounded-none"
+        @click.away="activeGallery = null">
+
+        <div class="px-6 py-4 border-b border-[#0BA20B]/20 flex items-center justify-between bg-[#1E1613]">
+            <div>
+                <h3 class="text-sm font-serif-title font-bold text-[#FAF7F2] uppercase tracking-wider"
+                    x-text="showTitle"></h3>
+            </div>
+            <button @click="activeGallery = null"
+                class="text-[#0BA20B] hover:text-[#0BA20B] p-1 transition-colors" title="Fermer (Echap)">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div
+            class="relative flex-1 bg-black flex items-center justify-center min-h-[350px] p-4 overflow-hidden">
+            <template x-if="activeGallery && activeGallery[currentImageIndex]">
+                <div x-data="{ isPlaying: false }" class="w-full h-full flex items-center justify-center">
+                    <template x-if="activeGallery[currentImageIndex].type === 'video'">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <video
+                                :src="activeGallery[currentImageIndex].url"
+                                controls
+                                class="max-h-[80vh] max-w-full object-contain shadow-2xl transition-all duration-300"
+                                x-ref="videoPlayer">
+                            </video>
+                        </div>
+                    </template>
+                    <template x-if="activeGallery[currentImageIndex].type === 'image'">
+                        <img :src="activeGallery[currentImageIndex].url"
+                            class="max-h-[80vh] max-w-full object-contain shadow-2xl transition-all duration-300"
+                            alt="Image de galerie">
+                    </template>
+                </div>
+            </template>
+        </div>
+
+        <template x-if="activeGallery && activeGallery.length > 1">
+            <div
+                class="px-6 py-4 bg-[#1E1613] border-t border-[#0BA20B]/20 flex items-center justify-center gap-3 overflow-x-auto">
+                <template x-for="(img, idx) in activeGallery" :key="idx">
+                    <button @click="currentImageIndex = idx"
+                        class="w-14 h-14 border-2 overflow-hidden transition-all shrink-0 rounded-none"
+                        :class="currentImageIndex === idx ? 'border-[#0BA20B] scale-105 opacity-100' : 'border-[#0BA20B]/30 opacity-50 hover:opacity-100'">
+                        <img :src="img.url" class="w-full h-full object-cover">
+                    </button>
+                </template>
+            </div>
+        </template>
+    </div>
 </div>
 </section>
 @endsection

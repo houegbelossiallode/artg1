@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mode;
+use App\Models\User;
 use App\Models\Cours;
 use App\Models\Equipe;
+use App\Models\Oeuvre;
 use App\Models\Talent;
 use App\Models\Galerie;
 use App\Models\Actualite;
 use App\Models\Evenement;
 use App\Models\Association;
+use App\Models\Reservation;
 use App\Models\CategorieCours;
 use App\Models\CategorieGalerie;
 use App\Models\CategorieEvenement;
@@ -21,20 +24,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $association = Association::where('actif', 'OUI')->latest()->first() ?? Association::first();
-        $cours = Cours::with(['categorie', 'mode', 'professeur'])->latest()->get();
-        $evenements = Evenement::with(['categorie', 'images'])->latest()->take(6)->get();
-        $evenementPhare = Evenement::with(['categorie', 'images'])->latest()->first();
-        $talents = Talent::with('categorie')->where('actif', 'OUI')->latest()->take(3)->get();
+        $association = Association::where('actif','OUI')->latest()->first() ?? Association::first();
+        $cours = Cours::with(['categorie','mode','professeur'])->latest()->take(6)->get();
+        $evenements = Evenement::with(['categorie','images'])->latest()->take(6)->get();
+        $evenementPhare = Evenement::with(['categorie','images'])->latest()->first();
+        $talents = Talent::with('categorie')->where('actif','OUI')->latest()->take(6)->get();
         $actualites = Actualite::with('images')->latest()->take(6)->get();
         $equipes = Equipe::where('actif', 'OUI')->latest()->take(4)->get();
-        $categoriesCours = CategorieCours::all();
-        $categoriesEvenements = CategorieEvenement::where('actif', 'OUI')->get();
-        $modes = Mode::all();
-        $categoriesGaleries = CategorieGalerie::where('actif', 'OUI')->get();
-        $galeries = Galerie::with('categorie')->where('actif', 'OUI')->latest()->take(6)->get();
+        $categoriesCours = CategorieCours::where('actif','OUI')->get();
+        $categoriesEvenements = CategorieEvenement::where('actif','OUI')->get();
+        $modes = Mode::where('actif','OUI')->get();
+        $categoriesGaleries = CategorieGalerie::where('actif','OUI')->get();
+        $galeries = Galerie::with('categorie')->where('actif','OUI')->latest()->take(6)->get();
 
-        return view('welcome', compact('association', 'cours', 'evenements', 'evenementPhare', 'talents', 'actualites', 'equipes', 'categoriesCours', 'categoriesEvenements', 'modes', 'categoriesGaleries', 'galeries'));
+        // Statistiques dynamiques
+        $stats = [
+            'apprenants' => Reservation::distinct('user_id')->count() . '+',
+            'enseignants' => Talent::where('actif', 'OUI')->count(),
+            'evenements' => Evenement::count() . '+',
+            'oeuvres' => Oeuvre::count() . '+',
+        ];
+
+        return view('welcome', compact('association', 'cours', 'evenements', 'evenementPhare', 'talents', 'actualites', 'equipes', 'categoriesCours', 'categoriesEvenements', 'modes', 'categoriesGaleries', 'galeries', 'stats'));
     }
 
     public function aPropos()
@@ -77,8 +88,8 @@ class HomeController extends Controller
     public function cours()
     {
         $cours = Cours::with(['categorie', 'mode', 'professeur'])->latest()->get();
-        $categoriesCours = CategorieCours::all();
-        $modes = Mode::all();
+        $categoriesCours = CategorieCours::where('actif','OUI')->get();
+        $modes = Mode::where('actif','OUI')->get();
         return view('pages.cours', compact('cours', 'categoriesCours', 'modes'));
     }
 

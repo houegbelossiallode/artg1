@@ -60,7 +60,6 @@ Route::post('/don', [DonController::class, 'store'])->name('don.store');
 Route::middleware('auth')->group(function () {
     Route::resource('reservations', ReservationController::class);
 });
-Route::get('/galerie', [HomeController::class, 'galerie'])->name('galerie');
 Route::get('/actualites', [HomeController::class, 'actualites'])->name('actualites');
 Route::get('/actualites/{id}', [HomeController::class, 'showActualite'])->name('actualites.show');
 Route::get('/don', [HomeController::class, 'don'])->name('don');

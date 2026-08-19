@@ -324,10 +324,10 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
                         <h3
-                            class="font-serif-title text-2xl sm:text-3xl font-bold text-[#2C221E] border-l-4 border-[#0BA20B] pl-4">
+                            class="font-serif-title text-justify text-2xl sm:text-3xl font-bold text-[#2C221E] border-l-4 border-[#0BA20B] pl-4">
                             Notre Histoire
                         </h3>
-                        <p class="text-sm sm:text-base text-[#5C4A42] leading-relaxed">
+                        <p class="text-sm sm:text-base text-[#5C4A42] leading-relaxed text-justify">
                             {{ $association?->historique ?? 'Historique à définir' }}
                         </p>
                     </div>
@@ -379,7 +379,7 @@
                     <div
                         class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
                         <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
-                            350+
+                            {{ $stats['apprenants'] ?? '0+' }}
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
                             Apprenants Accompagnés
@@ -388,7 +388,7 @@
                     <div
                         class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
                         <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
-                            18
+                            {{ $stats['enseignants'] ?? '0' }}
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
                             Maitres-Enseignants &amp; Artistes
@@ -397,7 +397,7 @@
                     <div
                         class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
                         <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
-                            45+
+                            {{ $stats['evenements'] ?? '0+' }}
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
                             Événements &amp; Éco-Ateliers / an
@@ -406,7 +406,7 @@
                     <div
                         class="glass-panel rounded-none p-6 text-center space-y-2 hover:border-[#0BA20B]/40 transition-all transform hover:-translate-y-1 shadow-sm">
                         <div class="text-3xl sm:text-4xl font-bold font-serif-title text-[#0BA20B]">
-                            120+
+                            {{ $stats['oeuvres'] ?? '0+' }}
                         </div>
                         <div class="text-xs sm:text-sm font-semibold text-[#2C221E]">
                             Œuvres en Raphia Façonnées
@@ -1176,9 +1176,14 @@
                 </div>
                 @endif
                 <div class="space-y-6 pt-6">
-                    <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
-                        Galerie des Artistes Émergents
-                    </h3>
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#0BA20B]/30 pb-4">
+                        <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
+                            Galerie des Artistes Émergents
+                        </h3>
+                        <a href="{{ route('talents') }}" class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline">
+                            Voir tous les talents &rarr;
+                        </a>
+                    </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         @forelse($talents as $talent)
                         <a href="{{ route('talents.show', $talent->id) }}" class="block bg-white rounded-none p-5 border transition-all duration-300 space-y-4 hover:shadow-xl {{ $loop->first ? 'border-[#0BA20B] ring-2 ring-[#0BA20B]/20 shadow-md' : 'border-[#0BA20B]/30 hover:border-[#0BA20B]' }}">
@@ -1290,7 +1295,11 @@
                         <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">
                             Prochains Événements à venir
                         </h3>
-                        <div class="flex flex-wrap gap-2">
+                        <a href="{{ route('evenements') }}" class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline">
+                            Voir tous les événements &rarr;
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
                             <button @click="activeCategory = 'Tous'"
                                 :class="activeCategory === 'Tous' ? 'bg-[#0BA20B] text-white' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                                 class="px-3.5 py-1.5 rounded-none text-xs font-semibold transition-all shadow-sm">
@@ -1714,6 +1723,9 @@
                             </button>
                         @endforeach
                     </div>
+                    <a href="{{ route('cours') }}" class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline shrink-0">
+                        Voir tous les cours &rarr;
+                    </a>
                     {{-- <div class="flex items-center gap-2 shrink-0 overflow-x-auto">
                         <span class="text-xs font-bold text-[#2C221E] uppercase">Modes :</span>
                         <button @click="activeMode = 'Tous'"
@@ -2048,21 +2060,26 @@
                         expositions.
                     </p>
                 </div>
-                <div class="flex justify-center gap-2 flex-wrap">
-                    <button
-                        @click="activeCategory = 'all'"
-                        :class="activeCategory === 'all' ? 'bg-[#0BA20B] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
-                        class="px-4 py-2 rounded-none text-xs font-semibold transition-all">
-                        Tous
-                    </button>
-                    @foreach($categoriesGaleries as $cat)
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex justify-center gap-2 flex-wrap">
                         <button
-                            @click="activeCategory = '{{ $cat->slug }}'"
-                            :class="activeCategory === '{{ $cat->slug }}' ? 'bg-[#0BA20B] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
+                            @click="activeCategory = 'all'"
+                            :class="activeCategory === 'all' ? 'bg-[#0BA20B] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
                             class="px-4 py-2 rounded-none text-xs font-semibold transition-all">
-                            {{ $cat->libelle }}
+                            Tous
                         </button>
-                    @endforeach
+                        @foreach($categoriesGaleries as $cat)
+                            <button
+                                @click="activeCategory = '{{ $cat->slug }}'"
+                                :class="activeCategory === '{{ $cat->slug }}' ? 'bg-[#0BA20B] text-white shadow-md' : 'bg-[#FAF7F2] text-[#2C221E] hover:bg-white border border-[#0BA20B]/30'"
+                                class="px-4 py-2 rounded-none text-xs font-semibold transition-all">
+                                {{ $cat->libelle }}
+                            </button>
+                        @endforeach
+                    </div>
+                    <a href="{{ route('galerie') }}" class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline shrink-0">
+                        Voir toute la galerie &rarr;
+                    </a>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @forelse($galeries as $galerie)
@@ -2381,6 +2398,11 @@
                         Suivez les avancées des projets agricoles autour du raphia, les événements scolaires et les
                         distinctions de nos jeunes artistes.
                     </p>
+                </div>
+                <div class="flex justify-end">
+                    <a href="{{ route('actualites') }}" class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline">
+                        Voir toutes les actualités &rarr;
+                    </a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     @forelse ($actualites as $actu)

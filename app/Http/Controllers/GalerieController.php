@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategorieGalerie;
 use App\Models\Galerie;
 use Illuminate\Http\Request;
+use App\Models\CategorieGalerie;
 
 class GalerieController extends Controller
 {
@@ -13,11 +13,9 @@ class GalerieController extends Controller
      */
     public function index()
     {
-        $categories = CategorieGalerie::where('actif', 'OUI')->orWhere('actif', 'oui')->get();
+        $categories = CategorieGalerie::where('actif','OUI')->get();
         $galeries = Galerie::with('categorie')
-            ->where('actif', 'OUI')
-            ->orWhere('actif', 'oui')
-            ->orderBy('ordre')
+            ->where('actif','OUI')
             ->latest()
             ->get();
         

@@ -143,13 +143,6 @@
                                     <p class="text-[#2C221E] font-medium text-sm">{{ $item->lieu }}</p>
                                 </div>
                             </li>
-
-                            <li class="pt-6 mt-2 border-t border-[#0BA20B]/20">
-                                <button class="w-full py-3.5 px-6 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold tracking-widest uppercase text-xs transition-colors flex items-center justify-center gap-2">
-                                    Réserver
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </button>
-                            </li>
                         @else
                             <li class="flex items-start gap-4">
                                 <div class="mt-1">
