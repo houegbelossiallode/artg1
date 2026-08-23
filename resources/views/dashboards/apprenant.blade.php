@@ -4,123 +4,125 @@
 
 @section('content')
   <div class="w-full h-full flex flex-col space-y-6" x-data="{
-        showModal: false,
-        coursId: null,
-        coursTitre: '',
-        profName: '',
-        coursMode: '',
-        coursTarif: '',
-        disponibilites: [],
-        loading: false,
-        dateReservation: '',
-        heureDebut: '',
-        heureFin: '',
-        errorMessage: '',
-        activeSlotDay: '',
+          showModal: false,
+          coursId: null,
+          coursTitre: '',
+          profName: '',
+          coursMode: '',
+          coursTarif: '',
+          disponibilites: [],
+          loading: false,
+          dateReservation: '',
+          heureDebut: '',
+          heureFin: '',
+          errorMessage: '',
+          activeSlotDay: '',
 
-        openBookingModal(id, titre, prof, mode = '', tarif = '') {
-            this.coursId = id;
-            this.coursTitre = titre;
-            this.profName = prof;
-            this.coursMode = mode;
-            this.coursTarif = tarif;
-            this.showModal = true;
-            this.loading = false;
-            this.disponibilites = [];
-            this.errorMessage = '';
-            this.dateReservation = '';
-            this.heureDebut = '';
-            this.heureFin = '';
-            this.activeSlotDay = '';
+          openBookingModal(id, titre, prof, mode = '', tarif = '') {
+              this.coursId = id;
+              this.coursTitre = titre;
+              this.profName = prof;
+              this.coursMode = mode;
+              this.coursTarif = tarif;
+              this.showModal = true;
+              this.loading = false;
+              this.disponibilites = [];
+              this.errorMessage = '';
+              this.dateReservation = '';
+              this.heureDebut = '';
+              this.heureFin = '';
+              this.activeSlotDay = '';
 
-            /*
-            fetch('/api/cours/' + id + '/slots')
-                .then(res => res.json())
-                .then(data => {
-                    this.disponibilites = data.disponibilites || [];
-                    this.loading = false;
-                    if (this.disponibilites.length > 0) {
-                        this.activeSlotDay = this.disponibilites[0].jour;
-                        this.selectSlot(this.disponibilites[0]);
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                    this.loading = false;
-                });
-            */
-        },
+              /*
+              fetch('/api/cours/' + id + '/slots')
+                  .then(res => res.json())
+                  .then(data => {
+                      this.disponibilites = data.disponibilites || [];
+                      this.loading = false;
+                      if (this.disponibilites.length > 0) {
+                          this.activeSlotDay = this.disponibilites[0].jour;
+                          this.selectSlot(this.disponibilites[0]);
+                      }
+                  })
+                  .catch(err => {
+                      console.error(err);
+                      this.loading = false;
+                  });
+              */
+          },
 
-        getNextDateForDay(dayName) {
-            if (!dayName) return '';
-            const daysMap = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-            const targetDayIndex = daysMap.indexOf(dayName.toLowerCase().trim());
-            if (targetDayIndex === -1) return '';
+          getNextDateForDay(dayName) {
+              if (!dayName) return '';
+              const daysMap = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+              const targetDayIndex = daysMap.indexOf(dayName.toLowerCase().trim());
+              if (targetDayIndex === -1) return '';
 
-            const today = new Date();
-            let daysUntil = (targetDayIndex - today.getDay() + 7) % 7;
-            if (daysUntil === 0) daysUntil = 7;
+              const today = new Date();
+              let daysUntil = (targetDayIndex - today.getDay() + 7) % 7;
+              if (daysUntil === 0) daysUntil = 7;
 
-            const nextDate = new Date(today);
-            nextDate.setDate(today.getDate() + daysUntil);
+              const nextDate = new Date(today);
+              nextDate.setDate(today.getDate() + daysUntil);
 
-            const yyyy = nextDate.getFullYear();
-            const mm = String(nextDate.getMonth() + 1).padStart(2, '0');
-            const dd = String(nextDate.getDate()).padStart(2, '0');
-            return yyyy + '-' + mm + '-' + dd;
-        },
+              const yyyy = nextDate.getFullYear();
+              const mm = String(nextDate.getMonth() + 1).padStart(2, '0');
+              const dd = String(nextDate.getDate()).padStart(2, '0');
+              return yyyy + '-' + mm + '-' + dd;
+          },
 
-        formatDateFr(dateStr) {
-            if (!dateStr) return '';
-            const parts = dateStr.split('-');
-            if (parts.length !== 3) return dateStr;
-            return parts[2] + '/' + parts[1] + '/' + parts[0];
-        },
+          formatDateFr(dateStr) {
+              if (!dateStr) return '';
+              const parts = dateStr.split('-');
+              if (parts.length !== 3) return dateStr;
+              return parts[2] + '/' + parts[1] + '/' + parts[0];
+          },
 
-        getSlotNextDateFormatted(jourName) {
-            const dateStr = this.getNextDateForDay(jourName);
-            return dateStr ? this.formatDateFr(dateStr) : '';
-        },
+          getSlotNextDateFormatted(jourName) {
+              const dateStr = this.getNextDateForDay(jourName);
+              return dateStr ? this.formatDateFr(dateStr) : '';
+          },
 
-        getGroupedDisponibilites() {
-            const groups = {};
-            (this.disponibilites || []).forEach(slot => {
-                const jour = slot.jour || 'Disponible';
-                if (!groups[jour]) {
-                    groups[jour] = [];
-                }
-                groups[jour].push(slot);
-            });
-            return groups;
-        },
+          getGroupedDisponibilites() {
+              const groups = {};
+              (this.disponibilites || []).forEach(slot => {
+                  const jour = slot.jour || 'Disponible';
+                  if (!groups[jour]) {
+                      groups[jour] = [];
+                  }
+                  groups[jour].push(slot);
+              });
+              return groups;
+          },
 
-        selectSlot(slot) {
-            const nextDate = this.getNextDateForDay(slot.jour);
-            if (nextDate) {
-                this.dateReservation = nextDate;
-            }
-            if (slot.debut) this.heureDebut = slot.debut.substring(0, 5);
-            if (slot.fin) this.heureFin = slot.fin.substring(0, 5);
-            this.errorMessage = '';
-        },
+          selectSlot(slot) {
+              const nextDate = this.getNextDateForDay(slot.jour);
+              if (nextDate) {
+                  this.dateReservation = nextDate;
+              }
+              if (slot.debut) this.heureDebut = slot.debut.substring(0, 5);
+              if (slot.fin) this.heureFin = slot.fin.substring(0, 5);
+              this.errorMessage = '';
+          },
 
-        onDateChange(e) {
-            this.errorMessage = '';
-        },
+          onDateChange(e) {
+              this.errorMessage = '';
+          },
 
-        validateForm(e) {
-            // Libre choix
-        }
-    }">
+          validateForm(e) {
+              // Libre choix
+          }
+      }">
 
     <!-- Page Header -->
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-4 border-b border-slate-200">
       <div>
         <h1 class="admin-title text-2xl font-bold uppercase tracking-tight text-[#1E1613]">Espace Apprenant</h1>
-        <p class="admin-subtitle text-slate-500 text-sm mt-1">Bienvenue {{ Auth::user()->prenom ?? Auth::user()->name }}. Retrouvez vos cours, vos visioconférences Jitsi et réservez de nouveaux ateliers.</p>
+        <p class="admin-subtitle text-slate-500 text-sm mt-1">Bienvenue {{ Auth::user()->prenom ?? Auth::user()->name }}.
+          Retrouvez vos cours, vos visioconférences Jitsi et réservez de nouveaux ateliers.</p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        <a href="{{ route('dashboard.apprenant.cours') }}" class="btn-primary bg-[#0BA20B] text-white px-6 py-2.5 font-bold text-xs uppercase tracking-widest hover:bg-[#087A08] transition flex items-center gap-2">
+        <a href="{{ route('dashboard.apprenant.cours') }}"
+          class="btn-primary bg-[#0BA20B] text-white px-6 py-2.5 font-bold text-xs uppercase tracking-widest hover:bg-[#087A08] transition flex items-center gap-2">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
           </svg>
@@ -131,70 +133,111 @@
 
     <!-- Flash Notifications -->
     {{-- @if(session('success'))
-      <div class="p-4 bg-emerald-50 border-l-4 border-l-emerald-600 text-emerald-800 text-xs font-semibold">
-        {{ session('success') }}
-      </div>
+    <div class="p-4 bg-emerald-50 border-l-4 border-l-emerald-600 text-emerald-800 text-xs font-semibold">
+      {{ session('success') }}
+    </div>
     @endif
     @if(session('error'))
-      <div class="p-4 bg-red-50 border-l-4 border-l-red-600 text-red-800 text-xs font-semibold">
-        {{ session('error') }}
-      </div>
+    <div class="p-4 bg-red-50 border-l-4 border-l-red-600 text-red-800 text-xs font-semibold">
+      {{ session('error') }}
+    </div>
     @endif --}}
 
     <!-- Metric Cards (Style Admin) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {{-- Card 1 : Inscriptions --}}
-      <div class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
-        <div class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none"></div>
+      <div
+        class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
+        <div
+          class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none">
+        </div>
         <div class="flex justify-between items-center w-full relative z-10">
           <div>
-            <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">Mes Inscriptions</p>
+            <p
+              class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">
+              Mes Inscriptions</p>
             <h3 class="text-3xl font-normal text-slate-900 font-sans tracking-tighter">{{ $reservations->count() }}</h3>
           </div>
-          <div class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <div
+            class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
           </div>
         </div>
       </div>
 
       {{-- Card 2 : Cours Dispo --}}
-      <div class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
-        <div class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none"></div>
+      <div
+        class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
+        <div
+          class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none">
+        </div>
         <div class="flex justify-between items-center w-full relative z-10">
           <div>
-            <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">Cours Dispo</p>
-            <h3 class="text-3xl font-normal text-slate-900 font-sans tracking-tighter">{{ method_exists($cours, 'total') ? $cours->total() : $cours->count() }}</h3>
+            <p
+              class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">
+              Cours Dispo</p>
+            <h3 class="text-3xl font-normal text-slate-900 font-sans tracking-tighter">
+              {{ method_exists($cours, 'total') ? $cours->total() : $cours->count() }}</h3>
           </div>
-          <div class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          <div
+            class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+              </path>
+            </svg>
           </div>
         </div>
       </div>
 
       {{-- Card 3 : Catégories --}}
-      <div class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
-        <div class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none"></div>
+      <div
+        class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
+        <div
+          class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none">
+        </div>
         <div class="flex justify-between items-center w-full relative z-10">
           <div>
-            <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">Catégories</p>
-            <h3 class="text-3xl font-normal text-slate-900 font-sans tracking-tighter">{{ method_exists($categoriesCours, 'count') ? $categoriesCours->count() : 0 }}</h3>
+            <p
+              class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">
+              Catégories</p>
+            <h3 class="text-3xl font-normal text-slate-900 font-sans tracking-tighter">
+              {{ method_exists($categoriesCours, 'count') ? $categoriesCours->count() : 0 }}</h3>
           </div>
-          <div class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          <div
+            class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+              </path>
+            </svg>
           </div>
         </div>
       </div>
 
       {{-- Card 4 : Prochain --}}
-      <div class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
-        <div class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none"></div>
+      <div
+        class="bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 border-l-4 border-l-transparent min-h-[124px] p-5 flex flex-col justify-center relative overflow-hidden group hover:border-l-[#0BA20B] hover:border-slate-300 hover:shadow-xl transition-all duration-300">
+        <div
+          class="absolute -right-6 -top-6 w-24 h-24 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none">
+        </div>
         <div class="flex justify-between items-center w-full relative z-10">
           <div>
-            <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">Date Suivante</p>
-            <h3 class="text-3xl font-normal text-slate-900 font-sans tracking-tighter">{{ $prochainCours ? \Carbon\Carbon::parse($prochainCours->date_reservation)->format('d/m') : '-' }}</h3>
+            <p
+              class="text-[11px] font-bold text-slate-500 uppercase tracking-widest font-sans mb-1 group-hover:text-[#0BA20B] transition-colors">
+              Date Suivante</p>
+            <h3 class="text-3xl font-normal text-slate-900 font-sans tracking-tighter">
+              {{ $prochainCours ? \Carbon\Carbon::parse($prochainCours->date_reservation)->format('d/m') : '-' }}</h3>
           </div>
-          <div class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          <div
+            class="w-12 h-12 bg-[#0BA20B]/10 rounded-full flex items-center justify-center text-[#0BA20B] group-hover:scale-110 group-hover:bg-[#0BA20B] group-hover:text-white transition-all duration-300 shadow-sm">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
           </div>
         </div>
       </div>
@@ -266,9 +309,12 @@
       </div>
 
       <!-- 2. Résumé Réservations -->
-      <div class="md:col-span-1 bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 flex flex-col justify-between rounded-none relative overflow-hidden group hover:border-[#0BA20B]/50 transition-colors">
+      <div
+        class="md:col-span-1 bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 flex flex-col justify-between rounded-none relative overflow-hidden group hover:border-[#0BA20B]/50 transition-colors">
         <!-- Décoration Bento -->
-        <div class="absolute -right-6 -top-6 w-20 h-20 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none"></div>
+        <div
+          class="absolute -right-6 -top-6 w-20 h-20 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:-rotate-12 transition-all duration-500 pointer-events-none">
+        </div>
         <div class="relative z-10">
           <span class="text-[10px] uppercase tracking-widest font-bold text-[#0BA20B] block mb-1">Mon Compte</span>
           <h3 class="text-lg font-serif-title font-bold text-slate-900">Mes Inscriptions</h3>
@@ -284,14 +330,18 @@
       </div>
 
       <!-- 3. Liste de mes Réservations -->
-      <div class="md:col-span-4 bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 rounded-none relative overflow-hidden group">
-        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-[#0BA20B]/5 rotate-45 group-hover:bg-[#0BA20B]/10 group-hover:rotate-90 transition-all duration-700 pointer-events-none"></div>
+      <div
+        class="md:col-span-4 bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 rounded-none relative overflow-hidden group">
+        <div
+          class="absolute -right-8 -bottom-8 w-32 h-32 bg-[#0BA20B]/5 rotate-45 group-hover:bg-[#0BA20B]/10 group-hover:rotate-90 transition-all duration-700 pointer-events-none">
+        </div>
         <div class="relative z-10 flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 bg-[#0BA20B] block"></span>
             <div>
               <h2 class="text-lg font-bold text-slate-900 font-sans tracking-tight">Mes Cours & Créneaux Réservés</h2>
-              <p class="text-xs text-slate-500 font-medium mt-0.5">Accédez à vos salons visio Jitsi sécurisés ou aux replays vidéo des cours passés.</p>
+              <p class="text-xs text-slate-500 font-medium mt-0.5">Accédez à vos salons visio Jitsi sécurisés ou aux
+                replays vidéo des cours passés.</p>
             </div>
           </div>
           <a href="{{ route('dashboard.apprenant.cours') }}"
@@ -341,7 +391,8 @@
                       {{ \Carbon\Carbon::parse($res->heure_fin)->format('H\hi') }}
                     </td>
                     <td class="p-3">
-                      <span class="px-2.5 py-1 text-[10px] font-bold uppercase rounded-none bg-[#0BA20B] text-white text-emerald-800">
+                      <span
+                        class="px-2.5 py-1 text-[10px] font-bold uppercase rounded-none bg-[#0BA20B] text-white text-emerald-800">
                         Confirmé
                       </span>
                     </td>
@@ -349,7 +400,7 @@
                       @if($res->jitsi_room_id)
                         <a href="{{ route('meeting.show', $res->id) }}"
                           class="inline-flex items-center gap-1 px-3 py-1.5 bg-[#0BA20B] hover:bg-[#087A08] text-white font-bold text-[10px] uppercase tracking-wider shadow">
-                          🎥 Classe Jitsi
+                          Jitsi
                         </a>
                       @endif
 
@@ -365,7 +416,7 @@
                         <div class="inline-block relative" x-data="{ open: false }">
                           <button @click="open = !open" @click.away="open = false"
                             class="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white font-bold text-[10px] uppercase tracking-wider shadow cursor-pointer">
-                            📁 Supports ({{ $res->course->supports->count() }})
+                            📁 ({{ $res->course->supports->count() }})
                           </button>
                           <div x-show="open" style="display: none;"
                             class="absolute right-0 mt-1 w-56 bg-white border border-slate-200 shadow-xl z-10 text-left overflow-hidden">
@@ -390,105 +441,105 @@
 
       <!-- 4. Catalogue Rapide des Cours Disponibles -->
       <!-- <div class="md:col-span-4 bg-gradient-to-br from-white to-[#0BA20B]/[0.02] border border-slate-200 p-6 rounded-none relative overflow-hidden group">
-        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:rotate-45 transition-all duration-700 pointer-events-none"></div>
-        <div class="relative z-10 flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-[#0BA20B] block"></span>
-            <div>
-              <h2 class="text-lg font-bold text-slate-900 font-sans tracking-tight">Catalogue des Cours & Ateliers</h2>
-              <p class="text-xs text-slate-500 font-medium mt-0.5">Réservez instantanément votre place pour les prochains ateliers et cours dispensés.</p>
-            </div>
-          </div>
-          <a href="{{ route('dashboard.apprenant.cours') }}"
-            class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline">Voir tout le catalogue
-            &rarr;</a>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          @forelse($cours as $item)
-            @php
-              $catNom = $item->categorie ? $item->categorie->nom : 'Art & Culture';
-              $catLower = strtolower($catNom);
-              $modeName = $item->mode ? $item->mode->libelle : 'Présentiel';
-              $profName = $item->professeur ? $item->professeur->name : 'Association';
-
-              if ($item->image_path) {
-                $imgUrl = asset('storage/' . $item->image_path);
-              } elseif (\Illuminate\Support\Str::contains($catLower, ['raphia', 'artisanat', 'tissage', 'sculpture'])) {
-                $imgUrl = '/assets/raphia_artisanal_crafts_1785764982514-DDF_8lz7.jpg';
-              } elseif (\Illuminate\Support\Str::contains($catLower, ['moderne', 'guitare', 'piano', 'synthé'])) {
-                $imgUrl = 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=800';
-              } elseif (\Illuminate\Support\Str::contains($catLower, ['tradition', 'instruments', 'balafon', 'kora', 'djembé', 'percussion'])) {
-                $imgUrl = 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800';
-              } else {
-                $catIdImages = [
-                  1 => 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800',
-                  2 => 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=800',
-                  3 => '/assets/raphia_artisanal_crafts_1785764982514-DDF_8lz7.jpg',
-                ];
-                $imgUrl = $catIdImages[$item->categorie_cours_id ?? 0] ?? 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&q=80&w=800';
-              }
-            @endphp
-            <div class="bg-white border border-slate-200 shadow-sm flex flex-col group hover:shadow-md hover:border-[#0BA20B]/50 transition-all duration-300 rounded-none relative">
-              <div class="relative h-40 overflow-hidden bg-slate-100">
-                <img src="{{ $imgUrl }}" alt="{{ $item->titre }}"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1">
-                  <span
-                    class="px-2 py-0.5 bg-[#1E1613]/90 text-[#0BA20B] text-[9px] font-bold uppercase tracking-widest border border-[#0BA20B]/30">
-                    {{ $item->categorie ? $item->categorie->nom : 'Général' }}
-                  </span>
-                  <span
-                    class="px-2 py-0.5 bg-[#0BA20B] text-white text-[9px] font-bold uppercase tracking-widest shadow-sm">
-                    {{ $modeName }}
-                  </span>
-                </div>
+          <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-[#0BA20B]/5 rotate-12 group-hover:bg-[#0BA20B]/10 group-hover:rotate-45 transition-all duration-700 pointer-events-none"></div>
+          <div class="relative z-10 flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#0BA20B] block"></span>
+              <div>
+                <h2 class="text-lg font-bold text-slate-900 font-sans tracking-tight">Catalogue des Cours & Ateliers</h2>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Réservez instantanément votre place pour les prochains ateliers et cours dispensés.</p>
               </div>
-              <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <div>
-                  <h4
-                    class="text-sm font-serif-title font-medium text-slate-900 group-hover:text-[#0BA20B] transition-colors">
-                    {{ $item->titre }}
-                  </h4>
-                  <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">
-                    {{ $item->description ?? 'Aucune description disponible.' }}
-                  </p>
-                  <div class="mt-2 flex items-center gap-1.5 text-[11px] font-semibold text-slate-700">
-                    <i class="fa-solid fa-user-tie text-[#0BA20B]"></i>
-                    <span>Prof. {{ $profName }}</span>
-                  </div>
-                </div>
-                <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between">
-                  <div>
-                    <span class="text-[9px] text-slate-400 uppercase font-semibold block">Tarif</span>
-                    <span class="text-sm font-bold text-[#0BA20B]">
-                      {{ number_format($item->tarif, 0, ',', ' ') }} € <span
-                        class="text-[10px] text-slate-500 font-normal">/ séance</span>
+            </div>
+            <a href="{{ route('dashboard.apprenant.cours') }}"
+              class="text-xs text-[#0BA20B] font-bold uppercase tracking-widest hover:underline">Voir tout le catalogue
+              &rarr;</a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @forelse($cours as $item)
+              @php
+                $catNom = $item->categorie ? $item->categorie->nom : 'Art & Culture';
+                $catLower = strtolower($catNom);
+                $modeName = $item->mode ? $item->mode->libelle : 'Présentiel';
+                $profName = $item->professeur ? $item->professeur->name : 'Association';
+
+                if ($item->image_path) {
+                  $imgUrl = asset('storage/' . $item->image_path);
+                } elseif (\Illuminate\Support\Str::contains($catLower, ['raphia', 'artisanat', 'tissage', 'sculpture'])) {
+                  $imgUrl = '/assets/raphia_artisanal_crafts_1785764982514-DDF_8lz7.jpg';
+                } elseif (\Illuminate\Support\Str::contains($catLower, ['moderne', 'guitare', 'piano', 'synthé'])) {
+                  $imgUrl = 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=800';
+                } elseif (\Illuminate\Support\Str::contains($catLower, ['tradition', 'instruments', 'balafon', 'kora', 'djembé', 'percussion'])) {
+                  $imgUrl = 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800';
+                } else {
+                  $catIdImages = [
+                    1 => 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800',
+                    2 => 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=800',
+                    3 => '/assets/raphia_artisanal_crafts_1785764982514-DDF_8lz7.jpg',
+                  ];
+                  $imgUrl = $catIdImages[$item->categorie_cours_id ?? 0] ?? 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&q=80&w=800';
+                }
+              @endphp
+              <div class="bg-white border border-slate-200 shadow-sm flex flex-col group hover:shadow-md hover:border-[#0BA20B]/50 transition-all duration-300 rounded-none relative">
+                <div class="relative h-40 overflow-hidden bg-slate-100">
+                  <img src="{{ $imgUrl }}" alt="{{ $item->titre }}"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1">
+                    <span
+                      class="px-2 py-0.5 bg-[#1E1613]/90 text-[#0BA20B] text-[9px] font-bold uppercase tracking-widest border border-[#0BA20B]/30">
+                      {{ $item->categorie ? $item->categorie->nom : 'Général' }}
+                    </span>
+                    <span
+                      class="px-2 py-0.5 bg-[#0BA20B] text-white text-[9px] font-bold uppercase tracking-widest shadow-sm">
+                      {{ $modeName }}
                     </span>
                   </div>
+                </div>
+                <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                  <div>
+                    <h4
+                      class="text-sm font-serif-title font-medium text-slate-900 group-hover:text-[#0BA20B] transition-colors">
+                      {{ $item->titre }}
+                    </h4>
+                    <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                      {{ $item->description ?? 'Aucune description disponible.' }}
+                    </p>
+                    <div class="mt-2 flex items-center gap-1.5 text-[11px] font-semibold text-slate-700">
+                      <i class="fa-solid fa-user-tie text-[#0BA20B]"></i>
+                      <span>Prof. {{ $profName }}</span>
+                    </div>
+                  </div>
+                  <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                    <div>
+                      <span class="text-[9px] text-slate-400 uppercase font-semibold block">Tarif</span>
+                      <span class="text-sm font-bold text-[#0BA20B]">
+                        {{ number_format($item->tarif, 0, ',', ' ') }} € <span
+                          class="text-[10px] text-slate-500 font-normal">/ séance</span>
+                      </span>
+                    </div>
 
-                      <button type="button"
-                        @click="openBookingModal({{ $item->id }}, '{{ addslashes($item->titre) }}', '{{ addslashes($profName) }}', '{{ addslashes($modeName) }}', '{{ number_format($item->tarif, 0, ',', ' ') }}')"
-                        class="px-3 py-1.5 bg-[#0BA20B] hover:bg-[#087A08] text-white text-[11px] font-bold uppercase tracking-wider transition shadow cursor-pointer">
-                        Réserver
-                      </button>
+                        <button type="button"
+                          @click="openBookingModal({{ $item->id }}, '{{ addslashes($item->titre) }}', '{{ addslashes($profName) }}', '{{ addslashes($modeName) }}', '{{ number_format($item->tarif, 0, ',', ' ') }}')"
+                          class="px-3 py-1.5 bg-[#0BA20B] hover:bg-[#087A08] text-white text-[11px] font-bold uppercase tracking-wider transition shadow cursor-pointer">
+                          Réserver
+                        </button>
 
+                  </div>
                 </div>
               </div>
-            </div>
-          @empty
-            <div class="col-span-3 text-center py-8 bg-slate-50 border border-dashed border-slate-200">
-              <p class="text-xs text-slate-500">Aucun cours à afficher.</p>
-            </div>
-          @endforelse
-        </div>
-
-        @if(method_exists($cours, 'hasPages') && $cours->hasPages())
-          <div class="mt-6 pt-4 border-t border-slate-100 flex justify-center">
-            {{ $cours->links() }}
+            @empty
+              <div class="col-span-3 text-center py-8 bg-slate-50 border border-dashed border-slate-200">
+                <p class="text-xs text-slate-500">Aucun cours à afficher.</p>
+              </div>
+            @endforelse
           </div>
-        @endif
-      </div> -->
+
+          @if(method_exists($cours, 'hasPages') && $cours->hasPages())
+            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-center">
+              {{ $cours->links() }}
+            </div>
+          @endif
+        </div> -->
 
     </div>
 
@@ -527,52 +578,52 @@
 
         <div x-show="!loading">
           <!-- ANCIEN CODE : Disponibilités du professeur (Désactivé)
-          <div class="mb-3 bg-[#F4EFE6] border border-[#0BA20B]/30 p-2.5">
-            <div class="flex items-center justify-between mb-1.5">
-              <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#2C221E] flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                Disponibilités du professeur :
-              </h4>
-              <span x-show="disponibilites.length > 0"
-                class="text-[9px] font-bold text-[#0BA20B] bg-[#FAF7F2] border border-[#0BA20B]/40 px-2 py-0.5"
-                x-text="disponibilites.length + ' créneau(x)'"></span>
-            </div>
-            <template x-if="disponibilites.length === 0">
-              <p class="text-xs text-[#8C766B] italic">Aucune disponibilité enregistrée pour le moment.</p>
-            </template>
-
-            <div x-show="disponibilites.length > 0" class="space-y-1.5 max-h-36 overflow-y-auto pr-1">
-              <template x-for="(slots, jour) in getGroupedDisponibilites()" :key="jour">
-                <div class="bg-white border border-[#0BA20B]/30 p-2 shadow-sm">
-                  <div
-                    class="text-[10px] font-bold text-[#0BA20B] uppercase mb-1 flex items-center justify-between border-b border-[#0BA20B]/20 pb-1">
-                    <div class="flex items-center gap-1.5">
-                      <span class="w-2 h-2 bg-emerald-500 rounded-full inline-block"></span>
-                      <span
-                        x-text="jour + (getSlotNextDateFormatted(jour) ? ' (' + getSlotNextDateFormatted(jour) + ')' : '')"></span>
-                    </div>
-                    <span class="text-[9px] text-[#8C766B] font-semibold" x-text="slots.length + ' créneau(x)'"></span>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                    <template x-for="slot in slots" :key="slot.id">
-                      <button type="button" @click="selectSlot(slot)"
-                        :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'bg-[#0BA20B] text-white border-[#0BA20B]' : 'bg-[#FAF7F2] hover:bg-[#F4EFE6] text-[#2C221E] border-[#0BA20B]/30'"
-                        class="w-full flex items-center justify-between border px-2 py-1 text-[11px] font-bold transition cursor-pointer">
-                        <span x-text="slot.debut.substring(0,5) + ' - ' + slot.fin.substring(0,5)"></span>
-                        <span class="text-[9px] font-bold uppercase"
-                          :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'text-white' : 'text-[#0BA20B]'">✓
-                          Choisir</span>
-                      </button>
-                    </template>
-                  </div>
-                </div>
+            <div class="mb-3 bg-[#F4EFE6] border border-[#0BA20B]/30 p-2.5">
+              <div class="flex items-center justify-between mb-1.5">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#2C221E] flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-[#0BA20B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Disponibilités du professeur :
+                </h4>
+                <span x-show="disponibilites.length > 0"
+                  class="text-[9px] font-bold text-[#0BA20B] bg-[#FAF7F2] border border-[#0BA20B]/40 px-2 py-0.5"
+                  x-text="disponibilites.length + ' créneau(x)'"></span>
+              </div>
+              <template x-if="disponibilites.length === 0">
+                <p class="text-xs text-[#8C766B] italic">Aucune disponibilité enregistrée pour le moment.</p>
               </template>
+
+              <div x-show="disponibilites.length > 0" class="space-y-1.5 max-h-36 overflow-y-auto pr-1">
+                <template x-for="(slots, jour) in getGroupedDisponibilites()" :key="jour">
+                  <div class="bg-white border border-[#0BA20B]/30 p-2 shadow-sm">
+                    <div
+                      class="text-[10px] font-bold text-[#0BA20B] uppercase mb-1 flex items-center justify-between border-b border-[#0BA20B]/20 pb-1">
+                      <div class="flex items-center gap-1.5">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full inline-block"></span>
+                        <span
+                          x-text="jour + (getSlotNextDateFormatted(jour) ? ' (' + getSlotNextDateFormatted(jour) + ')' : '')"></span>
+                      </div>
+                      <span class="text-[9px] text-[#8C766B] font-semibold" x-text="slots.length + ' créneau(x)'"></span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                      <template x-for="slot in slots" :key="slot.id">
+                        <button type="button" @click="selectSlot(slot)"
+                          :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'bg-[#0BA20B] text-white border-[#0BA20B]' : 'bg-[#FAF7F2] hover:bg-[#F4EFE6] text-[#2C221E] border-[#0BA20B]/30'"
+                          class="w-full flex items-center justify-between border px-2 py-1 text-[11px] font-bold transition cursor-pointer">
+                          <span x-text="slot.debut.substring(0,5) + ' - ' + slot.fin.substring(0,5)"></span>
+                          <span class="text-[9px] font-bold uppercase"
+                            :class="dateReservation === getNextDateForDay(slot.jour) && heureDebut === slot.debut.substring(0,5) ? 'text-white' : 'text-[#0BA20B]'">✓
+                            Choisir</span>
+                        </button>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </div>
             </div>
-          </div>
-          -->
+            -->
 
           <form action="{{ route('reservations.store') }}" method="POST" @submit="validateForm($event)" class="space-y-3">
             @csrf

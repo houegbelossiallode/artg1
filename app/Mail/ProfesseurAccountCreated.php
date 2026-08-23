@@ -31,7 +31,7 @@ class ProfesseurAccountCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Vos identifiants d\'accès Professeur - AssoCulture',
+            subject: 'Vos identifiants d\'accès Professeur - ARTG',
         );
     }
 

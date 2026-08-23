@@ -29,7 +29,7 @@ class ReservationConfirmedMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Confirmation de votre réservation — Écho & Culture',
+            subject: 'Confirmation de votre réservation ARTG',
         );
     }
 

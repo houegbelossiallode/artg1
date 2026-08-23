@@ -32,7 +32,7 @@ class ProfesseurCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Vos accès à l\'espace Professeur Écho & Culture',
+            subject: 'Vos accès à l\'espace Professeur ARTG',
         );
     }
 

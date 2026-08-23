@@ -36,6 +36,7 @@ class ProfesseurCoursController extends Controller
             'categorie_cours_id' => 'required|exists:categorie_cours,id',
             'mode_id' => 'required|exists:modes,id',
             'tarif' => 'required|numeric',
+            'lieu' => 'nullable|string|max:255',
             'support_fichier' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,mp4,avi,mov,jpg,jpeg,png,gif|max:102400',
             // add other validation rules as needed
         ]);
@@ -90,6 +91,7 @@ class ProfesseurCoursController extends Controller
             'categorie_cours_id' => 'required|exists:categorie_cours,id',
             'mode_id' => 'required|exists:modes,id',
             'tarif' => 'required|numeric',
+            'lieu' => 'nullable|string|max:255',
             'support_fichier' => 'nullable|file|mimes:pdf,doc,docx,ppt,pptx,mp4,avi,mov,jpg,jpeg,png,gif|max:102400',
         ]);
 

@@ -54,7 +54,7 @@
                  class="origin-top-right absolute right-0 mt-2 w-48 rounded-none bg-white shadow-xl border border-slate-200 z-50 divide-y divide-slate-100" 
                  x-cloak>
               <div class="py-1">
-                <button type="button" @click="editCours = { id: {{ $item->id }}, titre: '{{ addslashes($item->titre) }}', categorie_cours_id: {{ $item->categorie_cours_id }}, mode_id: {{ $item->mode_id }}, tarif: {{ $item->tarif }}, description: '{{ addslashes($item->description ?? '') }}' }; editModalOpen = true; open = false;" class="w-full text-left group flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-[#0BA20B] hover:text-white font-bold uppercase tracking-wider transition-colors">
+                <button type="button" @click="editCours = { id: {{ $item->id }}, titre: '{{ addslashes($item->titre) }}', categorie_cours_id: {{ $item->categorie_cours_id }}, mode_id: {{ $item->mode_id }}, tarif: {{ $item->tarif }}, lieu: '{{ addslashes($item->lieu ?? '') }}', description: '{{ addslashes($item->description ?? '') }}' }; editModalOpen = true; open = false;" class="w-full text-left group flex items-center px-4 py-2.5 text-xs text-slate-700 hover:bg-[#0BA20B] hover:text-white font-bold uppercase tracking-wider transition-colors">
                   <svg class="mr-3 h-4 w-4 text-slate-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                   Modifier
                 </button>
@@ -75,9 +75,16 @@
 
         <!-- Corps de la carte -->
         <div class="p-6 flex flex-col flex-1 z-10 bg-white">
-          <p class="text-xs text-slate-500 leading-relaxed mb-6 flex-1 break-words">
+          <p class="text-xs text-slate-500 leading-relaxed mb-4 flex-1 break-words">
             {{ $item->description ? Str::limit($item->description, 115) : 'Aucune description disponible pour ce cours.' }}
           </p>
+
+          @if($item->lieu)
+            <div class="flex items-center gap-1.5 text-xs font-medium text-slate-700 mb-4 bg-slate-50 p-2 border border-slate-100">
+              <i class="fa-solid fa-location-dot text-red-500"></i>
+              <span class="truncate">{{ $item->lieu }}</span>
+            </div>
+          @endif
           
           <div class="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
             <!-- Tarif -->
@@ -172,9 +179,15 @@
           </div>
         </div>
 
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Tarif (FCFA) *</label>
-          <input type="number" name="tarif" required placeholder="15000" class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Tarif (FCFA) *</label>
+            <input type="number" name="tarif" required placeholder="15000" class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Lieu / Adresse (Présentiel / Hybride)</label>
+            <input type="text" name="lieu" placeholder="ex: Salle B, Centre Culturel" class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
+          </div>
         </div>
 
         <div>
@@ -240,9 +253,15 @@
           </div>
         </div>
 
-        <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Tarif (FCFA) *</label>
-          <input type="number" name="tarif" x-model="editCours.tarif" required class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Tarif (FCFA) *</label>
+            <input type="number" name="tarif" x-model="editCours.tarif" required class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Lieu / Adresse (Présentiel / Hybride)</label>
+            <input type="text" name="lieu" x-model="editCours.lieu" placeholder="ex: Salle B, Centre Culturel" class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
+          </div>
         </div>
 
         <div>

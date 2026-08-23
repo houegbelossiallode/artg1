@@ -78,7 +78,7 @@
                  class="absolute right-0 mt-1 w-40 bg-white shadow-xl border border-slate-200 z-50 rounded-none" 
                  x-cloak>
               <div class="py-1">
-                <button type="button" @click="editCours = { id: {{ $item->id }}, titre: '{{ addslashes($item->titre) }}', categorie_cours_id: {{ $item->categorie_cours_id }}, user_id: {{ $item->user_id }}, mode_id: {{ $item->mode_id }}, tarif: {{ $item->tarif }}, description: '{{ addslashes($item->description ?? '') }}' }; editModalOpen = true; open = false;" class="w-full text-left px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 hover:bg-[#0BA20B] hover:text-white transition-colors">
+                <button type="button" @click="editCours = { id: {{ $item->id }}, titre: '{{ addslashes($item->titre) }}', categorie_cours_id: {{ $item->categorie_cours_id }}, user_id: {{ $item->user_id }}, mode_id: {{ $item->mode_id }}, tarif: {{ $item->tarif }}, lieu: '{{ addslashes($item->lieu ?? '') }}', description: '{{ addslashes($item->description ?? '') }}' }; editModalOpen = true; open = false;" class="w-full text-left px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 hover:bg-[#0BA20B] hover:text-white transition-colors">
                   Modifier
                 </button>
                 <form action="{{ route('dashboard.admin.cours.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce cours ?');">
@@ -102,9 +102,17 @@
             <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">
               {{ $item->description ?: 'Aucune description disponible.' }}
             </p>
-            <div class="mt-2 flex items-center gap-1.5 text-[11px] font-semibold text-slate-700">
-              <i class="fa-solid fa-user-tie text-[#0BA20B]"></i>
-              <span>Prof. {{ $profName }}</span>
+            <div class="mt-2 space-y-1">
+              <div class="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700">
+                <i class="fa-solid fa-user-tie text-[#0BA20B]"></i>
+                <span>Prof. {{ $profName }}</span>
+              </div>
+              @if($item->lieu)
+                <div class="flex items-center gap-1.5 text-[11px] font-medium text-slate-600">
+                  <i class="fa-solid fa-location-dot text-red-500"></i>
+                  <span>{{ $item->lieu }}</span>
+                </div>
+              @endif
             </div>
           </div>
           <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between">
@@ -181,6 +189,10 @@
           </div>
         </div>
 
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Lieu / Adresse physique (Présentiel / Hybride)</label>
+          <input type="text" name="lieu" placeholder="ex: Salle Culturelle A, Cotonou" class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
+        </div>
 
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Description</label>
@@ -246,6 +258,11 @@
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Tarif (FCFA) *</label>
             <input type="number" name="tarif" x-model="editCours.tarif" required class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
           </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Lieu / Adresse physique (Présentiel / Hybride)</label>
+          <input type="text" name="lieu" x-model="editCours.lieu" placeholder="ex: Salle Culturelle A, Cotonou" class="w-full px-3 py-2 text-sm border border-slate-300 focus:border-slate-900 focus:outline-none rounded-none">
         </div>
 
 

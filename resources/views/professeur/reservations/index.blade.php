@@ -80,9 +80,17 @@
                             Cours demandé
                         </span>
                         <h5 class="font-serif-title font-bold text-slate-800 text-base leading-tight">{{ $res->course->titre ?? '—' }}</h5>
-                        <span class="inline-block mt-1.5 px-2 py-0.5 text-[10px] font-bold uppercase bg-slate-100 border border-slate-200 text-slate-600 rounded-sm">
-                            {{ $res->course && $res->course->mode ? $res->course->mode->libelle : 'Présentiel' }}
-                        </span>
+                        <div class="flex flex-wrap items-center gap-1.5 mt-1.5">
+                            <span class="px-2 py-0.5 text-[10px] font-bold uppercase bg-slate-100 border border-slate-200 text-slate-600 rounded-sm">
+                                {{ $res->course && $res->course->mode ? $res->course->mode->libelle : 'Présentiel' }}
+                            </span>
+                            @if($res->course && $res->course->lieu)
+                                <span class="text-[11px] font-medium text-slate-700 flex items-center gap-1 bg-slate-50 px-2 py-0.5 border border-slate-200">
+                                    <svg class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    {{ $res->course->lieu }}
+                                </span>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="bg-[#F4EFE6] p-3 border-l-2 border-[#0BA20B]">

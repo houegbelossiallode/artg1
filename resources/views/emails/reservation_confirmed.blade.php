@@ -61,9 +61,7 @@
         <h2 style="font-family: 'Georgia', serif; font-size: 20px; font-weight: 600; color: #1E1613; margin: 0 0 16px 0; border: none;">Accès à votre espace</h2>
         <p>Vous pouvez retrouver toutes vos réservations, télécharger les supports de cours et accéder aux ressources pédagogiques directement depuis votre espace apprenant.</p>
         
-        <div style="text-align: center;">
-            <a href="{{ route('dashboard.apprenant') }}" style="background-color: #1E1613; color: #ffffff !important; text-decoration: none; padding: 14px 28px; border-radius: 4px; font-weight: bold; display: inline-block; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Mon espace apprenant</a>
-        </div>
+       
     </div>
     
     <div style="margin-top: 40px;">

@@ -110,10 +110,16 @@
                                 @endif
                             </div>
 
-                            <div class="flex justify-between items-center">
+                            <div class="flex flex-wrap justify-between items-center gap-2">
                                 <span class="px-2 py-0.5 text-[10px] font-bold uppercase bg-slate-100 border border-slate-200 text-slate-600 rounded-sm">
                                     {{ $res->course && $res->course->mode ? $res->course->mode->libelle : 'Présentiel' }}
                                 </span>
+                                @if($res->course && $res->course->lieu)
+                                    <span class="text-[11px] font-medium text-slate-700 flex items-center gap-1 bg-slate-50 px-2 py-0.5 border border-slate-200">
+                                        <svg class="w-3 h-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                        {{ $res->course->lieu }}
+                                    </span>
+                                @endif
                                 @if($res->course && $res->course->supports && $res->course->supports->count() > 0)
                                     <div class="relative" x-data="{ open: false }">
                                         <button @click="open = !open" @click.away="open = false" class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-600 hover:text-slate-900 transition cursor-pointer">

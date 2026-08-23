@@ -43,6 +43,7 @@ class CoursController extends Controller
             'heure_debut' => ['required'],
             'heure_fin' => ['required'],
             'tarif' => ['required', 'numeric', 'min:0'],
+            'lieu' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
         ]);
 
@@ -61,6 +62,7 @@ class CoursController extends Controller
             'categorie_cours_id' => $request->categorie_cours_id,
             'user_id' => $request->user_id,
             'mode_id' => $request->mode_id,
+            'lieu' => $request->lieu,
             'date_cours' => $request->date_cours,
             'heure_debut' => $request->heure_debut,
             'heure_fin' => $request->heure_fin,
@@ -96,6 +98,7 @@ class CoursController extends Controller
             'heure_debut' => ['required'],
             'heure_fin' => ['required'],
             'tarif' => ['required', 'numeric', 'min:0'],
+            'lieu' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
         ]);
 
@@ -113,6 +116,7 @@ class CoursController extends Controller
             'categorie_cours_id' => $request->categorie_cours_id,
             'user_id' => $request->user_id,
             'mode_id' => $request->mode_id,
+            'lieu' => $request->lieu,
             'date_cours' => $request->date_cours,
             'heure_debut' => $request->heure_debut,
             'heure_fin' => $request->heure_fin,

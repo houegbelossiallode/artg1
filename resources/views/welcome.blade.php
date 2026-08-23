@@ -947,7 +947,7 @@
                         accompagnement personnalisé et des scènes publiques pour propulser leurs créations.
                     </p>
                 </div>
-                @php $talentDuMois = $talents->first(); @endphp
+                <!-- @php $talentDuMois = $talents->first(); @endphp
                 @if($talentDuMois)
                 <div class="bg-[#1E1613] rounded-none overflow-hidden shadow-2xl border border-[#0BA20B]/40 grid grid-cols-1 lg:grid-cols-12 text-[#FAF7F2]">
                     <div class="lg:col-span-5 relative min-h-[350px]">
@@ -1174,7 +1174,7 @@
                         </div>
                     </div>
                 </div>
-                @endif
+                @endif -->
                 <div class="space-y-6 pt-6">
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#0BA20B]/30 pb-4">
                         <h3 class="font-serif-title text-2xl font-bold text-[#2C221E]">

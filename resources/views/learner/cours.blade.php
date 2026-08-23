@@ -167,9 +167,17 @@
                         <p class="text-xs text-slate-500 mt-1 line-clamp-2">
                             {{ $item->description ?? 'Aucune description disponible pour ce cours.' }}
                         </p>
-                        <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-slate-700">
-                            <i class="fa-solid fa-user-tie text-[#0BA20B]"></i>
-                            <span>Prof. {{ $profName }}</span>
+                        <div class="mt-3 space-y-1">
+                            <div class="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                                <i class="fa-solid fa-user-tie text-[#0BA20B]"></i>
+                                <span>Prof. {{ $profName }}</span>
+                            </div>
+                            @if($item->lieu)
+                                <div class="flex items-center gap-1.5 text-xs font-medium text-slate-600">
+                                    <i class="fa-solid fa-location-dot text-red-500"></i>
+                                    <span>{{ $item->lieu }}</span>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="pt-3 border-t border-slate-100 flex items-center justify-between">

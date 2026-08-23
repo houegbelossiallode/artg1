@@ -18,6 +18,7 @@ class Cours extends Model
         'description',
         'tarif',
         'mode_id',
+        'lieu',
         'actif',
     ];
 
